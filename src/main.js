@@ -28,7 +28,7 @@ const router = createRouter({
             component: PolicyPage,
             props: {
                 label: "Privacy Policy",
-                faIcon: "fa-solid fa-hammer",
+                faIcon: "pi pi-hammer",
                 inPageNavbar: false,
                 shouldAlwaysPreload: false,
                 breadcrumbs: [
@@ -43,7 +43,7 @@ const router = createRouter({
             component: LicensePage,
             props: {
                 label: "License",
-                faIcon: "fa-solid fa-copy",
+                faIcon: "pi pi-briefcase",
                 inPageNavbar: false,
                 shouldAlwaysPreload: false,
                 breadcrumbs: [

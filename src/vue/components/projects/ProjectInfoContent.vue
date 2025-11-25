@@ -6,7 +6,7 @@
 
         <!-- Tags Label -->
         <span class="me-2 text-3" v-if="props.tags">
-            <i class="fa fa-tag me-1"/>
+            <i class="pi pi-tags me-1"/>
             {{ strings.get('tags') }}
         </span>
 
@@ -21,7 +21,7 @@
         <!-- About -->
         <div class="mt-4" v-if="props.description">
             <h5 class="d-none d-lg-inline-block lead-2">
-                <i class="fa fa-file me-1"/>
+                <i class="pi pi-box me-1"/>
                 {{ strings.get('about') }}
             </h5>
 
@@ -32,7 +32,7 @@
         <!-- Links -->
         <div class="mt-4" v-if="props.links">
             <h5 class="lead-2">
-                <i class="fa fa-external-link me-1"/>
+                <i class="pi pi-link me-1"/>
                 {{ strings.get('where_to_find') }}
             </h5>
 

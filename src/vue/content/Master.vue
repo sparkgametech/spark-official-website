@@ -11,7 +11,7 @@
         <FooterBlock :darken="false"
                      :row="true">
             <FooterColumn title="About"
-                          faIcon="fa-brands fa-font-awesome me-2"
+                          faIcon="pi pi-lightbulb me-2"
                           :description="[
                               `This template is maintained by Ryan Balieiro and is based on the <a href='https://vuejs.org/'>Vue</a> framework and the <a href='https://getbootstrap.com/'>Bootstrap</a> framework.`
                           ]"
@@ -35,7 +35,7 @@
                           :displayLinksAsButtons="true"/>
 
             <FooterColumn title="Contact Info"
-                          faIcon="fa fa-fax me-2"
+                          faIcon="pi pi-envelope me-2 pe-1"
                           :description="[
                               `999 Vue Developer's Avenue, 4A Suite 32`,
                               `Cupertino – CA 01235`

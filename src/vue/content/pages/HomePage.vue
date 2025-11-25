@@ -20,15 +20,15 @@ import TeamSection from "/src/vue/content/sections/TeamSection.vue"
 
 const sections = [
     new SectionInfo('hero',         HeroSection,            null,           null),
-    new SectionInfo('about',        AboutSection,           'About',        'fa-solid fa-file'),
-    new SectionInfo('services',     ServicesSection,        'Services',     'fa-solid fa-wrench'),
-    new SectionInfo('history',      HistorySection,         'History',      'fa-solid fa-clock'),
-    new SectionInfo('featured',     FeaturedProjectSection, 'Zork',         'fa-solid fa-bolt'),
-    new SectionInfo('portfolio',    PortfolioSection,       'Portfolio',    'fa-solid fa-camera'),
-    new SectionInfo('team',         TeamSection,            'Team',         'fa-solid fa-users'),
-    new SectionInfo('faq',          FaqSection,             'Q&A',          'fa-solid fa-question-circle'),
-    new SectionInfo('reviews',      ReviewsSection,         'Reviews',      'fa-solid fa-comment'),
-    new SectionInfo('contact',      ContactSection,         'Contact',      'fa-solid fa-envelope')
+    new SectionInfo('about',        AboutSection,           'About',        'pi pi-box'),
+    new SectionInfo('services',     ServicesSection,        'Services',     'pi pi-wrench'),
+    new SectionInfo('history',      HistorySection,         'History',      'pi pi-clock'),
+    new SectionInfo('featured',     FeaturedProjectSection, 'Zork',         'pi pi-qrcode'),
+    new SectionInfo('portfolio',    PortfolioSection,       'Portfolio',    'pi pi-folder-open'),
+    new SectionInfo('team',         TeamSection,            'Team',         'pi pi-users'),
+    new SectionInfo('faq',          FaqSection,             'Q&A',          'pi pi-question-circle'),
+    new SectionInfo('reviews',      ReviewsSection,         'Reviews',      'fa-regular fa-comment'),
+    new SectionInfo('contact',      ContactSection,         'Contact',      'fa-regular fa-envelope')
 ]
 </script>
 
