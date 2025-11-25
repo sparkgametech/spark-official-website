@@ -36,7 +36,7 @@ const shouldSlot = computed(() => {
  */
 onMounted(() => {
     // replace the implementation below with your own analytics service...
-    fetch("https://ryanbalieiro.com/api/analytics/mock", {
+    fetch("https://admin.ryanbalieiro.com/api/analytics/mock", {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

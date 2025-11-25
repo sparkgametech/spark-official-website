@@ -1,6 +1,10 @@
-# [<img src="readme-assets/logo.png"> Foxy - Vue Agency Landing Page](https://ryanbalieiro.github.io/vue-agency-landing-page-template/)
+<p align="center">
+    <img src="readme-assets/agency-logo.png" width="120">
+</p>
 
-**Foxy** is an agency landing page theme built with Vue3 and Bootstrap5. It features a range of content sections, including a portfolio gallery, testimonials, services showcase, contact info, and more.
+# [Foxy - Vue Agency Landing Page](https://ryanbalieiro.github.io/vue-agency-landing-page-template/)
+
+**Foxy** is an agency landing page theme built with Vue3. It features a range of content sections, including a portfolio gallery, testimonials, services showcase, contact info, and more.
 
 ![alt tag1](readme-assets/foxy-promo.png)
 
