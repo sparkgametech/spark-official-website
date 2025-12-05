@@ -21,24 +21,12 @@
                           ]"
                           :displayLinksAsButtons="false"/>
 
-            <FooterColumn title="與我們聯繫"
-                          faIcon=""
-                          :description="[
-                          ]"
-                          :links="[
-                              {label: `Linkedin`, href: `https://linkedin.com`, faIcon:`fa-brands fa-linkedin`},
-                              {label: `Twitter`, href: `https://x.com`, faIcon:`fa-brands fa-x-twitter`},
-                              {label: `TikTok`, href: `https://tiktok.com`, faIcon:`fa-brands fa-tiktok`},
-                              {label: `Spotify`, href: `https://spotify.com`, faIcon:`fa-brands fa-spotify`},
-                          ]"
-                          :displayLinksAsButtons="true"/>
-
             <FooterColumn title="聯絡資訊"
                           faIcon="pi pi-envelope me-2 pe-1"
                           :description="[
                           ]"
                           :links="[
-                              {label: `聯絡我們`, href: `#contact`, faIcon: 'fa-regular fa-envelope'},
+                              {label: `sparkgametech@gmail.com`, href: `mailto:sparkgametech@gmail.com`, faIcon: 'fa-regular fa-envelope'},
                           ]"
                           :displayLinksAsButtons="false"/>
         </FooterBlock>

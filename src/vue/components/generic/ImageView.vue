@@ -3,7 +3,7 @@
         <img class="image"
              v-show="shouldShowImage"
              ref="img"
-             :src="src"
+             :src="imageSrc"
              :alt="alt"
              @load="_onImageLoadSuccess"
              @error="_onImageLoadError"/>
@@ -22,6 +22,9 @@
 <script setup>
 import {computed, onMounted, ref, watch} from "vue"
 import Spinner from "/src/vue/components/widgets/Spinner.vue"
+import {useUtils} from "/src/composables/utils.js"
+
+const utils = useUtils()
 
 const props = defineProps({
     src: String,
@@ -39,6 +42,24 @@ const LoadStatus = {
 const emit = defineEmits(["loaded", "error", "completed"])
 const img = ref(null)
 const loadStatus = ref(LoadStatus.LOADING)
+
+// 處理圖片路徑：如果是相對路徑且不是外部 URL，加上根路徑前綴
+const imageSrc = computed(() => {
+    if (!props.src) return ''
+    
+    // 如果是外部 URL（http/https），直接返回
+    if (props.src.startsWith('http://') || props.src.startsWith('https://')) {
+        return props.src
+    }
+    
+    // 如果是相對路徑，確保以 / 開頭
+    if (props.src.startsWith('/')) {
+        return props.src
+    }
+    
+    // 否則加上 / 前綴
+    return `/${props.src}`
+})
 
 const shouldShowImage = computed(() => { return loadStatus.value === LoadStatus.LOADED })
 const shouldShowSpinner = computed(() => { return loadStatus.value === LoadStatus.LOADING })
