@@ -3,35 +3,27 @@
     <PageSection variant="primary"
                  :id="props.id">
         <!-- Title -->
-        <PageSectionHeader title="我們的 *服務*"
-                           subtitle="此區塊可用來描述您提供的服務！"/>
+        <PageSectionHeader title="*服務* 項目"
+                           subtitle="我們專注於網站與遊戲開發、API供應串接與技術支援，協助企業數位轉型"/>
 
         <!-- Content -->
         <PageSectionContent>
             <ArticleFeatures>
-                <ItemFeature title="Vue3"
-                             fa-icon="fa-brands fa-vuejs"
-                             description="此模板使用 Vue3 JavaScript 框架構建，提供現代且高效的開發體驗。"/>
+                <ItemFeature title="網頁開發"
+                             fa-icon="fa-solid fa-globe"
+                             description="提供企業級網站、品牌官網與Landing Page製作，重視SEO、設計美感與響應式體驗。"/>
 
-                <ItemFeature title="響應式設計"
-                             fa-icon="fa-solid fa-laptop"
-                             description="此模板設計為可無縫適應各種螢幕尺寸，在不同裝置上提供一致的用戶體驗。"/>
+                <ItemFeature title="遊戲開發與API整合"
+                             fa-icon="fa-solid fa-gamepad"
+                             description="專注於 Unity 與 Cocos 等跨平台遊戲開發，支援 Web 與行動裝置上線，並提供穩定的第三方 API 串接服務，協助打造具備即時互動與外部服務整合能力的完整遊戲體驗。"/>
 
-                <ItemFeature title="極簡風格"
-                             fa-icon="fa-solid fa-wand-magic"
-                             description="此模板採用簡潔的設計，專注於基本元素，呈現出現代且優雅的外觀。"/>
+                <ItemFeature title="ERP 系統導入"
+                             fa-icon="fa-solid fa-database"
+                             description="協助企業評估需求、規劃流程，導入合適的ERP系統，提升管理效率與資訊整合能力。支援在地化客製與跨國多據點佈署。"/>
 
-                <ItemFeature title="完全可自訂"
-                             fa-icon="fa-solid fa-hand-sparkles"
-                             description="此模板可以輕鬆自訂以符合您品牌的視覺識別和需求，讓您完全控制設計和功能。"/>
-
-                <ItemFeature title="開源"
-                             fa-icon="fa-solid fa-code"
-                             description="此模板是開源的，意味著程式碼可公開存取，並且可以不受限制地修改或重新分發。"/>
-
-                <ItemFeature title="輕量級"
-                             fa-icon="fa-solid fa-feather"
-                             description="此模板針對效能和速度進行了優化，具有最少的程式碼庫和依賴項，從而實現更快的載入時間和更好的用戶體驗。"/>
+                <ItemFeature title="客戶支援"
+                             fa-icon="fa-solid fa-headset"
+                             description="完善的專案管理與後續技術支援，確保產品長期穩定營運與持續優化。"/>
             </ArticleFeatures>
         </PageSectionContent>
     </PageSection>

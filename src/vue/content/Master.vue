@@ -1,7 +1,7 @@
 <template>
     <!-- Navigation -->
-    <Navigation logo="images/logo/agency-logo-small.png"
-                label="*Foxy* 模板"/>
+    <Navigation logo="images/logo/spark-logo-small.png"
+                label="*Spark* 星火創盛"/>
 
     <!-- Content Display -->
     <router-view/>
@@ -13,12 +13,11 @@
             <FooterColumn title="關於"
                           faIcon="pi pi-lightbulb me-2"
                           :description="[
-                              `此模板由 Ryan Balieiro 維護，基於 <a href='https://vuejs.org/'>Vue</a> 框架和 <a href='https://getbootstrap.com/'>Bootstrap</a> 框架開發。`
+                              `Spark 星火創盛致力於提供創新的遊戲與軟體解決方案，專注於遊戲開發、網站建置及各類軟體開發。`
                           ]"
                           :links="[
                               {label: `隱私政策`, href: `/privacy-policy`, faIcon: null},
                               {label: `授權`, href: `/license`, faIcon: null},
-                              {label: `Github 儲存庫`, href: `https://github.com/ryanbalieiro/vue-agency-landing-page-template`, faIcon: null},
                           ]"
                           :displayLinksAsButtons="false"/>
 
@@ -37,21 +36,18 @@
             <FooterColumn title="聯絡資訊"
                           faIcon="pi pi-envelope me-2 pe-1"
                           :description="[
-                              `999 Vue 開發者大道，4A 套房 32`,
-                              `庫比蒂諾 – 加州 01235`
                           ]"
                           :links="[
-                              {label: `(555) 555-1234`, href: `tel:123456789`, faIcon: 'pi pi-phone'},
-                              {label: `contact@foxyagency.com`, href: `mailto:foxy@agency.com`, faIcon: 'fa-regular fa-envelope'},
+                              {label: `聯絡我們`, href: `#contact`, faIcon: 'fa-regular fa-envelope'},
                           ]"
                           :displayLinksAsButtons="false"/>
         </FooterBlock>
 
         <FooterBlock :darken="true"
                      :row="false">
-            <FooterCopyright holder="Ryan Balieiro"
-                             url="https://github.com/ryanbalieiro"
-                             license="採用 MIT 授權條款發布"/>
+            <FooterCopyright holder="Spark 星火創盛"
+                             url="#"
+                             license="© 2025 Spark 星火創盛 All rights reserved."/>
         </FooterBlock>
     </Footer>
 </template>

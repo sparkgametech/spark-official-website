@@ -4,7 +4,7 @@
                  :id="props.id">
         <!-- Title -->
         <PageSectionHeader title="*聯絡* 我們"
-                           subtitle="請隨時聯繫我們！"
+                           subtitle="歡迎聯絡我們，取得專業網站、遊戲開發與技術諮詢服務。一起打造高質感且細節完美的產品"
                            :contrast="true"/>
 
         <!-- Content -->

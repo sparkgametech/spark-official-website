@@ -3,68 +3,65 @@
     <PageSection variant="primary"
                  :id="props.id">
         <!-- Title -->
-        <PageSectionHeader title="我們的 *團隊*"
-                           subtitle="認識我們優秀團隊的主要成員！"/>
+        <PageSectionHeader title="*開發* 團隊"
+                           subtitle="我們是一支專注於產品運營、遊戲與系統開發的全方位團隊"/>
 
         <!-- Content -->
         <PageSectionContent>
             <ArticleQuotes>
-                <ItemQuote title="Jonathan Moore"
+                <ItemQuote title="Ethan"
                            image="images/avatars/person-1.png"
-                           role="執行長"
-                           quote="憑藉在國際發展方面 <b>超過 20 年的經驗</b>，我致力於為有需要的社群創造可持續的解決方案。"
-                           :links="[
-                              { faIcon: 'fa-brands fa-twitter', href: 'https://twitter.com' },
-                              { faIcon: 'fa-brands fa-instagram', href: 'https://instagram.com' },
-                              { faIcon: 'fa-brands fa-linkedin', href: 'https://linkedin.com' }
-                           ]"/>
+                           role="後端"
+                           quote="擅長 Golang 與微服務，專注遊戲伺服器架構與多人連線機制。"
+                           :links="[]"/>
 
-                <ItemQuote title="Alicia Cole"
+                <ItemQuote title="Liam"
                            image="images/avatars/person-2.png"
-                           role="市場分析師"
-                           quote="憑藉我在市場研究和消費者行為方面的專業知識，我幫助企業做出戰略決策，以 <b>推動成長</b> 並 <b>提升整體客戶滿意度</b>。"
-                           :links="[
-                              { faIcon: 'fa-brands fa-twitter', href: 'https://twitter.com' },
-                              { faIcon: 'fa-brands fa-linkedin', href: 'https://linkedin.com' }
-                           ]"/>
+                           role="後端"
+                           quote="專注 Kubernetes 與持續整合，具備雲端伺服器維運與高可用設計，兼具容器化與自動化部署。"
+                           :links="[]"/>
 
-                <ItemQuote title="Jiang Xi"
-                           image="images/avatars/person-4.png"
-                           role="產品經理"
-                           quote="以戰略視野領導多元化團隊，<b>我推動以客戶為中心的解決方案</b>，促進創新並為市場提供真正的價值。"
-                           :links="[
-                              { faIcon: 'fa-brands fa-instagram', href: 'https://instagram.com' },
-                              { faIcon: 'fa-brands fa-facebook', href: 'https://facebook.com' },
-                              { faIcon: 'fa-brands fa-linkedin', href: 'https://linkedin.com' }
-                           ]"/>
-
-                <ItemQuote title="Sofia Kondakova"
+                <ItemQuote title="Noah"
                            image="images/avatars/person-3.png"
-                           role="首席開發者"
-                           quote="憑藉創建複雜分散式軟體系統的可靠記錄，我為團隊帶來豐富的 <b>技術專業知識</b>。"
-                           :links="[
-                              { faIcon: 'fa-brands fa-twitter', href: 'https://twitter.com' },
-                              { faIcon: 'fa-brands fa-linkedin', href: 'https://linkedin.com' },
-                              { faIcon: 'fa-brands fa-github', href: 'https://github.com' }
-                           ]"/>
+                           role="後端"
+                           quote="擅長 Golang 深耕遊戲邏輯，專長事件驅動架構與跨平台遊戲邏輯設計。"
+                           :links="[]"/>
 
-                <ItemQuote title="Travis Jones"
+                <ItemQuote title="Mason"
+                           image="images/avatars/person-4.png"
+                           role="後端"
+                           quote="擅長 Golang、Redis Cluster 與 PostgreSQL，專注於玩家儲存、快取優化與分散處理。"
+                           :links="[]"/>
+
+                <ItemQuote title="James"
                            image="images/avatars/person-5.png"
-                           role="財務長"
-                           quote="引導財務成長，我透過 <b>細緻的規劃和風險管理</b> 確保穩定性。賦能團隊抓住機會，我們實現持久的成功。"
-                           :links="[
-                              { faIcon: 'fa-brands fa-instagram', href: 'https://instagram.com' },
-                              { faIcon: 'fa-brands fa-linkedin', href: 'https://linkedin.com' }
-                           ]"/>
+                           role="後端"
+                           quote="專注網路協定與伺服器安全，兼具反作弊、流量防禦與遊戲帳號驗證設計經驗。"
+                           :links="[]"/>
 
-                <ItemQuote title="Aaron Friedrich"
+                <ItemQuote title="Nathan"
                            image="images/avatars/person-6.png"
-                           role="資訊安全長"
-                           quote="<b>保護有價值的數據</b> 是我的使命。作為一名警覺的 CISO，我主動保護數位環境，透過尖端措施確保客戶和合作夥伴的信任。"
-                           :links="[
-                              { faIcon: 'fa-brands fa-instagram', href: 'https://instagram.com' },
-                              { faIcon: 'fa-brands fa-linkedin', href: 'https://linkedin.com' }
-                           ]"/>
+                           role="前端"
+                           quote="精通 Phaser 框架，專注遊戲介面設計、動畫渲染與跨端互動體驗。"
+                           :links="[]"/>
+
+                <ItemQuote title="Sam"
+                           image="images/avatars/person-1.png"
+                           role="前端"
+                           quote="擅長跨平台遊戲與高效能系統架構，精通 Unity3D/Cocos/PixiJS，具 20+ 年遊戲引擎設計。"
+                           :links="[]"/>
+
+                <ItemQuote title="Linking"
+                           image="images/avatars/person-2.png"
+                           role="測試"
+                           quote="擅長手動測試及體感回饋，流程調控建議。"
+                           :links="[]"/>
+
+                <ItemQuote title="May"
+                           image="images/avatars/person-3.png"
+                           role="測試"
+                           quote="擅長手動測試及體感回饋；18年遊戲測試經驗，2年博弈測試經驗。"
+                           :links="[]"/>
             </ArticleQuotes>
         </PageSectionContent>
     </PageSection>
