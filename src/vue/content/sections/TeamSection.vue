@@ -44,8 +44,8 @@
                            role="後端"
                            quote="專精後端系統開發，<br/>具備豐富的伺服器架構設計<br/>與資料庫優化經驗。"
                            :links="[]"/>
-                <ItemQuote title="hank"
-                           image="https://api.dicebear.com/7.x/avataaars/svg?seed=hank&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                <ItemQuote title="Henry"
+                           image="https://api.dicebear.com/7.x/avataaars/svg?seed=Henry&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
                            role="遊戲後端"
                            quote="專注遊戲後端開發，<br/>擅長遊戲伺服器架構設計<br/>與效能優化，具備豐富的<br/>遊戲專案經驗。"
                            :links="[]"/>
@@ -54,8 +54,8 @@
                            role="前端"
                            quote="精通 Phaser 框架，<br/>專注遊戲介面設計、<br/>動畫渲染與跨端互動體驗。"
                            :links="[]"/>
-                <ItemQuote title="Sam"
-                           image="https://api.dicebear.com/7.x/avataaars/svg?seed=Sam&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                <ItemQuote title="Sun"
+                           image="https://api.dicebear.com/7.x/avataaars/svg?seed=Sun&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
                            role="遊戲全端"
                            quote="擅長跨平台遊戲<br/>與高效能系統架構，<br/>精通 Unity3D/Cocos/PixiJS，<br/>具 20+ 年遊戲引擎設計。"
                            :links="[]"/>
@@ -67,7 +67,7 @@
                 <ItemQuote title="Raymond"
                            image="https://api.dicebear.com/7.x/avataaars/svg?seed=Raymond&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
                            role="數值主管"
-                           quote="負責遊戲數值平衡設計<br/>與分析，具備豐富的<br/>遊戲經濟系統與戰鬥數值<br/>調校經驗。"
+                           quote="負責遊戲數值平衡設計<br/>與分析，專精自然機率、<br/>控制機率與 RTP 調校，<br/>具備豐富的體感優化經驗。"
                            :links="[]"/>
                 <ItemQuote title="Vince"
                            image="https://api.dicebear.com/7.x/avataaars/svg?seed=Vince&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
