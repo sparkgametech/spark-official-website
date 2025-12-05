@@ -3,7 +3,7 @@
     <PageHeader :id="props.id"
                 title="*Spark* 星火創盛"
                 subtitle="點燃星火，創盛未來 – 專注於遊戲與系統開發的專業團隊"
-                logo-url="images/logo/spark-logo.png"
+                logo-url="images/logo/agency-logo.png"
                 :show-button="true"
                 button-icon="fa-solid fa-search"
                 button-label="了解更多"

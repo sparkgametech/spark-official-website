@@ -1,6 +1,6 @@
 <template>
     <!-- Navigation -->
-    <Navigation logo="images/logo/spark-logo-small.png"
+    <Navigation logo="images/logo/agency-logo-small.png"
                 label="*Spark* 星火創盛"/>
 
     <!-- Content Display -->

@@ -42,7 +42,7 @@ onMounted(() => {
         body: JSON.stringify({
             params: {
                 url: utils.getRootLocation(),
-                template_id: "foxy-agency"
+                template_id: "spark-official-website"
             }
         })
     })

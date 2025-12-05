@@ -34,7 +34,7 @@ export const useEmails = () => {
             custom_subject: customSubject,
             message: message,
             custom_source: utils.getAbsoluteLocation(),
-            custom_source_name: "Foxy Agency"
+            custom_source_name: "Spark 星火創盛"
         }
 
         const credentials = settings.getCredentialsForEmailJS()

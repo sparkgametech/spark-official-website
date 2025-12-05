@@ -24,13 +24,13 @@
         </PageSectionContent>
 
         <!-- Footer -->
-        <PageSectionFooter title="使用 Foxy *節省時間*！"
-                           description="Foxy 優雅且直觀地擴展了 Vue 和 Bootstrap 框架，讓您輕鬆構建下一個專案！"
+        <PageSectionFooter title="與 Spark *一起成長*！"
+                           description="Spark 星火創盛致力於提供專業的遊戲與系統開發服務，讓我們一起點燃創新的星火！"
                            :include-divider="true"
                            :description-text-class="`text-3`"
-                           button-label="立即下載！"
-                           button-fa-icon="fa-solid fa-download"
-                           button-url="https://github.com/ryanbalieiro/vue-agency-landing-page-template"/>
+                           button-label="聯絡我們"
+                           button-fa-icon="fa-solid fa-envelope"
+                           button-url="#contact"/>
     </PageSection>
 </template>
 

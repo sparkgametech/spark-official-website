@@ -11,22 +11,22 @@
             <ArticleParagraph title=""
                               fa-icon=""
                               :description="[
-                                  `Foxy is an open source Vue template that is licensed under the<a href='https://opensource.org/licenses/MIT'> MIT license</a>. This allows you to do pretty much anything you want as long as you include the copyright in “all copies or substantial portions of the Software.” Attribution is not required (though very much appreciated).`
+                                  `本網站基於開源的 Vue 模板建構，該模板採用 <a href='https://opensource.org/licenses/MIT'> MIT 授權</a>。這允許您在包含版權聲明的前提下自由使用、修改和分發。雖然不需要署名，但我們非常感謝您的支持。`
                               ]"/>
 
             <ArticleParagraph title="使用"
                               fa-icon="pi pi-briefcase"
                               :description="[
-                                  `您被授予一系列機會來充分利用 Foxy 的潛力。首先，該框架將其實用性擴展到商業和個人/私人專案，為各種情境提供靈活性。無論您是在開發商業應用程式還是在進行個人專案，Foxy 都可以無縫整合。`,
-                                  `此外，修改和改編作品的自由允許您根據特定需求進行調整，確保與專案目標的完美契合。這種適應性也延伸到分發，使您能夠與他人分享您的自訂版本。子授權的規定進一步增強了框架的多功能性，使您能夠將其納入受更嚴格授權條款管轄的專案中，擴展其潛在應用。`
+                                  `Spark 星火創盛致力於提供創新的遊戲與軟體解決方案。我們專注於遊戲開發、網站建置及各類軟體開發，為客戶提供專業且可靠的服務。無論您需要商業應用程式開發還是個人專案協助，Spark 都能為您提供專業的技術支援。`,
+                                  `此外，我們提供客製化的開發服務，可根據您的特定需求進行調整，確保與專案目標的完美契合。我們的服務範圍涵蓋從概念設計到最終部署的完整開發流程，並提供持續的技術支援與維護服務。`
                               ]"/>
 
             <ArticleParagraph title="MIT 授權"
                               fa-icon="pi pi-hammer"
                               :description="[
-                                  `Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:`,
+                                  `Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:`,
                                   `The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.`,
-                                  `THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
+                                  `THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
                               ]"/>
 
             <ArticleParagraph title="免責聲明"
