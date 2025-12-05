@@ -71,8 +71,8 @@
                            :links="[]"/>
                 <ItemQuote title="Vince"
                            image="https://api.dicebear.com/7.x/avataaars/svg?seed=Vince&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
-                           role="總控主管"
-                           quote="負責專案總體控制<br/>與品質管理，統籌開發流程<br/>與時程規劃，確保專案<br/>順利執行。"
+                           role="總控後台"
+                           quote="專精總控後台系統開發，<br/>負責後台管理系統架構設計<br/>與功能開發，確保系統<br/>穩定運作與資料安全。"
                            :links="[]"/>
                 <ItemQuote title="Jay"
                            image="https://api.dicebear.com/7.x/avataaars/svg?seed=Jay&eyes=happy&eyebrows=default&mouth=smile&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
