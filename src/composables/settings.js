@@ -16,7 +16,7 @@ export function useSettings() {
         return {
             publicKey: "Cju2kq7FKtzDyx39X",
             serviceId: "service_55y8kjo",
-            templateId: "template_h6ob5js"
+            templateId: "template_8gkbz2g"
         }
     }
 
