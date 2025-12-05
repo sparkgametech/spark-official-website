@@ -3,25 +3,25 @@
     <PageSection variant="default"
                  :id="props.id">
         <!-- Title -->
-        <PageSectionHeader title="*About* Template"
-                           subtitle="Get to know more about the project!"/>
+        <PageSectionHeader title="*關於* 模板"
+                           subtitle="了解更多專案資訊！"/>
 
         <!-- Content -->
         <PageSectionContent>
             <!-- About Template -->
             <ArticleInfoBlock image="images/logo/agency-logo.png"
                               :paragraphs="[
-                                  `<b>Ryan Balieiro</b> created <em>Foxy</em>, a free Vue3 and Bootstrap5 theme. The downloadable files consist of the entire source code, including HTML, CSS, and Javascript. Please feel free to download and customize the theme as you wish.`,
-                                  `The template available on <a href='github.com'>GitHub</a> is a valuable resource for developers, as it provides a free and accessible solution for various projects. Hosted on the platform, the template allows users to easily access and utilize the source code, making it a convenient starting point for web development endeavors.`,
-                                  `With this template, you have the freedom to create custom sections, fill pre-existing ones with your own content, and personalize the colors, fonts, and much more to your liking. In case you encounter any challenges while attempting to customize or run this template, please feel free to reach out to me without any hesitation. I would be more than happy to extend my assistance and help you out in every possible way.`
+                                  `<b>Ryan Balieiro</b> 創建了 <em>Foxy</em>，這是一個免費的 Vue3 和 Bootstrap5 主題。可下載的檔案包含完整的原始碼，包括 HTML、CSS 和 Javascript。歡迎您下載並根據需要自訂主題。`,
+                                  `在 <a href='github.com'>GitHub</a> 上提供的模板對開發者來說是寶貴的資源，因為它為各種專案提供了免費且易於使用的解決方案。託管在該平台上，模板讓使用者可以輕鬆存取和利用原始碼，使其成為網頁開發工作的便利起點。`,
+                                  `使用此模板，您可以自由創建自訂區塊，用您自己的內容填充現有區塊，並根據喜好個人化顏色、字體等。如果您在嘗試自訂或運行此模板時遇到任何挑戰，請隨時與我聯繫，無需猶豫。我很樂意提供協助，並盡可能幫助您。`
                               ]"/>
         </PageSectionContent>
 
         <!-- Footer -->
-        <PageSectionFooter title="Get it for *free!*"
-                           description="Do you want to use and/or customize this template? Feel free to clone it from the official Github repo!"
+        <PageSectionFooter title="*免費* 取得！"
+                           description="您想使用和/或自訂此模板嗎？歡迎從官方 Github 儲存庫複製！"
                            :include-divider="true"
-                           button-label="Download Now!"
+                           button-label="立即下載！"
                            button-fa-icon="fa-solid fa-download"
                            button-url="https://github.com/ryanbalieiro/vue-agency-landing-page-template"/>
     </PageSection>

@@ -8,8 +8,8 @@
             <ArticleCustomContent>
                 <!-- Banner -->
                 <ProjectInfo image="images/portfolio/project-logo-8.png">
-                    <ProjectInfoFeaturedContent title="*Zork* App"
-                                                description="<b>Zork</b> is your ultimate battery life management app, empowering you to seize control of your device's energy consumption effortlessly. With its intuitive interface, Zork provides real-time monitoring of battery status, enabling you to identify power-draining apps and processes."
+                    <ProjectInfoFeaturedContent title="*Zork* 應用程式"
+                                                description="<b>Zork</b> 是您終極的電池壽命管理應用程式，讓您輕鬆掌控裝置的能源消耗。憑藉其直觀的介面，Zork 提供即時的電池狀態監控，讓您能夠識別耗電的應用程式和進程。"
                                                 :links="[
                                                    {label: `App Store`, href: `https://apple.com`, faIcon:`fa-brands fa-apple`},
                                                    {label: `Google Play`, href: `https://play.google.com`, faIcon:`fa-brands fa-google-play`},

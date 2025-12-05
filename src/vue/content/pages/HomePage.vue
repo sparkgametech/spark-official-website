@@ -20,15 +20,15 @@ import TeamSection from "/src/vue/content/sections/TeamSection.vue"
 
 const sections = [
     new SectionInfo('hero',         HeroSection,            null,           null),
-    new SectionInfo('about',        AboutSection,           'About',        'pi pi-box'),
-    new SectionInfo('services',     ServicesSection,        'Services',     'pi pi-wrench'),
-    new SectionInfo('history',      HistorySection,         'History',      'pi pi-clock'),
+    new SectionInfo('about',        AboutSection,           '關於',        'pi pi-box'),
+    new SectionInfo('services',     ServicesSection,        '服務',     'pi pi-wrench'),
+    new SectionInfo('history',      HistorySection,         '歷史',      'pi pi-clock'),
     new SectionInfo('featured',     FeaturedProjectSection, 'Zork',         'pi pi-qrcode'),
-    new SectionInfo('portfolio',    PortfolioSection,       'Portfolio',    'pi pi-folder-open'),
-    new SectionInfo('team',         TeamSection,            'Team',         'pi pi-users'),
-    new SectionInfo('faq',          FaqSection,             'Q&A',          'pi pi-question-circle'),
-    new SectionInfo('reviews',      ReviewsSection,         'Reviews',      'fa-regular fa-comment'),
-    new SectionInfo('contact',      ContactSection,         'Contact',      'fa-regular fa-envelope')
+    new SectionInfo('portfolio',    PortfolioSection,       '作品集',    'pi pi-folder-open'),
+    new SectionInfo('team',         TeamSection,            '團隊',         'pi pi-users'),
+    new SectionInfo('faq',          FaqSection,             '常見問題',          'pi pi-question-circle'),
+    new SectionInfo('reviews',      ReviewsSection,         '客戶評價',      'fa-regular fa-comment'),
+    new SectionInfo('contact',      ContactSection,         '聯絡我們',      'fa-regular fa-envelope')
 ]
 </script>
 

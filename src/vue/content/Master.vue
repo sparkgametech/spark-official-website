@@ -1,7 +1,7 @@
 <template>
     <!-- Navigation -->
     <Navigation logo="images/logo/agency-logo-small.png"
-                label="*Foxy* Template"/>
+                label="*Foxy* 模板"/>
 
     <!-- Content Display -->
     <router-view/>
@@ -10,19 +10,19 @@
     <Footer>
         <FooterBlock :darken="false"
                      :row="true">
-            <FooterColumn title="About"
+            <FooterColumn title="關於"
                           faIcon="pi pi-lightbulb me-2"
                           :description="[
-                              `This template is maintained by Ryan Balieiro and is based on the <a href='https://vuejs.org/'>Vue</a> framework and the <a href='https://getbootstrap.com/'>Bootstrap</a> framework.`
+                              `此模板由 Ryan Balieiro 維護，基於 <a href='https://vuejs.org/'>Vue</a> 框架和 <a href='https://getbootstrap.com/'>Bootstrap</a> 框架開發。`
                           ]"
                           :links="[
-                              {label: `Privacy Policy`, href: `/privacy-policy`, faIcon: null},
-                              {label: `License`, href: `/license`, faIcon: null},
-                              {label: `Github Repo`, href: `https://github.com/ryanbalieiro/vue-agency-landing-page-template`, faIcon: null},
+                              {label: `隱私政策`, href: `/privacy-policy`, faIcon: null},
+                              {label: `授權`, href: `/license`, faIcon: null},
+                              {label: `Github 儲存庫`, href: `https://github.com/ryanbalieiro/vue-agency-landing-page-template`, faIcon: null},
                           ]"
                           :displayLinksAsButtons="false"/>
 
-            <FooterColumn title="Connect With Us"
+            <FooterColumn title="與我們聯繫"
                           faIcon=""
                           :description="[
                           ]"
@@ -34,11 +34,11 @@
                           ]"
                           :displayLinksAsButtons="true"/>
 
-            <FooterColumn title="Contact Info"
+            <FooterColumn title="聯絡資訊"
                           faIcon="pi pi-envelope me-2 pe-1"
                           :description="[
-                              `999 Vue Developer's Avenue, 4A Suite 32`,
-                              `Cupertino – CA 01235`
+                              `999 Vue 開發者大道，4A 套房 32`,
+                              `庫比蒂諾 – 加州 01235`
                           ]"
                           :links="[
                               {label: `(555) 555-1234`, href: `tel:123456789`, faIcon: 'pi pi-phone'},
@@ -51,7 +51,7 @@
                      :row="false">
             <FooterCopyright holder="Ryan Balieiro"
                              url="https://github.com/ryanbalieiro"
-                             license="Distributed Under the MIT License"/>
+                             license="採用 MIT 授權條款發布"/>
         </FooterBlock>
     </Footer>
 </template>

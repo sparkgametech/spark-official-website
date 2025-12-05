@@ -14,7 +14,7 @@ const router = createRouter({
             name: "home",
             component: HomePage,
             props: {
-                label: "Home",
+                label: "首頁",
                 faIcon: "pi pi-home",
                 inPageNavbar: true,
                 shouldAlwaysPreload: true,
@@ -27,7 +27,7 @@ const router = createRouter({
             name: "policy",
             component: PolicyPage,
             props: {
-                label: "Privacy Policy",
+                label: "隱私政策",
                 faIcon: "pi pi-hammer",
                 inPageNavbar: false,
                 shouldAlwaysPreload: false,
@@ -42,7 +42,7 @@ const router = createRouter({
             name: "license",
             component: LicensePage,
             props: {
-                label: "License",
+                label: "授權",
                 faIcon: "pi pi-briefcase",
                 inPageNavbar: false,
                 shouldAlwaysPreload: false,

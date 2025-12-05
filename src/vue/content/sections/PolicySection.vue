@@ -4,46 +4,46 @@
                  :id="props.id">
         <Breadcrumbs/>
 
-        <PageSectionHeader title="*Privacy* Policy"
-                           subtitle="Understanding our practices"/>
+        <PageSectionHeader title="*隱私* 政策"
+                           subtitle="了解我們的實務做法"/>
 
         <PageSectionContent>
             <ArticleParagraph title=""
                               faIcon=""
                               :description="[
-                                  `This Privacy Policy has been crafted to explain how the information you provide while on Foxy is collected, stored, used, and managed.`,
-                                  `When you access Foxy, you are consenting to the collection and use of your personal information as described in this Privacy Policy. Please note that this Policy may be updated periodically, and it's advised for you to check this page frequently for any modifications.`
+                                  `本隱私政策旨在解釋您在 Foxy 上提供的信息如何被收集、儲存、使用和管理。`,
+                                  `當您存取 Foxy 時，您即同意按照本隱私政策中所述的方式收集和使用您的個人信息。請注意，本政策可能會定期更新，建議您經常檢查此頁面以了解任何修改。`
                               ]"/>
 
-            <ArticleParagraph title="Collected Information"
+            <ArticleParagraph title="收集的信息"
                               faIcon="pi pi-address-book"
                               :description="[
-                                  `The information that you voluntarily provide may be collected and stored when Foxy is accessed. This may include image files saved on your device storage, usage information such as preferences, purchase history, and/or session duration.`,
-                                  `Furthermore, if your information is shared online, for example, by participating in leaderboards, any activity performed with other users will be considered public.`,
-                                  `Finally, additional information may be collected each time the service is logged into, such as internet protocol addresses, device type, device language, platform type, number of taps, pages viewed, the order in which they were accessed, the time spent on particular pages, and the date and time of this activity. This information is used to better customize the application to your interests and improve the overall app performance.`,
-                                  `Assurance is given that any data accessed and collected will not be disclosed, rented, leased, loaned, sold, or voluntarily distributed to unaffiliated third parties. It will solely be utilized for analytical purposes and to enhance your usage experience.`
+                                  `當您存取 Foxy 時，可能會收集和儲存您自願提供的信息。這可能包括儲存在您裝置儲存空間中的圖像檔案、使用信息（如偏好設定、購買歷史和/或會話持續時間）。`,
+                                  `此外，如果您的信息在線上分享，例如通過參與排行榜，與其他用戶執行的任何活動都將被視為公開。`,
+                                  `最後，每次登入服務時可能會收集其他信息，例如網際網路協定地址、裝置類型、裝置語言、平台類型、點擊次數、瀏覽的頁面、存取順序、在特定頁面上花費的時間以及此活動的日期和時間。此信息用於更好地根據您的興趣自訂應用程式並改善整體應用程式效能。`,
+                                  `我們保證，任何存取和收集的數據都不會向非關聯的第三方披露、出租、租賃、借出、出售或自願分發。它僅用於分析目的並增強您的使用體驗。`
                               ]"/>
 
             <ArticleParagraph title="Cookies"
                               faIcon="pi pi-database"
                               :description="[
-                                  `A cookie is a small data file that is stored on your device's hard disk. It allows the application to quickly identify your device and retrieve your user information and preferences, such as your username or the list of items you've purchased.`,
-                                  `All the information contained in a cookie may be linked to your personal information, and this data can be used to save your preferences, provide recommendations based on your interests, and improve the application's overall usability. If you wish to do so, you can disable cookies at any time.`
+                                  `Cookie 是儲存在您裝置硬碟上的小數據檔案。它允許應用程式快速識別您的裝置並檢索您的用戶信息和偏好設定，例如您的用戶名或您已購買的項目清單。`,
+                                  `Cookie 中包含的所有信息都可能與您的個人信息相關聯，此數據可用於儲存您的偏好設定、根據您的興趣提供建議，並改善應用程式的整體可用性。如果您願意，您可以隨時停用 cookies。`
                               ]"/>
 
-            <ArticleParagraph title="Security"
+            <ArticleParagraph title="安全性"
                               faIcon="pi pi-lock"
                               :description="[
-                                  `The security of your personal information is taken seriously, and reasonable technical and organizational measures have been implemented to protect it from accidental loss, unauthorized access, alteration, or disclosure.`,
-                                  `However, it cannot be guaranteed that unauthorized third parties will never be able to breach these measures or use your personal information for improper purposes. It is important to note that email and messaging systems are not considered secure, so it's advised not to share personal information through these mediums.`,
-                                  `Rest assured that the security measures are constantly reviewed and updated to ensure the best possible protection for your personal information.`
+                                  `我們認真對待您個人信息的安全性，並已實施合理的技術和組織措施，以保護其免受意外丟失、未經授權的存取、更改或披露。`,
+                                  `但是，不能保證未經授權的第三方永遠無法突破這些措施或將您的個人信息用於不當目的。重要的是要注意，電子郵件和訊息系統不被視為安全，因此建議不要通過這些媒介分享個人信息。`,
+                                  `請放心，我們會不斷審查和更新安全措施，以確保對您個人信息的最佳保護。`
                               ]"/>
 
-            <ArticleParagraph title="Links"
+            <ArticleParagraph title="連結"
                               faIcon="pi pi-link"
                               :description="[
-                                  `The application may feature links to other websites. Please note that just because the application links to a website, presents a banner ad, or displays other types of advertisements, it does not imply that it endorses or authorizes that third-party service. Nor is it a representation of any sort of affiliation with that third party.`,
-                                  `It should be made clear that the privacy policies of other websites that may be accessed from Foxy are not our responsibility. Therefore, it is highly recommended that the privacy policies of such websites or apps be read carefully before exiting the application.`
+                                  `應用程式可能包含指向其他網站的連結。請注意，僅因為應用程式連結到網站、顯示橫幅廣告或顯示其他類型的廣告，並不意味著它認可或授權該第三方服務。也不代表與該第三方的任何形式的關聯。`,
+                                  `應該明確的是，從 Foxy 可能存取的其他網站的隱私政策不是我們的責任。因此，強烈建議在退出應用程式之前仔細閱讀此類網站或應用程式的隱私政策。`
                               ]"/>
         </PageSectionContent>
     </PageSection>

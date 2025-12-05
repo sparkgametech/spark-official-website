@@ -3,8 +3,8 @@
     <PageSection variant="dark"
                  :id="props.id">
         <!-- Title -->
-        <PageSectionHeader title="*Contact* Us"
-                           subtitle="Don't hesitate to reach us out!"
+        <PageSectionHeader title="*聯絡* 我們"
+                           subtitle="請隨時聯繫我們！"
                            :contrast="true"/>
 
         <!-- Content -->

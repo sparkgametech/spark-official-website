@@ -38,7 +38,7 @@
             <div class="form-group form-group-textarea mb-md-0">
                 <textarea class="form-control"
                           id="form-message"
-                          placeholder="Message *"
+                          placeholder="訊息 *"
                           maxlength="2048"
                           @input="_onInputChanged"
                           @focusin="_onFocusIn('message')"
