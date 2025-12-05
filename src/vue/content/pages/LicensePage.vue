@@ -10,7 +10,7 @@ import SectionInfo from "/src/models/SectionInfo.js"
 import LicenseSection from "/src/vue/content/sections/LicenseSection.vue"
 
 const sections = [
-    new SectionInfo('license', LicenseSection)
+    // new SectionInfo('license', LicenseSection)
 ]
 </script>
 

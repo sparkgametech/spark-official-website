@@ -9,17 +9,21 @@
         <!-- Content -->
         <PageSectionContent>
             <ArticleFeatures>
-                <ItemFeature title="網頁開發"
+                <!-- <ItemFeature title="網頁開發"
                              fa-icon="fa-solid fa-globe"
-                             description="提供企業級網站、品牌官網與Landing Page製作，重視SEO、設計美感與響應式體驗。"/>
+                             description="提供企業級網站、品牌官網與Landing Page製作，重視SEO、設計美感與響應式體驗。"/> -->
 
-                <ItemFeature title="遊戲開發與API整合"
+                <ItemFeature title="遊戲開發"
                              fa-icon="fa-solid fa-gamepad"
-                             description="專注於 Unity 與 Cocos 等跨平台遊戲開發，支援 Web 與行動裝置上線，並提供穩定的第三方 API 串接服務，協助打造具備即時互動與外部服務整合能力的完整遊戲體驗。"/>
+                             description="專注於 Unity 與 Cocos 等跨平台遊戲開發，支援 Web 與行動裝置上線，協助打造具備即時互動能力的完整遊戲體驗。"/>
 
-                <ItemFeature title="ERP 系統導入"
+                <ItemFeature title="API整合"
+                             fa-icon="fa-solid fa-plug"
+                             description="提供穩定的第三方 API 串接服務，協助遊戲與系統整合外部服務，打造完整的服務生態系統。"/>
+
+                <!-- <ItemFeature title="ERP 系統導入"
                              fa-icon="fa-solid fa-database"
-                             description="協助企業評估需求、規劃流程，導入合適的ERP系統，提升管理效率與資訊整合能力。支援在地化客製與跨國多據點佈署。"/>
+                             description="協助企業評估需求、規劃流程，導入合適的ERP系統，提升管理效率與資訊整合能力。支援在地化客製與跨國多據點佈署。"/> -->
 
                 <ItemFeature title="客戶支援"
                              fa-icon="fa-solid fa-headset"

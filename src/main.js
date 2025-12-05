@@ -3,7 +3,7 @@ import {createApp} from "vue"
 import {createRouter, createWebHistory} from "vue-router"
 import App from "/src/vue/stack/App.vue"
 import HomePage from "/src/vue/content/pages/HomePage.vue"
-import LicensePage from "/src/vue/content/pages/LicensePage.vue"
+// import LicensePage from "/src/vue/content/pages/LicensePage.vue"
 import PolicyPage from "/src/vue/content/pages/PolicyPage.vue"
 
 const router = createRouter({
@@ -37,20 +37,20 @@ const router = createRouter({
             }
         },
 
-        {
-            path: "/license",
-            name: "license",
-            component: LicensePage,
-            props: {
-                label: "授權",
-                faIcon: "pi pi-briefcase",
-                inPageNavbar: false,
-                shouldAlwaysPreload: false,
-                breadcrumbs: [
-                    "/"
-                ]
-            }
-        },
+        // {
+        //     path: "/license",
+        //     name: "license",
+        //     component: LicensePage,
+        //     props: {
+        //         label: "授權",
+        //         faIcon: "pi pi-briefcase",
+        //         inPageNavbar: false,
+        //         shouldAlwaysPreload: false,
+        //         breadcrumbs: [
+        //             "/"
+        //         ]
+        //     }
+        // },
 
         {
             path: "/:pathMatch(.*)*",

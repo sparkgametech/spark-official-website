@@ -17,7 +17,7 @@
                           ]"
                           :links="[
                               {label: `隱私政策`, href: `/privacy-policy`, faIcon: null},
-                              {label: `授權`, href: `/license`, faIcon: null},
+                              // {label: `授權`, href: `/license`, faIcon: null},
                           ]"
                           :displayLinksAsButtons="false"/>
 
