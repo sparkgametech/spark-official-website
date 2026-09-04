@@ -66,9 +66,12 @@ export const ui = {
             { icon: 'fa-solid fa-vial', name: 'QA 測試', detail: '數學驗證、功能測試、體感測試與合規送測' }
         ],
         aboutContactTitle: '聯絡我們',
-        aboutContactLead: '正在尋找老虎機遊戲的開發夥伴，或對文章有任何想法，歡迎直接聯繫：',
-        aboutContactDirect: '主要聯繫',
-        aboutContactTelegram: 'Telegram 頻道',
+        aboutContactLead: [
+            '我們承接老虎機遊戲的開發外包，可以整包做，也可以只補你缺的那一塊。',
+            '建議先加入頻道看看我們的技術文章，覺得合適再聊。'
+        ],
+        aboutContactDirect: '直接聯繫',
+        aboutContactTelegram: '加入 Telegram 頻道',
         teamTitle: '*開發* 團隊',
         teamSubtitle: '我們是一支專注於遊戲開發與系統設計的全方位技術團隊',
 
@@ -134,9 +137,12 @@ export const ui = {
             { icon: 'fa-solid fa-vial', name: 'QA testing', detail: 'Math verification, functional and play-feel testing, certification submission' }
         ],
         aboutContactTitle: 'Get in touch',
-        aboutContactLead: 'Looking for a development partner for a slot game, or want to talk about something you read here? Reach us directly:',
+        aboutContactLead: [
+            'We take on slot game development work — the whole build, or just the piece you are missing.',
+            'Join the channel first to see how we work, then get in touch.'
+        ],
         aboutContactDirect: 'Direct contact',
-        aboutContactTelegram: 'Telegram channel',
+        aboutContactTelegram: 'Join the Telegram channel',
         teamTitle: 'The *team*',
         teamSubtitle: 'A full-stack technical team focused on game development and system design',
 

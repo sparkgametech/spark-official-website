@@ -20,15 +20,15 @@
                 </ul>
 
                 <h2 class="about-heading">{{ t('aboutContactTitle') }}</h2>
-                <p class="about-contact-lead">{{ t('aboutContactLead') }}</p>
+                <p v-for="(line, i) in t('aboutContactLead')" :key="i" class="about-contact-lead">{{ line }}</p>
                 <div class="about-contact">
-                    <a class="is-primary" href="https://t.me/pangamesoft" target="_blank" rel="noopener">
+                    <a class="is-primary" href="https://t.me/spark_studio_ch" target="_blank" rel="noopener">
                         <i class="pi pi-telegram"></i>
-                        <span>{{ t('aboutContactDirect') }} @pangamesoft</span>
-                    </a>
-                    <a href="https://t.me/spark_studio_ch" target="_blank" rel="noopener">
-                        <i class="pi pi-megaphone"></i>
                         <span>{{ t('aboutContactTelegram') }}</span>
+                    </a>
+                    <a href="https://t.me/pangamesoft" target="_blank" rel="noopener">
+                        <i class="pi pi-send"></i>
+                        <span>{{ t('aboutContactDirect') }} @pangamesoft</span>
                     </a>
                     <a href="mailto:sparkgametech@gmail.com">
                         <i class="pi pi-envelope"></i>
@@ -139,7 +139,11 @@ watch(locale, updateMeta)
     color: #666;
     font-size: 0.9rem;
     line-height: 1.8;
-    margin: 0 0 1.1rem;
+    margin: 0 0 0.4rem;
+
+    &:last-of-type {
+        margin-bottom: 1.3rem;
+    }
 }
 
 .about-contact {
