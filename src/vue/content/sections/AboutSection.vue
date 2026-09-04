@@ -4,16 +4,23 @@
                  :id="props.id">
         <!-- Title -->
         <PageSectionHeader title="*關於* 我們"
-                           subtitle="我們是一群熱愛創作的設計師、開發者與策略規劃者"/>
+                           subtitle="專注老虎機遊戲開發的全方位製作團隊"/>
 
         <!-- Content -->
         <PageSectionContent>
             <!-- About Template -->
             <ArticleInfoBlock image="images/logo/agency-logo.png"
                               :paragraphs="[
-                                  `Spark 致力於提供創新的遊戲與軟體解決方案，專注於遊戲開發、網站建置及各類軟體開發。我們的團隊擁有豐富的行業經驗，提供從遊戲企劃、開發、串接到整合系統的服務，助力客戶打造卓越的數位體驗。`,
-                                  `我們是一群熱愛創作的設計師、開發者與策略規劃者，致力於打造有溫度的數位體驗。從極簡著陸頁到完整的數位平台，我們以乾淨的程式碼、聰明的用戶體驗與強大的視覺呈現實現每個想法。`,
-                                  `我們相信每一個像素都重要，每一次互動都關鍵。不論您是新創還是成長中的品牌，我們都能為您打造專屬網站，講好品牌故事、助力成長。`
+                                  `Spark 星火創盛是一支專注於老虎機（Slot Game）的遊戲製作團隊，<br/>團隊成員擁有超過十年的遊戲產業經驗。`,
+                                  `我們提供從企劃到上線的完整製作服務：`,
+                                  `<ul>
+                                      <li>遊戲客端開發（Unity / Cocos / Phaser）</li>
+                                      <li>數值設計與 RTP 調校</li>
+                                      <li>美術設計與動畫製作</li>
+                                      <li>音樂音效製作</li>
+                                      <li>QA 測試與體感優化</li>
+                                  </ul>`,
+                                  `一條龍交付可上線的老虎機遊戲產品。`
                               ]"/>
         </PageSectionContent>
     </PageSection>

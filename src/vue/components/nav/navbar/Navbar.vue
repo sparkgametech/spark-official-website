@@ -8,37 +8,37 @@
                              :expand="shouldExpand"/>
             </Link>
 
-            <NavbarLinks :items="props.linkList"
-                         :collapsed="isCollapsed"
-                         @link-clicked="_onLinkClicked"/>
+            <div class="foxy-navbar-right">
+                <Link v-for="btn in props.ctaButtons" :key="btn.label" :url="btn.path">
+                    <button class="foxy-nav-cta">
+                        <i v-if="btn.faIcon" :class="btn.faIcon"/>
+                        <span class="foxy-nav-cta-label">{{ btn.label }}</span>
+                    </button>
+                </Link>
 
-            <NavbarToggleButton :collapsed="isCollapsed"
-                                @click="_onToggleClicked"/>
+                <LanguageSwitcher/>
+            </div>
         </div>
     </nav>
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref, watch} from "vue"
+import {onMounted, onUnmounted, ref} from "vue"
 import Link from "/src/vue/components/generic/Link.vue"
 import NavbarBrand from "/src/vue/components/nav/navbar/NavbarBrand.vue"
-import NavbarLinks from "/src/vue/components/nav/navbar/NavbarLinks.vue"
-import NavbarToggleButton from "/src/vue/components/nav/navbar/NavbarToggleButton.vue"
-import {useRoute} from "vue-router"
+import LanguageSwitcher from "/src/vue/components/nav/navbar/LanguageSwitcher.vue"
 import {useUtils} from "/src/composables/utils.js"
 
-const route = useRoute()
 const utils = useUtils()
 
 const props = defineProps({
     brandLogo: String,
     brandLabel: String,
     brandUrl: String,
-    linkList: Array,
+    ctaButtons: { type: Array, default: () => [] },
     expandable: Boolean
 })
 
-const isCollapsed = ref(true)
 const shouldExpand = ref(false)
 
 onMounted(() => {
@@ -52,20 +52,8 @@ onUnmounted(() => {
     window.removeEventListener('resize', _onWindowEvent)
 })
 
-watch(() => route.path, () => {
-    isCollapsed.value = true
-})
-
 const _onWindowEvent = () => {
     shouldExpand.value = props.expandable && window.scrollY === 0 && window.innerWidth >= utils.BOOTSTRAP_BREAKPOINTS.lg
-}
-
-const _onToggleClicked = () => {
-    isCollapsed.value = !isCollapsed.value
-}
-
-const _onLinkClicked = () => {
-    isCollapsed.value = true
 }
 </script>
 
@@ -108,13 +96,58 @@ div.foxy-navbar-container {
     min-height: $navbar-height;
     height: 100%;
 
-    @include media-breakpoint-down(lg) {
-        flex-direction: column;
-        align-items: start;
-    }
-
     @media (max-height: 400px) {
         min-height: calc($navbar-height - 20px);
+    }
+}
+
+.foxy-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include media-breakpoint-down(lg) {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        height: $navbar-height;
+    }
+}
+
+button.foxy-nav-cta {
+    background-color: $primary;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: $font-family-base;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+        background-color: darken($primary, 8%);
+        transform: translateY(-1px);
+    }
+
+    i {
+        font-size: 0.75rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        .foxy-nav-cta-label {
+            display: none;
+        }
+        padding: 6px 10px;
+
+        i {
+            font-size: 0.85rem;
+        }
     }
 }
 </style>

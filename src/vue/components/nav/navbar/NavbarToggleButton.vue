@@ -27,10 +27,6 @@ const icon = computed(() => {
 button.foxy-navbar-toggle {
     $button-size: 40px;
 
-    position: absolute;
-    top:calc($navbar-height/2 - $button-size/2);
-    right: 25px;
-
     width: $button-size;
     height: $button-size;
     background-color: $nav-background-color;

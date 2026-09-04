@@ -1,21 +1,15 @@
 <template>
-    <nav v-if="breadcrumbItems" class="breadcrumbs">
+    <nav v-if="trail.length" class="breadcrumbs">
         <ul class="breadcrumbs-link-list">
-            <!-- Breadcrumb Item -->
-            <li v-for="(route, index) in breadcrumbItems"
+            <li v-for="item in trail"
+                :key="item.path"
                 class="breadcrumb-link-item text-4">
-                <!-- First Item -->
-                <router-link v-if="index === 0 && route.path === '/'" :to="route.path">
-                    <i class="me-1 fa-solid fa-home"/>
-                </router-link>
-
-                <!-- Other Items -->
-                <router-link v-else-if="index <= breadcrumbItems.length - 1" :to="route.path">
-                    {{ route.props?.default?.label }}
+                <router-link :to="localePath(item.path)">
+                    <i v-if="item.path === '/'" class="me-1 fa-solid fa-home"/>
+                    <template v-else>{{ t(item.labelKey) }}</template>
                 </router-link>
             </li>
 
-            <!-- Current Item -->
             <li class="breadcrumb-link-item text-4">
                 {{ currentRouteLabel }}
             </li>
@@ -26,30 +20,23 @@
 <script setup>
 import {useRoute, useRouter} from "vue-router"
 import {computed} from "vue"
+import {useI18n} from "/src/composables/i18n.js"
 
 const route = useRoute()
 const router = useRouter()
-const routes = router.getRoutes()
+const {t, localePath} = useI18n()
 
-const currentRoute = computed(() => {
-    return routes.find(r => r.name === route.name)
-})
+const currentRoute = computed(() =>
+    router.getRoutes().find(r => r.name === route.name))
+
+// Each route declares its own trail as {path, labelKey} entries. Matching by
+// route path was fragile once the locale param entered the path pattern, and
+// silently produced an empty trail.
+const trail = computed(() => currentRoute.value?.props?.default?.breadcrumbs ?? [])
 
 const currentRouteLabel = computed(() => {
-    return currentRoute.value?.props?.default?.label
-})
-
-const breadcrumbItems = computed(() => {
-    const breadcrumbs = currentRoute.value?.props?.default?.breadcrumbs
-    if(!breadcrumbs)
-        return []
-
-    return breadcrumbs.map((url) => {
-        const route = routes.find(r => r.path === url)
-        if(route) {
-            return route
-        }
-    }).filter(item => item !== undefined && item !== null)
+    const key = currentRoute.value?.props?.default?.labelKey
+    return key ? t(key) : currentRoute.value?.props?.default?.label
 })
 </script>
 

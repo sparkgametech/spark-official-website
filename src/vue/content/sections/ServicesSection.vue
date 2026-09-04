@@ -4,32 +4,26 @@
                  :id="props.id">
         <!-- Title -->
         <PageSectionHeader title="*服務* 項目"
-                           subtitle="我們專注於網站與遊戲開發、API供應串接與技術支援，協助企業數位轉型"/>
+                           subtitle="從遊戲開發到美術音效，提供完整的老虎機遊戲製作服務"/>
 
         <!-- Content -->
         <PageSectionContent>
             <ArticleFeatures>
-                <!-- <ItemFeature title="網頁開發"
-                             fa-icon="fa-solid fa-globe"
-                             description="提供企業級網站、品牌官網與Landing Page製作，重視SEO、設計美感與響應式體驗。"/> -->
-
-                <ItemFeature title="遊戲開發"
+                <ItemFeature title="遊戲客端開發"
                              fa-icon="fa-solid fa-gamepad"
-                             description="專注於 Unity 與 Cocos 等跨平台遊戲開發，支援 Web 與行動裝置上線，協助打造具備即時互動能力的完整遊戲體驗。"/>
+                             :description="`使用 Unity、Cocos、Phaser 等跨平台引擎，<br/>開發老虎機遊戲客端。<br/><br/>支援 Web 與行動裝置上線，<br/>涵蓋遊戲動畫、特效與即時互動體驗。`"/>
 
-                <ItemFeature title="API整合"
-                             fa-icon="fa-solid fa-plug"
-                             description="提供穩定的第三方 API 串接服務，協助遊戲與系統整合外部服務，打造完整的服務生態系統。"/>
+                <ItemFeature title="數值設計與 RTP 調校"
+                             fa-icon="fa-solid fa-calculator"
+                             :description="`專業的老虎機數學模型設計：<br/><br/>• 自然機率演算法與符號權重分配<br/>• Free Game 與 Bonus 觸發機制<br/>• RTP（Return to Player）精準調校<br/>• 波動度控制與玩家體感優化`"/>
 
-                <!-- <ItemFeature title="ERP 系統導入"
-                             fa-icon="fa-solid fa-database"
-                             description="協助企業評估需求、規劃流程，導入合適的ERP系統，提升管理效率與資訊整合能力。支援在地化客製與跨國多據點佈署。"/> -->
-
-                <ItemFeature title="客戶支援"
-                             fa-icon="fa-solid fa-headset"
-                             description="完善的專案管理與後續技術支援，確保產品長期穩定營運與持續優化。"/>
+                <ItemFeature title="美術音效與品質保證"
+                             fa-icon="fa-solid fa-palette"
+                             :description="`完整的遊戲視覺與聽覺製作：<br/><br/>• 角色與符號美術設計<br/>• UI 介面與動畫製作<br/>• 音樂音效配置<br/>• QA 測試與體感驗證`"/>
             </ArticleFeatures>
         </PageSectionContent>
+
+        <!-- Free resources moved to top nav -->
     </PageSection>
 </template>
 
@@ -37,6 +31,7 @@
 import PageSection from "/src/vue/components/layout/PageSection.vue"
 import PageSectionHeader from "/src/vue/components/layout/PageSectionHeader.vue"
 import PageSectionContent from "/src/vue/components/layout/PageSectionContent.vue"
+import PageSectionFooter from "/src/vue/components/layout/PageSectionFooter.vue"
 import ArticleFeatures from "/src/vue/components/articles/ArticleFeatures.vue"
 import ItemFeature from "/src/vue/components/articles/items/ItemFeature.vue"
 

@@ -1,53 +1,84 @@
 <template>
+    <div class="spark-master">
     <!-- Navigation -->
-    <Navigation logo="images/logo/agency-logo-small.png"
-                label="*Spark* 星火創盛"/>
+    <Navigation logo="/images/logo/agency-logo-small.png"
+                :label="t('brandLabel')"/>
 
     <!-- Content Display -->
-    <router-view/>
+    <div class="spark-main">
+        <router-view/>
+    </div>
 
     <!-- Footer -->
-    <Footer>
-        <FooterBlock :darken="false"
-                     :row="true">
-            <FooterColumn title="關於"
-                          faIcon="pi pi-lightbulb me-2"
-                          :description="[
-                              `Spark 星火創盛致力於提供創新的遊戲與軟體解決方案，專注於遊戲開發、網站建置及各類軟體開發。`
-                          ]"
-                          :links="[
-                              {label: `隱私政策`, href: `/privacy-policy`, faIcon: null},
-                              // {label: `授權`, href: `/license`, faIcon: null},
-                          ]"
-                          :displayLinksAsButtons="false"/>
-
-            <FooterColumn title="聯絡資訊"
-                          faIcon="pi pi-envelope me-2 pe-1"
-                          :description="[
-                          ]"
-                          :links="[
-                              {label: `sparkgametech@gmail.com`, href: `mailto:sparkgametech@gmail.com`, faIcon: 'fa-regular fa-envelope'},
-                          ]"
-                          :displayLinksAsButtons="false"/>
-        </FooterBlock>
-
-        <FooterBlock :darken="true"
-                     :row="false">
-            <FooterCopyright holder="Spark 星火創盛"
-                             url="#"
-                             license="© 2025 Spark 星火創盛 All rights reserved."/>
-        </FooterBlock>
-    </Footer>
+    <footer class="spark-footer">
+        <div class="spark-footer-links">
+            <router-link :to="localePath('/')">{{ t('footerBlog') }}</router-link>
+            <span class="spark-footer-dot">·</span>
+            <router-link :to="localePath('/about')">{{ t('footerAbout') }}</router-link>
+            <span class="spark-footer-dot">·</span>
+            <router-link :to="localePath('/privacy-policy')">{{ t('footerPrivacy') }}</router-link>
+            <span class="spark-footer-dot">·</span>
+            <a href="mailto:sparkgametech@gmail.com">sparkgametech@gmail.com</a>
+        </div>
+        <div class="spark-footer-copy">{{ t('footerRights') }}</div>
+    </footer>
+    </div>
 </template>
 
 <script setup>
 import Navigation from "/src/vue/components/nav/Navigation.vue"
-import Footer from "/src/vue/components/footer/Footer.vue"
-import FooterBlock from "/src/vue/components/footer/FooterBlock.vue"
-import FooterCopyright from "/src/vue/components/footer/FooterCopyright.vue"
-import FooterColumn from "/src/vue/components/footer/FooterColumn.vue"
+import { useI18n } from "/src/composables/i18n.js"
+
+const { t, localePath } = useI18n()
 </script>
 
 <style lang="scss" scoped>
 @import "/src/scss/_theming.scss";
+
+.spark-master {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.spark-main {
+    flex: 1;
+    background-color: $background-color;
+}
+
+.spark-footer {
+    background-color: darken($nav-background-color, 3%);
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.spark-footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+
+    a {
+        color: $light-5;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+.spark-footer-dot {
+    color: $light-6;
+    font-size: 0.85rem;
+}
+
+.spark-footer-copy {
+    color: $light-6;
+    font-size: 0.75rem;
+}
 </style>

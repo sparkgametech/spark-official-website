@@ -70,8 +70,9 @@ router.beforeEach((to, from, next) => {
         return
     }
 
-    const shouldIgnorePreloader = to.matched && to.matched.length ?
-        !to.matched[0].props.default['shouldAlwaysPreload'] :
+    // Redirect routes carry no props, so props.default is undefined for them.
+    const shouldIgnorePreloader = to.matched?.length ?
+        !to.matched[0].props?.default?.['shouldAlwaysPreload'] :
         false
 
     if(shouldIgnorePreloader) {

@@ -39,9 +39,11 @@ const parsedLinks = computed(() => {
         path: item.path,
         label: item.label,
         faIcon: item.faIcon,
+        isButton: item.isButton || false,
         buttonClass: {
             active: item.isActive,
-            hidden: transitionLinks.value.indexOf(index) === -1
+            hidden: transitionLinks.value.indexOf(index) === -1,
+            'foxy-nav-cta': item.isButton || false
         }
     }))
 })
@@ -148,4 +150,6 @@ button.foxy-nav-link:hover, button.foxy-nav-link.active {
         color: lighten($primary, 25%);
     }
 }
+
+
 </style>
