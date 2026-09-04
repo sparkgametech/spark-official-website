@@ -52,7 +52,10 @@ export const ui = {
 
         aboutTitle: '*關於* 我們',
         aboutSubtitle: '一支熱愛遊戲開發的獨立技術團隊',
-        aboutIntro: 'Spark 星火創盛是一支由資深遊戲開發者組成的獨立團隊，專注老虎機遊戲開發。我們把多年的實戰經驗整理成這個技術部落格，與業界同好交流。',
+        aboutIntro: [
+            'Spark 星火創盛是一支由資深遊戲開發者組成的獨立團隊，專注老虎機遊戲開發。',
+            '我們把多年的實戰經驗整理成這個技術部落格，與業界同好交流。'
+        ],
         aboutServicesTitle: '支援項目',
         aboutServices: [
             { icon: 'fa-solid fa-mobile-screen', name: '客端開發', detail: '遊戲框架、滾輪引擎、動畫與介面實作' },
@@ -64,6 +67,7 @@ export const ui = {
         ],
         aboutContactTitle: '聯絡我們',
         aboutContactLead: '正在尋找老虎機遊戲的開發夥伴，或對文章有任何想法，歡迎直接聯繫：',
+        aboutContactDirect: '主要聯繫',
         aboutContactTelegram: 'Telegram 頻道',
         teamTitle: '*開發* 團隊',
         teamSubtitle: '我們是一支專注於遊戲開發與系統設計的全方位技術團隊',
@@ -116,7 +120,10 @@ export const ui = {
 
         aboutTitle: '*About* us',
         aboutSubtitle: 'An independent team that loves building games',
-        aboutIntro: 'Spark is an independent team of experienced game developers focused on slot game development. This blog is where we turn years of hands-on work into something structured and worth sharing.',
+        aboutIntro: [
+            'Spark is an independent team of experienced game developers focused on slot game development.',
+            'This blog is where we turn years of hands-on work into something structured and worth sharing.'
+        ],
         aboutServicesTitle: 'What we cover',
         aboutServices: [
             { icon: 'fa-solid fa-mobile-screen', name: 'Client development', detail: 'Game framework, reel engine, animation and interface implementation' },
@@ -128,6 +135,7 @@ export const ui = {
         ],
         aboutContactTitle: 'Get in touch',
         aboutContactLead: 'Looking for a development partner for a slot game, or want to talk about something you read here? Reach us directly:',
+        aboutContactDirect: 'Direct contact',
         aboutContactTelegram: 'Telegram channel',
         teamTitle: 'The *team*',
         teamSubtitle: 'A full-stack technical team focused on game development and system design',

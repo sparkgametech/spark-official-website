@@ -1,6 +1,6 @@
 <template>
     <PageWrapper id="spark-about-page"
-                 :no-padding="true"
+                 :no-padding="false"
                  :sections="sections"/>
 </template>
 

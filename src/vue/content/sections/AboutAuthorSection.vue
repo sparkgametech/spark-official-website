@@ -6,7 +6,7 @@
 
         <PageSectionContent>
             <div class="about-body">
-                <p class="about-intro">{{ t('aboutIntro') }}</p>
+                <p v-for="(line, i) in t('aboutIntro')" :key="i" class="about-intro">{{ line }}</p>
 
                 <h2 class="about-heading">{{ t('aboutServicesTitle') }}</h2>
                 <ul class="about-services">
@@ -22,13 +22,17 @@
                 <h2 class="about-heading">{{ t('aboutContactTitle') }}</h2>
                 <p class="about-contact-lead">{{ t('aboutContactLead') }}</p>
                 <div class="about-contact">
+                    <a class="is-primary" href="https://t.me/pangamesoft" target="_blank" rel="noopener">
+                        <i class="pi pi-telegram"></i>
+                        <span>{{ t('aboutContactDirect') }} @pangamesoft</span>
+                    </a>
+                    <a href="https://t.me/spark_studio_ch" target="_blank" rel="noopener">
+                        <i class="pi pi-megaphone"></i>
+                        <span>{{ t('aboutContactTelegram') }}</span>
+                    </a>
                     <a href="mailto:sparkgametech@gmail.com">
                         <i class="pi pi-envelope"></i>
                         <span>sparkgametech@gmail.com</span>
-                    </a>
-                    <a href="https://t.me/spark_studio_ch" target="_blank" rel="noopener">
-                        <i class="pi pi-telegram"></i>
-                        <span>{{ t('aboutContactTelegram') }}</span>
                     </a>
                 </div>
             </div>
@@ -53,7 +57,7 @@ const updateMeta = () => {
     document.title = locale.value === 'en'
         ? 'About us | Spark'
         : '關於我們 | Spark 星火創盛'
-    document.querySelector('meta[name="description"]')?.setAttribute("content", t('aboutIntro'))
+    document.querySelector('meta[name="description"]')?.setAttribute("content", t('aboutIntro').join(''))
 }
 
 onMounted(updateMeta)
@@ -72,21 +76,21 @@ watch(locale, updateMeta)
     color: #555;
     font-size: 1rem;
     line-height: 1.9;
-    margin: 0 0 2.5rem;
+    margin: 0 0 0.9rem;
 }
 
 .about-heading {
     font-size: 1.05rem;
     font-weight: 700;
     color: #2b2b2b;
-    margin: 0 0 1.1rem;
+    margin: 2.5rem 0 1.1rem;
     padding-bottom: 0.6rem;
     border-bottom: 2px solid rgba($primary, 0.15);
 }
 
 .about-services {
     list-style: none;
-    margin: 0 0 2.75rem;
+    margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -158,6 +162,16 @@ watch(locale, updateMeta)
 
         &:hover {
             background: rgba($primary, 0.18);
+        }
+
+        // The direct contact is the one we actually want people to use.
+        &.is-primary {
+            background: $primary;
+            color: white;
+
+            &:hover {
+                background: darken($primary, 8%);
+            }
         }
 
         i {
