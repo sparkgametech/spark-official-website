@@ -52,10 +52,19 @@ export const ui = {
 
         aboutTitle: '*關於* 我們',
         aboutSubtitle: '一支熱愛遊戲開發的獨立技術團隊',
-        aboutP1: 'Spark 星火創盛是一支由資深遊戲開發者組成的獨立團隊，成員擁有豐富的老虎機與遊戲產業經驗，涵蓋客端開發、美術設計、音樂音效、數值設計、系統架構、QA 測試等完整開發領域。',
-        aboutP2: '我們創立這個技術部落格，希望將多年累積的開發經驗與實戰知識整理成系統化的文章，與業界同好交流分享。從遊戲框架設計到美術產線流程，從數學模型到品質保證，每一篇文章都是團隊真實開發經驗的結晶。',
-        aboutP3Lead: '如果您正在尋找老虎機遊戲的開發夥伴，或對我們的技術文章有任何想法，歡迎透過 ',
-        aboutP3Tail: ' 與我們聯繫。',
+        aboutIntro: 'Spark 星火創盛是一支由資深遊戲開發者組成的獨立團隊，專注老虎機遊戲開發。我們把多年的實戰經驗整理成這個技術部落格，與業界同好交流。',
+        aboutServicesTitle: '支援項目',
+        aboutServices: [
+            { icon: 'fa-solid fa-mobile-screen', name: '客端開發', detail: '遊戲框架、滾輪引擎、動畫與介面實作' },
+            { icon: 'fa-solid fa-palette', name: '美術設計', detail: '符號設計、Spine 骨骼動畫、UI/UX 與素材交付' },
+            { icon: 'fa-solid fa-music', name: '音樂音效', detail: '背景音樂創作、音效設計與引擎整合' },
+            { icon: 'fa-solid fa-dice', name: '數值設計', detail: '機率模型、RTP 調校、波動率與體感平衡' },
+            { icon: 'fa-solid fa-cubes', name: '系統架構', detail: '遊戲伺服器、結果集架構與調控風控設計' },
+            { icon: 'fa-solid fa-vial', name: 'QA 測試', detail: '數學驗證、功能測試、體感測試與合規送測' }
+        ],
+        aboutContactTitle: '聯絡我們',
+        aboutContactLead: '正在尋找老虎機遊戲的開發夥伴，或對文章有任何想法，歡迎直接聯繫：',
+        aboutContactTelegram: 'Telegram 頻道',
         teamTitle: '*開發* 團隊',
         teamSubtitle: '我們是一支專注於遊戲開發與系統設計的全方位技術團隊',
 
@@ -107,10 +116,19 @@ export const ui = {
 
         aboutTitle: '*About* us',
         aboutSubtitle: 'An independent team that loves building games',
-        aboutP1: 'Spark is an independent team of experienced game developers. Between us we cover the whole build: client engineering, art and animation, music and sound, math design, system architecture and QA testing.',
-        aboutP2: 'We started this blog to turn years of hands-on experience into something structured and worth sharing. From framework design to art pipelines, from math models to quality assurance, every article comes out of work we have actually shipped.',
-        aboutP3Lead: 'If you are looking for a development partner for a slot game, or you simply want to talk about something you read here, reach us at ',
-        aboutP3Tail: '.',
+        aboutIntro: 'Spark is an independent team of experienced game developers focused on slot game development. This blog is where we turn years of hands-on work into something structured and worth sharing.',
+        aboutServicesTitle: 'What we cover',
+        aboutServices: [
+            { icon: 'fa-solid fa-mobile-screen', name: 'Client development', detail: 'Game framework, reel engine, animation and interface implementation' },
+            { icon: 'fa-solid fa-palette', name: 'Art and design', detail: 'Symbol design, Spine skeletal animation, UI/UX and asset delivery' },
+            { icon: 'fa-solid fa-music', name: 'Music and sound', detail: 'Background music composition, sound design and engine integration' },
+            { icon: 'fa-solid fa-dice', name: 'Math design', detail: 'Probability models, RTP tuning, volatility and play-feel balance' },
+            { icon: 'fa-solid fa-cubes', name: 'System architecture', detail: 'Game server, result-set architecture, regulation and risk control design' },
+            { icon: 'fa-solid fa-vial', name: 'QA testing', detail: 'Math verification, functional and play-feel testing, certification submission' }
+        ],
+        aboutContactTitle: 'Get in touch',
+        aboutContactLead: 'Looking for a development partner for a slot game, or want to talk about something you read here? Reach us directly:',
+        aboutContactTelegram: 'Telegram channel',
         teamTitle: 'The *team*',
         teamSubtitle: 'A full-stack technical team focused on game development and system design',
 

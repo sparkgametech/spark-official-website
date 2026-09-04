@@ -48,7 +48,8 @@ const publisherOf = (locale) => ({
     name: brand(locale),
     url: SITE,
     logo: { '@type': 'ImageObject', url: LOGO },
-    email: 'sparkgametech@gmail.com'
+    email: 'sparkgametech@gmail.com',
+    sameAs: ['https://t.me/spark_studio_ch']
 })
 
 const crumbs = (trail) => ({
@@ -195,7 +196,7 @@ function buildRoutes(locale) {
         basePath: '/about',
         urlPath: localePath(locale, '/about'),
         title: (locale === 'zh' ? '關於我們' : 'About us') + suffix(locale),
-        description: t.aboutP1,
+        description: t.aboutIntro,
         ogType: 'website',
         heading: locale === 'zh' ? '關於我們' : 'About us',
         summary: t.aboutSubtitle,
