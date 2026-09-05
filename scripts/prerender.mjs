@@ -137,7 +137,10 @@ function buildRoutes(locale) {
             locale,
             basePath: `/category/${rawCat.slug}`,
             urlPath: url,
-            title: c.name + suffix(locale),
+            // The tab and heading use the short name; the title targets the
+            // qualified search phrase, since the bare category word is both
+            // too competitive and attracts the wrong audience.
+            title: (c.seoTitle ?? c.name) + suffix(locale),
             description: c.description,
             ogType: 'website',
             heading: c.name,

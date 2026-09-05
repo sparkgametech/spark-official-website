@@ -69,7 +69,8 @@ const otherCategories = computed(() => categories
 
 function updateMeta() {
     if (!category.value) return
-    document.title = `${category.value.name} | Spark${locale.value === 'zh' ? ' 星火創盛' : ''}`
+    const seo = category.value.seoTitle ?? category.value.name
+    document.title = `${seo} | Spark${locale.value === 'zh' ? ' 星火創盛' : ''}`
     document.querySelector('meta[name="description"]')?.setAttribute('content', category.value.description)
 }
 

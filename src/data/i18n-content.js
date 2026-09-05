@@ -106,31 +106,37 @@ export const postsEn = {
 export const categoriesEn = {
     'client': {
         name: 'Client Development',
+        seoTitle: 'Slot Client Development | Framework · Reel Engine · Animation',
         subtitle: 'Client-side technology from game framework to reel engine',
         description: 'Slot client development articles: layered framework, game state machines, reel animation engines, network protocols, assets, localization and UI layering.'
     },
     'art': {
         name: 'Art & Design',
+        seoTitle: 'Slot Art Design | Symbols · Spine Animation · UI',
         subtitle: 'AI-assisted workflows and a high-output art pipeline',
         description: 'Slot art design articles: modern AI-assisted art workflows, symbol design standards, Spine skeletal animation, UI/UX layout and the art-to-engine pipeline.'
     },
     'audio': {
         name: 'Music & Audio',
+        seoTitle: 'Slot Game Music & Sound Design | Score · SFX · Integration',
         subtitle: 'Building an immersive listening experience',
         description: 'Slot music and sound design articles: emotional pacing in background music, tiered sound effect triggering, interactive audio, specs and delivery pipelines.'
     },
     'math': {
         name: 'Math Design',
+        seoTitle: 'Slot Math Design | Probability Models · RTP Tuning',
         subtitle: 'Probability models, RTP tuning and result-set architecture',
         description: 'Slot math design articles: natural probability models, reel strip weighting, RTP calculation and tuning, volatility, result-set and control system design.'
     },
     'security': {
         name: 'System Security',
+        seoTitle: 'Slot RNG Security & Risk Control System Design',
         subtitle: 'Random number security and statistical anomaly detection',
         description: 'Game system security articles: cryptographic random number generation, seed and entropy design, RNG audit trails, statistical testing and anomaly detection.'
     },
     'qa': {
         name: 'QA Testing',
+        seoTitle: 'Slot QA Testing | Math Verification · Certification',
         subtitle: 'Quality assurance from math verification to player feel',
         description: 'Slot QA testing articles: RTP convergence verification, state machine path coverage, functional and player feel testing, and third-party certification.'
     }
