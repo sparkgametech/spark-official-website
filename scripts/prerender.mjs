@@ -94,10 +94,18 @@ function buildRoutes(locale) {
                 })
             }
         ],
-        links: blogPosts.map(p => ({
-            href: localePath(locale, `/blog/${p.slug}`),
-            text: localizedPost(locale, p).title
-        }))
+        // Category hubs first: the homepage is the highest-authority page, so
+        // the topic clusters need to be linked from here, not only from articles.
+        links: [
+            ...categories.map(c => ({
+                href: localePath(locale, `/category/${c.slug}`),
+                text: localizedCategory(locale, c).name
+            })),
+            ...blogPosts.map(p => ({
+                href: localePath(locale, `/blog/${p.slug}`),
+                text: localizedPost(locale, p).title
+            }))
+        ]
     })
 
     for (const rawCat of categories) {

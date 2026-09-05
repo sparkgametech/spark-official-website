@@ -2,18 +2,18 @@
     <PageSection variant="default" :id="props.id">
         <PageSectionContent>
             <div class="tab-bar" role="tablist">
-                <button v-for="tab in tabs"
-                        :key="tab.slug"
-                        type="button"
-                        role="tab"
-                        class="tab"
-                        :class="{ 'tab-active': tab.slug === active }"
-                        :aria-selected="tab.slug === active"
-                        @click="active = tab.slug">
+                <a v-for="tab in tabs"
+                   :key="tab.slug"
+                   :href="tab.href"
+                   role="tab"
+                   class="tab"
+                   :class="{ 'tab-active': tab.slug === active }"
+                   :aria-selected="tab.slug === active"
+                   @click="onTabClick($event, tab.slug)">
                     <i v-if="tab.icon" :class="tab.icon"></i>
                     <span>{{ tab.name }}</span>
                     <span class="tab-count">{{ tab.count }}</span>
-                </button>
+                </a>
             </div>
 
             <h2 class="tab-heading">{{ activeTab.name }}{{ t('tabHeadingSuffix') }}</h2>
@@ -51,16 +51,26 @@ const { t, localePath, localizedCategory } = useI18n()
 const active = ref('all')
 
 const tabs = computed(() => [
-    { slug: 'all', name: t('tabAll'), icon: 'fa-solid fa-layer-group', count: blogPosts.length },
+    { slug: 'all', name: t('tabAll'), icon: 'fa-solid fa-layer-group', count: blogPosts.length, href: localePath('/') },
     ...categories.map(c => ({
         slug: c.slug,
         name: localizedCategory(c).name,
         icon: c.icon,
-        count: blogPosts.filter(p => p.category === c.slug).length
+        count: blogPosts.filter(p => p.category === c.slug).length,
+        href: localePath(`/category/${c.slug}`)
     }))
 ])
 
 const activeTab = computed(() => tabs.value.find(x => x.slug === active.value))
+
+// The tabs are real links so the category hub pages are reachable from the
+// homepage for crawlers and for modified clicks (new tab); a plain click
+// filters in place instead of navigating away.
+const onTabClick = (event, slug) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return
+    event.preventDefault()
+    active.value = slug
+}
 
 const visiblePosts = computed(() => active.value === 'all'
     ? blogPosts
@@ -103,6 +113,7 @@ const visiblePosts = computed(() => active.value === 'all'
     font-size: 0.85rem;
     font-weight: 600;
     font-family: $font-family-base;
+    text-decoration: none;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
 

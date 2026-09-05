@@ -8,6 +8,7 @@ import PolicyPage from "/src/vue/content/pages/PolicyPage.vue"
 import BlogPostPage from "/src/vue/content/pages/BlogPostPage.vue"
 import CategoryPage from "/src/vue/content/pages/CategoryPage.vue"
 import {ui, localeMeta, DEFAULT_LOCALE} from "/src/data/i18n.js"
+import {initAnalytics} from "/src/composables/analytics.js"
 
 // `:lang(en)?` makes one definition serve both /blog/x and /en/blog/x, so the
 // two languages can never drift out of sync.
@@ -126,5 +127,7 @@ function setAlternate(hreflang, href) {
     }
     el.setAttribute("href", href)
 }
+
+initAnalytics(router)
 
 createApp(App).use(router).mount("#app")

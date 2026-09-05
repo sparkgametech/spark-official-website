@@ -8,13 +8,11 @@
 </template>
 
 <script setup>
-import {computed, inject, onMounted, watch} from "vue"
+import {computed, inject, watch} from "vue"
 import {useRouter} from "vue-router"
 import ProjectModal from "/src/vue/components/projects/ProjectModal.vue"
-import {useUtils} from "/src/composables/utils.js"
 
 const router = useRouter()
-const utils = useUtils()
 
 const loaderEnabled = inject("loaderEnabled")
 const loaderActive = inject("loaderActive")
@@ -28,24 +26,6 @@ const shouldSlot = computed(() => {
     return !loaderEnabled ||
         loaderAnimationStatus.value === LoaderAnimationStatus.TRACKING_PROGRESS ||
         loaderAnimationStatus.value === LoaderAnimationStatus.LEAVING
-})
-
-/**
- * @description This hook can be used to report a visit to an external analytics service.
- * Here, you can integrate Google Analytics, Mixpanel, or your own custom analytics implementation.
- */
-onMounted(() => {
-    // replace the implementation below with your own analytics service...
-    fetch("https://admin.ryanbalieiro.com/api/analytics/mock", {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            params: {
-                url: utils.getRootLocation(),
-                template_id: "spark-official-website"
-            }
-        })
-    })
 })
 
 watch(() => loaderAnimationStatus.value, () => {
