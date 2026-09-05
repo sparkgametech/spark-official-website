@@ -75,7 +75,13 @@ function buildRoutes(locale) {
         description: t.defaultDescription,
         ogType: 'website',
         heading: `${t.heroTitleLead} ${t.heroTitleRest}`,
-        summary: t.heroSubtitle,
+        // The intro carries the outsourcing keyword the title now targets, so
+        // it must reach crawlers that never run the bundle.
+        summary: [
+            t.heroSubtitle,
+            ...t.homeIntro,
+            `${t.homeIntroOutsourcing}${t.homeIntroAboutLink}${t.homeIntroEnd}`
+        ].join(' '),
         graph: [
             { '@type': 'WebSite', name: brand(locale), url: SITE, inLanguage: lang, publisher },
             {
