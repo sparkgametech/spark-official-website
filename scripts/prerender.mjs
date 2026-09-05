@@ -33,6 +33,12 @@ const LOCALES = ['zh', 'en']
 const brand = (locale) => locale === 'zh' ? 'Spark 星火創盛' : 'Spark'
 const suffix = (locale) => locale === 'zh' ? ' | Spark 星火創盛' : ' | Spark'
 
+// Social cards show og:site_name above the title, so the brand suffix that is
+// useful in a search result just prints the brand twice and pushes the title
+// onto a second line. Search keeps the suffix; sharing drops it.
+const socialTitle = (title, locale) =>
+    title.replace(new RegExp(`\\s*[|—-]\\s*${brand(locale)}\\s*$`), '')
+
 /** Same locale prefix rule as the router and the useI18n composable. */
 const localePath = (locale, p) =>
     locale === 'zh' ? p : (p === '/' ? '/en' : `/en${p}`)
@@ -296,7 +302,7 @@ function render(template, route) {
     swap(/<meta\s+property="og:type"\s+content="[^"]*"\s*\/?>/,
         `<meta property="og:type" content="${route.ogType}" />`, 'og:type')
     swap(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
-        `<meta property="og:title" content="${esc(route.title)}" />`, 'og:title')
+        `<meta property="og:title" content="${esc(socialTitle(route.title, route.locale))}" />`, 'og:title')
     swap(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
         `<meta property="og:description" content="${esc(route.description)}" />`, 'og:description')
     swap(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
@@ -304,7 +310,7 @@ function render(template, route) {
     swap(/<meta\s+property="og:locale"\s+content="[^"]*"\s*\/?>/,
         `<meta property="og:locale" content="${route.locale === 'zh' ? 'zh_TW' : 'en_US'}" />`, 'og:locale')
     swap(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/,
-        `<meta name="twitter:title" content="${esc(route.title)}" />`, 'twitter:title')
+        `<meta name="twitter:title" content="${esc(socialTitle(route.title, route.locale))}" />`, 'twitter:title')
     swap(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
         `<meta name="twitter:description" content="${esc(route.description)}" />`, 'twitter:description')
     swap(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,
