@@ -25,9 +25,9 @@ const DIST = path.join(ROOT, 'dist')
 const SITE = 'https://www.sparkgametech.com'
 const LOGO = `${SITE}/images/logo/agency-logo.png`
 
-// 1200x630 share cards. Social crawlers never run the bundle, so these have to
-// be swapped into the static HTML per locale rather than set from Vue.
-const ogImage = (locale) => `${SITE}/images/og/og-image${locale === 'en' ? '-en' : ''}.png`
+// The 1200x630 share card carries no language-specific text, so one file
+// serves both locales and index.html can point at it directly.
+const OG_IMAGE = `${SITE}/images/og/og-image.png`
 const LOCALES = ['zh', 'en']
 
 const brand = (locale) => locale === 'zh' ? 'Spark 星火創盛' : 'Spark'
@@ -181,7 +181,7 @@ function buildRoutes(locale) {
                     datePublished: rawPost.date,
                     dateModified: rawPost.date,
                     inLanguage: lang,
-                    image: ogImage(locale),
+                    image: OG_IMAGE,
                     keywords: (p.tags ?? []).join(', '),
                     articleSection: cat?.name,
                     author: { '@type': 'Organization', name: brand(locale), url: SITE },
@@ -293,12 +293,6 @@ function render(template, route) {
         `<meta name="description" content="${esc(route.description)}" />`, 'description')
     swap(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/,
         `<link rel="canonical" href="${esc(url)}" />\n        ${alternates}`, 'canonical')
-    swap(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/,
-        `<meta property="og:image" content="${esc(ogImage(route.locale))}" />`, 'og:image')
-    swap(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/,
-        `<meta property="og:image:alt" content="${esc(route.title)}" />`, 'og:image:alt')
-    swap(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/,
-        `<meta name="twitter:image" content="${esc(ogImage(route.locale))}" />`, 'twitter:image')
     swap(/<meta\s+property="og:type"\s+content="[^"]*"\s*\/?>/,
         `<meta property="og:type" content="${route.ogType}" />`, 'og:type')
     swap(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
