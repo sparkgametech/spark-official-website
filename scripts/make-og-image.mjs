@@ -13,13 +13,14 @@
  * to be recognisable at thumbnail size. Being text-free also means one card
  * serves both languages.
  */
+import crypto from 'crypto'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const OUT = path.join(ROOT, 'public', 'images', 'og', 'og-image.png')
+const OUT_DIR = path.join(ROOT, 'public', 'images', 'og')
 const LOGO = path.join(ROOT, 'public', 'images', 'logo', 'agency-logo.png')
 
 const W = 1200
@@ -51,12 +52,23 @@ const logo = await sharp(LOGO)
     .resize(CAT, CAT, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
     .toBuffer()
 
-fs.mkdirSync(path.dirname(OUT), { recursive: true })
-
-await sharp(Buffer.from(svg))
+const png = await sharp(Buffer.from(svg))
     .composite([{ input: logo, top: Math.round(CAT_Y), left: CAT_X }])
     .png({ compressionLevel: 9 })
-    .toFile(OUT)
+    .toBuffer()
 
-const meta = await sharp(OUT).metadata()
-console.log(`og-image.png  ${meta.width}x${meta.height}  ${(fs.statSync(OUT).size / 1024).toFixed(0)} KB`)
+// Social platforms cache share images by URL and ignore the fact that the
+// bytes changed, so the filename carries a content hash: regenerating the card
+// produces a new URL and every cache invalidates itself.
+const hash = crypto.createHash('sha1').update(png).digest('hex').slice(0, 8)
+const name = `og-image.${hash}.png`
+
+fs.mkdirSync(OUT_DIR, { recursive: true })
+for (const f of fs.readdirSync(OUT_DIR)) {
+    if (/^og-image(\..+)?\.png$/.test(f) && f !== name) fs.unlinkSync(path.join(OUT_DIR, f))
+}
+fs.writeFileSync(path.join(OUT_DIR, name), png)
+
+const meta = await sharp(png).metadata()
+console.log(`${name}  ${meta.width}x${meta.height}  ${(png.length / 1024).toFixed(0)} KB`)
+console.log('prerender 會自動抓取這個檔名，不需手動更新引用。')

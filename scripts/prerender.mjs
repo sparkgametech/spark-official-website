@@ -26,8 +26,13 @@ const SITE = 'https://www.sparkgametech.com'
 const LOGO = `${SITE}/images/logo/agency-logo.png`
 
 // The 1200x630 share card carries no language-specific text, so one file
-// serves both locales and index.html can point at it directly.
-const OG_IMAGE = `${SITE}/images/og/og-image.png`
+// serves both locales. Its filename holds a content hash (see make-og-image.mjs)
+// so social caches invalidate when the artwork changes; resolve it from disk
+// rather than hard-coding a name that would silently go stale.
+const ogImageFile = fs.readdirSync(path.join(DIST, 'images', 'og'))
+    .find(f => /^og-image\..*\.png$/.test(f))
+if (!ogImageFile) throw new Error('找不到分享圖，請先執行 scripts/make-og-image.mjs')
+const OG_IMAGE = `${SITE}/images/og/${ogImageFile}`
 const LOCALES = ['zh', 'en']
 
 const brand = (locale) => locale === 'zh' ? 'Spark 星火創盛' : 'Spark'
@@ -301,6 +306,10 @@ function render(template, route) {
         `<link rel="canonical" href="${esc(url)}" />\n        ${alternates}`, 'canonical')
     swap(/<meta\s+property="og:type"\s+content="[^"]*"\s*\/?>/,
         `<meta property="og:type" content="${route.ogType}" />`, 'og:type')
+    swap(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/,
+        `<meta property="og:image" content="${esc(OG_IMAGE)}" />`, 'og:image')
+    swap(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/,
+        `<meta name="twitter:image" content="${esc(OG_IMAGE)}" />`, 'twitter:image')
     swap(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
         `<meta property="og:title" content="${esc(socialTitle(route.title, route.locale))}" />`, 'og:title')
     swap(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
