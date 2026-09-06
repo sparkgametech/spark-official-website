@@ -93,6 +93,8 @@ watch(() => [route.params.slug, locale.value], updateMeta)
 // The grid needs a heading between the page h1 and the h3 card titles, but the
 // category name is already stated above it, so it carries no visual weight.
 .category-grid-heading {
+    // Clipped away visually; see the note in BlogGridSection.
+    color: inherit;
     position: absolute;
     width: 1px;
     height: 1px;

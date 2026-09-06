@@ -42,6 +42,17 @@ html[data-theme="dark"][data-theme="dark"] {
     .blog-article {
         color: $d-text;
 
+        // typography.scss sets a global `p { color: black }`, which outranks
+        // the inherited colour above — list items inherit fine, paragraphs do
+        // not, so they have to be named explicitly or they render near-black.
+        p {
+            color: $d-text;
+        }
+
+        code {
+            color: #ff8fc4;
+        }
+
         h2,
         h3 {
             color: $d-text-strong;
@@ -63,6 +74,17 @@ html[data-theme="dark"][data-theme="dark"] {
 
         code {
             color: $d-text-strong;
+        }
+    }
+
+    // Mermaid draws edge labels as real <p> elements inside foreignObject, so
+    // the same global paragraph colour leaves "yes"/"no" markers unreadable.
+    .mermaid-container {
+        .edgeLabel,
+        .edgeLabel p,
+        .edgeLabel span {
+            color: $d-text;
+            background-color: $d-surface;
         }
     }
 
@@ -185,6 +207,22 @@ html[data-theme="dark"][data-theme="dark"] {
         }
     }
 
+    // Privacy policy and any other page built from ArticleParagraph: the
+    // headings use the global heading colour and the body is a plain <p>,
+    // so both stay on their light-theme values without this.
+    .foxy-paragraph-article {
+        color: $d-text;
+
+        h4,
+        h4 span {
+            color: $d-text-strong;
+        }
+
+        p {
+            color: $d-text;
+        }
+    }
+
     /* ---- breadcrumbs ---- */
     .breadcrumb-link-item {
         color: $d-text-muted;
@@ -212,8 +250,20 @@ html[data-theme="dark"][data-theme="dark"] {
     }
 
     /* ---- team quote bubbles ---- */
-    .foxy-quotes .swiper-slide {
-        color: $d-text;
+    .foxy-quotes {
+        .swiper-slide {
+            color: $d-text;
+        }
+
+        // Member names fall back to the global heading colour, which is the
+        // light theme's near-black; the muted class carries !important.
+        h4 {
+            color: $d-text-strong;
+        }
+
+        .text-muted {
+            color: $d-text-muted !important;
+        }
     }
 
     .foxy-quote-balloon {

@@ -153,6 +153,9 @@ const visiblePosts = computed(() => active.value === 'all'
 // The grid needs a heading between the page h1 and the h3 card titles; the tab
 // bar already names the active filter, so this carries no visual weight.
 .tab-heading {
+    // Clipped away visually, so it must not carry its own colour or contrast
+    // audits flag a heading nobody can see.
+    color: inherit;
     position: absolute;
     width: 1px;
     height: 1px;

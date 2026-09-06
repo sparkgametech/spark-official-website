@@ -72,13 +72,14 @@ const { t, localePath } = useI18n()
     }
 }
 
+// The footer is dark in both themes, and $light-6 only reaches 3.61:1 on it.
 .spark-footer-dot {
-    color: $light-6;
+    color: #949ca5;
     font-size: 0.85rem;
 }
 
 .spark-footer-copy {
-    color: $light-6;
+    color: #949ca5;
     font-size: 0.75rem;
 }
 </style>
