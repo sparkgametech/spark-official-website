@@ -173,9 +173,9 @@ const toggleIntro = () => {
     bottom: 0;
     width: 84px;
     height: 84px;
-    // Feet stay planted while the body squashes and stretches.
+    // Pivot at the feet so the head tilts rather than the whole body sliding.
     transform-origin: 50% 100%;
-    animation: spark-cat-arcs 3.2s ease-in-out 0.7s forwards;
+    animation: spark-cat-peek 3s ease-in-out 0.6s forwards;
 
     @include media-breakpoint-down(md) {
         width: 62px;
@@ -184,22 +184,18 @@ const toggleIntro = () => {
     }
 }
 
-// Three big bunny hops, squashing on each landing. Opacity is held at 1 until
-// the cat is already off-screen; without that stop the browser interpolates
-// from 0% and it fades away mid-jump.
-@keyframes spark-cat-arcs {
-    0%, 8%  { transform: translate(0, 0) scale(1, 1) rotate(0deg); }
-    13%     { transform: translate(0, 0) scale(1.14, 0.84); }
-    23%     { transform: translate(14vw, -74px) scale(0.9, 1.14) rotate(-7deg); }
-    31%     { transform: translate(28vw, 0) scale(1.16, 0.82); }
-    35%     { transform: translate(30vw, 0) scale(1, 1) rotate(0deg); }
-    45%     { transform: translate(48vw, -74px) scale(0.9, 1.14) rotate(-7deg); }
-    53%     { transform: translate(64vw, 0) scale(1.16, 0.82); }
-    57%     { transform: translate(66vw, 0) scale(1, 1) rotate(0deg); }
-    67%     { transform: translate(86vw, -74px) scale(0.9, 1.14) rotate(-7deg); }
-    75%     { transform: translate(102vw, 0) scale(1.12, 0.88); }
-    92%     { opacity: 1; }
-    100%    { transform: translate(130vw, 0) scale(1, 1); opacity: 0; }
+// Pokes out from behind the left edge, has a look around, then backs off the
+// same way. No fade needed — the hero's overflow clips it out of sight, which
+// reads as hiding rather than vanishing.
+@keyframes spark-cat-peek {
+    0%      { transform: translateX(-300%) rotate(0deg); }
+    16%     { transform: translateX(8%) rotate(0deg); }     // slight overshoot
+    24%     { transform: translateX(0) rotate(0deg); }
+    36%     { transform: translateX(0) rotate(-9deg); }     // tilts to look
+    50%     { transform: translateX(0) rotate(0deg); }
+    60%     { transform: translateX(0) rotate(6deg); }      // and once the other way
+    72%     { transform: translateX(0) rotate(0deg); }
+    100%    { transform: translateX(-300%) rotate(0deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
