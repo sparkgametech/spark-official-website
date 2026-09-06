@@ -25,6 +25,7 @@
         </div>
 
         <img class="spark-hero-cat"
+             :data-cat="catVariant"
              src="/images/logo/agency-logo.png"
              alt=""
              aria-hidden="true"/>
@@ -53,6 +54,16 @@ onMounted(() => {
     } catch (e) {
         // Blocked site data just means the preference will not persist.
     }
+})
+
+// Three movement styles to compare. `?cat=1|2|3` overrides for side-by-side
+// testing; once one is chosen this collapses to a single hard-coded value.
+const DEFAULT_CAT = '1'
+const catVariant = ref(DEFAULT_CAT)
+
+onMounted(() => {
+    const pick = new URLSearchParams(window.location.search).get('cat')
+    if (['1', '2', '3'].includes(pick)) catVariant.value = pick
 })
 
 const toggleIntro = () => {
@@ -173,8 +184,12 @@ const toggleIntro = () => {
     bottom: 0;
     width: 84px;
     height: 84px;
+    // Feet stay planted while the body squashes and stretches.
     transform-origin: 50% 100%;
-    animation: spark-cat-hop-run 2.9s ease-in-out 0.7s forwards;
+
+    &[data-cat="1"] { animation: spark-cat-arcs 3.2s ease-in-out 0.7s forwards; }
+    &[data-cat="2"] { animation: spark-cat-scamper 2.6s linear 0.7s forwards; }
+    &[data-cat="3"] { animation: spark-cat-curious 4s ease-in-out 0.6s forwards; }
 
     @include media-breakpoint-down(md) {
         width: 62px;
@@ -183,19 +198,60 @@ const toggleIntro = () => {
     }
 }
 
-@keyframes spark-cat-hop-run {
-    0%,  10% { transform: translate(0, 0) scale(1, 1); }
-    16%      { transform: translate(0, 0) scale(1.08, 0.88); }   // crouch
-    28%      { transform: translate(2vw, -46px) scale(0.94, 1.1); } // launch
-    38%      { transform: translate(4vw, 0) scale(1.1, 0.86); }  // land
-    44%      { transform: translate(5vw, 0) scale(1, 1); }
-    58%      { transform: translate(26vw, -9px) scale(1, 1); }
-    72%      { transform: translate(52vw, 0) scale(1, 1); }
-    86%      { transform: translate(80vw, -9px) scale(1, 1); }
-    // Hold full opacity until it is already off-screen; without this stop the
-    // browser interpolates opacity from 0% and the cat fades while it jumps.
-    92%      { opacity: 1; }
-    100%     { transform: translate(115vw, 0) scale(1, 1); opacity: 0; }
+// Every variant holds opacity 1 until it is already off-screen; without that
+// stop the browser interpolates from 0% and the cat fades mid-jump.
+
+// 1 — three big bunny hops, squashing on each landing.
+@keyframes spark-cat-arcs {
+    0%, 8%  { transform: translate(0, 0) scale(1, 1) rotate(0deg); }
+    13%     { transform: translate(0, 0) scale(1.14, 0.84); }
+    23%     { transform: translate(14vw, -74px) scale(0.9, 1.14) rotate(-7deg); }
+    31%     { transform: translate(28vw, 0) scale(1.16, 0.82); }
+    35%     { transform: translate(30vw, 0) scale(1, 1) rotate(0deg); }
+    45%     { transform: translate(48vw, -74px) scale(0.9, 1.14) rotate(-7deg); }
+    53%     { transform: translate(64vw, 0) scale(1.16, 0.82); }
+    57%     { transform: translate(66vw, 0) scale(1, 1) rotate(0deg); }
+    67%     { transform: translate(86vw, -74px) scale(0.9, 1.14) rotate(-7deg); }
+    75%     { transform: translate(102vw, 0) scale(1.12, 0.88); }
+    92%     { opacity: 1; }
+    100%    { transform: translate(130vw, 0) scale(1, 1); opacity: 0; }
+}
+
+// 2 — quick little scampering steps, body tipped forward like a kitten trot.
+@keyframes spark-cat-scamper {
+    0%, 10% { transform: translate(0, 0) scale(1, 1) rotate(0deg); }
+    14%     { transform: translate(1vw, 0) scale(1.06, 0.92); }
+    20%     { transform: translate(9vw, -18px) scale(0.97, 1.05) rotate(5deg); }
+    26%     { transform: translate(17vw, 0) scale(1.06, 0.94) rotate(2deg); }
+    32%     { transform: translate(25vw, -18px) scale(0.97, 1.05) rotate(5deg); }
+    38%     { transform: translate(33vw, 0) scale(1.06, 0.94) rotate(2deg); }
+    44%     { transform: translate(42vw, -18px) scale(0.97, 1.05) rotate(5deg); }
+    50%     { transform: translate(51vw, 0) scale(1.06, 0.94) rotate(2deg); }
+    56%     { transform: translate(60vw, -18px) scale(0.97, 1.05) rotate(5deg); }
+    62%     { transform: translate(69vw, 0) scale(1.06, 0.94) rotate(2deg); }
+    68%     { transform: translate(79vw, -18px) scale(0.97, 1.05) rotate(5deg); }
+    74%     { transform: translate(89vw, 0) scale(1.06, 0.94) rotate(2deg); }
+    92%     { opacity: 1; }
+    100%    { transform: translate(130vw, 0) scale(1, 1) rotate(4deg); opacity: 0; }
+}
+
+// 3 — looks around, does the pre-pounce wiggle, then bolts.
+@keyframes spark-cat-curious {
+    0%, 6%  { transform: translate(0, 0) scale(1, 1) rotate(0deg); }
+    13%     { transform: translate(0, 0) rotate(-8deg); }
+    21%     { transform: translate(0, 0) rotate(8deg); }
+    27%     { transform: translate(0, 0) rotate(0deg); }
+    32%     { transform: translate(-2vw, 0) scale(1.07, 0.92); }   // wiggle back
+    36%     { transform: translate(0, 0) scale(1, 1); }
+    40%     { transform: translate(-2vw, 0) scale(1.07, 0.92); }
+    44%     { transform: translate(0, 0) scale(1, 1); }
+    50%     { transform: translate(6vw, -34px) scale(0.88, 1.16); } // pounce
+    58%     { transform: translate(22vw, 0) scale(1.14, 0.86); }
+    66%     { transform: translate(44vw, -12px) scale(1, 1); }
+    76%     { transform: translate(70vw, 0) scale(1, 1); }
+    86%     { transform: translate(96vw, -12px) scale(1, 1); }
+    92%     { opacity: 1; }
+    100%    { transform: translate(132vw, 0) scale(1, 1); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
