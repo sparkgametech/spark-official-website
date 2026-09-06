@@ -11,18 +11,20 @@ export const localeMeta = {
 export const ui = {
     zh: {
         defaultTitle: '老虎機遊戲開發外包團隊｜客端 · 美術 · 數值 · 音效 · QA — Spark 星火創盛',
-        defaultDescription: 'Spark 星火創盛是承接老虎機遊戲開發外包的獨立團隊。技術部落格涵蓋客端架構、美術設計、音樂音效、數值設計、QA 測試，記錄從零到上線的實戰經驗。',
+        defaultDescription: 'Spark 星火創盛是承接老虎機與博弈遊戲開發外包的獨立團隊。技術部落格涵蓋客端架構、美術設計、音樂音效、數值設計、QA 測試，記錄 Slot Game 從零到上線的實戰經驗。',
         homeIntro: [
-            '這裡記錄一支老虎機遊戲開發團隊的實作經驗——從客端框架、美術產線、音效設計，到數值模型與 QA 驗證。',
-            '文章依主題分類，從下方頁籤挑你關心的領域開始讀。'
+            '這裡記錄一支老虎機遊戲開發團隊的實作經驗，',
+            '從客端框架、美術產線、音效設計，到數值模型與 QA 驗證。',
+            '文章依主題分類，從下方頁籤開始讀。'
         ],
-        homeIntroOutsourcing: '團隊同時承接開發外包，合作方式請見',
+        homeIntroOutsourcing: '團隊同時承接老虎機與博弈遊戲開發外包。',
+        homeIntroCompanyLead: '正在找老虎機遊戲開發公司？合作方式請見',
         homeIntroAboutLink: '關於我們',
         homeIntroEnd: '。',
 
         heroTitleLead: '老虎機遊戲',
         heroTitleRest: '從零到上線的開發全紀錄',
-        heroSubtitle: '一支獨立開發團隊的實戰技術筆記',
+        heroSubtitle: 'Slot Game 開發外包 · 獨立團隊',
 
         tabAll: '全部',
         tabHeadingSuffix: '文章',
@@ -91,16 +93,18 @@ export const ui = {
         defaultTitle: 'Slot Game Development Outsourcing Team | Client · Art · Math · Audio · QA — Spark',
         defaultDescription: 'Spark is an independent team taking on slot game development outsourcing. The blog covers client architecture, art pipeline, music and sound, math design and QA testing — how a game is actually built, from zero to launch.',
         homeIntro: [
-            'This site records the hands-on experience of a slot game development team — from client frameworks and art pipelines to sound design, math models and QA verification.',
-            'Articles are grouped by topic; pick the area you care about from the tabs below.'
+            'This site records the hands-on experience of a slot game development team,',
+            'from client frameworks and art pipelines to sound design, math models and QA verification.',
+            'Articles are grouped by topic — start from the tabs below.'
         ],
-        homeIntroOutsourcing: 'The team also takes on development work — see ',
+        homeIntroOutsourcing: 'The team also takes on slot and casino game development outsourcing.',
+        homeIntroCompanyLead: 'Looking for a slot game development company? See ',
         homeIntroAboutLink: 'About us',
-        homeIntroEnd: '.',
+        homeIntroEnd: ' for how we work.',
 
         heroTitleLead: 'Slot Games',
         heroTitleRest: 'building one from zero to launch',
-        heroSubtitle: 'Field notes from an independent game development team',
+        heroSubtitle: 'Slot game development outsourcing · Independent team',
 
         tabAll: 'All',
         tabHeadingSuffix: ' articles',

@@ -95,7 +95,8 @@ function buildRoutes(locale) {
         summary: [
             t.heroSubtitle,
             ...t.homeIntro,
-            `${t.homeIntroOutsourcing}${t.homeIntroAboutLink}${t.homeIntroEnd}`
+            t.homeIntroOutsourcing,
+            `${t.homeIntroCompanyLead}${t.homeIntroAboutLink}${t.homeIntroEnd}`
         ].join(' '),
         graph: [
             { '@type': 'WebSite', name: brand(locale), url: SITE, inLanguage: lang, publisher },
