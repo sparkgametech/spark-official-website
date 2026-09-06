@@ -55,6 +55,10 @@
 
             <div class="blog-post-contact">
                 <p>{{ t('contactPrompt') }}<a href="mailto:sparkgametech@gmail.com">{{ t('contactLink') }}</a>{{ t('contactPromptTail') }}</p>
+                <router-link :to="localePath('/about')" class="blog-post-contact-cta">
+                    <i class="pi pi-comments"></i>
+                    <span>{{ t('navSupport') }}</span>
+                </router-link>
             </div>
 
             <div class="blog-post-nav">
@@ -230,6 +234,32 @@ watch(() => [route.params.slug, locale.value], updateMeta)
     background: rgba(13, 110, 253, 0.1);
     color: var(--bs-primary, #0d6efd);
     font-weight: 600;
+}
+
+// Nested inside .blog-post-contact, whose `a` rule is more specific than a
+// lone class and would otherwise repaint this orange-on-orange.
+.blog-post-contact .blog-post-contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.9rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 24px;
+    background: $primary;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: darken($primary, 8%);
+        color: white;
+    }
+
+    i {
+        font-size: 0.8rem;
+    }
 }
 
 .blog-post-contact {
