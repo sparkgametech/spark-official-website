@@ -41,15 +41,15 @@ const props = defineProps({
 
 const { t, localePath } = useI18n()
 
-// Expanded by default: a first-time visitor should see what the site is, and
-// leaving it open avoids relying on how search engines weigh collapsed copy.
-// The choice is remembered, so a returning reader keeps their compact hero.
+// Collapsed by default to keep the hero compact. The copy stays in the DOM
+// (v-show, not v-if) and the prerendered fallback always contains it, so
+// crawlers read it either way — only the visual default changed.
 const STORAGE_KEY = 'spark-intro-open'
-const introOpen = ref(true)
+const introOpen = ref(false)
 
 onMounted(() => {
     try {
-        if (localStorage.getItem(STORAGE_KEY) === 'false') introOpen.value = false
+        if (localStorage.getItem(STORAGE_KEY) === 'true') introOpen.value = true
     } catch (e) {
         // Blocked site data just means the preference will not persist.
     }
