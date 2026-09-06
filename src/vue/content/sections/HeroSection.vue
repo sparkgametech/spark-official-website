@@ -25,6 +25,7 @@
         </div>
 
         <img class="spark-hero-cat"
+             :class="{ 'is-playing': catPlaying }"
              src="/images/logo/agency-logo.png"
              alt=""
              aria-hidden="true"/>
@@ -32,7 +33,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue"
+import { ref, onMounted, onUnmounted } from "vue"
 import { useI18n } from "/src/composables/i18n.js"
 
 const props = defineProps({
@@ -54,6 +55,32 @@ onMounted(() => {
         // Blocked site data just means the preference will not persist.
     }
 })
+
+// The hero mounts while the preloader still covers the screen, so an animation
+// started on mount plays out unseen — and since the cat both starts and ends
+// off-screen, nothing was left to look at. Waiting for the loader element to
+// leave the DOM is more dependable here than the loader's injected state,
+// which did not reach this component.
+const catPlaying = ref(false)
+let loaderWatcher = null
+
+const loaderGone = () => !document.getElementById('foxy-loader')
+
+onMounted(() => {
+    if (loaderGone()) {
+        catPlaying.value = true
+        return
+    }
+    loaderWatcher = new MutationObserver(() => {
+        if (!loaderGone()) return
+        catPlaying.value = true
+        loaderWatcher.disconnect()
+        loaderWatcher = null
+    })
+    loaderWatcher.observe(document.body, { childList: true, subtree: true })
+})
+
+onUnmounted(() => loaderWatcher?.disconnect())
 
 const toggleIntro = () => {
     introOpen.value = !introOpen.value
@@ -175,7 +202,12 @@ const toggleIntro = () => {
     height: 84px;
     // Pivot at the feet so the head tilts rather than the whole body sliding.
     transform-origin: 50% 100%;
-    animation: spark-cat-peek 3s ease-in-out 0.6s forwards;
+    // Parked off-screen until the loader hands over, so the entrance is seen.
+    transform: translateX(-300%);
+
+    &.is-playing {
+        animation: spark-cat-peek 3s ease-in-out 0.5s forwards;
+    }
 
     @include media-breakpoint-down(md) {
         width: 62px;
