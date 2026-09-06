@@ -17,8 +17,8 @@
             There is nothing wrong with this flow in itself, but it has three limitations that are hard to avoid.
         </p>
         <ul>
-            <li><strong>Computation cost is tied to peak load</strong>: line evaluation, Wild expansion, free-game recursion — these computations
-                are cheap for a single round, but multiplied by the request volume at peak hours they become a noticeable overhead.
+            <li><strong>Computation cost is tied to peak load</strong>: line evaluation, Wild expansion and free-game recursion are cheap
+                for a single round, but multiplied by the request volume at peak hours they become a noticeable overhead.
                 Pre-generation shifts these costs once and for all into an offline stage, leaving only lookup and decoding online.</li>
             <li><strong>Short-term RTP cannot be controlled</strong>: the RTP of real-time sampling only converges over very large samples,
                 and any finite sample window may deviate substantially. A pre-generated result pool, on the other hand, can have the whole pool's
@@ -46,11 +46,11 @@
         <p>
             The point of layering is to <strong>separate "which group to choose" from "which record to choose"</strong>.
             The top level decides the mathematical characteristics (how high an expected value, what shape of volatility),
-            while the bottom level decides the concrete board. This split means RTP adjustment never has to touch any single-round data —
-            swapping one index is enough — and it also lets the same batch of underlying records be shared by several different RTP versions.
+            while the bottom level decides the concrete board. This split means RTP adjustment never has to touch any single-round data
+            (swapping one index is enough), and it also lets the same batch of underlying records be shared by several different RTP versions.
         </p>
 
-        <h3>Result Set — A Single Result Set</h3>
+        <h3>Result Set: A Single Result Set</h3>
         <p>
             Each result set contains the following core attributes:
         </p>
@@ -65,7 +65,7 @@
             This design solves a very practical problem: if the whole pool of records were mixed together and drawn uniformly,
             the pool's RTP would be fixed, and changing it would mean regenerating the entire pool of data.
             But once records are split into two groups by payout, adjusting the weights between the groups allows the expected value to be
-            <strong>continuously tuned</strong> within a certain range —
+            <strong>continuously tuned</strong> within a certain range:
             raise the weight of the high-multiple group and overall RTP rises with it, without rerunning the underlying data at all.
             That amounts to buying an entire span of RTP coverage with a single one-dimensional parameter.
         </p>
@@ -110,7 +110,7 @@
             The filtering stage only needs to know the multiple; if the entire record had to be decoded before the multiple could be judged,
             you would be paying the cost of a full decode for one number. Placing it at a fixed offset at the head
             reduces filtering to a single pointer offset read. Using a numerator and denominator rather than a floating-point number
-            is there to guarantee that <strong>payout comparison and summation carry no precision error whatsoever</strong> —
+            is there to guarantee that <strong>payout comparison and summation carry no precision error whatsoever</strong>.
             RTP is a number that goes to audit, and it cannot tolerate accumulated floating-point error.
         </p>
         <p>
@@ -131,7 +131,7 @@
             When the system needs to draw a result from the result set, it goes through the following multi-stage picking pipeline:
         </p>
 
-        <h3>Step 1 — RTP Anchor Selection</h3>
+        <h3>Step 1: RTP Anchor Selection</h3>
         <p>
             Based on the target RTP value, locate the nearest <strong>RTP anchor</strong>.
             The system supports up to 3 anchors, and when the target RTP falls between two anchors,
@@ -151,19 +151,19 @@
             so the mathematical properties are cleaner and easier to explain to outside parties.
         </p>
 
-        <h3>Step 2 — Weighted Selection of a Result Group</h3>
+        <h3>Step 2: Weighted Selection of a Result Group</h3>
         <p>
             Under the selected anchor, one of several candidate result groups is chosen by weighted random draw.
             Each group carries a weight value that determines its probability of being chosen.
         </p>
 
-        <h3>Step 3 — Weighted Selection Among Subgroups</h3>
+        <h3>Step 3: Weighted Selection Among Subgroups</h3>
         <p>
             Within the selected result group, a further weighted selection is made between 2 subgroups.
             The split is usually made by payout range, for example a "low-multiple result group" and a "high-multiple result group".
         </p>
 
-        <h3>Step 4 — Uniform Record Draw</h3>
+        <h3>Step 4: Uniform Record Draw</h3>
         <p>
             Within the selected subgroup, one result record is drawn at random with a uniform distribution,
             then decoded back into the game's seed structure for the game engine to replay.
@@ -180,7 +180,7 @@
             The common approach is to pre-build a <strong>cumulative weight array</strong> for each layer and locate the draw with a binary search,
             making the cost of a single layer logarithmic; the bottom layer, being a uniform draw, can be addressed directly by offset.
             Because records are encoded with fixed length or with segment lengths up front, the position of the k-th record can be computed directly
-            without scanning record by record — a concrete example of the encoding format and the indexing strategy working together.
+            without scanning record by record, a concrete example of the encoding format and the indexing strategy working together.
         </p>
 
         <h2>The Deterministic Replay Mechanism</h2>
@@ -237,7 +237,7 @@
             The result set architecture offers another path: the underlying records are generated only once,
             and different RTP versions are simply <strong>different indexes and weight configurations over the same batch of records</strong>.
             Because each record's payout is already stored up front at encoding time,
-            assembling a version with a target RTP is essentially a constrained weight-configuration problem —
+            assembling a version with a target RTP is essentially a constrained weight-configuration problem:
             choosing, subject to the expected value equaling the target, a set of weights whose volatility characteristics come closest to the design intent.
         </p>
         <p>
@@ -254,7 +254,7 @@
         </p>
         <p>
             This point deserves to be stated more precisely: <strong>the statistical properties of a single result pool are identical to those of the original model</strong>,
-            and this is guaranteed by the generation process — records are sampled from the natural probability model according to its native distribution,
+            and this is guaranteed by the generation process: records are sampled from the natural probability model according to its native distribution,
             so when the pool is large enough, the payout distribution inside the pool is a high-fidelity sample of the original model's distribution.
         </p>
         <p>
@@ -265,9 +265,9 @@
         </p>
         <p>
             To preserve this equivalence, two disciplines must be upheld at the generation stage:
-            first, <strong>the sampling must be unbiased</strong> — the records must faithfully reflect the original model's distribution,
+            first, <strong>the sampling must be unbiased</strong>: the records must faithfully reflect the original model's distribution,
             and extreme outcomes must not be filtered out to make the pool "look nicer", as that would directly destroy the tail characteristics;
-            second, <strong>the sample size must be sufficient</strong> — the pool size should be derived backwards from the target precision,
+            second, <strong>the sample size must be sufficient</strong>: the pool size should be derived backwards from the target precision,
             and for high-volatility games the required sample size is proportional to the square of the standard deviation, often far beyond intuitive estimates.
             Uphold these two, and the result set genuinely remains nothing more than a <strong>storage and distribution form</strong> of natural probability,
             rather than a separate mathematical model of its own.

@@ -6,7 +6,7 @@
             Players do not listen to them deliberately, but remove any one link and the experience immediately feels hollow.
         </p>
         <ul>
-            <li><strong>Start sound</strong>: the sound at the instant the spin button is pressed — forceful and brief, giving clear confirmation of the input</li>
+            <li><strong>Start sound</strong>: a forceful, brief sound at the instant the spin button is pressed, giving clear confirmation of the input</li>
             <li><strong>Reel spin sound</strong>: a continuous loop simulating the reels turning at high speed</li>
             <li><strong>Reel stop sound</strong>: the sound of each reel coming to rest in turn, which should carry a <strong>left-to-right sense of sequence</strong>, each hit slightly different, delivering the satisfaction of audio-visual sync</li>
         </ul>
@@ -27,7 +27,7 @@
             <li><strong>Top-tier win</strong>: may include a distinctive melody, vocal cheers and layered effect sounds, running 15 to 30 seconds alongside a full-screen animation</li>
         </ul>
         <p>
-            Each tier should escalate clearly along three dimensions — <strong>energy, complexity and duration</strong> —
+            Each tier should escalate clearly along three dimensions (<strong>energy, complexity and duration</strong>)
             so that players can sense "how much I just won" from the sound alone.
         </p>
 
@@ -41,7 +41,7 @@
         <p>
             Another common problem is <strong>insufficient contrast between tiers</strong>.
             If two adjacent tiers are merely "a bit louder," players cannot tell them apart and the tiering is effectively meaningless.
-            The recommendation is at least a two-fold difference in duration per tier, plus a new instrument family introduced in the arrangement —
+            The recommendation is at least a two-fold difference in duration per tier, plus a new instrument family introduced in the arrangement:
             strings at medium win, brass and percussion stacked on for big win, vocals held back until the top tier, using new timbres to mark each step up.
         </p>
 
@@ -52,7 +52,7 @@
             the correct approach is to have the scoring notes <strong>ascend step by step along a scale</strong>, forming a rising melodic line.
         </p>
         <p>
-            The choice of scale directly affects how it sounds. The <strong>pentatonic scale</strong> is the safest choice —
+            The choice of scale directly affects how it sounds. The <strong>pentatonic scale</strong> is the safest choice:
             it contains no semitones, so any two notes stacked together are inoffensive, and even when scoring notes overlap because settlement runs too fast, they still sound consonant.
             The ascending steps also need a ceiling: typically the pitch stops rising or wraps back to the start after eight to twelve steps,
             avoiding a climb into a shrill frequency band on high payline counts.
@@ -68,7 +68,7 @@
         <p>
             <strong>Anticipation</strong> is one of the most refined elements in slot sound design.
             When the earlier reels already show trigger potential, the last reel deliberately slows down,
-            accompanied by <strong>progressively rising tension sound</strong> — a continuously ascending string or synth timbre
+            accompanied by <strong>progressively rising tension sound</strong>, a continuously ascending string or synth timbre
             whose pitch and level climb over time, pushing anticipation to its peak.
             This cue must be built as a structure that is <strong>loopable and interruptible at any moment</strong>:
             the first section is a one-bar tension layer that can repeat, matching a deceleration animation of variable length;
@@ -82,7 +82,7 @@
             The audio manager adjusts playback behavior in real time based on game state:
         </p>
         <ul>
-            <li><strong>Consecutive win escalation</strong>: in cascade mechanics, each successive win sound is more rousing than the last — higher in pitch, faster in rhythm, richer in layers, conveying "a run of good luck" through sound</li>
+            <li><strong>Consecutive win escalation</strong>: in cascade mechanics, each successive win sound is more rousing than the last: higher in pitch, faster in rhythm, richer in layers, conveying "a run of good luck" through sound</li>
             <li><strong>Multiplier sound mapping</strong>: every step up in the multiplier maps to sound feedback at a higher energy tier, so the growing number is reinforced by what the player hears</li>
         </ul>
 
@@ -97,7 +97,7 @@
             When voices run out, a clear set of <strong>stealing rules</strong> is needed:
             drop the lowest priority first; at equal priority, drop whichever has played longest and decayed most;
             if the same sound is re-triggered within a very short window, reuse its existing voice and restart playback.
-            Every sound should have its priority noted in the requirements spec — big win celebrations and feature trigger sounds may never be stolen.
+            Every sound should have its priority noted in the requirements spec. Big win celebrations and feature trigger sounds may never be stolen.
         </p>
 
         <h3>Ducking and Spatial Positioning</h3>
@@ -110,7 +110,7 @@
         </p>
         <p>
             In environments that support stereo output, good use of <strong>panning</strong> can strengthen the sense of space.
-            The classic application is spreading the reel stop sounds left to right — the first reel toward the left, the last toward the right,
+            The classic application is spreading the reel stop sounds left to right: the first reel toward the left, the last toward the right,
             the rest distributed in order, creating a sense of spatial movement that matches the visuals.
             But the pan width should not be too wide: most players use a phone's built-in speaker,
             and excessive separation on a single sound source actually causes an imbalance in level.
@@ -122,8 +122,8 @@
         </p>
         <ul>
             <li><strong>Asset rotation</strong>: prepare three to five subtly different variants of high-frequency sounds and rotate through them, avoiding the exact same waveform twice in a row</li>
-            <li><strong>Parameter randomization</strong>: apply a plus or minus 3% to 5% pitch offset and a plus or minus 2 dB level variation on each playback — extremely cheap, and remarkably effective</li>
-            <li><strong>Spectral space</strong>: have each sound category occupy its own frequency band — reel sounds toward the low-mids, scoring notes toward the high-mids, and only celebration sounds using the full spectrum — so they do not mask one another</li>
+            <li><strong>Parameter randomization</strong>: apply a plus or minus 3% to 5% pitch offset and a plus or minus 2 dB level variation on each playback, which is extremely cheap and remarkably effective</li>
+            <li><strong>Spectral space</strong>: have each sound category occupy its own frequency band, with reel sounds toward the low-mids, scoring notes toward the high-mids, and only celebration sounds using the full spectrum, so they do not mask one another</li>
             <li><strong>Deliberate silence</strong>: not every action needs a sound; measured restraint makes the sounds that follow hit harder</li>
         </ul>
         <p>

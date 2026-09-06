@@ -17,7 +17,7 @@
         <h3>Why Functional Testing Alone Cannot Define Quality</h3>
         <p>
             Acceptance criteria for ordinary software are usually <strong>deterministic</strong>: given an input, the output must equal the expected value.
-            Slots are not like that. A game whose mathematical model is entirely wrong can still sail through every functional test —
+            Slots are not like that. A game whose mathematical model is entirely wrong can still sail through every functional test:
             buttons respond, animations play, settlement does not crash, and nothing on screen looks out of place.
             The defect exists only as a deviation of the long-run average from the designed value,
             and at an observation scale of tens of thousands of rounds that deviation can be completely masked by random fluctuation.
@@ -39,11 +39,11 @@
         <h3>RTP Convergence Testing</h3>
         <p>
             <strong>RTP (Return to Player)</strong> is the single most important mathematical metric of a slot game.
-            For a game configured at 96.5% RTP, for example, every 100 units wagered should in theory return 96.5 units over the long run. RTP is verified through <strong>large-scale simulation testing</strong> —
+            For a game configured at 96.5% RTP, for example, every 100 units wagered should in theory return 96.5 units over the long run. RTP is verified through <strong>large-scale simulation testing</strong>:
             typically several million to several tens of millions of simulated spins, after which the measured RTP is checked for convergence to the target value.
         </p>
         <p>
-            Simulation is not a matter of running the batch and reading off a single number; the team needs to observe the <strong>convergence curve</strong> of the RTP —
+            Simulation is not a matter of running the batch and reading off a single number; the team needs to observe the <strong>convergence curve</strong> of the RTP:
             across different sample sizes (100k, 500k, 1M, 5M spins),
             the RTP should progressively converge and settle within a statistically acceptable band around the target.
             Abnormally slow convergence or irregular oscillation usually signals a problem in the mathematical model.
@@ -53,7 +53,7 @@
         <p>
             "Is a million rounds enough?" is the question most often asked during mathematical verification,
             and the correct answer is: <strong>it depends on the volatility of the game</strong>.
-            The error of a Monte Carlo simulation is roughly inversely proportional to the square root of the sample size —
+            The error of a Monte Carlo simulation is roughly inversely proportional to the square root of the sample size:
             to halve the error, the sample size must be quadrupled.
         </p>
         <p>
@@ -76,7 +76,7 @@
         </p>
         <p>
             Two misreadings are common. First, <strong>a result inside the interval does not prove the model correct</strong>;
-            it only means the available evidence is insufficient to reject it. The width of the interval is itself a quality metric —
+            it only means the available evidence is insufficient to reject it. The width of the interval is itself a quality metric:
             a report quoting a margin of error of ±1.5% is statistically almost incapable of distinguishing a 95% model from a 98% one.
         </p>
         <p>
@@ -90,8 +90,8 @@
             Beyond the overall RTP, the <strong>hit frequency of each symbol combination</strong> also needs to be verified independently.
             The probability table (PAR sheet) defines the theoretical probability of every winning combination, and the simulation results must match it.
             Testing applies a <strong>chi-squared test</strong> to the occurrence count of each combination,
-            confirming there is no statistically significant difference between the observed and theoretical distributions —
-            a model with a correct total RTP may still contain two internal errors that cancel each other out.
+            confirming there is no statistically significant difference between the observed and theoretical distributions.
+            A model with a correct total RTP may still contain two internal errors that cancel each other out.
         </p>
 
         <h3>Volatility Verification</h3>
@@ -99,12 +99,12 @@
             <strong>Volatility (variance)</strong> describes how dispersed the prize distribution is.
             High volatility means a lower hit frequency but potentially very large individual wins;
             low volatility means frequent small wins. Testing must verify whether the game's actual volatility
-            matches the design intent — usually by computing the <strong>standard deviation</strong> and analyzing a histogram of the prize distribution.
+            matches the design intent, usually by computing the <strong>standard deviation</strong> and analyzing a histogram of the prize distribution.
         </p>
         <p>
             A single standard deviation is not enough to characterize the full shape of the distribution.
-            A more complete approach is to examine the <strong>quantiles of the return distribution</strong> —
-            where the median outcome sits, and how long the longest run of consecutive non-winning rounds is —
+            A more complete approach is to examine the <strong>quantiles of the return distribution</strong>
+            (where the median outcome sits, and how long the longest run of consecutive non-winning rounds is),
             since these metrics better reflect the actual play session.
         </p>
 
@@ -142,8 +142,8 @@
             it should fully disclose the sample size, the confidence interval, the RTP contribution breakdown per feature module, and the statistical test criteria.
         </p>
         <p>
-            Mathematical verification confirms theoretical correctness, but a correct model still needs a correct implementation and a good experience to carry it —
-            state-machine coverage and player-feel evaluation, as well as automated testing and third-party compliance certification,
+            Mathematical verification confirms theoretical correctness, but a correct model still needs a correct implementation and a good experience to carry it.
+            State-machine coverage and player-feel evaluation, as well as automated testing and third-party compliance certification,
             are discussed in the other two articles of this series.
         </p>
     </div>

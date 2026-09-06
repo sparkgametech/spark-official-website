@@ -51,7 +51,7 @@
             any adjustment to the feel may accidentally alter the expected value, and any numerical adjustment affects the feel,
             with the two requirements checking each other until neither can be moved.
             Once split, the first stage is responsible only for expected value, while the second stage promises <strong>to change only the shape of the distribution and never the expected value</strong>.
-            Responsibility boundaries are clear, and their verification methods are completely different too —
+            Responsibility boundaries are clear, and their verification methods are completely different too:
             the former verifies convergence, the latter verifies variance and tail characteristics.
         </p>
 
@@ -78,8 +78,8 @@
             The correctness of the interpolation follows directly from the linearity of expected value:
             if a table with RTP R₁ is chosen with probability p and a table with RTP R₂ with probability 1−p,
             then the overall expected return is p·R₁ + (1−p)·R₂. Substituting p from the formula above yields exactly the target RTP.
-            This shows that interpolation is not an approximation technique but a <strong>strictly holding identity</strong> —
-            as long as each table's own RTP is accurate, the interpolated target value carries no systematic bias.
+            This shows that interpolation is not an approximation technique but a <strong>strictly holding identity</strong>.
+            As long as each table's own RTP is accurate, the interpolated target value carries no systematic bias.
         </p>
         <p>
             What must be kept in mind is that interpolation only guarantees the expected value, <strong>not the variance</strong>.
@@ -163,7 +163,7 @@
             What this flow aims to achieve is a constrained optimization:
             compress the distribution's standard deviation to within the target under the hard constraint that <strong>the expected value must remain unchanged</strong>.
             Since the expected value is the inner product of probabilities and payouts, the RTP trimmed from the tail must be added back to other bands intact,
-            or the overall expected value shifts — this is the step most prone to implementation error, and the one that most requires automated verification to guard it.
+            or the overall expected value shifts. This is the step most prone to implementation error, and the one that most requires automated verification to guard it.
         </p>
         <p>
             Why trim "starting from the high-multiple tail"? Because payout appears as a <strong>squared term</strong> in the variance computation,
@@ -187,7 +187,7 @@
             <li><strong>Verification cost</strong>: the required simulation sample size is proportional to the square of the standard deviation.
                 For an uncapped long-tail distribution, reaching the same RTP verification precision may require a sample size an order of magnitude larger or more.</li>
             <li><strong>Numeric range safety</strong>: if the payout multiple times the bet amount has no upper bound,
-                extreme combinations may reach the limits of the integer type — a risk that must be excluded by design.</li>
+                extreme combinations may reach the limits of the integer type, a risk that must be excluded by design.</li>
             <li><strong>Consistency of feel</strong>: without a cap, the difference in feel between different bet amounts within the same game is amplified,
                 and the distribution a high-stakes player encounters is no longer substantively the same as that of a low-stakes player.</li>
         </ul>
@@ -202,7 +202,7 @@
         <p>
             The two-layer weighted draw design decouples the "payout tier" from the "concrete presentation".
             The upper layer decides how much this round pays, a numerical question; the lower layer decides which board presents that payout, a presentation question.
-            Under the same payout tier there are often dozens of different board combinations —
+            Under the same payout tier there are often dozens of different board combinations:
             some may be line wins, some may come from free games, and some may be the result of a special feature.
             They are numerically equivalent but visually quite different. The weights at this layer can therefore be configured purely by presentation rhythm,
             with no need to worry about affecting RTP at all.
@@ -246,7 +246,7 @@
             It has passed full mathematical verification, depends on no external state, and requires no configuration.
             So when the regulation layer cannot function properly, the best handling is not to abort the flow but to fall back to this known-correct baseline.
             By comparison, choosing to fail the request would make the game outright unplayable;
-            choosing to reuse the previous computation result would introduce unpredictable statistical bias — both are worse than degradation.
+            choosing to reuse the previous computation result would introduce unpredictable statistical bias. Both are worse than degradation.
         </p>
         <p>
             The situations that trigger degradation fall broadly into three categories:

@@ -14,7 +14,7 @@
             The client and the server establish a persistent connection over WebSocket and periodically exchange <strong>heartbeat packets</strong> to detect whether the connection is healthy;
             if no response arrives within the timeout window, the connection is judged to be down and the reconnection procedure starts.
             Choosing the interval is a trade-off: too long and it takes several seconds to notice a disconnect, too short and it burns unnecessary battery on mobile networks.
-            We make the heartbeat mutually exclusive with actual traffic — if normal packets have already gone back and forth within the interval, that heartbeat is skipped.
+            We make the heartbeat mutually exclusive with actual traffic. If normal packets have already gone back and forth within the interval, that heartbeat is skipped.
         </p>
         <h3>The Communication Flow of One Spin</h3>
         <MermaidDiagram id="comm-flow" :chart="commFlowChart"/>
@@ -27,28 +27,27 @@
             <li><strong>Out-of-order arrival</strong>: in extreme cases a packet sent later may arrive first, so a sequence-number mechanism is needed to guarantee processing order</li>
         </ul>
         <p>
-            These three situations share one design principle: <strong>make every critical operation idempotent</strong> —
-            no matter how many times the same request is sent or how many times a response is received, the result finally presented to the player must be identical.
+            These three situations share one design principle: <strong>make every critical operation idempotent</strong>.
+            No matter how many times the same request is sent or how many times a response is received, the result finally presented to the player must be identical.
             Designing idempotency into the protocol layer is far more reliable than defending against it separately at every call site.
         </p>
         <h3>Reconnection Strategy</h3>
         <p>
-            Disconnects are extremely common on mobile networks — switching cell towers, stepping into an elevator, a momentary network drop.
+            Disconnects are extremely common on mobile networks: switching cell towers, stepping into an elevator, a momentary network drop.
             A good reconnection strategy has to restore game state <strong>imperceptibly</strong>. The core mechanisms are:
         </p>
         <ul>
-            <li><strong>Round number comparison</strong>: the client records the last completed round number and sends it on reconnect. The server compares and returns the delta — if there is a result that was settled but never received by the client, it is pushed along with it</li>
+            <li><strong>Round number comparison</strong>: the client records the last completed round number and sends it on reconnect. The server compares and returns the delta; if there is a result that was settled but never received by the client, it is pushed along with it</li>
             <li><strong>State snapshot recovery</strong>: the server returns a complete state snapshot of the current game (including remaining free game rounds not yet settled, progressive jackpot progress and so on), from which the client restores the scene to how it was before the disconnect</li>
             <li><strong>Exponential backoff on reconnect</strong>: reconnection attempts use an exponential backoff strategy (1s, 2s, 4s, 8s...) to avoid a load spike from a large number of clients reconnecting at the same time</li>
         </ul>
         <p>
             The hard part of recovery is actually not the data but the <strong>presentation</strong>: pasting the final screen straight up is jarring,
-            while replaying the whole thing feels long-winded to a player who already knows the result. We decide the strategy based on which stage the disconnect happened in —
-            a disconnect before the presentation stage gets a full replay, a disconnect after it fast-forwards to the final state.
+            while replaying the whole thing feels long-winded to a player who already knows the result. We decide the strategy based on which stage the disconnect happened in: a disconnect before the presentation stage gets a full replay, a disconnect after it fast-forwards to the final state.
         </p>
         <h3>Numeric Precision</h3>
         <p>
-            All values on the client use <strong>integer arithmetic</strong> — taking the smallest unit as the base tick to avoid accumulated floating-point error,
+            All values on the client use <strong>integer arithmetic</strong>, taking the smallest unit as the base tick to avoid accumulated floating-point error,
             and converting to a decimal-point format only at display time. This principle has to be carried through every intermediate step, including the interpolation of number-rolling animations.
         </p>
 
@@ -59,13 +58,13 @@
             Asset loading uses a <strong>staged, progressive</strong> strategy:
         </p>
         <ul>
-            <li><strong>Loading screen stage</strong>: load only the minimal set — the progress bar UI, the brand logo — so something appears on screen as soon as possible</li>
-            <li><strong>Main game stage</strong>: load the assets the main scene requires — reel symbols, backgrounds, basic audio, UI elements. Once this stage completes the player can start playing</li>
-            <li><strong>Deferred loading stage</strong>: silently load the assets of special features in the background — big-win animations, free game scenes, special audio — which only need to be ready before the first time they are triggered</li>
+            <li><strong>Loading screen stage</strong>: load only the minimal set (the progress bar UI, the brand logo) so something appears on screen as soon as possible</li>
+            <li><strong>Main game stage</strong>: load the assets the main scene requires (reel symbols, backgrounds, basic audio, UI elements). Once this stage completes the player can start playing</li>
+            <li><strong>Deferred loading stage</strong>: silently load the assets of special features in the background (big-win animations, free game scenes, special audio), which only need to be ready before the first time they are triggered</li>
         </ul>
         <p>
             Deferred loading needs a safety net: if a special feature is triggered while its assets are not yet ready, the flow must not break;
-            instead an extendable transition sequence is inserted to buy time — which is also why scene transition animations are usually designed to loop seamlessly.
+            instead an extendable transition sequence is inserted to buy time, which is also why scene transition animations are usually designed to loop seamlessly.
         </p>
         <h3>Flow Switching and Asset Switching</h3>
         <p>
@@ -74,8 +73,7 @@
         <MermaidDiagram id="multi-flow" :chart="multiFlowChart"/>
         <p>
             Every flow switch is simultaneously an asset switch: entering free games means loading dedicated backgrounds and symbol variants,
-            and exiting means deciding what to release and what to keep in cache. The criterion is trigger frequency —
-            assets of high-frequency flows stay in memory, while assets of low-frequency special features are released on exit.
+            and exiting means deciding what to release and what to keep in cache. The criterion is trigger frequency: assets of high-frequency flows stay in memory, while assets of low-frequency special features are released on exit.
         </p>
         <h3>Three-Layer Asset Override</h3>
         <p>
@@ -90,7 +88,7 @@
         <ul>
             <li><strong>Translation tables</strong>: all displayed text is managed through key-value tables with support for parameter interpolation, and the matching translation file is loaded per locale at initialization</li>
             <li><strong>Locale-specific assets</strong>: some visual elements cannot be handled by text substitution alone (images containing text, decorations in a culture-specific style), so separate versions have to be prepared for particular locales</li>
-            <li><strong>Right-to-left layout (RTL)</strong>: locales such as Arabic and Hebrew require mirroring the entire interface layout — not just text direction, but potentially button positions and progress bar direction as well</li>
+            <li><strong>Right-to-left layout (RTL)</strong>: locales such as Arabic and Hebrew require mirroring the entire interface layout, not just text direction but potentially button positions and progress bar direction as well</li>
             <li><strong>Fallback mechanism</strong>: when a translation key does not exist in the target locale, it falls back in order to the regional default language and then to English, ensuring the raw key value is never displayed</li>
             <li><strong>Layout flexibility</strong>: the same sentence can differ in length by more than a factor of two across languages, so buttons and labels have to be able to scale font size or wrap automatically</li>
         </ul>
@@ -108,17 +106,17 @@
             The audio system is deeply integrated with the game state machine, ensuring precise synchronization between sound and picture:
         </p>
         <ul>
-            <li><strong>Reel sounds</strong>: the sustained low-frequency sound during the spin, the impact sound as each column stops, the suspense sound during anticipation — all triggered by the state machine's stage transition events</li>
-            <li><strong>Win feedback</strong>: a small win plays a short coin sound, and the larger the value the grander the audio — escalating from a cheerful chime to a full celebratory piece</li>
+            <li><strong>Reel sounds</strong>: the sustained low-frequency sound during the spin, the impact sound as each column stops, the suspense sound during anticipation, all triggered by the state machine's stage transition events</li>
+            <li><strong>Win feedback</strong>: a small win plays a short coin sound, and the larger the value the grander the audio, escalating from a cheerful chime to a full celebratory piece</li>
             <li><strong>Scene transition score</strong>: when going from the main game into free games, the background music needs to transition naturally rather than cut abruptly</li>
         </ul>
         <p>
             There is a practical detail in aligning the reel stop sound: the sound should align with <strong>the instant the reel makes contact with the target position</strong>,
-            not with the end of the whole animation — the overshoot and rebound happen after contact, so playing it late puts it half a beat behind.
+            not with the end of the whole animation. The overshoot and rebound happen after contact, so playing it late puts it half a beat behind.
         </p>
         <h3>Crossfading and Preventing Stacking</h3>
         <p>
-            On a scene transition, the audio system performs a <strong>crossfade</strong> — the current scene's background music fades down over a configured duration
+            On a scene transition, the audio system performs a <strong>crossfade</strong>: the current scene's background music fades down over a configured duration
             while the new scene's music fades up, with the crossfade curves independently configurable to keep the transition natural.
         </p>
         <p>
@@ -154,14 +152,14 @@
         </ul>
         <p>
             This mechanism keeps the interface orderly and predictable in every situation.
-            Even in the extreme case — a disconnect while the big-win celebration animation is playing — the communication layer's error message passes through to the topmost layer,
+            Even in the extreme case of a disconnect while the big-win celebration animation is playing, the communication layer's error message passes through to the topmost layer,
             while the celebration animation is frozen rather than aborted, resuming from the frozen point once the player acknowledges. The cooperation of the three supporting systems at that moment
             is exactly where the whole architecture really gets validated.
         </p>
 
         <p>
             The reason these supporting systems can cooperate without becoming tangled is that a clear layered architecture and state machine definition exist underneath them;
-            and the visual subject they serve — the reels' animation curves and stop rhythm — has its own independent design methodology.
+            and the visual subject they serve, the reels' animation curves and stop rhythm, has its own independent design methodology.
             We cover those two topics in the other two articles of this series.
         </p>
 

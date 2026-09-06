@@ -69,7 +69,7 @@
         </p>
         <ul>
             <li><strong>Distribution of high-pay symbols across reels</strong>: concentrating high-pay symbols in the first three reels makes it easier for the player
-                to see a "one away from the big win" board — anticipation is strong but the near-miss rate is high; an even distribution feels smoother
+                to see a "one away from the big win" board. Anticipation is strong but the near-miss rate is high; an even distribution feels smoother
                 but has less dramatic tension.</li>
             <li><strong>Wild placement</strong>: Wilds are usually placed only on the middle reels. A Wild's marginal contribution to RTP is non-linear;
                 adding one more Wild may raise the probability of dozens of combinations at once, so when fine-tuning you must recompute each one rather than extrapolate linearly.</li>
@@ -125,7 +125,7 @@
         <p>
             Take a 3-row, 5-reel layout: if a symbol appears twice on every reel, a single win means 2×2×2 = 8 paths paying at once.
             This means that at the same RTP, a Ways-type game usually needs to <strong>lower the overall symbol weights</strong> to offset the expected-value inflation the multiplication brings.
-            The result is fewer hits and larger single amounts — in other words, volatility is naturally higher.
+            The result is fewer hits and larger single amounts; in other words, volatility is naturally higher.
             This also explains why most Ways-type machines pair with a higher free-game share:
             the base reels feel emptier to the player, so a clear goal is needed to maintain the rhythm.
         </p>
@@ -150,7 +150,7 @@
         <p>
             This figure reveals an important fact: <strong>the contribution of a single big-win combination to total RTP is usually small enough to ignore</strong>.
             What really carries RTP are the mid-to-low tier combinations whose probability sits between one in a thousand and one in a hundred and whose payouts are only a few times to a few dozen times the bet.
-            This is also why adjusting the big-win payout has almost no effect on RTP yet significantly changes volatility —
+            This is also why adjusting the big-win payout has almost no effect on RTP yet significantly changes volatility:
             it moves the tail of the distribution, not its center of mass.
         </p>
         <p>
@@ -198,7 +198,7 @@
             Another practical metric is the <strong>volatility index</strong>, obtained by multiplying the single-payout standard deviation by a confidence coefficient,
             used to estimate the interval within which a player's realized RTP will fall after N rounds. By the central limit theorem, the standard deviation of the mean over N rounds is SD ÷ √N,
             from which it follows that: the higher the volatility, the more rounds are required before a player can "feel" the theoretical RTP.
-            This inference directly explains a characteristic of high-volatility machines — short-term feel can diverge enormously from the theoretical value, and that is part of the design intent.
+            This inference directly explains a characteristic of high-volatility machines: short-term feel can diverge enormously from the theoretical value, and that is part of the design intent.
         </p>
 
         <h2>Hit Rate and Win Frequency</h2>
@@ -213,7 +213,7 @@
         <h3>Nominal Wins Versus Real Wins</h3>
         <p>
             Looking at Hit Rate alone actually leads to misjudging the player's feel. On a multi-line machine a single bet covers many lines,
-            so it is common to "hit one line but be paid less than the total bet" — the screen shows a win animation and sound effect,
+            so it is common to "hit one line but be paid less than the total bet". The screen shows a win animation and sound effect,
             yet the settlement is still a net loss. The industry calls this a <strong>loss disguised as a win</strong>.
         </p>
         <p>
@@ -254,7 +254,7 @@
         <p>
             Plugging in SD = 10, a required error of ±0.1% (ε = 0.001) and a 95% confidence level (z ≈ 1.96),
             you get N ≈ 380 million. For a high-volatility machine with SD = 25, the sample size required for the same precision balloons to about 2.4 billion.
-            This is exactly why verifying a high-volatility machine costs far more than verifying a low-volatility one —
+            This is exactly why verifying a high-volatility machine costs far more than verifying a low-volatility one:
             <strong>the required sample size is proportional to the square of the standard deviation</strong>.
         </p>
         <h3>Not Just the Mean, but the Distribution</h3>
@@ -274,8 +274,8 @@
         <p>
             The two verification paths must be cross-checked: one is <strong>analytical computation</strong> (exhaustive enumeration or closed-form formulas),
             the other is <strong>random simulation</strong>. Only when the two agree within the margin of error can verification be considered genuinely passed.
-            If they do not agree, the probability math is usually not what is wrong; more often the simulation program and the theoretical model interpret the rules differently —
-            and such gaps tend to hide in boundary rules like Wild substitution, retriggers, and line-value selection, which are precisely the most error-prone spots.
+            If they do not agree, the probability math is usually not what is wrong; more often the simulation program and the theoretical model interpret the rules differently.
+            Such gaps tend to hide in boundary rules like Wild substitution, retriggers, and line-value selection, which are precisely the most error-prone spots.
         </p>
         <p>
             Simulation verification is the last line of defense for the correctness of a natural probability design; any adjustment to the mathematical model must go through a full simulation test.

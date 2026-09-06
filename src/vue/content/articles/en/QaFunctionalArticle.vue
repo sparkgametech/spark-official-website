@@ -23,7 +23,7 @@
             The value of drawing the state machine explicitly is that it turns <strong>coverage into a quantifiable metric</strong>.
             Coverage comes in levels: entering every state is only the minimum bar,
             traversing every legal transition edge is the basic threshold;
-            and the place bugs hide most readily is in <strong>combinations of consecutive transitions</strong> —
+            and the place bugs hide most readily is in <strong>combinations of consecutive transitions</strong>:
             two features that each test correctly in isolation can still fail when triggered back to back because of residual state.
             Beyond that, you must actively attempt <strong>transitions that should not happen</strong>,
             confirming that the system explicitly rejects them rather than entering an undefined state.
@@ -35,7 +35,7 @@
         </p>
         <ul>
             <li><strong>Maximum stake + maximum win</strong>: verifying that the highest possible prize does not exceed the system's numeric range (integer overflow risk)</li>
-            <li><strong>Zero balance</strong>: confirming correct behavior when the balance is insufficient — a spin cannot be started and the message is clear</li>
+            <li><strong>Zero balance</strong>: confirming correct behavior when the balance is insufficient: a spin cannot be started and the message is clear</li>
             <li><strong>Balance exactly equal to the stake</strong>: whether the deduction and prize settlement of the final spin are correct</li>
             <li><strong>Cross-time-zone operation</strong>: whether the timestamps in the game record are correct when server time and client time disagree</li>
         </ul>
@@ -124,8 +124,8 @@
 
         <h3>Animation Timing and Satisfaction</h3>
         <p>
-            The duration of the spin animation, the speed at which the win counter ticks up, the length of the celebration screen —
-            these fine-grained parameters all significantly affect satisfaction. Player-feel testing pays particular attention to the rhythm of the reels stopping,
+            The duration of the spin animation, the speed at which the win counter ticks up and the length of the celebration screen
+            are fine-grained parameters that all significantly affect satisfaction. Player-feel testing pays particular attention to the rhythm of the reels stopping,
             whether the duration of the big-win animation is right (too short and it does not feel important, too long and it becomes tiresome),
             and overall audiovisual synchronization.
         </p>
@@ -142,7 +142,7 @@
 
         <h3>Competitive Comparison Analysis</h3>
         <p>
-            Player-feel testing usually includes a <strong>competitive comparison segment</strong> —
+            Player-feel testing usually includes a <strong>competitive comparison segment</strong>:
             test players also play competing games of the same type, then evaluate them side by side.
             This helps reveal the strengths and weaknesses of your own product at the experience level,
             ensuring the game is competitive in the market. Comparison dimensions include visual quality, audio quality,

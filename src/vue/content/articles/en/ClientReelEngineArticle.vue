@@ -15,8 +15,7 @@
         <h2>Per-Frame Displacement and Symbol Recycling</h2>
         <p>
             At its core, the reel engine works like this: each frame it computes the reel's <strong>displacement</strong>,
-            and when a symbol's displacement exceeds the height of one cell, symbol recycling is triggered — the symbol that moved out of the visible area at the top
-            is recycled to the bottom and filled in with a new symbol image. This "object pool" style of recycling avoids constantly creating and destroying display objects,
+            and when a symbol's displacement exceeds the height of one cell, symbol recycling is triggered, and the symbol that moved out of the visible area at the top is recycled to the bottom and filled in with a new symbol image. This "object pool" style of recycling avoids constantly creating and destroying display objects,
             which keeps memory usage stable. The size of the object pool has a clear lower bound: the number of visible rows plus one cell of buffer above and below.
             Those two extra cells let a symbol finish swapping its texture before it enters or leaves the screen, so it never "suddenly transforms" right at the boundary.
         </p>
@@ -35,12 +34,12 @@
         <h3>Cubic Bezier Curves</h3>
         <p>
             What we use most often is the <strong>cubic Bezier curve</strong>: the start and end points are fixed at 0 and 1,
-            and the only things actually adjustable are two control points, four parameters in total — enough to express rich rhythms, yet few enough to hand straight to an artist for fine-tuning.
+            and the only things actually adjustable are two control points, four parameters in total, enough to express rich rhythms yet few enough to hand straight to an artist for fine-tuning.
         </p>
         <ul>
             <li><strong>Acceleration segment</strong>: the first control point sits near the start, so the curve is gentle early and steep later, simulating a reel being driven up from rest</li>
             <li><strong>Deceleration segment</strong>: the second control point sits near the end, so the curve is steep early and gentle later, simulating friction pulling the reel to a halt</li>
-            <li><strong>Control point overshoot</strong>: when a control point's vertical coordinate goes outside the 0-to-1 range, the curve overshoots near the endpoints — and that is precisely the mathematical origin of the pre-bounce and the overshoot</li>
+            <li><strong>Control point overshoot</strong>: when a control point's vertical coordinate goes outside the 0-to-1 range, the curve overshoots near the endpoints, and that is precisely the mathematical origin of the pre-bounce and the overshoot</li>
         </ul>
         <p>
             One implementation detail to watch is that a Bezier curve is defined parametrically, so getting displacement for a given time requires solving rather than direct substitution;
@@ -48,10 +47,10 @@
         </p>
         <h3>Parameters of the Elastic Rebound</h3>
         <p>
-            A real slot machine has a subtle "overshoot" when it stops — the reel goes slightly past the target position, then springs back into place.
+            A real slot machine has a subtle "overshoot" when it stops. The reel goes slightly past the target position, then springs back into place.
             This segment can also be described with a <strong>damped oscillation model</strong>: a spring pulls the reel toward the target while damping dissipates energy.
-            The model has only two intuitive parameters: <strong>stiffness</strong> determines how fast it springs back — the higher, the snappier;
-            <strong>damping ratio</strong> determines the number of oscillations — the closer to critical, the more it settles in one go.
+            The model has only two intuitive parameters: <strong>stiffness</strong> determines how fast it springs back, and the higher it is the snappier the return;
+            <strong>damping ratio</strong> determines the number of oscillations, and the closer to critical it is the more it settles in one go.
             We break the whole stop into three independently adjustable intervals:
         </p>
         <ul>
@@ -61,7 +60,7 @@
         </ul>
         <p>
             Fast-paced games use a smaller overshoot and a quick rebound, while classic-style ones use a more exaggerated bounce to create a mechanical feel.
-            Another parameter that often gets overlooked is the <strong>pre-bounce</strong> — a slight backward displacement before the start, then acceleration downward.
+            Another parameter that often gets overlooked is the <strong>pre-bounce</strong>: a slight backward displacement before the start, then acceleration downward.
             It lasts only a few dozen milliseconds, yet it noticeably increases the sense of force.
         </p>
 
@@ -82,7 +81,7 @@
         <p>
             When the player taps again mid-spin, all reels need to stop immediately.
             The tricky part is this: if you compress the animation time to one tenth, the overshoot and rebound shrink proportionally too, and it looks like a "fast-forward" rather than a "brake."
-            The better approach is to re-plan the deceleration curve rather than scale the original one — keep the rebound segment at its full length, compress only the deceleration segment in front of it,
+            The better approach is to re-plan the deceleration curve rather than scale the original one: keep the rebound segment at its full length, compress only the deceleration segment in front of it,
             and recompute the remaining distance from the actual current speed.
         </p>
 
@@ -93,14 +92,13 @@
         </p>
         <ul>
             <li><strong>Near-miss effect</strong>: when the leading reels have already landed a special symbol combination, the trailing reels deliberately extend their spin and add visual effects (a glowing frame, a darkened background), creating suspense</li>
-            <li><strong>Speed change</strong>: a reel entering the anticipation state usually decelerates first and then holds. The deceleration is itself the signal — the player immediately realizes "this column is different"</li>
+            <li><strong>Speed change</strong>: a reel entering the anticipation state usually decelerates first and then holds. The deceleration is itself the signal, and the player immediately realizes "this column is different"</li>
             <li><strong>Column-by-column delayed stop</strong>: each column stops in sequence, creating a left-to-right rhythm, with each interval independently configurable</li>
             <li><strong>Cascade mechanic</strong>: after winning symbols are cleared, the symbols above drop down to fill the gaps, potentially triggering chain wins, which requires the engine to support independent animation and rearrangement of a subset of symbols</li>
         </ul>
         <p>
             There is one line anticipation must never cross: every suspense mechanism is a <strong>result-driven</strong> presentation-layer behavior.
-            The engine merely picks how to perform based on an already-determined result, and the performance itself never changes where any symbol lands —
-            write that line into the interface design, and the engine simply has no ability to decide whether to play an anticipation before the result arrives.
+            The engine merely picks how to perform based on an already-determined result, and the performance itself never changes where any symbol lands. Write that line into the interface design, and the engine simply has no ability to decide whether to play an anticipation before the result arrives.
         </p>
 
         <h2>Frame Rate Stability and Visual Strobing</h2>
@@ -122,8 +120,7 @@
             <li><strong>Symbol simplification</strong>: switch to a less detailed version during the high-speed phase, reducing the fatigue of the eye trying to make out details</li>
         </ul>
         <p>
-            These three measures are usually used together, and the switching thresholds also need to be verified separately on low-refresh-rate devices —
-            a spin speed that shows no problem on a 120Hz display may already strobe visibly at 60Hz.
+            These three measures are usually used together, and the switching thresholds also need to be verified separately on low-refresh-rate devices: a spin speed that shows no problem on a 120Hz display may already strobe visibly at 60Hz.
         </p>
 
         <p>

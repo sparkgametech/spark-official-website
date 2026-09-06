@@ -38,7 +38,7 @@
             In practice tests are <strong>tiered by cost</strong>: the fast tier on every commit must finish within a few minutes,
             the daily mid-weight tier covers the full set of functional cases,
             and mathematical verification of tens of millions of rounds or more is scheduled at release milestones or before submission for certification.
-            Another frequently underrated point is <strong>the stability of the tests themselves</strong> —
+            Another frequently underrated point is <strong>the stability of the tests themselves</strong>:
             intermittent failures destroy the team's trust in the entire suite,
             and such cases should be handled as defects, tracking down and eliminating the residual sources of non-determinism.
         </p>
@@ -52,7 +52,7 @@
         </p>
         <p>
             The prerequisite is that the frame itself is <strong>stably reproducible</strong>: fixed resolution,
-            a locked animation timeline and capture at a designated frame — otherwise the results will be drowned in false positives.
+            a locked animation timeline and capture at a designated frame; otherwise the results will be drowned in false positives.
             The tolerance threshold is usually tightened for critical regions and loosened for dynamic background areas.
         </p>
 
@@ -63,7 +63,7 @@
         <ul>
             <li><strong>Frame rate monitoring</strong>: in animation-heavy scenes (big-win celebrations, cascading wins), the frame rate should not drop below 30 FPS</li>
             <li><strong>Memory usage</strong>: memory consumption should stay stable after long play sessions and must not keep growing (memory leaks)</li>
-            <li><strong>Load time</strong>: initial load and scene transitions must stay within an acceptable range — on mobile, ideally under 5 seconds</li>
+            <li><strong>Load time</strong>: initial load and scene transitions must stay within an acceptable range: on mobile, ideally under 5 seconds</li>
             <li><strong>CPU utilization</strong>: CPU usage while idle should be minimized to avoid battery drain and heat</li>
         </ul>
         <p>
@@ -118,7 +118,7 @@
             <li>No parameter sent by the client (stake amount, selections, etc.) can affect the RNG output</li>
             <li>The communication protocol does not leak future game outcomes</li>
             <li>The client cannot alter an already determined outcome by modifying a request</li>
-            <li>Cross-game state isolation — data from one game cannot affect the outcome of another</li>
+            <li>Cross-game state isolation: data from one game cannot affect the outcome of another</li>
         </ul>
         <p>
             This kind of verification must be designed from an <strong>adversarial perspective</strong>: actively tampering with requests, replaying already completed requests,

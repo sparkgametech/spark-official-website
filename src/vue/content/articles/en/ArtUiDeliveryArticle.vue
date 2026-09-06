@@ -4,7 +4,7 @@
         <p>
             Interface design for slot games is a discipline of its own. Unlike the general trend in applications
             towards simplicity and white space, it has to carry game information, controls and an entertaining
-            atmosphere within a limited space — as dependable as a tool, yet as dramatic as a stage.
+            atmosphere within a limited space: as dependable as a tool, yet as dramatic as a stage.
         </p>
 
         <h3>Core Interface Elements</h3>
@@ -31,8 +31,7 @@
             The criterion for tiering is <strong>frequency of use multiplied by urgency</strong>, not the importance
             of the feature.
             A win amount only appears at specific moments, but when it does it must be seen immediately, so it needs
-            to seize focus dynamically and then withdraw once it is over —
-            this way of thinking about <strong>dynamic hierarchy</strong> is the biggest difference from an ordinary
+            to seize focus dynamically and then withdraw once it is over. This way of thinking about <strong>dynamic hierarchy</strong> is the biggest difference from an ordinary
             static interface.
         </p>
 
@@ -85,7 +84,7 @@
             <li>
                 <strong>Naming conventions</strong>: use predictable multi-segment names that indicate, in order, the
                 asset category, its semantic name and its state.
-                This looks trivial, but it is the precondition for any automation — once names are predictable,
+                This looks trivial, but it is the precondition for any automation: once names are predictable,
                 atlas packing, batch scaling and asset checks can all be handed over to scripts
             </li>
             <li><strong>Resolution tiers</strong>: define the scale factor between tiers, so no dimension ends up non-divisible</li>
@@ -109,7 +108,7 @@
         <p>
             To cover the device range from low-end phones to high-end desktops, assets usually need to be prepared in
             several resolution versions: authored at the highest resolution, then batch-scaled down by script.
-            But <strong>uniform scaling is not always viable</strong> — fine lines and high-frequency textures easily
+            But <strong>uniform scaling is not always viable</strong>: fine lines and high-frequency textures easily
             disappear or produce moiré once reduced, and line weight and detail density often have to be adjusted separately.
         </p>
 
@@ -175,8 +174,7 @@
         </ul>
 
         <p>
-            This toolchain is not fixed, but its unchanging core is <strong>an efficiency-oriented workflow design</strong> —
-            every tool is brought in so that artists can spend more time on creativity itself rather than on repetitive
+            This toolchain is not fixed, but its unchanging core is <strong>an efficiency-oriented workflow design</strong>. Every tool is brought in so that artists can spend more time on creativity itself rather than on repetitive
             technical tasks.
             Slot art production is a composite discipline combining artistic creation, technical specification and
             engineering collaboration.

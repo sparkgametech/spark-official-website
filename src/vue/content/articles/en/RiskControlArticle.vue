@@ -10,7 +10,7 @@
         <p>
             What makes this hard is that a gaming product is <strong>supposed to exhibit enormous variance</strong>.
             In a well-designed slot machine, several hundred consecutive losing spins in the short term, or a sudden payout of several thousand times the bet,
-            fall entirely within the expectations of the mathematical model. This means "anomaly" cannot be judged by intuition or by a fixed threshold —
+            fall entirely within the expectations of the mathematical model. This means "anomaly" cannot be judged by intuition or by a fixed threshold:
             firing an alert simply because RTP looks high on a given day yields nothing but a screen full of noise.
         </p>
         <p>
@@ -24,7 +24,7 @@
         </p>
         <ul>
             <li><strong>Null hypothesis (H₀)</strong>: the default assumption that "the system is functioning normally and actual performance matches the theoretical model."
-                We always start by assuming the system is healthy, not by assuming something is wrong. This directionality matters —
+                We always start by assuming the system is healthy, not by assuming something is wrong. This directionality matters:
                 the job of the test is to gather evidence strong enough to <strong>reject</strong> the normal hypothesis, not to prove the system is normal</li>
             <li><strong>Alternative hypothesis (H₁)</strong>: a genuine difference exists between actual performance and the theoretical value, rather than being caused by random fluctuation</li>
             <li><strong>Significance level (α)</strong>: the <strong>upper bound on the probability of misjudgment</strong> we are willing to accept.
@@ -43,7 +43,7 @@
         </ul>
         <p>
             The crux is this: <strong>reducing false positives necessarily raises false negatives, and vice versa</strong>. This is a hard statistical trade-off that cannot be optimized away.
-            The only way to improve both at once is to increase the sample size — that is, to raise the <strong>power</strong> of the test,
+            The only way to improve both at once is to increase the sample size, that is, to raise the <strong>power</strong> of the test,
             meaning "the probability of successfully detecting a problem when the problem genuinely exists."
             This also explains why, when designing a monitoring mechanism, planning the sample size is more fundamental than tuning the thresholds.
         </p>
@@ -60,14 +60,14 @@ H₁: actual win rate ≠ theoretical win rate<br/>
 if p-value < α (0.0001), flag as anomalous</code>
         </div>
         <p>
-            An extremely strict significance level keeps the false positive rate low — an alert fires only when the statistical evidence is overwhelming,
+            An extremely strict significance level keeps the false positive rate low: an alert fires only when the statistical evidence is overwhelming,
             avoiding interference from normal random fluctuation.
         </p>
         <p>
             We chose the binomial test as the first line of defense because "won or not" naturally satisfies the three premises of the binomial distribution:
             each round has only two outcomes, win or no win; rounds are independent of one another; and the win probability per round is fixed.
             All three premises hold in a normally functioning game. Conversely,
-            <strong>when the test keeps failing, what gets refuted may be not only the probability value but independence itself</strong> —
+            <strong>when the test keeps failing, what gets refuted may be not only the probability value but independence itself</strong>:
             for instance, some state that was not correctly reset, causing the previous round's outcome to influence the next.
             Problems of this kind are completely invisible at the level of a single round, yet leave a clear trace at the level of the distribution.
         </p>
@@ -115,14 +115,14 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
         </p>
         <p>
             Another premise to be careful about is that the standard error of RTP cannot simply borrow the standard error formula for win rate.
-            The distribution of payout amounts is heavily right-skewed — a great many zeros and small payouts, plus a very small number of enormous ones —
+            The distribution of payout amounts is heavily right-skewed (a great many zeros and small payouts, plus a very small number of enormous ones),
             and its variance is contributed mainly by the large wins in the tail. The standard error of RTP must therefore be derived from the <strong>actual payout distribution</strong>
             rather than by assuming a normal distribution. Ignoring this systematically underestimates the standard error and, in turn, greatly overstates the severity of an alert.
         </p>
 
         <h2>Outlier Filtering</h2>
         <p>
-            If the initial win rate test finds an anomaly, the system performs a second round of analysis —
+            If the initial win rate test finds an anomaly, the system performs a second round of analysis,
             recomputing RTP after filtering out <strong>extreme payouts above PR95</strong>:
         </p>
         <ul>
@@ -172,7 +172,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             <li><strong>Long window</strong>: ample sample and high power, able to detect small but persistent systematic deviations,
                 but slow to react, and an already-fixed old problem lingers inside the window for a long time, so alerts do not clear</li>
             <li><strong>Cumulative statistics</strong>: covers all historical data and is best suited to verifying long-run convergence,
-                but is extremely insensitive to recent changes — the historical sample dilutes a newly emerged deviation until it is invisible</li>
+                but is extremely insensitive to recent changes: the historical sample dilutes a newly emerged deviation until it is invisible</li>
         </ul>
         <p>
             Since no single window can satisfy every need at once, the practical solution is to run <strong>multiple windows in parallel</strong>:
@@ -183,7 +183,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
         <p>
             There is one more implementation detail worth noting about sliding windows: window boundaries create <strong>alert flapping</strong>.
             When an extreme data point sits right at the edge of the window, its entry and exit make the test result oscillate back and forth between normal and anomalous.
-            The solution is to set asymmetric thresholds for raising and clearing an alert — raising requires stronger evidence,
+            The solution is to set asymmetric thresholds for raising and clearing an alert: raising requires stronger evidence,
             while clearing requires several consecutive periods of normality, thereby avoiding repeated notifications for the same problem.
         </p>
 
@@ -199,7 +199,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
         </ul>
         <p>
             The real purpose of alert tiering is to avoid the <strong>"cry wolf" effect</strong>.
-            A monitoring system that frequently produces false positives is more dangerous than no monitoring at all — because the team gradually learns to ignore it,
+            A monitoring system that frequently produces false positives is more dangerous than no monitoring at all, because the team gradually learns to ignore it,
             and when a genuinely serious problem occurs, that alert drowns in identically formatted noise with nobody looking at it.
             Our tiering principle is therefore that <strong>each tier corresponds to a clearly defined expected action</strong>;
             if nobody knows what to do upon receiving an alert, that alert should not exist.
@@ -230,7 +230,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             We accept that price, and the reason lies in the <strong>asymmetric cost structure</strong> of the two.
             The cost of a false positive is immediate and cumulative: every false positive consumes the team's attention
             and slowly erodes the credibility of the whole monitoring system, and once that erosion sets in it is very hard to reverse.
-            The cost of a false negative, by contrast, is partly absorbed by other mechanisms —
+            The cost of a false negative, by contrast, is partly absorbed by other mechanisms:
             the multi-window design means a small deviation will eventually accumulate in the long window until it is detectable;
             a complete audit trail keeps retrospective investigation always feasible;
             and pre-launch mathematical validation together with deterministic testing intercepts most misconfigurations at the source.
@@ -239,8 +239,8 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             In other words, <strong>statistical detection is not the only line of defense, so it does not have to carry all of the false negative risk alone</strong>.
             Precisely because it sits within a multi-layer defensive system, we have the latitude to tune it toward the high-precision end,
             so that every alert it does emit deserves to be taken seriously.
-            If it were the only line of defense, we would have to loosen the threshold and accept the noise that comes with it —
-            and a system like that is, in the end, usually one nobody looks at.
+            If it were the only line of defense, we would have to loosen the threshold and accept the noise that comes with it;
+            a system like that is, in the end, usually one nobody looks at.
         </p>
 
         <h2>Design Principles</h2>

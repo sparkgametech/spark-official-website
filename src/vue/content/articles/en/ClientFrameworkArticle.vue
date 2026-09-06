@@ -33,7 +33,7 @@
         <p>
             The middle layer encapsulates the logic common to the slot genre: the reel engine, the state machine, win-presentation scheduling,
             payline rendering, the autoplay controller, the history panel, and so on.
-            Every slot game shares the code in this layer, so when the framework fixes a problem or improves performance, all games benefit at once —
+            Every slot game shares the code in this layer, so when the framework fixes a problem or improves performance, all games benefit at once;
             the more games there are, the greater the return on each improvement.
         </p>
         <h3>Game Application Layer</h3>
@@ -56,14 +56,14 @@
             This layered architecture was not in its finished form from day one; it went through several stages of evolution:
         </p>
         <ul>
-            <li><strong>Stage one — convention-based constraints</strong>: layers were distinguished by an agreed-upon way of organizing things, but with no enforced isolation, cross-layer coupling appeared easily</li>
-            <li><strong>Stage two — module namespaces</strong>: introducing a modular namespace mechanism made the boundaries between layers explicit and constrained the dependency relationships. Cross-layer references went from "discouraged" to "impossible"</li>
-            <li><strong>Stage three — a shared component library</strong>: common UI components (buttons, dialogs, progress bars, number rollers and so on) were extracted into a standalone shared component library that new games reference directly, ensuring consistent visuals and behavior</li>
+            <li><strong>Stage one, convention-based constraints</strong>: layers were distinguished by an agreed-upon way of organizing things, but with no enforced isolation, cross-layer coupling appeared easily</li>
+            <li><strong>Stage two, module namespaces</strong>: introducing a modular namespace mechanism made the boundaries between layers explicit and constrained the dependency relationships. Cross-layer references went from "discouraged" to "impossible"</li>
+            <li><strong>Stage three, a shared component library</strong>: common UI components (buttons, dialogs, progress bars, number rollers and so on) were extracted into a standalone shared component library that new games reference directly, ensuring consistent visuals and behavior</li>
         </ul>
 
         <h2>The Game State Machine: The Full Lifecycle of One Spin</h2>
         <p>
-            Each round of a slot game looks simple — press the button, the reels spin, the result appears — but the state management behind it is genuinely complex.
+            Each round of a slot game looks simple (press the button, the reels spin, the result appears), but the state management behind it is genuinely complex.
             We use a <strong>finite state machine</strong> to manage the full lifecycle of a round:
         </p>
         <MermaidDiagram id="spin-lifecycle" :chart="spinLifecycleChart"/>
@@ -71,14 +71,14 @@
         <p>
             The most intuitive approach is to track the current situation with boolean flags: whether it is spinning, whether the result has arrived, whether the win animation is playing.
             But five independent flags already yield thirty-two combinations, the vast majority of which are illegal states that should not exist, and yet nothing in the code explicitly forbids them.
-            A state machine narrows the legal states down to a finite, enumerable set and hard-codes the transition rules —
-            a transition that should not happen is intercepted at that moment, rather than being discovered only after the player sees something wrong on screen.
+            A state machine narrows the legal states down to a finite, enumerable set and hard-codes the transition rules.
+            A transition that should not happen is intercepted at that moment, rather than being discovered only after the player sees something wrong on screen.
         </p>
         <h3>Responsibilities of Each Stage</h3>
         <ul>
             <li><strong>Start a new round</strong>: lock the controls, send the bet request, update the bet-value display. The lock must be in place before the request goes out, or there is a risk of a duplicate bet</li>
             <li><strong>Start the reels</strong>: start the reel animation column by column according to the configured delay interval, so the spin sweeps across in a left-to-right wave</li>
-            <li><strong>Keep spinning</strong>: the reels turn at a constant speed while waiting for the server result. Two situations have to be handled — "the result arrives early" and "the result is delayed" — the former requires holding a minimum visual spin duration, the latter requires extending indefinitely without looking wrong</li>
+            <li><strong>Keep spinning</strong>: the reels turn at a constant speed while waiting for the server result. Two situations have to be handled: "the result arrives early" and "the result is delayed." The former requires holding a minimum visual spin duration, the latter requires extending indefinitely without looking wrong</li>
             <li><strong>Stop the reels and write in the result</strong>: write the symbol matrix returned by the server into each reel's target position, triggering the column-by-column stop animation</li>
             <li><strong>Win presentation</strong>: play the corresponding animation and audio based on the win information, which may include line-by-line presentation, full-screen effects, big-win celebration animations, and so on</li>
             <li><strong>Settlement</strong>: update the value displays, record the outcome of this round, unlock the controls, and get ready for the next round</li>
@@ -91,18 +91,18 @@
         </p>
         <p>
             This mechanism relies on the <strong>observer pattern</strong>: every stage emits events on entry and exit, and an upper layer that subscribes can insert its own node.
-            The key is that an inserted node must be able to <strong>signal completion asynchronously</strong> — the state machine waits for it to report done before advancing,
+            The key is that an inserted node must be able to <strong>signal completion asynchronously</strong>. The state machine waits for it to report done before advancing,
             so a custom animation several seconds long can be embedded into the lifecycle naturally, without the framework layer needing to know in advance that it exists.
         </p>
         <h3>Multiple Flows and Exceptional Interruptions</h3>
         <p>
-            Slots frequently involve <strong>switching between multiple flows</strong> — transitions between the main game and free games,
+            Slots frequently involve <strong>switching between multiple flows</strong>: transitions between the main game and free games,
             entering and exiting special feature modes. We give each flow its own state machine instance,
             with the instances communicating through explicit enter/exit events to avoid state contamination between flows.
         </p>
         <p>
             The lifecycle does not always run to completion smoothly either: the player may hit quick stop partway through, and the network may drop while waiting for the result.
-            So every stage has to mark whether it is <strong>interruptible</strong> — presentation stages can usually be skipped,
+            So every stage has to mark whether it is <strong>interruptible</strong>: presentation stages can usually be skipped,
             while stages involving data consistency must run to completion. A skipped stage is not simply thrown away but told to "finish immediately,"
             which guarantees that the screen after the skip matches what the normal flow would have produced.
         </p>

@@ -22,7 +22,7 @@
         <p>
             The correct approach is to normalize everything against <strong>integrated loudness (LUFS)</strong> before delivery,
             rather than relying on peak level. Background music is recommended to land around -16 LUFS,
-            while sound effects are tiered by category — interface sounds lowest, celebration sounds highest, with a fixed loudness gap held between tiers;
+            while sound effects are tiered by category: interface sounds lowest, celebration sounds highest, with a fixed loudness gap held between tiers;
             at the same time, leave roughly 1 dB of <strong>true peak headroom</strong>
             to prevent digital clipping from amplitude summing when several sounds play at once.
         </p>
@@ -56,8 +56,8 @@
             using variable bitrate encoding; and stripping the leftover excess silence at the head and tail of assets.
         </p>
         <p>
-            Another cost that is easily underestimated is the <strong>memory footprint after decoding</strong> —
-            a compressed file may be only a few hundred KB, but decoded into uncompressed sample data it can balloon more than tenfold.
+            Another cost that is easily underestimated is the <strong>memory footprint after decoding</strong>.
+            A compressed file may be only a few hundred KB, but decoded into uncompressed sample data it can balloon more than tenfold.
             When assessing the budget, you have to look at both "download size" and "resident size after decoding."
         </p>
 
@@ -86,7 +86,7 @@
         </ul>
         <p>
             All buses ultimately feed a single master output, and the player's global volume control acts there.
-            This architecture also greatly simplifies dynamic mixing —
+            This architecture also greatly simplifies dynamic mixing:
             ducking only needs a gain adjustment on a single bus, rather than handling the playback state of individual sounds one at a time.
         </p>
 
@@ -146,8 +146,8 @@
         </p>
         <p>
             And what these specifications and processes ultimately serve is the emotional foundation established by the background music,
-            along with the layers of feedback built by tiered sound effects and interactive audio systems —
-            the other two articles in this series each go deeper into those two topics.
+            along with the layers of feedback built by tiered sound effects and interactive audio systems.
+            The other two articles in this series each go deeper into those two topics.
         </p>
     </div>
 </template>

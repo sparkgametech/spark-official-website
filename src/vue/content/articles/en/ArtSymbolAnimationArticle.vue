@@ -63,13 +63,12 @@
         <p>
             Special symbols have one more requirement that often gets overlooked:
             <strong>they must carry tension when a set is "almost complete"</strong>, so an extra set of
-            anticipation-state assets — an intensified frame glow, for example — usually has to be designed as well.
+            anticipation-state assets (an intensified frame glow, for example) usually has to be designed as well.
         </p>
 
         <h3>Principles of Legibility Design</h3>
         <p>
-            The most easily neglected factor is <strong>legibility while spinning at high speed</strong> —
-            when the reels are turning, all a player really sees are blurred blocks of colour and rough
+            The most easily neglected factor is <strong>legibility while spinning at high speed</strong>. When the reels are turning, all a player really sees are blurred blocks of colour and rough
             silhouettes. Symbol design therefore has to follow these principles:
         </p>
         <ul>
@@ -112,8 +111,7 @@
         <ul>
             <li>
                 <strong>Idle animation (Idle)</strong>: the subtle motion after a symbol stops, usually one to two
-                seconds, with the fewest bones. The key is a <strong>seamless loop</strong> — the first and last
-                frames must match exactly, or there will be a visible jump
+                seconds, with the fewest bones. The key is a <strong>seamless loop</strong>: the first and last frames must match exactly, or there will be a visible jump
             </li>
             <li>
                 <strong>Win celebration animation (Win Celebration)</strong>: the main performance when a win lands,
@@ -166,13 +164,12 @@
         <p>
             Once the animation is finished it has to be exported into an engine-readable format, usually comprising
             skeleton and animation data, an atlas description and the atlas texture.
-            On export, you must confirm that <strong>animation events (Animation Event)</strong> are set correctly —
-            sound trigger points, effect spawn points and so on. These events are bound on the programming side to
+            On export, you must confirm that <strong>animation events (Animation Event)</strong> are set correctly: sound trigger points, effect spawn points and so on. These events are bound on the programming side to
             achieve precise synchronisation between the animation and the game logic.
         </p>
         <p>
             Event names and timings should be maintained in a shared reference list by art and engineering together,
-            and checked again whenever animation length changes — most "the sound doesn't match the motion" problems
+            and checked again whenever animation length changes. Most "the sound doesn't match the motion" problems
             come from a length change without a corresponding event correction.
             Another key point is the <strong>switching rules between animation states</strong>: whether idle, win and
             trigger should cut directly or blend, and how long the blend time should be, all need to be documented at delivery.

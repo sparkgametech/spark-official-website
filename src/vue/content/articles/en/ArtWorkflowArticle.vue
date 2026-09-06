@@ -20,8 +20,7 @@
         <p>
             On top of that, a slot has to support phones and desktops at the same time: from small handset
             screens to large desktop monitors, every visual element has to hold up across resolutions.
-            Animation performance is another major consideration — graphics resources on mobile are limited,
-            and overly complex particle effects or high-polygon skeletal animation will drop frames outright.
+            Animation performance is another major consideration. Graphics resources on mobile are limited, and overly complex particle effects or high-polygon skeletal animation will drop frames outright.
         </p>
         <p>
             An easily underestimated constraint is <strong>visual fatigue</strong>. A player may watch the same
@@ -58,8 +57,7 @@
             <strong>communication medium, not final assets</strong>.
             When everyone on the team has their own mental image of adjectives like "opulent" or "mysterious",
             one concrete image converges opinion faster than ten meetings.
-            Get this positioning wrong — treat the generated output as a deliverable asset — and the rework cost
-            downstream will be far higher.
+            Get this positioning wrong by treating the generated output as a deliverable asset, and the rework cost downstream will be far higher.
         </p>
 
         <h3>An Iterative Prompting Strategy</h3>
@@ -115,8 +113,7 @@
         <ul>
             <li>
                 <strong>Consistency across a whole symbol set</strong>: it is hard to guarantee that more than a
-                dozen symbols will be fully unified in lighting direction, level of detail and colour system —
-                and that is precisely the core of slot visual quality
+                dozen symbols will be fully unified in lighting direction, level of detail and colour system, and that is precisely the core of slot visual quality
             </li>
             <li>
                 <strong>Adaptation to technical specifications</strong>: safe areas, margin ratios, legibility and
@@ -159,8 +156,7 @@
             genuinely need judgement: setting the style, refining detail, and animation performance.
         </p>
         <p>
-            Once the theme direction and visual style are settled, what comes next is a far stricter layer of
-            specification — how a full symbol set builds a visual hierarchy according to pay tiers, and how it
+            Once the theme direction and visual style are settled, what comes next is a far stricter layer of specification: how a full symbol set builds a visual hierarchy according to pay tiers, and how it
             comes alive through skeletal animation. That is covered in full in this series' article on symbol
             design and animation production, while turning finished assets into engine-ready deliverables is
             discussed in a separate article on interface design and the delivery process.

@@ -23,7 +23,7 @@
 
         <h3>Length and Placement of the Hook</h3>
         <p>
-            The success or failure of background music often comes down to whether a <strong>memorable thematic motif</strong> exists —
+            The success or failure of background music often comes down to whether a <strong>memorable thematic motif</strong> exists:
             a short melodic fragment of three to seven notes, roughly two to four beats long.
             It has to be short enough that a player can hum it back after two or three listens, yet distinctive enough
             that they still recognize "this is the same tune" when they hear a variation of it.
@@ -66,7 +66,7 @@
         <h3>Diluting the Loop Feel with an Ambience Layer</h3>
         <p>
             Even when a loop is technically flawless, the human ear still detects the pattern after enough repetitions.
-            The fix is to layer a track of <strong>asynchronously played ambience</strong> over the fixed music loop —
+            The fix is to layer a track of <strong>asynchronously played ambience</strong> over the fixed music loop:
             distant crowd chatter, occasional light metallic clinks, a wind or water bed.
             This material is triggered randomly at intervals unrelated to the music's length, so every pass through the loop sounds slightly different overall.
         </p>
@@ -75,7 +75,7 @@
         <p>
             Music for the <strong>base mode</strong> usually sits somewhere between relaxed and excited:
             it needs enough groove to carry a pulse, but must not be so intense that it causes listening fatigue.
-            This is the state players stay in longest, so the music has to wear well — arrangement density needs headroom and the mids and highs must not be packed,
+            This is the state players stay in longest, so the music has to wear well. Arrangement density needs headroom and the mids and highs must not be packed,
             because reel sounds, button sounds and win sounds all have to be heard in the same spectral space.
         </p>
         <p>
@@ -121,7 +121,7 @@
         </p>
         <p>
             When size limits are especially harsh, switch to a <strong>layered loop</strong> approach:
-            split the music into three shorter sets of material — a rhythm layer, a harmony layer and a melody layer —
+            split the music into three shorter sets of material (a rhythm layer, a harmony layer and a melody layer)
             played back in sync in different combinations by the audio manager. With each layer at 30 seconds,
             toggling combinations produces several times the variety of a single asset of the same length, at a total size far below one full mix.
             The cost is that every layer has to stack with any other without conflict;

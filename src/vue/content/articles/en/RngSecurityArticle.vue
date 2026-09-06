@@ -8,7 +8,7 @@
         </p>
         <p>
             In regulated markets, the RNG must pass a rigorous audit by a third-party certification body (such as <strong>GLI</strong> or <strong>BMM</strong>)
-            to confirm that it meets statistical standards of randomness. This is not merely a technical requirement — it is a regulatory threshold for launching a compliant game.
+            to confirm that it meets statistical standards of randomness. This is not merely a technical requirement; it is a regulatory threshold for launching a compliant game.
         </p>
         <p>
             To understand the design trade-offs behind an RNG, you first need the concept of a <strong>threat model</strong>.
@@ -53,14 +53,14 @@
         <h2>Obtaining Entropy and Assessing Its Quality</h2>
         <p>
             A CSPRNG merely "stretches" a small amount of true randomness into a large volume of unpredictable bits; it does not create randomness on its own.
-            Real randomness comes from an <strong>entropy source</strong> — physically unpredictable events.
+            Real randomness comes from an <strong>entropy source</strong>: physically unpredictable events.
             Modern operating systems continuously gather entropy from several independent channels: hardware random instructions on the CPU, timing jitter in interrupts,
             completion times of disk and network I/O, and a variety of microscopic timing differences that are hard to observe externally.
             These raw samples first enter the entropy pool and are hashed and mixed before being made available.
         </p>
         <p>
-            When assessing the quality of an entropy source, the metric that really matters is <strong>min-entropy</strong> —
-            the entropy corresponding to the probability of the single most likely value — rather than Shannon entropy in the average sense.
+            When assessing the quality of an entropy source, the metric that really matters is <strong>min-entropy</strong>
+            (the entropy corresponding to the probability of the single most likely value), rather than Shannon entropy in the average sense.
             This is the conservative estimate, because an attacker guessing will always try the most likely value first. The relevant assessment methods are fully defined in
             <strong>NIST SP 800-90B</strong>, which covers IID testing and a family of min-entropy estimators.
         </p>
@@ -81,7 +81,7 @@
         <h2>Eliminating Modulo Bias: Rejection Sampling</h2>
         <p>
             When we need a random integer in the range <code>[0, max)</code>, the most intuitive approach is <code>rand() % max</code>.
-            This, however, introduces <strong>modulo bias</strong> — when the upper bound of the random number is not divisible by max,
+            This, however, introduces <strong>modulo bias</strong>: when the upper bound of the random number is not divisible by max,
             some outcomes occur with slightly higher probability than others.
         </p>
         <p>
@@ -94,7 +94,7 @@
         </p>
         <p>
             An extreme miniature example makes this easiest to see: if the raw random number has only ten possible values, <code>0~9</code>, and is mapped onto three outcomes,
-            then 0, 1 and 2 each take a share, with the first two taking the larger one — outcomes 0 and 1 each have probability 4/10, while outcome 2 has only 2/10.
+            then 0, 1 and 2 each take a share, with the first two taking the larger one: outcomes 0 and 1 each have probability 4/10, while outcome 2 has only 2/10.
             This bias does not vanish as the number of samples grows; on the contrary, a large sample lets statistical tests pinpoint it precisely.
         </p>
         <p>
@@ -134,12 +134,12 @@ result = value % max</code>
         </p>
         <ul>
             <li><strong>Generation</strong>: the seed must carry sufficient entropy length. If the seed space is only 32 bits,
-                then even with a flawless algorithm an attacker need only enumerate around four billion possibilities to recover the entire sequence —
+                then even with a flawless algorithm an attacker need only enumerate around four billion possibilities to recover the entire sequence;
                 security strength is determined by the weakest link, and the seed is often that link</li>
             <li><strong>Use</strong>: the seed exists only in the memory of the execution environment that produced it; it is not passed across processes, not written into configuration,
                 and never appears as an input or output parameter of any interface</li>
             <li><strong>Rotation</strong>: long-running instances should periodically draw fresh randomness from the entropy source and inject it into the internal state,
-                so that a single state is not exposed to prolonged observation and analysis. This also provides <strong>forward secrecy</strong> —
+                so that a single state is not exposed to prolonged observation and analysis. This also provides <strong>forward secrecy</strong>:
                 even if the current state were to leak, previously generated sequences still cannot be reconstructed</li>
             <li><strong>Destruction</strong>: once a session ends, the associated state should be cleared from memory as soon as possible,
                 and it must never appear in any log, error stack trace, or debug output.
@@ -148,7 +148,7 @@ result = value % max</code>
         <p>
             There is one point here that is easily misunderstood: <strong>an unpredictable seed is not the same as a non-repeating seed</strong>.
             Under high concurrency, two instances can still collide with very small probability even when each seed comes from a good entropy source.
-            So beyond quality assurance we also need a structural guarantee of uniqueness — which is precisely the purpose of folding an atomically incremented counter into the seed:
+            So beyond quality assurance we also need a structural guarantee of uniqueness, which is precisely the purpose of folding an atomically incremented counter into the seed:
             it supplies no randomness, but it supplies a deterministic guarantee of non-repetition, complementing the unpredictability of the entropy source.
         </p>
 
@@ -163,7 +163,7 @@ result = value % max</code>
             <li><strong>Independent verification</strong>: auditors can independently verify that each round's outcome is consistent with the recorded random numbers</li>
         </ul>
         <p>
-            This mechanism not only satisfies compliance requirements but is also an important QA testing tool — by injecting a predefined sequence of random numbers,
+            This mechanism not only satisfies compliance requirements but is also an important QA testing tool: by injecting a predefined sequence of random numbers,
             precise deterministic tests can be run that cover every boundary condition.
         </p>
         <p>
@@ -186,8 +186,8 @@ result = value % max</code>
         </ul>
         <p>
             The guiding design principle is to <strong>record only what is needed to reproduce the outcome, and never the internal state</strong>.
-            The audit log must be detailed enough to verify fairness, yet not so detailed that it leaks the internal state of the RNG —
-            and the line between those two requirements is exactly where audit trail design demands the most careful judgment.
+            The audit log must be detailed enough to verify fairness, yet not so detailed that it leaks the internal state of the RNG.
+            The line between those two requirements is exactly where audit trail design demands the most careful judgment.
         </p>
 
         <h2>Preventing Client-Side Manipulation</h2>
@@ -196,22 +196,22 @@ result = value % max</code>
             The design principle here is unambiguous: <strong>the client is an untrusted execution environment</strong>.
             All code running on a player's device can be decompiled, modified and replayed;
             all data arriving from the client should be treated as input an attacker can construct at will.
-            The correct architecture is therefore not "verify that the client did not cheat" but "give the client no say whatsoever in the computation path of the outcome" —
-            the client is only responsible for presenting the outcome the server has already determined, and the playback order of animations and sound effects takes no part in any determination.
+            The correct architecture is therefore not "verify that the client did not cheat" but "give the client no say whatsoever in the computation path of the outcome".
+            The client is only responsible for presenting the outcome the server has already determined, and the playback order of animations and sound effects takes no part in any determination.
         </p>
         <p>
             On that premise, our security audit framework covers the following checkpoints:
         </p>
         <ul>
-            <li><strong>N1 — Parameter isolation</strong>: any parameter submitted by the client (such as bet amount or selected paylines)
+            <li><strong>N1 Parameter isolation</strong>: any parameter submitted by the client (such as bet amount or selected paylines)
                 does not affect the generation of the random outcome. The spin result is computed independently on the server</li>
-            <li><strong>N2 — Probability table authority</strong>: switching the probability table is decided solely by server-side logic;
+            <li><strong>N2 Probability table authority</strong>: switching the probability table is decided solely by server-side logic;
                 the client cannot trigger a probability table change</li>
-            <li><strong>N4 — Cross-round state protection</strong>: the client cannot write cross-round state data,
+            <li><strong>N4 Cross-round state protection</strong>: the client cannot write cross-round state data,
                 preventing manipulation of subsequent outcomes by modifying game state</li>
-            <li><strong>N5 — Seed origin verification</strong>: confirming that the RNG seed is not supplied by the client,
+            <li><strong>N5 Seed origin verification</strong>: confirming that the RNG seed is not supplied by the client,
                 so players cannot predict outcomes by controlling the seed</li>
-            <li><strong>N6 — Concurrency safety</strong>: verifying that when multiple players play simultaneously,
+            <li><strong>N6 Concurrency safety</strong>: verifying that when multiple players play simultaneously,
                 there is no shared mutable state that could cause a race condition</li>
         </ul>
 
@@ -230,8 +230,8 @@ result = value % max</code>
         <p>
             Understanding the <strong>role</strong> of these tests matters just as much. A statistical test is by nature a tool of <strong>refutation, not proof</strong>:
             it can tell you that a sequence clearly does not look random, but it can never prove that a sequence must be random.
-            Passing the full suite only means "no evidence of deviation from the randomness hypothesis was found," not that the RNG is secure —
-            the predictable generators mentioned earlier likewise sail through the vast majority of statistical tests.
+            Passing the full suite only means "no evidence of deviation from the randomness hypothesis was found," not that the RNG is secure.
+            The predictable generators mentioned earlier likewise sail through the vast majority of statistical tests.
         </p>
         <p>
             Another common misconception in practice is treating test results as a binary pass or fail.
@@ -251,9 +251,9 @@ result = value % max</code>
             In summary, our RNG security architecture is organized into three layers:
         </p>
         <ul>
-            <li><strong>Lower layer — cryptographic security</strong>: CSPRNG plus rejection sampling, guaranteeing the quality of every random number</li>
-            <li><strong>Middle layer — system security</strong>: seed management, instance isolation and audit trails, preventing vulnerabilities at the system level</li>
-            <li><strong>Upper layer — protocol security</strong>: client isolation, parameter validation and state protection, preventing external manipulation</li>
+            <li><strong>Lower layer (cryptographic security)</strong>: CSPRNG plus rejection sampling, guaranteeing the quality of every random number</li>
+            <li><strong>Middle layer (system security)</strong>: seed management, instance isolation and audit trails, preventing vulnerabilities at the system level</li>
+            <li><strong>Upper layer (protocol security)</strong>: client isolation, parameter validation and state protection, preventing external manipulation</li>
         </ul>
         <p>
             This multi-layer defensive design ensures that even if one layer fails, the others still provide protection,
@@ -261,7 +261,7 @@ result = value % max</code>
         </p>
         <p>
             Layered defense works because the <strong>failure modes of the layers are mutually independent</strong>.
-            If all three layers of protection rest on the same assumption, then what appears to be three layers is in reality still one —
+            If all three layers of protection rest on the same assumption, then what appears to be three layers is in reality still one:
             the moment that shared assumption is broken, all three fall at once. When designing, therefore,
             we deliberately aimed each layer at a different class of threat: the lower layer guards against mathematical predictability and distributional bias,
             the middle layer against state contamination at the implementation and concurrency level, and the upper layer against active manipulation attempts from outside.
