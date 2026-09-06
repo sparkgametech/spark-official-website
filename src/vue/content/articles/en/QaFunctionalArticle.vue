@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Functional Testing</h2>
+        <h2><i class="fa-solid fa-list-check" aria-hidden="true"></i>Functional Testing</h2>
         <p>
             The job of functional testing is to confirm that the game logic matches the design across <strong>every possible execution path</strong>,
             and that state correctness is preserved even under abnormal conditions.
@@ -87,7 +87,7 @@
             and whether number formatting follows regional conventions (such as differences in thousands separators).
         </p>
 
-        <h2>Player-Feel Testing</h2>
+        <h2><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i>Player-Feel Testing</h2>
 
         <h3>Live Player Testing</h3>
         <p>

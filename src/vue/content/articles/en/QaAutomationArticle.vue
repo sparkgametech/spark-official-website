@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Automated Testing</h2>
+        <h2><i class="fa-solid fa-robot" aria-hidden="true"></i>Automated Testing</h2>
 
         <h3>Deterministic Replay Testing</h3>
         <p>
@@ -73,7 +73,7 @@
             Benchmarks must also be tied to device tiers and tracked as trends across versions.
         </p>
 
-        <h2>Compliance Testing and Third-Party Certification</h2>
+        <h2><i class="fa-solid fa-certificate" aria-hidden="true"></i>Compliance Testing and Third-Party Certification</h2>
 
         <h3>GLI-19 / BMM Testing Requirements</h3>
         <p>

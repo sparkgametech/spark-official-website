@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Master Audio Specifications: Sample Rate, Bit Depth and Loudness</h2>
+        <h2><i class="fa-solid fa-wave-square" aria-hidden="true"></i>Master Audio Specifications: Sample Rate, Bit Depth and Loudness</h2>
         <p>
             All audio assets should be produced and archived as <strong>high-specification masters</strong>, from which the compressed versions used in the game are exported.
             During production, a uniform lossless format at 48 kHz / 24 bit is recommended, preserving ample dynamic headroom;
@@ -31,7 +31,7 @@
             and too much dynamic range makes quiet passages inaudible; but over-compressing glues the sound into a single mass, and the layering of the tiered sounds disappears with it.
         </p>
 
-        <h2>Choosing a Compression Format, and Compatibility</h2>
+        <h2><i class="fa-solid fa-file-audio" aria-hidden="true"></i>Choosing a Compression Format, and Compatibility</h2>
         <p>
             In web-based slot development, the choice of compression format directly affects compatibility and file size:
         </p>
@@ -75,7 +75,7 @@
             so the loading flow needs an explicit entry interaction point, and the audio environment should be initialized within that interaction.
         </p>
 
-        <h2>Audio Bus Architecture</h2>
+        <h2><i class="fa-solid fa-sliders" aria-hidden="true"></i>Audio Bus Architecture</h2>
         <p>
             A professional sound system uses <strong>several independent buses</strong>, letting players control the volume of each audio category separately:
         </p>
@@ -90,7 +90,7 @@
             ducking only needs a gain adjustment on a single bus, rather than handling the playback state of individual sounds one at a time.
         </p>
 
-        <h2>From Requirements Spec to Delivery</h2>
+        <h2><i class="fa-solid fa-truck-fast" aria-hidden="true"></i>From Requirements Spec to Delivery</h2>
 
         <h3>The Sound Requirements Specification</h3>
         <p>
@@ -109,9 +109,14 @@
         <p>
             A unified naming convention is essential for team collaboration.
             A structured naming scheme of <strong>"type prefix + scene + action + index"</strong> is recommended:
-            begin with one of three prefixes for music, sound effect and voice, so developers can identify the type at a glance and batch-process by bus;
-            then note the game mode it belongs to and the specific action; and end multiple variants of the same sound with a two-digit index,
-            making them easy to enumerate programmatically for rotation. Use lowercase and underscores throughout, to avoid load failures caused by case sensitivity.
+        </p>
+        <ul>
+            <li><strong>Type prefix</strong>: one of three prefixes for music, sound effect and voice, so developers can identify the type at a glance and batch-process by bus</li>
+            <li><strong>Scene and action</strong>: note the game mode it belongs to and the specific action</li>
+            <li><strong>Index</strong>: end multiple variants of the same sound with a two-digit number, making them easy to enumerate programmatically for rotation</li>
+        </ul>
+        <p>
+            Use lowercase and underscores throughout, to avoid load failures caused by case sensitivity.
         </p>
 
         <h3>Event-Driven Integration</h3>

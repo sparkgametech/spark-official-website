@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>What Is Natural Probability?</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>What Is Natural Probability?</h2>
         <p>
             In slot games, <strong>Natural Probability</strong> refers to the winning probability derived purely from
             the mathematical model, unaffected by any external adjustment factor. The outcome of every Spin is
@@ -29,7 +29,7 @@
             is possible later on, and it also determines whether a complete mathematical proof document can be produced for third-party audit.
         </p>
 
-        <h2>Reel Strip Design</h2>
+        <h2><i class="fa-solid fa-table-list" aria-hidden="true"></i>Reel Strip Design</h2>
         <p>
             On each reel of a slot machine, the symbols are not uniformly distributed; they are configured according to a
             carefully calculated <strong>weight</strong>. The higher a symbol's weight, the more frequently it appears, and vice versa.
@@ -58,9 +58,13 @@
             so the designer can tune a single symbol's appearance frequency at an extremely fine granularity without being limited by the on-screen row count.
         </p>
         <p>
-            In practice there are two equivalent representations: one writes the weight table as an "expanded" symbol sequence whose length equals the total weight;
-            the other records only each symbol's weight value and then locates the result with a binary search over the cumulative distribution.
-            The former offers fast lookup at the cost of memory; the latter saves space but adds one search per sample.
+            In practice there are two equivalent representations:
+        </p>
+        <ul>
+            <li><strong>Expanded sequence</strong>: write the weight table as an "expanded" symbol sequence whose length equals the total weight. Lookup is fast, at the cost of memory</li>
+            <li><strong>Cumulative distribution</strong>: record only each symbol's weight value and locate the result with a binary search. This saves space but adds one search per sample</li>
+        </ul>
+        <p>
             During a verification phase that requires billions of simulation runs, this seemingly minor difference shows up directly in total computation time.
         </p>
         <h3>The Real Trade-offs in Weight Configuration</h3>
@@ -82,7 +86,7 @@
             to preserve the visual rhythm of the board, and rules of this kind must likewise be folded into the probability calculation.
         </p>
 
-        <h2>Calculating Winning Combination Probability</h2>
+        <h2><i class="fa-solid fa-calculator" aria-hidden="true"></i>Calculating Winning Combination Probability</h2>
         <p>
             Take a 5-reel slot as an example. Suppose the total weights of the reels are W1, W2, W3, W4, W5.
             To compute the probability of a specific winning combination, you multiply the weights of the corresponding symbol on each reel and divide by the total number of combinations:
@@ -130,7 +134,7 @@
             the base reels feel emptier to the player, so a clear goal is needed to maintain the rhythm.
         </p>
 
-        <h2>RTP (Return to Player) Calculation</h2>
+        <h2><i class="fa-solid fa-percent" aria-hidden="true"></i>RTP (Return to Player) Calculation</h2>
         <p>
             <strong>RTP</strong> is the single most important math metric of a slot. It represents the proportion of every 1 unit wagered that a player can expect to get back over the long run.
             For example, an RTP of 96.5% means that over the long run, for every 100 units wagered, the player can expect to receive 96.5 back.
@@ -168,7 +172,7 @@
             This amplification factor becomes quite substantial once r approaches 0.3 or above, and it is the most common reason for free-game RTP running out of control.
         </p>
 
-        <h2>Volatility Design</h2>
+        <h2><i class="fa-solid fa-chart-line" aria-hidden="true"></i>Volatility Design</h2>
         <p>
             Besides RTP, <strong>volatility</strong> is the key metric shaping how the game feels to a player. Volatility determines the "dispersion" of wins:
         </p>
@@ -201,7 +205,7 @@
             This inference directly explains a characteristic of high-volatility machines: short-term feel can diverge enormously from the theoretical value, and that is part of the design intent.
         </p>
 
-        <h2>Hit Rate and Win Frequency</h2>
+        <h2><i class="fa-solid fa-bullseye" aria-hidden="true"></i>Hit Rate and Win Frequency</h2>
         <p>
             <strong>Hit Rate</strong> is the probability that any given Spin produces some kind of win.
             A typical slot has a Hit Rate between 20% and 35%, meaning roughly one win every 3-5 Spins.
@@ -231,7 +235,7 @@
             Computing this number during design and confirming it falls within an acceptable range is far more effective than correcting it afterwards based on player feedback.
         </p>
 
-        <h2>Mathematical Verification and Simulation</h2>
+        <h2><i class="fa-solid fa-flask" aria-hidden="true"></i>Mathematical Verification and Simulation</h2>
         <p>
             Once the design is complete, its numerical correctness must be verified through <strong>large-scale simulation</strong>.
             This usually requires simulating at least 100 million to 1 billion Spins, confirming that:

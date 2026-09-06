@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>什麼是 結果集 架構？</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>什麼是 結果集 架構？</h2>
         <p>
             在老虎機遊戲開發中，<strong>結果集</strong> 是一種<strong>預生成種子記錄池（Pre-generated Seed Record Pool）</strong>架構。
             它的核心理念是將遊戲的隨機結果預先計算並打包成可重播的記錄，用於特定場景下的結果分發，
@@ -33,7 +33,7 @@
             數學模型的正確性因此可以在離線階段被完整驗證與封存，不再受線上程式碼變更影響。
         </p>
 
-        <h2>結果集 的分層架構</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>結果集 的分層架構</h2>
         <p>
             結果集 採用多層級的樹狀結構設計，從上到下逐級篩選：
         </p>
@@ -81,7 +81,7 @@
             每筆記錄使用自定義的 <strong>TLV（Type-Length-Value）</strong> 二進位編碼格式壓縮儲存。
         </p>
 
-        <h2>TLV 編碼格式設計</h2>
+        <h2><i class="fa-solid fa-file-code" aria-hidden="true"></i>TLV 編碼格式設計</h2>
         <p>
             為了高效儲存大量的 Spin 結果記錄，結果集 採用緊湊的 TLV 二進位編碼格式：
         </p>
@@ -125,7 +125,7 @@
             以免日後擴充段落型別時無法向後相容既有資料。
         </p>
 
-        <h2>結果選取流程（Picking Pipeline）</h2>
+        <h2><i class="fa-solid fa-filter" aria-hidden="true"></i>結果選取流程（Picking Pipeline）</h2>
         <p>
             當系統需要從 結果集 提取一筆結果時，會經過以下多階段選取流程：
         </p>
@@ -182,7 +182,7 @@
             不必逐筆掃描，這也是編碼格式與索引策略互相配合的具體例子。
         </p>
 
-        <h2>確定性重播機制</h2>
+        <h2><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>確定性重播機制</h2>
         <p>
             從 結果集 取出的種子可以透過確定性重播（Deterministic Replay）還原完整的遊戲結果。
             以轉輪式老虎機為例，一個整數種子透過<strong>混合基數分解（Mixed-Radix Decomposition）</strong>
@@ -219,7 +219,7 @@
             而不是一次性的架構決定。
         </p>
 
-        <h2>結果集 的應用場景</h2>
+        <h2><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>結果集 的應用場景</h2>
         <ul>
             <li><strong>RTP 精確控制</strong>：透過預計算的結果池，確保在有限樣本內 RTP 高度收斂</li>
             <li><strong>合規審計</strong>：每筆結果可追溯、可重播、可驗證</li>
@@ -245,7 +245,7 @@
             差別只在各類結果出現的相對頻率。相較之下，重做權重表的做法很容易讓不同版本在體感上產生難以解釋的差異。
         </p>
 
-        <h2>與自然機率的關係</h2>
+        <h2><i class="fa-solid fa-link" aria-hidden="true"></i>與自然機率的關係</h2>
         <p>
             結果集 中的每一筆記錄都來自自然機率模型的真實 Spin 結果，經過萃取（Extract）→ 編碼（Encode）→ 儲存。
             它不改變遊戲的數學模型，只是將「即時計算」轉換為「預計算查表」。
@@ -264,10 +264,12 @@
         </p>
         <p>
             要維持這個等價性，生成階段有兩個必須守住的紀律：
-            一是<strong>抽樣不能有偏</strong>，記錄必須忠實反映原模型的分佈，
-            不能為了讓池子「好看」而篩掉極端結果，那會直接破壞尾端特性；
-            二是<strong>樣本量必須足夠</strong>，池的大小應由目標精度反推，
-            對高波動遊戲而言，所需樣本量與標準差的平方成正比，往往遠超直覺估計。
+        </p>
+        <ul>
+            <li><strong>抽樣不能有偏</strong>：記錄必須忠實反映原模型的分佈，不能為了讓池子「好看」而篩掉極端結果，那會直接破壞尾端特性</li>
+            <li><strong>樣本量必須足夠</strong>：池的大小應由目標精度反推。對高波動遊戲而言，所需樣本量與標準差的平方成正比，往往遠超直覺估計</li>
+        </ul>
+        <p>
             這兩點守住了，結果集才真正只是自然機率的一種<strong>儲存與分發形式</strong>，
             而不是另一套獨立的數學模型。
         </p>

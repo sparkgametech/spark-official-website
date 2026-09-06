@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Symbol Design Specifications</h2>
+        <h2><i class="fa-solid fa-shapes" aria-hidden="true"></i>Symbol Design Specifications</h2>
         <p>
             Symbols are the core visual element of a slot game. A standard set usually contains ten to fifteen
             regular symbols plus two or three special ones. These specifications are not aesthetic preferences
@@ -78,17 +78,18 @@
             <li><strong>Use of negative space</strong>: the artwork should not fill the entire cell; appropriate breathing room makes a symbol stand out more against a busy background</li>
         </ul>
         <p>
-            There are three very cheap ways to verify these principles. The <strong>thumbnail test</strong>:
-            scale down to the real cell size and view them side by side; anything you cannot tell apart has to
-            be redone. The <strong>silhouette test</strong>:
-            fill everything solid black and see whether the outer contours alone are distinguishable, which
-            exposes shapes that are too similar right away.
-            The <strong>greyscale test</strong>: strip the colour out, and if all the values bunch together, the
-            colour contrast was fake all along.
+            There are three very cheap ways to verify these principles:
+        </p>
+        <ul>
+            <li><strong>Thumbnail test</strong>: scale down to the real cell size and view them side by side; anything you cannot tell apart has to be redone</li>
+            <li><strong>Silhouette test</strong>: fill everything solid black and see whether the outer contours alone are distinguishable, which exposes shapes that are too similar right away</li>
+            <li><strong>Greyscale test</strong>: strip the colour out, and if all the values bunch together, the colour contrast was fake all along</li>
+        </ul>
+        <p>
             All three should be run before final refinement.
         </p>
 
-        <h2>Spine Skeletal Animation Production</h2>
+        <h2><i class="fa-solid fa-bone" aria-hidden="true"></i>Spine Skeletal Animation Production</h2>
         <p>
             Animation is the most technically demanding part of slot art. Compared with traditional frame-by-frame
             animation, <strong>Spine skeletal animation</strong> has become the industry mainstream for three reasons:

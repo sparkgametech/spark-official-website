@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>The Unique Challenges of Slot Game Art</h2>
+        <h2><i class="fa-solid fa-palette" aria-hidden="true"></i>The Unique Challenges of Slot Game Art</h2>
         <p>
             Producing art for slot games comes with design constraints and quality requirements that are
             completely different from those of a typical mobile or console title. On the surface it looks like
@@ -35,7 +35,7 @@
             only solid drawing fundamentals but also a highly efficient workflow.
         </p>
 
-        <h2>A Modern AI-Assisted Art Workflow</h2>
+        <h2><i class="fa-solid fa-robot" aria-hidden="true"></i>A Modern AI-Assisted Art Workflow</h2>
         <p>
             The maturing of AI tools in recent years has brought a significant efficiency gain to art
             production, but one idea has to be settled first:

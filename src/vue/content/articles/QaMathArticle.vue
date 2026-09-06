@@ -1,10 +1,16 @@
 <template>
     <div class="blog-article">
-        <h2>老虎機測試的特殊性</h2>
+        <h2><i class="fa-solid fa-vial" aria-hidden="true"></i>老虎機測試的特殊性</h2>
         <p>
             老虎機遊戲的品質保證（QA）與一般軟體測試有著根本性的差異。
-            一般軟體的測試重點在於「功能是否正確運作」，
-            但老虎機測試還必須額外驗證<strong>數學模型的正確性、隨機性的公平性、以及玩家體驗的合理性</strong>。
+            一般軟體的測試重點在於「功能是否正確運作」，但老虎機測試還必須額外驗證三件事：
+        </p>
+        <ul>
+            <li><strong>數學模型的正確性</strong></li>
+            <li><strong>隨機性的公平性</strong></li>
+            <li><strong>玩家體驗的合理性</strong></li>
+        </ul>
+        <p>
             這三個維度交織在一起，構成極具複雜度的挑戰。
         </p>
         <p>
@@ -34,7 +40,7 @@
             必須符合<strong>國際認證機構（如 GLI、BMM）</strong>的嚴格審計要求。
         </p>
 
-        <h2>數學驗證測試</h2>
+        <h2><i class="fa-solid fa-square-root-variable" aria-hidden="true"></i>數學驗證測試</h2>
 
         <h3>RTP 收斂性測試</h3>
         <p>
@@ -136,7 +142,7 @@
             必須把特殊功能的貢獻<strong>拆分為獨立的統計項目</strong>驗證。
         </p>
 
-        <h2>從模擬數據到可信結論</h2>
+        <h2><i class="fa-solid fa-chart-simple" aria-hidden="true"></i>從模擬數據到可信結論</h2>
         <p>
             一份有價值的驗證報告不會只給出「RTP 符合預期」，
             而應完整揭露樣本量、信賴區間、各功能模組的 RTP 貢獻拆解與統計檢定判準。

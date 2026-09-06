@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Sound Effects Are the Auditory Language Between Player and Game</h2>
+        <h2><i class="fa-solid fa-ear-listen" aria-hidden="true"></i>Sound Effects Are the Auditory Language Between Player and Game</h2>
         <p>
             Every interaction in a game needs a matching sound effect as feedback, and together these sounds form the auditory language between player and game.
             Players do not listen to them deliberately, but remove any one link and the experience immediately feels hollow.
@@ -16,7 +16,7 @@
             drawn from a unified timbre family so the overall listening experience stays coherent.
         </p>
 
-        <h2>Mapping Win Tiers to Layers of Sound</h2>
+        <h2><i class="fa-solid fa-ranking-star" aria-hidden="true"></i>Mapping Win Tiers to Layers of Sound</h2>
         <p>
             Win sounds are the category with the greatest influence on player emotion, and they must be <strong>designed in tiers according to win size</strong>:
         </p>
@@ -59,7 +59,7 @@
             All of this pitched material should share the key of the background music.
         </p>
 
-        <h2>Special Symbols and Anticipation</h2>
+        <h2><i class="fa-solid fa-star" aria-hidden="true"></i>Special Symbols and Anticipation</h2>
         <ul>
             <li><strong>Wild symbol appearing</strong>: paired with a sparkling effect sound to draw the player's attention to the icon that substitutes for others</li>
             <li><strong>Scatter symbol landing</strong>: every appearance should have a clear cue, with tension <strong>stepping up progressively</strong> as the count grows</li>
@@ -76,7 +76,7 @@
             Whatever the outcome, those few seconds of tension add enormous drama to the game.
         </p>
 
-        <h2>Interactive Audio Systems: Letting Sound Follow State</h2>
+        <h2><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>Interactive Audio Systems: Letting Sound Follow State</h2>
         <p>
             Modern slot sound has evolved from simple "event triggers playback" into a <strong>dynamic interactive audio system</strong>.
             The audio manager adjusts playback behavior in real time based on game state:
@@ -116,7 +116,7 @@
             and excessive separation on a single sound source actually causes an imbalance in level.
         </p>
 
-        <h2>Designing Against Listening Fatigue</h2>
+        <h2><i class="fa-solid fa-face-tired" aria-hidden="true"></i>Designing Against Listening Fatigue</h2>
         <p>
             Slots are highly repetitive games; the same sound may fire thousands of times within an hour, so listening fatigue has to be tackled head-on.
         </p>

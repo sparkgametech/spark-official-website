@@ -1,10 +1,16 @@
 <template>
     <div class="blog-article">
-        <h2>What Makes Slot Testing Different</h2>
+        <h2><i class="fa-solid fa-vial" aria-hidden="true"></i>What Makes Slot Testing Different</h2>
         <p>
             Quality assurance (QA) for slot games differs fundamentally from ordinary software testing.
-            Ordinary software testing focuses on whether features behave correctly,
-            but slot testing must additionally verify <strong>the correctness of the mathematical model, the fairness of randomness, and the reasonableness of the player experience</strong>.
+            Ordinary software testing focuses on whether features behave correctly, but slot testing must additionally verify three things:
+        </p>
+        <ul>
+            <li><strong>the correctness of the mathematical model</strong></li>
+            <li><strong>the fairness of randomness</strong></li>
+            <li><strong>the reasonableness of the player experience</strong></li>
+        </ul>
+        <p>
             These three dimensions are interwoven, and together they form an exceptionally complex challenge.
         </p>
         <p>
@@ -34,7 +40,7 @@
             and must satisfy the strict audit requirements of <strong>international certification bodies such as GLI and BMM</strong>.
         </p>
 
-        <h2>Mathematical Verification Testing</h2>
+        <h2><i class="fa-solid fa-square-root-variable" aria-hidden="true"></i>Mathematical Verification Testing</h2>
 
         <h3>RTP Convergence Testing</h3>
         <p>
@@ -136,7 +142,7 @@
             and the contribution of the special features must be <strong>broken out as an independent statistical item</strong> for verification.
         </p>
 
-        <h2>From Simulation Data to Trustworthy Conclusions</h2>
+        <h2><i class="fa-solid fa-chart-simple" aria-hidden="true"></i>From Simulation Data to Trustworthy Conclusions</h2>
         <p>
             A verification report worth having does not simply state that "the RTP meets expectations";
             it should fully disclose the sample size, the confidence interval, the RTP contribution breakdown per feature module, and the statistical test criteria.

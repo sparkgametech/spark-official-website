@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>什麼是統計異常偵測？</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>什麼是統計異常偵測？</h2>
         <p>
             博弈遊戲系統面臨多維度的風險：<strong>數學風險</strong>（極端統計偏差）、
             <strong>系統風險</strong>（配置錯誤、程式漏洞）、以及<strong>行為風險</strong>（異常投注模式）。
@@ -18,7 +18,7 @@
             這正是統計假設檢定被設計出來要回答的問題，也是我們把整套偵測邏輯建立在假設檢定框架上的原因。
         </p>
 
-        <h2>假設檢定的基本前提</h2>
+        <h2><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>假設檢定的基本前提</h2>
         <p>
             所有偵測邏輯都圍繞著同一套統計學框架，理解這個框架是理解後續所有設計取捨的前提。
         </p>
@@ -48,7 +48,7 @@
             這也解釋了為什麼設計監控機制時，樣本量的規劃比閾值的調整更加根本。
         </p>
 
-        <h2>二項式中獎率檢定（Binomial Win Rate Test）</h2>
+        <h2><i class="fa-solid fa-chart-column" aria-hidden="true"></i>二項式中獎率檢定（Binomial Win Rate Test）</h2>
         <p>
             對每個投注類型和機率表標籤，持續追蹤實際中獎率是否在統計上顯著偏離理論值。
             使用二項分佈的信賴區間，設定<strong>顯著水準 α = 1/10000</strong>（極嚴格的閾值），
@@ -65,7 +65,13 @@ H₁: 實際中獎率 ≠ 理論中獎率<br/>
         </p>
         <p>
             之所以選擇二項式檢定作為第一道防線，是因為「是否中獎」天然符合二項分佈的三個前提：
-            每一局的結果只有中獎與不中獎兩種、各局之間彼此獨立、且每局的中獎機率固定。
+        </p>
+        <ul>
+            <li>每一局的結果只有中獎與不中獎兩種</li>
+            <li>各局之間彼此獨立</li>
+            <li>每局的中獎機率固定</li>
+        </ul>
+        <p>
             這三個前提在正常運作的遊戲中都成立；反過來說，
             <strong>當檢定持續失敗時，可能被推翻的不只是機率值，也可能是獨立性本身</strong>。
             例如某個狀態沒有正確重置，導致前一局的結果影響到下一局，
@@ -82,7 +88,7 @@ H₁: 實際中獎率 ≠ 理論中獎率<br/>
             <strong>沉默比錯誤的結論更安全</strong>。
         </p>
 
-        <h2>RTP Z 檢定（RTP Z-Test）</h2>
+        <h2><i class="fa-solid fa-chart-area" aria-hidden="true"></i>RTP Z 檢定（RTP Z-Test）</h2>
         <p>
             對累計 RTP 進行 Z 檢定，驗證實際 RTP 是否顯著偏離鎖定的理論 RTP：
         </p>
@@ -120,7 +126,7 @@ H₁: 實際中獎率 ≠ 理論中獎率<br/>
             而不是假設一個常態分佈。忽略這一點，會系統性地低估標準誤，進而大幅高估告警的嚴重程度。
         </p>
 
-        <h2>離群值過濾（Outlier Filtering）</h2>
+        <h2><i class="fa-solid fa-filter" aria-hidden="true"></i>離群值過濾（Outlier Filtering）</h2>
         <p>
             如果初始的中獎率檢定發現異常，系統會進行第二輪分析，
             過濾掉 <strong>PR95 以上的極端賠付</strong>後重新計算 RTP：
@@ -161,7 +167,7 @@ H₁: 實際中獎率 ≠ 理論中獎率<br/>
             這個差異本身往往比任何一組數字都更有診斷價值。
         </p>
 
-        <h2>時間窗的取捨</h2>
+        <h2><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>時間窗的取捨</h2>
         <p>
             統計檢定必須定義在某個資料範圍上，而<strong>時間窗的選擇直接決定了能偵測到什麼樣的問題</strong>。
             這是風控設計中最容易被低估的一個決策。
@@ -187,7 +193,7 @@ H₁: 實際中獎率 ≠ 理論中獎率<br/>
             解除則需要連續數個週期都維持正常，藉此避免同一個問題被重複通報。
         </p>
 
-        <h2>即時監控與告警</h2>
+        <h2><i class="fa-solid fa-bell" aria-hidden="true"></i>即時監控與告警</h2>
         <p>
             偵測結果需要即時通知技術團隊，告警管道設計包含：
         </p>
@@ -220,7 +226,7 @@ H₁: 實際中獎率 ≠ 理論中獎率<br/>
             防止問題因為分級太低而被無限期擱置。
         </p>
 
-        <h2>誤報與漏報的權衡</h2>
+        <h2><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>誤報與漏報的權衡</h2>
         <p>
             最後回到那個無法迴避的根本取捨。前面提到極嚴格的顯著水準能壓低誤報，
             但這個選擇的代價必須被誠實地承認：<strong>它同時提高了漏報的機率</strong>，
@@ -243,7 +249,7 @@ H₁: 實際中獎率 ≠ 理論中獎率<br/>
             而那樣的系統，最終往往誰也不會去看。
         </p>
 
-        <h2>設計原則</h2>
+        <h2><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>設計原則</h2>
         <ul>
             <li><strong>不改變公平性</strong>：風控只監控和偵測，不操縱遊戲的隨機結果</li>
             <li><strong>統計學基礎</strong>：所有偵測邏輯基於嚴格的假設檢定，避免誤報</li>

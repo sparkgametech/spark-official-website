@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>調控系統概述</h2>
+        <h2><i class="fa-solid fa-sliders" aria-hidden="true"></i>調控系統概述</h2>
         <p>
             老虎機的<strong>調控系統</strong>是在自然機率模型之上的動態控制層，
             用於在保持遊戲數學正確性的前提下，實現靈活的 RTP 管理與玩家體驗優化。
@@ -20,7 +20,7 @@
             調控層的目的，是在不動搖長期期望值的前提下，讓短期分佈更可預測、更貼近設計意圖。
         </p>
 
-        <h2>Spin 請求主流程</h2>
+        <h2><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>Spin 請求主流程</h2>
         <p>
             每一次 Spin 請求從進入到回應，會經過以下完整的處理管線：
         </p>
@@ -33,19 +33,19 @@
             同一組輸入就必然產生同一組輸出，回歸測試因此可以逐局比對而不需要容忍誤差。
         </p>
 
-        <h2>調控核心：兩階段控制管線</h2>
+        <h2><i class="fa-solid fa-gears" aria-hidden="true"></i>調控核心：兩階段控制管線</h2>
         <p>
             調控的核心分為兩個階段依序執行：
         </p>
         <MermaidDiagram id="adjust-pipeline" :chart="adjustPipelineChart"/>
         <h3>為什麼要拆成兩階段？</h3>
         <p>
-            兩階段的切分對應兩個性質完全不同的問題。
-            第一階段回答的是<strong>「這一局的期望值應該是多少」</strong>，
-            這是一個純粹的數值管理問題，答案是一個 RTP 目標；
-            第二階段回答的是<strong>「在這個期望值之下，該給出什麼形狀的結果」</strong>，
-            這是一個體感問題，答案是一個具體的賠付倍數。
+            兩階段的切分對應兩個性質完全不同的問題：
         </p>
+        <ul>
+            <li><strong>第一階段</strong>回答「這一局的期望值應該是多少」。這是一個純粹的數值管理問題，答案是一個 RTP 目標</li>
+            <li><strong>第二階段</strong>回答「在這個期望值之下，該給出什麼形狀的結果」。這是一個體感問題，答案是一個具體的賠付倍數</li>
+        </ul>
         <p>
             如果把兩者混在一起處理，會出現一個很難維護的狀況：
             任何體感上的調整都可能意外改動期望值，而任何數值上的調整又都會影響手感，
@@ -55,7 +55,7 @@
             前者驗收斂、後者驗變異數與尾端特性。
         </p>
 
-        <h2>第一階段：RTP 表選擇</h2>
+        <h2><i class="fa-solid fa-table" aria-hidden="true"></i>第一階段：RTP 表選擇</h2>
         <p>
             系統預先設定多組不同 RTP 的機率表（如 LOW / MIDDLE / HIGH），
             第一階段的任務是根據既定策略，決定本次 Spin 使用哪一組表。
@@ -140,7 +140,7 @@
             以個人累計統計做即時校正，可以讓收斂發生在<strong>個人尺度</strong>而非僅在整體尺度上。
         </p>
 
-        <h2>第二階段：權重結果選取</h2>
+        <h2><i class="fa-solid fa-weight-hanging" aria-hidden="true"></i>第二階段：權重結果選取</h2>
         <p>
             確定使用哪組 RTP 表後，第二階段從該表的賠率-權重分佈中，
             透過加權隨機選取具體的遊戲結果。選取策略由<strong>權重模式</strong>決定：
@@ -208,7 +208,7 @@
             完全不必擔心影響 RTP。
         </p>
 
-        <h2>結果對應與縮放</h2>
+        <h2><i class="fa-solid fa-expand" aria-hidden="true"></i>結果對應與縮放</h2>
         <p>
             權重選取產生表現索引後：
         </p>
@@ -230,7 +230,7 @@
             確保「明細加總等於總額」這個不變條件永遠成立。
         </p>
 
-        <h2>優雅降級設計</h2>
+        <h2><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>優雅降級設計</h2>
         <p>
             調控系統的核心設計原則是<strong>優雅降級</strong>：
             任何配置缺失、參數異常或外部依賴不可用的情況，系統都會靜默回退到自然機率模式。

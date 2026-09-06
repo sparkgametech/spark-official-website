@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>一款老虎機客端需要解決什麼問題？</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>一款老虎機客端需要解決什麼問題？</h2>
         <p>
             開發一款老虎機遊戲的客端，遠不只是「畫面上有幾個滾輪在轉」這麼簡單。
             從技術角度來看，一個成熟的老虎機客端至少需要解決以下幾大核心挑戰：
@@ -17,7 +17,7 @@
             程式碼如何分層，以及一局遊戲的流程如何被有秩序地描述。
         </p>
 
-        <h2>分層框架：一次開發、多次復用</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>分層框架：一次開發、多次復用</h2>
         <p>
             為了在持續產出新遊戲的同時，保持程式碼品質與開發效率，
             我們採用了<strong>三層式架構</strong>來組織整個客端系統：
@@ -61,7 +61,7 @@
             <li><strong>第三階段（共享元件庫）</strong>：將常用的介面元件（按鈕、彈窗、進度條、數字滾動器等）抽取為獨立的共享元件庫，新遊戲直接引用，確保視覺與行為一致性</li>
         </ul>
 
-        <h2>遊戲狀態機：一局 Spin 的完整生命週期</h2>
+        <h2><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>遊戲狀態機：一局 Spin 的完整生命週期</h2>
         <p>
             老虎機的每一局遊戲看似簡單，按下按鈕、滾輪轉動、顯示結果，但背後的狀態管理卻相當複雜。
             我們使用<strong>有限狀態機（Finite State Machine）</strong>來管理一局遊戲的完整生命週期：
@@ -112,9 +112,6 @@
             以及通訊、資源與介面層級這些支撐系統。我們在同系列的另外兩篇文章中分別展開。
         </p>
 
-        <p style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6; color: #666; font-style: italic;">
-            需要技術支援？歡迎聯繫我們取得更多資訊。
-        </p>
     </div>
 </template>
 

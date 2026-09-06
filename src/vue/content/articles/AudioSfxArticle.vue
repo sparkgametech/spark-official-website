@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>音效是玩家與遊戲之間的聽覺語言</h2>
+        <h2><i class="fa-solid fa-ear-listen" aria-hidden="true"></i>音效是玩家與遊戲之間的聽覺語言</h2>
         <p>
             遊戲中每個互動操作都需要對應的音效回饋，這些音效構成了玩家與遊戲之間的聽覺語言。
             玩家不會刻意去聽，但少了其中一環，體驗就會立刻顯得空洞。
@@ -16,7 +16,7 @@
             使用統一的音色家族，讓整體聽覺體驗協調。
         </p>
 
-        <h2>中獎等級與音效層次的對應</h2>
+        <h2><i class="fa-solid fa-ranking-star" aria-hidden="true"></i>中獎等級與音效層次的對應</h2>
         <p>
             中獎音效是最能影響玩家情緒的音效類別，必須根據<strong>獎金大小進行分層設計</strong>：
         </p>
@@ -59,7 +59,7 @@
             這些具備音高的素材，都應與背景音樂的主調一致。
         </p>
 
-        <h2>特殊符號與聽牌期待</h2>
+        <h2><i class="fa-solid fa-star" aria-hidden="true"></i>特殊符號與聽牌期待</h2>
         <ul>
             <li><strong>Wild 符號出現</strong>：搭配閃亮的特效音，提醒玩家注意這個可替代其他符號的圖標</li>
             <li><strong>Scatter 符號落定</strong>：每一個出現都應有明確提示音，且隨數量增加<strong>逐步升級</strong>緊張度</li>
@@ -76,7 +76,7 @@
             無論結果如何，這幾秒鐘的張力都為遊戲增添了極大的戲劇性。
         </p>
 
-        <h2>互動音頻系統：讓聲音跟著狀態走</h2>
+        <h2><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>互動音頻系統：讓聲音跟著狀態走</h2>
         <p>
             現代老虎機的音效已經從簡單的「事件觸發播放」演進為<strong>動態互動音頻系統</strong>。
             音頻管理器會根據遊戲狀態即時調整播放行為：
@@ -116,7 +116,7 @@
             過度分離在單一發聲體上反而會造成音量不平衡。
         </p>
 
-        <h2>避免聽覺疲勞的設計</h2>
+        <h2><i class="fa-solid fa-face-tired" aria-hidden="true"></i>避免聽覺疲勞的設計</h2>
         <p>
             老虎機是高重複性的遊戲，同一個音效一小時內可能被觸發上千次，聽覺疲勞必須被正面處理。
         </p>

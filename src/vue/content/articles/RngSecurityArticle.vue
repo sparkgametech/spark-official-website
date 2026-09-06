@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>為什麼 RNG 安全如此重要？</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>為什麼 RNG 安全如此重要？</h2>
         <p>
             <strong>隨機數生成器（Random Number Generator, RNG）</strong>是博弈遊戲公平性的基石。
             每一次老虎機的 Spin、每一張牌的發放、每一個骰子的結果，都取決於 RNG 產生的隨機數。
@@ -18,7 +18,7 @@
             這也是為什麼所有安全決策都應該建立在「攻擊者知道演算法、只是不知道金鑰與內部狀態」的前提上。
         </p>
 
-        <h2>為什麼一般的偽隨機數不夠用</h2>
+        <h2><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>為什麼一般的偽隨機數不夠用</h2>
         <p>
             大多數程式語言內建的隨機函式，其設計目標是<strong>速度與統計均勻性</strong>，而不是安全性。
             以常見的線性同餘產生器（LCG）為例，它的下一個狀態由當前狀態經過一次乘法與加法即可得出；
@@ -33,7 +33,7 @@
             這是兩個獨立的性質。博弈遊戲同時需要兩者，缺一不可。
         </p>
 
-        <h2>密碼學安全的偽隨機數生成器（CSPRNG）</h2>
+        <h2><i class="fa-solid fa-lock" aria-hidden="true"></i>密碼學安全的偽隨機數生成器（CSPRNG）</h2>
         <p>
             博弈遊戲的 RNG 必須使用<strong>密碼學安全的偽隨機數生成器（Cryptographically Secure PRNG）</strong>，
             而非一般程式語言提供的標準隨機函式。兩者的關鍵差異在於：
@@ -50,7 +50,7 @@
             核心的隨機子系統經過大量公開審查與長期實戰驗證，遠比任何自製的替代方案可靠。
         </p>
 
-        <h2>熵源的取得與品質評估</h2>
+        <h2><i class="fa-solid fa-atom" aria-hidden="true"></i>熵源的取得與品質評估</h2>
         <p>
             CSPRNG 只是把少量真隨機「延展」成大量不可預測的位元，它本身不創造隨機性。
             真正的隨機性來自<strong>熵源（Entropy Source）</strong>，也就是物理上不可預測的事件。
@@ -78,7 +78,7 @@
                 多來源混合能確保即使其中一個通道品質下降，整體輸出的不可預測性仍然成立</li>
         </ul>
 
-        <h2>消除模數偏差：Rejection Sampling</h2>
+        <h2><i class="fa-solid fa-filter" aria-hidden="true"></i>消除模數偏差：Rejection Sampling</h2>
         <p>
             當我們需要一個範圍在 <code>[0, max)</code> 的隨機整數時，最直覺的做法是 <code>rand() % max</code>。
             然而，這個做法會產生<strong>模數偏差（Modulo Bias）</strong>：當隨機數的上限不能被 max 整除時，
@@ -115,7 +115,7 @@ result = value % max</code>
             對效能幾乎沒有影響，但確保了<strong>數學上完美的均勻分佈</strong>。
         </p>
 
-        <h2>種子管理與防碰撞</h2>
+        <h2><i class="fa-solid fa-seedling" aria-hidden="true"></i>種子管理與防碰撞</h2>
         <p>
             在高併發的遊戲伺服器中，RNG 的種子（Seed）管理是另一個關鍵安全點。
             如果兩個玩家的 RNG 使用相同的種子，就會產生相同的遊戲結果序列。
@@ -152,7 +152,7 @@ result = value % max</code>
             它不提供隨機性，但提供了確定性的不重複保證，與熵源的不可預測性形成互補。
         </p>
 
-        <h2>RNG 審計追蹤（Audit Trail）</h2>
+        <h2><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>RNG 審計追蹤（Audit Trail）</h2>
         <p>
             合規要求每一個 RNG 呼叫都必須可追蹤、可重播。在我們的系統中，
             每次 RNG 產生的隨機數都會被記錄到審計日誌中：
@@ -190,7 +190,7 @@ result = value % max</code>
             這兩個要求之間的界線，正是審計軌跡設計最需要斟酌的地方。
         </p>
 
-        <h2>防止客戶端操控</h2>
+        <h2><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>防止客戶端操控</h2>
         <p>
             RNG 安全的另一個關鍵維度是<strong>確保客戶端無法影響隨機結果</strong>。
             這裡的設計原則非常明確：<strong>客戶端是不可信任的執行環境</strong>。
@@ -215,7 +215,7 @@ result = value % max</code>
                 不存在共享可變狀態導致的競爭條件（Race Condition）</li>
         </ul>
 
-        <h2>GLI / BMM 認證標準</h2>
+        <h2><i class="fa-solid fa-certificate" aria-hidden="true"></i>GLI / BMM 認證標準</h2>
         <p>
             通過 <strong>GLI-19</strong>（互動式博弈系統技術標準）或 <strong>BMM</strong> 認證，
             RNG 需要滿足以下統計學測試：
@@ -246,7 +246,7 @@ result = value % max</code>
             確保在整個產品生命週期中維持最高的隨機性標準。
         </p>
 
-        <h2>分層安全架構</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>分層安全架構</h2>
         <p>
             總結而言，我們的 RNG 安全架構分為三個層次：
         </p>

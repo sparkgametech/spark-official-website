@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Protocol and Reconnection</h2>
+        <h2><i class="fa-solid fa-network-wired" aria-hidden="true"></i>Protocol and Reconnection</h2>
         <p>
             Whether a game holds up under real-world conditions comes down to three systems players almost never notice:
             the <strong>communication layer, the asset layer, and interface layer management</strong>. When they are done well they are entirely invisible; when they are done badly every flaw gets amplified.
@@ -51,7 +51,7 @@
             and converting to a decimal-point format only at display time. This principle has to be carried through every intermediate step, including the interpolation of number-rolling animations.
         </p>
 
-        <h2>Asset Management and Localization</h2>
+        <h2><i class="fa-solid fa-language" aria-hidden="true"></i>Asset Management and Localization</h2>
         <p>
             The asset volume of a slot game can be quite large: hundreds of image sprites (including versions at different resolutions),
             skeletal animation data, audio files, font files and so on, and how efficiently they are managed directly affects load time and memory usage.
@@ -78,7 +78,13 @@
         <h3>Three-Layer Asset Override</h3>
         <p>
             To match the three-layer architecture, the asset system also supports <strong>three-layer overriding</strong>:
-            the engine layer provides generic default assets, the framework layer overrides them with standard assets suited to the slot genre, and an individual game overrides those again with custom versions.
+        </p>
+        <ul>
+            <li><strong>Engine layer</strong>: provides generic default assets</li>
+            <li><strong>Framework layer</strong>: overrides them with standard assets suited to the slot genre</li>
+            <li><strong>Game layer</strong>: an individual game overrides those again with custom versions</li>
+        </ul>
+        <p>
             When the loader looks something up it starts at the game layer and falls back downward layer by layer, so developers only need to replace the parts they want to customize and everything else automatically inherits the upper layer's defaults.
         </p>
         <h3>Multi-Language Support</h3>
@@ -93,12 +99,17 @@
             <li><strong>Layout flexibility</strong>: the same sentence can differ in length by more than a factor of two across languages, so buttons and labels have to be able to scale font size or wrap automatically</li>
         </ul>
 
-        <h2>Audio System Design</h2>
+        <h2><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Audio System Design</h2>
         <p>
             The impact of audio on the slot game experience is frequently underestimated; a carefully designed audio system can substantially improve immersion and the sense of feedback.
             Our audio architecture manages all sound across <strong>three independent channels</strong>:
-            <strong>background music</strong>, which loops continuously with only one track playing at a time;
-            <strong>short sound effects</strong>, triggered by events and able to play several at once; and <strong>voice</strong>, whose assets have to change with the locale.
+        </p>
+        <ul>
+            <li><strong>Background music</strong>: loops continuously, with only one track playing at a time</li>
+            <li><strong>Short sound effects</strong>: triggered by events, and able to play several at once</li>
+            <li><strong>Voice</strong>: assets have to change with the locale</li>
+        </ul>
+        <p>
             The three channels have independent volume controls that the player can adjust separately.
         </p>
         <h3>Syncing Audio With Game State</h3>
@@ -129,7 +140,7 @@
             <li><strong>Priority mechanism</strong>: a higher-priority sound can interrupt a lower-priority one, ensuring important feedback is not drowned out</li>
         </ul>
 
-        <h2>Interface Layer Design</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>Interface Layer Design</h2>
         <p>
             Managing interface layers in a slot game is more complex than in a typical application: all sorts of elements appear and disappear at different moments,
             and strict <strong>layering relationships and mutual-exclusion rules</strong> hold between them. We use a four-layer architecture:
@@ -163,9 +174,6 @@
             We cover those two topics in the other two articles of this series.
         </p>
 
-        <p style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6; color: #666; font-style: italic;">
-            Need technical support? Feel free to contact us for more information.
-        </p>
     </div>
 </template>
 

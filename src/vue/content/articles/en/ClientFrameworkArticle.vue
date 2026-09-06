@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>What Problems Does a Slot Game Client Have to Solve?</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>What Problems Does a Slot Game Client Have to Solve?</h2>
         <p>
             Building the client for a slot game is far more than "a few reels spinning on screen."
             From a technical standpoint, a mature slot client has to solve at least the following core challenges:
@@ -17,7 +17,7 @@
             questions: how the code is layered, and how the flow of a single round is described in an orderly way.
         </p>
 
-        <h2>A Layered Framework: Build Once, Reuse Many Times</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>A Layered Framework: Build Once, Reuse Many Times</h2>
         <p>
             To keep code quality and development efficiency high while continuously shipping new games,
             we organize the entire client system with a <strong>three-layer architecture</strong>:
@@ -61,7 +61,7 @@
             <li><strong>Stage three, a shared component library</strong>: common UI components (buttons, dialogs, progress bars, number rollers and so on) were extracted into a standalone shared component library that new games reference directly, ensuring consistent visuals and behavior</li>
         </ul>
 
-        <h2>The Game State Machine: The Full Lifecycle of One Spin</h2>
+        <h2><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>The Game State Machine: The Full Lifecycle of One Spin</h2>
         <p>
             Each round of a slot game looks simple (press the button, the reels spin, the result appears), but the state management behind it is genuinely complex.
             We use a <strong>finite state machine</strong> to manage the full lifecycle of a round:
@@ -112,9 +112,6 @@
             and the supporting systems for communication, assets and interface layering. We cover each of them in the other two articles of this series.
         </p>
 
-        <p style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6; color: #666; font-style: italic;">
-            Need technical support? Feel free to contact us for more information.
-        </p>
     </div>
 </template>
 

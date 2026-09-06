@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>UI/UX Design and Interface Layout</h2>
+        <h2><i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>UI/UX Design and Interface Layout</h2>
         <p>
             Interface design for slot games is a discipline of its own. Unlike the general trend in applications
             towards simplicity and white space, it has to carry game information, controls and an entertaining
@@ -22,11 +22,13 @@
 
         <h3>Information Hierarchy Design</h3>
         <p>
-            The design philosophy of a slot interface is <strong>"what the player needs to see is always in view; what they do not need is hidden but reachable"</strong>.
-            The first tier is credits, bet amount and the spin button, always present; the second tier is the win
-            display and autoplay controls, surfacing only when needed; the third tier is the paytable, rules and
-            sound settings, tucked into a menu to be opened on demand.
+            The design philosophy of a slot interface is <strong>"what the player needs to see is always in view; what they do not need is hidden but reachable"</strong>:
         </p>
+        <ul>
+            <li><strong>First tier</strong>: credits, bet amount and the spin button, always present</li>
+            <li><strong>Second tier</strong>: the win display and autoplay controls, surfacing only when needed</li>
+            <li><strong>Third tier</strong>: the paytable, rules and sound settings, tucked into a menu to be opened on demand</li>
+        </ul>
         <p>
             The criterion for tiering is <strong>frequency of use multiplied by urgency</strong>, not the importance
             of the feature.
@@ -68,7 +70,7 @@
             it cannot be blended into the background for the sake of stylistic unity.
         </p>
 
-        <h2>From Mockup to Engine: The Art Delivery Process</h2>
+        <h2><i class="fa-solid fa-truck-fast" aria-hidden="true"></i>From Mockup to Engine: The Art Delivery Process</h2>
         <p>
             Taking a set of art assets from design mockup to integration in the game engine requires a rigorous
             delivery process, and how well standardised it is directly affects collaboration efficiency and asset quality.
@@ -137,7 +139,7 @@
             so conflicts have to be avoided by convention, for example by clearly dividing up areas of responsibility.
         </p>
 
-        <h2>Overview of the Art Technology Stack</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>Overview of the Art Technology Stack</h2>
         <p>
             A complete slot art production pipeline involves the coordinated use of several specialised tools:
         </p>

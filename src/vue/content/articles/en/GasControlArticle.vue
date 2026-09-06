@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Overview of the Regulation System</h2>
+        <h2><i class="fa-solid fa-sliders" aria-hidden="true"></i>Overview of the Regulation System</h2>
         <p>
             A slot's <strong>regulation system</strong> is a dynamic control layer sitting on top of the natural probability model,
             used to achieve flexible RTP management and player experience optimization while preserving the game's mathematical correctness.
@@ -20,7 +20,7 @@
             The purpose of the regulation layer is to make the short-term distribution more predictable and closer to the design intent, without shaking the long-term expected value.
         </p>
 
-        <h2>The Main Spin Request Flow</h2>
+        <h2><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>The Main Spin Request Flow</h2>
         <p>
             From arrival to response, every Spin request goes through the following complete processing pipeline:
         </p>
@@ -33,19 +33,19 @@
             and the same set of inputs necessarily produces the same set of outputs, so regression tests can compare round by round without tolerating any error margin.
         </p>
 
-        <h2>The Regulation Core: A Two-Stage Control Pipeline</h2>
+        <h2><i class="fa-solid fa-gears" aria-hidden="true"></i>The Regulation Core: A Two-Stage Control Pipeline</h2>
         <p>
             The core of regulation is divided into two stages executed in sequence:
         </p>
         <MermaidDiagram id="adjust-pipeline" :chart="adjustPipelineChart"/>
         <h3>Why Split It Into Two Stages?</h3>
         <p>
-            The two-stage split corresponds to two problems of completely different nature.
-            The first stage answers <strong>"what should the expected value of this round be"</strong>,
-            a purely numerical management problem whose answer is an RTP target;
-            the second stage answers <strong>"given that expected value, what shape of result should be produced"</strong>,
-            an experiential problem whose answer is a concrete payout multiple.
+            The two-stage split corresponds to two problems of completely different nature:
         </p>
+        <ul>
+            <li><strong>The first stage</strong> answers "what should the expected value of this round be". This is a purely numerical management problem whose answer is an RTP target</li>
+            <li><strong>The second stage</strong> answers "given that expected value, what shape of result should be produced". This is an experiential problem whose answer is a concrete payout multiple</li>
+        </ul>
         <p>
             Handling the two together produces a situation that is very hard to maintain:
             any adjustment to the feel may accidentally alter the expected value, and any numerical adjustment affects the feel,
@@ -55,7 +55,7 @@
             the former verifies convergence, the latter verifies variance and tail characteristics.
         </p>
 
-        <h2>Stage One: RTP Table Selection</h2>
+        <h2><i class="fa-solid fa-table" aria-hidden="true"></i>Stage One: RTP Table Selection</h2>
         <p>
             The system pre-configures several probability tables with different RTPs (such as LOW / MIDDLE / HIGH),
             and stage one's job is to decide, according to an established strategy, which table this Spin uses.
@@ -140,7 +140,7 @@
             Making a real-time correction from the individual's cumulative statistics lets convergence happen at the <strong>individual scale</strong> rather than only at the aggregate scale.
         </p>
 
-        <h2>Stage Two: Weighted Result Selection</h2>
+        <h2><i class="fa-solid fa-weight-hanging" aria-hidden="true"></i>Stage Two: Weighted Result Selection</h2>
         <p>
             Once the RTP table has been determined, stage two picks the concrete game result from that table's payout-weight distribution
             by weighted random draw. The selection strategy is determined by the <strong>weight mode</strong>:
@@ -208,7 +208,7 @@
             with no need to worry about affecting RTP at all.
         </p>
 
-        <h2>Result Mapping and Scaling</h2>
+        <h2><i class="fa-solid fa-expand" aria-hidden="true"></i>Result Mapping and Scaling</h2>
         <p>
             After weighted selection produces a presentation index:
         </p>
@@ -230,7 +230,7 @@
             ensuring the invariant "the sum of the line items equals the total" always holds.
         </p>
 
-        <h2>Graceful Degradation Design</h2>
+        <h2><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Graceful Degradation Design</h2>
         <p>
             The core design principle of the regulation system is <strong>graceful degradation</strong>:
             in any situation of missing configuration, abnormal parameters or an unavailable external dependency, the system silently falls back to natural probability mode.

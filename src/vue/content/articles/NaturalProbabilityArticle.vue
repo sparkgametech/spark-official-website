@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>什麼是自然機率？</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>什麼是自然機率？</h2>
         <p>
             在老虎機遊戲中，<strong>自然機率（Natural Probability）</strong>是指完全基於數學模型計算出的中獎機率，
             不受任何外部調控因素影響。每一次 Spin 的結果都由預先設計的<strong>符號權重表（Reel Strip）</strong>決定，
@@ -23,7 +23,7 @@
             也決定了第三方稽核時能不能提出完整的數學證明文件。
         </p>
 
-        <h2>符號權重表（Reel Strip）設計</h2>
+        <h2><i class="fa-solid fa-table-list" aria-hidden="true"></i>符號權重表（Reel Strip）設計</h2>
         <p>
             老虎機的每一條轉輪（Reel）上，各個符號並非均勻分佈，而是根據精心計算的<strong>權重（Weight）</strong>進行配置。
             權重越高的符號出現頻率越高，反之則越稀有。
@@ -51,9 +51,13 @@
             設計師因此能以極細的粒度調整單一符號的出現頻率，而不必受畫面格數限制。
         </p>
         <p>
-            實務上有兩種等價的表達方式：一種是把權重表寫成一條「展開後」的符號序列，長度即為總權重；
-            另一種是只記錄每個符號的權重值，再以累積分佈做二分搜尋定位。
-            前者查表快、記憶體佔用大；後者省空間但每次抽樣多一次搜尋成本。
+            實務上有兩種等價的表達方式：
+        </p>
+        <ul>
+            <li><strong>展開序列</strong>：把權重表寫成一條「展開後」的符號序列，長度即為總權重。查表快，但記憶體佔用大</li>
+            <li><strong>累積分佈</strong>：只記錄每個符號的權重值，再以二分搜尋定位。省空間，但每次抽樣多一次搜尋成本</li>
+        </ul>
+        <p>
             在需要跑數十億次模擬的驗證階段，這個看似微小的差異會直接反映在總計算時間上。
         </p>
         <h3>權重配置的實際取捨</h3>
@@ -74,7 +78,7 @@
             以維持畫面的視覺節奏，這類規則同樣必須納入機率計算。
         </p>
 
-        <h2>中獎組合機率計算</h2>
+        <h2><i class="fa-solid fa-calculator" aria-hidden="true"></i>中獎組合機率計算</h2>
         <p>
             以 5 軸老虎機為例，假設每條 Reel 的總權重分別為 W1、W2、W3、W4、W5，
             要計算某個特定中獎組合的機率，需要將各軸上相應符號的權重相乘，再除以總組合數：
@@ -121,7 +125,7 @@
             玩家在一般轉輪的空轉感較重，需要一個明確的目標來維持節奏。
         </p>
 
-        <h2>RTP（Return to Player）計算</h2>
+        <h2><i class="fa-solid fa-percent" aria-hidden="true"></i>RTP（Return to Player）計算</h2>
         <p>
             <strong>RTP</strong> 是老虎機最重要的數值指標，代表長期而言玩家每投入 1 元可預期收回的金額比例。
             例如 RTP 96.5% 表示長期平均每投注 100 元，玩家可期望收回 96.5 元。
@@ -159,7 +163,7 @@
             這個放大係數在 r 接近 0.3 以上時會相當可觀，是免費遊戲 RTP 失控的最常見原因。
         </p>
 
-        <h2>波動率（Volatility）設計</h2>
+        <h2><i class="fa-solid fa-chart-line" aria-hidden="true"></i>波動率（Volatility）設計</h2>
         <p>
             除了 RTP 之外，<strong>波動率</strong>是影響玩家體感的關鍵指標。波動率決定了中獎的「分散程度」：
         </p>
@@ -192,7 +196,7 @@
             這個推論直接解釋了高波動機台的一個特性：短期體感與理論值可以差距極大，而這正是設計意圖的一部分。
         </p>
 
-        <h2>Hit Rate 與中獎頻率</h2>
+        <h2><i class="fa-solid fa-bullseye" aria-hidden="true"></i>Hit Rate 與中獎頻率</h2>
         <p>
             <strong>Hit Rate（中獎率）</strong>是指每次 Spin 產生任意中獎的機率。
             一般老虎機的 Hit Rate 在 20%-35% 之間，意味著大約每 3-5 次 Spin 會有一次中獎。
@@ -222,7 +226,7 @@
             設計時把這個數字算出來，並確認它落在可接受範圍內，比事後靠玩家回饋修正要有效得多。
         </p>
 
-        <h2>數學驗證與模擬</h2>
+        <h2><i class="fa-solid fa-flask" aria-hidden="true"></i>數學驗證與模擬</h2>
         <p>
             設計完成後，必須透過<strong>大量模擬（Simulation）</strong>來驗證數值的正確性。
             通常需要模擬至少 1 億到 10 億次 Spin，確認：

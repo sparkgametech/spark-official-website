@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Why Does Slot Audio Matter?</h2>
+        <h2><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Why Does Slot Audio Matter?</h2>
         <p>
             In the overall experience of a slot game, <strong>sound design accounts for at least 50% of the perceptual weight</strong>.
             A game that looks polished but sounds flat rarely leaves a lasting impression;
@@ -19,7 +19,7 @@
             Great sound design never makes players "aware" that sound is present; it simply makes the experience feel complete and natural.
         </p>
 
-        <h2>Main Theme: The Few Notes People Remember</h2>
+        <h2><i class="fa-solid fa-music" aria-hidden="true"></i>Main Theme: The Few Notes People Remember</h2>
 
         <h3>Length and Placement of the Hook</h3>
         <p>
@@ -44,7 +44,7 @@
             "One motif, many forms" keeps the game's entire sonic palette tightly unified.
         </p>
 
-        <h2>Techniques for Producing Seamless Loops</h2>
+        <h2><i class="fa-solid fa-repeat" aria-hidden="true"></i>Techniques for Producing Seamless Loops</h2>
 
         <h3>Loop Points and Zero Crossings</h3>
         <p>
@@ -71,7 +71,7 @@
             This material is triggered randomly at intervals unrelated to the music's length, so every pass through the loop sounds slightly different overall.
         </p>
 
-        <h2>Music Transitions Between Base Mode and Special Mode</h2>
+        <h2><i class="fa-solid fa-shuffle" aria-hidden="true"></i>Music Transitions Between Base Mode and Special Mode</h2>
         <p>
             Music for the <strong>base mode</strong> usually sits somewhere between relaxed and excited:
             it needs enough groove to carry a pulse, but must not be so intense that it causes listening fatigue.
@@ -83,16 +83,18 @@
             a more dramatic melody. That shift tells players "something special is happening" and strengthens the sense of reward.
         </p>
         <p>
-            Two mainstream approaches exist for the transition itself. The first is a <strong>crossfade</strong>:
-            both music tracks play at once, the old one drops in level linearly over a set time while the new one rises linearly in step.
-            The fade time is usually set between 1 and 2 seconds; it is simple to implement and works from any point in time.
-            The second is a <strong>beat-synced switch</strong>, where the audio manager tracks the current playback position in the loop
-            and waits until the next bar line or phrase ending to execute the change. It sounds natural, at the cost of up to a few hundred milliseconds of latency.
+            Two mainstream approaches exist for the transition itself:
+        </p>
+        <ul>
+            <li><strong>Crossfade</strong>: both music tracks play at once, the old one dropping in level linearly over a set time while the new one rises linearly in step. The fade time is usually set between 1 and 2 seconds; it is simple to implement and works from any point in time</li>
+            <li><strong>Beat-synced switch</strong>: the audio manager tracks the current playback position in the loop and waits until the next bar line or phrase ending to execute the change. It sounds natural, at the cost of up to a few hundred milliseconds of latency</li>
+        </ul>
+        <p>
             A common compromise: cover the moment of the switch with a <strong>stinger</strong> on the way in,
             and use a crossfade to slide smoothly back to the base mode on the way out.
         </p>
 
-        <h2>How Tonality and Instrumentation Match the Theme</h2>
+        <h2><i class="fa-solid fa-guitar" aria-hidden="true"></i>How Tonality and Instrumentation Match the Theme</h2>
         <p>
             The style of the background music has to align closely with the game's theme to build complete immersion.
             Instrumentation decides "where it sounds like," and the mode decides "what emotion it sounds like":
@@ -111,7 +113,7 @@
             avoiding dissonant collisions when celebration sounds and music sound together.
         </p>
 
-        <h2>Trade-offs in Music Length and Loop Points</h2>
+        <h2><i class="fa-solid fa-scissors" aria-hidden="true"></i>Trade-offs in Music Length and Loop Points</h2>
         <p>
             Loop length is a textbook trade-off: the longer it is, the less repetitive it feels, but file size and memory footprint rise in step;
             the shorter it is, the cheaper it is on resources, and the sooner players notice the repetition.

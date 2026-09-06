@@ -1,0 +1,21 @@
+/**
+ * Shared article body rules.
+ *
+ * Each of the article components carries its own scoped stylesheet, so
+ * anything that has to look the same across all of them belongs here rather
+ * than being copied into every file.
+ */
+
+// Section icons in headings. Which icon to use is a per-article decision and
+// stays in the markup; the sizing and colour are shared. The icon is decorative
+// (the heading text carries the meaning) and is marked aria-hidden there.
+.blog-article h2 i {
+    margin-right: 0.6rem;
+    color: $primary;
+    font-size: 0.85em;
+
+    // Keeps the mixed-width icons from shifting the heading text left and
+    // right between sections.
+    width: 1.15em;
+    text-align: center;
+}

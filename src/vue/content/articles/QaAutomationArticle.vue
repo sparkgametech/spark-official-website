@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>自動化測試</h2>
+        <h2><i class="fa-solid fa-robot" aria-hidden="true"></i>自動化測試</h2>
 
         <h3>確定性重播測試</h3>
         <p>
@@ -73,7 +73,7 @@
             基準也須綁定裝置層級並隨版本追蹤趨勢。
         </p>
 
-        <h2>合規測試與第三方認證</h2>
+        <h2><i class="fa-solid fa-certificate" aria-hidden="true"></i>合規測試與第三方認證</h2>
 
         <h3>GLI-19 / BMM 測試要求</h3>
         <p>

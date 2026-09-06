@@ -1,32 +1,35 @@
 <template>
     <div class="blog-article">
-        <h2>The Reel Engine: Where a Slot's Feel Comes From</h2>
+        <h2><i class="fa-solid fa-arrows-spin" aria-hidden="true"></i>The Reel Engine: Where a Slot's Feel Comes From</h2>
         <p>
             Reel animation is the most iconic visual element of a slot game, and the only part players judge by "feel."
             Two games with identical rules can go from feeling "crisp and decisive" to "sluggish and dragging" purely because their stop timing differs by a few dozen milliseconds.
-            A good reel engine has to deliver a spin that is <strong>silky smooth and physically convincing</strong>,
-            and that experience has to be tunable and reproducible rather than something stumbled upon by trial and error.
+            A good reel engine has to deliver a spin that is <strong>silky smooth and physically convincing</strong>, and that feel has to be tunable and reproducible rather than something stumbled upon by trial and error.
         </p>
         <MermaidDiagram id="reel-anim" :chart="reelAnimChart"/>
         <p>
             Of these six stages, only the length of "wait for result" is determined externally; the engine controls the other five itself.
         </p>
 
-        <h2>Per-Frame Displacement and Symbol Recycling</h2>
+        <h2><i class="fa-solid fa-recycle" aria-hidden="true"></i>Per-Frame Displacement and Symbol Recycling</h2>
         <p>
-            At its core, the reel engine works like this: each frame it computes the reel's <strong>displacement</strong>,
-            and when a symbol's displacement exceeds the height of one cell, symbol recycling is triggered, and the symbol that moved out of the visible area at the top is recycled to the bottom and filled in with a new symbol image. This "object pool" style of recycling avoids constantly creating and destroying display objects,
-            which keeps memory usage stable. The size of the object pool has a clear lower bound: the number of visible rows plus one cell of buffer above and below.
-            Those two extra cells let a symbol finish swapping its texture before it enters or leaves the screen, so it never "suddenly transforms" right at the boundary.
+            At its core, each frame the engine computes the reel's <strong>displacement</strong>, and when it exceeds the height of one cell, symbol recycling is triggered:
         </p>
+        <ul>
+            <li><strong>Recycle and refill</strong>: the symbol that moved out of the visible area at the top is recycled to the bottom and filled in with a new symbol image</li>
+            <li><strong>Object pool</strong>: avoids constantly creating and destroying display objects, which keeps memory usage stable</li>
+            <li><strong>Lower bound on pool size</strong>: the number of visible rows plus one cell of buffer above and below, letting a symbol finish swapping its texture before it enters or leaves the screen so it never "suddenly transforms" right at the boundary</li>
+        </ul>
         <p>
             Displacement has to be computed against <strong>elapsed time</strong> rather than frame count,
             otherwise the spin speed on a 120Hz display would be double that on a 60Hz one, and the stop timing would come early across the board.
+        </p>
+        <p>
             But when the application comes back to the foreground from the background, a single frame's elapsed time can be several seconds, and applying it directly would make the reels skip a huge number of symbols in one frame,
             so a cap on single-frame time is also required.
         </p>
 
-        <h2>The Mathematics of Easing Curves</h2>
+        <h2><i class="fa-solid fa-bezier-curve" aria-hidden="true"></i>The Mathematics of Easing Curves</h2>
         <p>
             An easing function maps "progress ratio" to "displacement ratio": the input runs from 0 to 1 and the output also runs from 0 to 1,
             but how it gets there determines whether the motion reads as constant speed, acceleration, deceleration or bounce.
@@ -48,10 +51,14 @@
         <h3>Parameters of the Elastic Rebound</h3>
         <p>
             A real slot machine has a subtle "overshoot" when it stops. The reel goes slightly past the target position, then springs back into place.
-            This segment can also be described with a <strong>damped oscillation model</strong>: a spring pulls the reel toward the target while damping dissipates energy.
-            The model has only two intuitive parameters: <strong>stiffness</strong> determines how fast it springs back, and the higher it is the snappier the return;
-            <strong>damping ratio</strong> determines the number of oscillations, and the closer to critical it is the more it settles in one go.
-            We break the whole stop into three independently adjustable intervals:
+            This segment can be described with a <strong>damped oscillation model</strong>, where a spring pulls the reel toward the target while damping dissipates energy, and it has only two intuitive parameters:
+        </p>
+        <ul>
+            <li><strong>Stiffness</strong>: determines how fast it springs back, and the higher it is the snappier the return</li>
+            <li><strong>Damping ratio</strong>: determines the number of oscillations, and the closer to critical it is the more it settles in one go</li>
+        </ul>
+        <p>
+            The stop as a whole then breaks into three independently adjustable intervals:
         </p>
         <ul>
             <li><strong>Deceleration phase</strong>: uses an ease-out curve to simulate friction gradually slowing the reel down</li>
@@ -60,11 +67,13 @@
         </ul>
         <p>
             Fast-paced games use a smaller overshoot and a quick rebound, while classic-style ones use a more exaggerated bounce to create a mechanical feel.
+        </p>
+        <p>
             Another parameter that often gets overlooked is the <strong>pre-bounce</strong>: a slight backward displacement before the start, then acceleration downward.
             It lasts only a few dozen milliseconds, yet it noticeably increases the sense of force.
         </p>
 
-        <h2>Designing the Stop Timing</h2>
+        <h2><i class="fa-solid fa-stopwatch" aria-hidden="true"></i>Designing the Stop Timing</h2>
         <p>
             A single column tuned to look good does not mean the whole reel set feels good. When multiple columns move together, what really determines the impression is <strong>timing</strong>:
         </p>
@@ -81,11 +90,13 @@
         <p>
             When the player taps again mid-spin, all reels need to stop immediately.
             The tricky part is this: if you compress the animation time to one tenth, the overshoot and rebound shrink proportionally too, and it looks like a "fast-forward" rather than a "brake."
+        </p>
+        <p>
             The better approach is to re-plan the deceleration curve rather than scale the original one: keep the rebound segment at its full length, compress only the deceleration segment in front of it,
             and recompute the remaining distance from the actual current speed.
         </p>
 
-        <h2>Anticipation and Special Stop Effects</h2>
+        <h2><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>Anticipation and Special Stop Effects</h2>
         <p>
             Beyond the basic spin and stop, the reel engine also needs to support a variety of special effects,
             the most important of which is building a sense of <strong>anticipation</strong>:
@@ -101,14 +112,18 @@
             The engine merely picks how to perform based on an already-determined result, and the performance itself never changes where any symbol lands. Write that line into the interface design, and the engine simply has no ability to decide whether to play an anticipation before the result arrives.
         </p>
 
-        <h2>Frame Rate Stability and Visual Strobing</h2>
+        <h2><i class="fa-solid fa-gauge-high" aria-hidden="true"></i>Frame Rate Stability and Visual Strobing</h2>
         <p>
             Most of the reel engine's performance problems come not from the amount of computation but from <strong>per-frame object churn</strong>.
-            Creating and releasing display objects every frame causes garbage collection to fire at unpredictable moments, which shows up as a hitch every few seconds;
-            the point of the object pool is not just to save creation cost but to keep memory usage flat.
-            On top of that, having the symbols in one column share a single texture atlas so draw calls can be batched,
-            and dropping decorations like frame glows and background particles to a lower update rate, both preserve budget for the main subject.
+            Creating and releasing display objects every frame causes garbage collection to fire at unpredictable moments, which shows up as a hitch every few seconds.
         </p>
+        <p>
+            The point of the object pool is not just to save creation cost but to keep memory usage flat. Two more measures are worth handling alongside it:
+        </p>
+        <ul>
+            <li><strong>Batch the draw calls</strong>: have the symbols in one column share a single texture atlas</li>
+            <li><strong>Lower the update rate of decorations</strong>: frame glows and background particles do not need a refresh every frame, which preserves budget for the main subject</li>
+        </ul>
         <h3>Handling Strobing at High Speed</h3>
         <p>
             When the reels spin at high speed, a symbol may move farther per frame than its own height,
@@ -129,9 +144,6 @@
             We discuss those two topics in the other two articles of this series.
         </p>
 
-        <p style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6; color: #666; font-style: italic;">
-            Need technical support? Feel free to contact us for more information.
-        </p>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>What Is the Result Set Architecture?</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>What Is the Result Set Architecture?</h2>
         <p>
             In slot game development, the <strong>result set</strong> is a <strong>pre-generated seed record pool</strong> architecture.
             Its core idea is to pre-compute the game's random outcomes and package them into replayable records, used to distribute results in specific scenarios
@@ -33,7 +33,7 @@
             The correctness of the mathematical model can therefore be fully verified and sealed in the offline stage, no longer subject to changes in online code.
         </p>
 
-        <h2>The Layered Architecture of the Result Set</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>The Layered Architecture of the Result Set</h2>
         <p>
             The result set uses a multi-level tree structure that filters down level by level from the top:
         </p>
@@ -82,7 +82,7 @@
             Each record is stored compressed in a custom <strong>TLV (Type-Length-Value)</strong> binary encoding format.
         </p>
 
-        <h2>TLV Encoding Format Design</h2>
+        <h2><i class="fa-solid fa-file-code" aria-hidden="true"></i>TLV Encoding Format Design</h2>
         <p>
             To store large volumes of Spin result records efficiently, the result set adopts a compact TLV binary encoding format:
         </p>
@@ -126,7 +126,7 @@
             so that adding segment types later does not break backward compatibility with existing data.
         </p>
 
-        <h2>The Picking Pipeline</h2>
+        <h2><i class="fa-solid fa-filter" aria-hidden="true"></i>The Picking Pipeline</h2>
         <p>
             When the system needs to draw a result from the result set, it goes through the following multi-stage picking pipeline:
         </p>
@@ -183,7 +183,7 @@
             without scanning record by record, a concrete example of the encoding format and the indexing strategy working together.
         </p>
 
-        <h2>The Deterministic Replay Mechanism</h2>
+        <h2><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>The Deterministic Replay Mechanism</h2>
         <p>
             A seed taken from the result set can restore the full game outcome through deterministic replay.
             For a reel-based slot, an integer seed is broken down into the stop position of each reel through
@@ -220,7 +220,7 @@
             not a one-off architectural decision.
         </p>
 
-        <h2>Use Cases for the Result Set</h2>
+        <h2><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>Use Cases for the Result Set</h2>
         <ul>
             <li><strong>Precise RTP control</strong>: a pre-computed result pool ensures RTP converges tightly within a finite sample</li>
             <li><strong>Compliance audit</strong>: every result is traceable, replayable and verifiable</li>
@@ -246,7 +246,7 @@
             the only difference is the relative frequency of each kind of result. By comparison, rebuilding the weight table easily produces differences in feel between versions that are hard to explain.
         </p>
 
-        <h2>Relationship with Natural Probability</h2>
+        <h2><i class="fa-solid fa-link" aria-hidden="true"></i>Relationship with Natural Probability</h2>
         <p>
             Every record in the result set comes from a genuine Spin result of the natural probability model, going through extract → encode → store.
             It does not change the game's mathematical model; it merely converts "real-time computation" into "pre-computed lookup".
@@ -265,10 +265,12 @@
         </p>
         <p>
             To preserve this equivalence, two disciplines must be upheld at the generation stage:
-            first, <strong>the sampling must be unbiased</strong>: the records must faithfully reflect the original model's distribution,
-            and extreme outcomes must not be filtered out to make the pool "look nicer", as that would directly destroy the tail characteristics;
-            second, <strong>the sample size must be sufficient</strong>: the pool size should be derived backwards from the target precision,
-            and for high-volatility games the required sample size is proportional to the square of the standard deviation, often far beyond intuitive estimates.
+        </p>
+        <ul>
+            <li><strong>The sampling must be unbiased</strong>: the records must faithfully reflect the original model's distribution, and extreme outcomes must not be filtered out to make the pool "look nicer", as that would directly destroy the tail characteristics</li>
+            <li><strong>The sample size must be sufficient</strong>: the pool size should be derived backwards from the target precision, and for high-volatility games the required sample size is proportional to the square of the standard deviation, often far beyond intuitive estimates</li>
+        </ul>
+        <p>
             Uphold these two, and the result set genuinely remains nothing more than a <strong>storage and distribution form</strong> of natural probability,
             rather than a separate mathematical model of its own.
         </p>

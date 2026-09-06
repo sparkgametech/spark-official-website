@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>What Is Statistical Anomaly Detection?</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>What Is Statistical Anomaly Detection?</h2>
         <p>
             A gaming system faces risk along several dimensions: <strong>mathematical risk</strong> (extreme statistical deviation),
             <strong>system risk</strong> (misconfiguration, program defects), and <strong>behavioral risk</strong> (abnormal betting patterns).
@@ -18,7 +18,7 @@
             That is exactly the question statistical hypothesis testing was designed to answer, and it is why we built the entire detection logic on a hypothesis-testing framework.
         </p>
 
-        <h2>The Basic Premises of Hypothesis Testing</h2>
+        <h2><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>The Basic Premises of Hypothesis Testing</h2>
         <p>
             All detection logic revolves around a single statistical framework, and understanding that framework is a prerequisite for understanding every design trade-off that follows.
         </p>
@@ -48,7 +48,7 @@
             This also explains why, when designing a monitoring mechanism, planning the sample size is more fundamental than tuning the thresholds.
         </p>
 
-        <h2>Binomial Win Rate Test</h2>
+        <h2><i class="fa-solid fa-chart-column" aria-hidden="true"></i>Binomial Win Rate Test</h2>
         <p>
             For each bet type and probability table label, we continuously track whether the actual win rate deviates from the theoretical value in a statistically significant way.
             Using the confidence interval of the binomial distribution, we set a <strong>significance level of α = 1/10000</strong> (an extremely strict threshold),
@@ -65,7 +65,13 @@ if p-value < α (0.0001), flag as anomalous</code>
         </p>
         <p>
             We chose the binomial test as the first line of defense because "won or not" naturally satisfies the three premises of the binomial distribution:
-            each round has only two outcomes, win or no win; rounds are independent of one another; and the win probability per round is fixed.
+        </p>
+        <ul>
+            <li>each round has only two outcomes, win or no win</li>
+            <li>rounds are independent of one another</li>
+            <li>the win probability per round is fixed</li>
+        </ul>
+        <p>
             All three premises hold in a normally functioning game. Conversely,
             <strong>when the test keeps failing, what gets refuted may be not only the probability value but independence itself</strong>:
             for instance, some state that was not correctly reset, causing the previous round's outcome to influence the next.
@@ -82,7 +88,7 @@ if p-value < α (0.0001), flag as anomalous</code>
             <strong>Silence is safer than a wrong conclusion</strong>.
         </p>
 
-        <h2>RTP Z-Test</h2>
+        <h2><i class="fa-solid fa-chart-area" aria-hidden="true"></i>RTP Z-Test</h2>
         <p>
             We run a Z-test on cumulative RTP to verify whether the actual RTP deviates significantly from the locked theoretical RTP:
         </p>
@@ -120,7 +126,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             rather than by assuming a normal distribution. Ignoring this systematically underestimates the standard error and, in turn, greatly overstates the severity of an alert.
         </p>
 
-        <h2>Outlier Filtering</h2>
+        <h2><i class="fa-solid fa-filter" aria-hidden="true"></i>Outlier Filtering</h2>
         <p>
             If the initial win rate test finds an anomaly, the system performs a second round of analysis,
             recomputing RTP after filtering out <strong>extreme payouts above PR95</strong>:
@@ -161,7 +167,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             and that difference is often more diagnostically valuable than either set of numbers on its own.
         </p>
 
-        <h2>Trade-offs in Time Windows</h2>
+        <h2><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>Trade-offs in Time Windows</h2>
         <p>
             A statistical test has to be defined over some range of data, and <strong>the choice of time window directly determines what kinds of problems can be detected</strong>.
             This is one of the most underestimated decisions in risk control design.
@@ -187,7 +193,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             while clearing requires several consecutive periods of normality, thereby avoiding repeated notifications for the same problem.
         </p>
 
-        <h2>Real-Time Monitoring and Alerting</h2>
+        <h2><i class="fa-solid fa-bell" aria-hidden="true"></i>Real-Time Monitoring and Alerting</h2>
         <p>
             Detection results need to reach the technical team in real time, and the alerting channel design includes:
         </p>
@@ -220,7 +226,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             preventing a problem from being shelved indefinitely just because its tier was low.
         </p>
 
-        <h2>Weighing False Positives Against False Negatives</h2>
+        <h2><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Weighing False Positives Against False Negatives</h2>
         <p>
             Finally we return to that unavoidable fundamental trade-off. As noted earlier, an extremely strict significance level suppresses false positives,
             but the price of that choice has to be honestly acknowledged: <strong>it simultaneously raises the probability of false negatives</strong>,
@@ -243,7 +249,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             a system like that is, in the end, usually one nobody looks at.
         </p>
 
-        <h2>Design Principles</h2>
+        <h2><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>Design Principles</h2>
         <ul>
             <li><strong>Fairness is never altered</strong>: risk control only monitors and detects; it never manipulates the game's random outcomes</li>
             <li><strong>Grounded in statistics</strong>: all detection logic is based on rigorous hypothesis testing, avoiding false positives</li>

@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>功能測試</h2>
+        <h2><i class="fa-solid fa-list-check" aria-hidden="true"></i>功能測試</h2>
         <p>
             功能測試的任務，是確認遊戲邏輯在<strong>所有可能的執行路徑</strong>上都與設計一致，
             並且在異常情境下仍能維持狀態的正確性。
@@ -87,7 +87,7 @@
             數字格式化是否符合各地區慣例（如千分位分隔符號的差異）。
         </p>
 
-        <h2>體感測試</h2>
+        <h2><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i>體感測試</h2>
 
         <h3>真人玩家測試</h3>
         <p>

@@ -1,6 +1,6 @@
 <template>
     <div class="blog-article">
-        <h2>Why Does RNG Security Matter So Much?</h2>
+        <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>Why Does RNG Security Matter So Much?</h2>
         <p>
             The <strong>Random Number Generator (RNG)</strong> is the cornerstone of fairness in gaming.
             Every slot machine spin, every card dealt, every dice outcome depends on the random numbers the RNG produces.
@@ -18,7 +18,7 @@
             This is why every security decision should rest on the premise that the attacker knows the algorithm and lacks only the keys and the internal state.
         </p>
 
-        <h2>Why Ordinary Pseudorandom Numbers Are Not Enough</h2>
+        <h2><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>Why Ordinary Pseudorandom Numbers Are Not Enough</h2>
         <p>
             The random functions built into most programming languages are designed for <strong>speed and statistical uniformity</strong>, not for security.
             Take the common linear congruential generator (LCG): its next state is obtained from the current state with a single multiplication and addition,
@@ -33,7 +33,7 @@
             These are two independent properties. Gaming needs both, and neither can be omitted.
         </p>
 
-        <h2>Cryptographically Secure Pseudorandom Number Generators (CSPRNG)</h2>
+        <h2><i class="fa-solid fa-lock" aria-hidden="true"></i>Cryptographically Secure Pseudorandom Number Generators (CSPRNG)</h2>
         <p>
             The RNG in a gaming product must use a <strong>cryptographically secure pseudorandom number generator (CSPRNG)</strong>,
             not the standard random function provided by a general-purpose language. The key differences are:
@@ -50,7 +50,7 @@
             the kernel's randomness subsystem has undergone extensive public review and long-term field validation, and is far more reliable than any homegrown alternative.
         </p>
 
-        <h2>Obtaining Entropy and Assessing Its Quality</h2>
+        <h2><i class="fa-solid fa-atom" aria-hidden="true"></i>Obtaining Entropy and Assessing Its Quality</h2>
         <p>
             A CSPRNG merely "stretches" a small amount of true randomness into a large volume of unpredictable bits; it does not create randomness on its own.
             Real randomness comes from an <strong>entropy source</strong>: physically unpredictable events.
@@ -78,7 +78,7 @@
                 mixing multiple sources ensures that the unpredictability of the overall output still holds even if the quality of one channel degrades</li>
         </ul>
 
-        <h2>Eliminating Modulo Bias: Rejection Sampling</h2>
+        <h2><i class="fa-solid fa-filter" aria-hidden="true"></i>Eliminating Modulo Bias: Rejection Sampling</h2>
         <p>
             When we need a random integer in the range <code>[0, max)</code>, the most intuitive approach is <code>rand() % max</code>.
             This, however, introduces <strong>modulo bias</strong>: when the upper bound of the random number is not divisible by max,
@@ -115,7 +115,7 @@ result = value % max</code>
             so the performance impact is negligible, while a <strong>mathematically perfect uniform distribution</strong> is guaranteed.
         </p>
 
-        <h2>Seed Management and Collision Prevention</h2>
+        <h2><i class="fa-solid fa-seedling" aria-hidden="true"></i>Seed Management and Collision Prevention</h2>
         <p>
             On a highly concurrent game server, managing the RNG seed is another critical security point.
             If two players' RNGs use the same seed, they will produce the same sequence of game outcomes.
@@ -152,7 +152,7 @@ result = value % max</code>
             it supplies no randomness, but it supplies a deterministic guarantee of non-repetition, complementing the unpredictability of the entropy source.
         </p>
 
-        <h2>RNG Audit Trail</h2>
+        <h2><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>RNG Audit Trail</h2>
         <p>
             Compliance requires every RNG call to be traceable and replayable. In our system,
             every random number the RNG produces is written to the audit log:
@@ -190,7 +190,7 @@ result = value % max</code>
             The line between those two requirements is exactly where audit trail design demands the most careful judgment.
         </p>
 
-        <h2>Preventing Client-Side Manipulation</h2>
+        <h2><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Preventing Client-Side Manipulation</h2>
         <p>
             Another critical dimension of RNG security is <strong>ensuring that the client cannot influence the random outcome</strong>.
             The design principle here is unambiguous: <strong>the client is an untrusted execution environment</strong>.
@@ -215,7 +215,7 @@ result = value % max</code>
                 there is no shared mutable state that could cause a race condition</li>
         </ul>
 
-        <h2>GLI / BMM Certification Standards</h2>
+        <h2><i class="fa-solid fa-certificate" aria-hidden="true"></i>GLI / BMM Certification Standards</h2>
         <p>
             To pass <strong>GLI-19</strong> (the technical standard for interactive gaming systems) or <strong>BMM</strong> certification,
             an RNG must satisfy the following statistical tests:
@@ -246,7 +246,7 @@ result = value % max</code>
             maintaining the highest standard of randomness throughout the product lifecycle.
         </p>
 
-        <h2>Layered Security Architecture</h2>
+        <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>Layered Security Architecture</h2>
         <p>
             In summary, our RNG security architecture is organized into three layers:
         </p>
