@@ -19,6 +19,7 @@ import { blogPosts } from '../src/data/blogPosts.js'
 import { categories } from '../src/data/categories.js'
 import { postsEn, categoriesEn } from '../src/data/i18n-content.js'
 import { ui, localeMeta } from '../src/data/i18n.js'
+import { ARTICLE_FILES } from '../src/data/articleFiles.js'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = path.join(ROOT, 'dist')
@@ -186,6 +187,7 @@ function buildRoutes(locale) {
             ogType: 'article',
             heading: p.title,
             summary: p.subtitle,
+            body: articleBody(rawPost.slug, locale),
             graph: [
                 {
                     '@type': 'BlogPosting',
@@ -272,6 +274,59 @@ function buildRoutes(locale) {
     return routes
 }
 
+/**
+ * Pulls an article's body out of its component so crawlers get the real text.
+ *
+ * The bodies are async components, so nothing of them survives into the static
+ * HTML — a fetch of an article page used to return the heading and little else.
+ * The templates are plain markup (no interpolation, no directives), so the
+ * markup can simply be lifted out; the source of truth stays the .vue file that
+ * Vue itself renders at runtime.
+ */
+
+// Components that legitimately appear in an article body and carry no prose.
+// MermaidDiagram takes its chart from <script setup>, so there is nothing to
+// inline and it is dropped.
+const DROPPED_COMPONENTS = ['MermaidDiagram']
+
+function articleBody(slug, locale) {
+    const file = ARTICLE_FILES[slug]
+    if (!file) return ''
+
+    // A missing translation falls back to no body rather than to the Chinese
+    // text, which would put the wrong language under an hreflang="en" page.
+    const rel = locale === 'en'
+        ? path.join('src/vue/content/articles/en', file)
+        : path.join('src/vue/content/articles', file)
+    const full = path.join(ROOT, rel)
+    if (!fs.existsSync(full)) return ''
+
+    const source = fs.readFileSync(full, 'utf8')
+    const open = source.indexOf('<template>')
+    const close = source.lastIndexOf('</template>')
+    if (open === -1 || close === -1) throw new Error(`${rel} 沒有 <template>`)
+
+    let markup = source.slice(open + '<template>'.length, close)
+
+    for (const name of DROPPED_COMPONENTS) {
+        markup = markup.replace(new RegExp(`<${name}\\b[^>]*/>`, 'g'), '')
+        markup = markup.replace(new RegExp(`<${name}\\b[^>]*>[\\s\\S]*?</${name}>`, 'g'), '')
+    }
+
+    // Fail loudly rather than emitting a page with a hole in it: an unknown
+    // component means this extractor no longer understands the templates.
+    const leftover = markup.match(/<[A-Z][A-Za-z0-9]*\b/g)
+    if (leftover) {
+        throw new Error(`${rel} 有無法處理的元件 ${[...new Set(leftover)].join(', ')}，`
+            + '請在 DROPPED_COMPONENTS 登記或改寫模板')
+    }
+    if (/\{\{|\sv-[a-z]|\s:[a-zA-Z-]+=|\s@[a-zA-Z]/.test(markup)) {
+        throw new Error(`${rel} 含有動態繫結，無法靜態擷取`)
+    }
+
+    return markup.trim()
+}
+
 function render(template, route) {
     const url = SITE + route.urlPath
     const lang = localeMeta[route.locale].htmlLang
@@ -283,12 +338,38 @@ function render(template, route) {
         `<link rel="alternate" hreflang="x-default" href="${esc(SITE + route.basePath)}" />`
     ].join('\n        ')
 
-    // Fallback markup for crawlers that never execute the bundle. Vue clears
-    // #app on mount, so this is only ever seen without JavaScript.
-    const fallback = [
+    // Fallback markup for crawlers that never execute the bundle, and for the
+    // moment before it finishes executing. Vue clears #app on mount, so both
+    // this and the style below vanish once the app takes over.
+    //
+    // The article stylesheet is Vue-scoped and will not match this markup, so
+    // without these few rules the text would paint edge to edge. It is kept
+    // deliberately plain: it only has to be readable, not to imitate the real
+    // page, and it must never hide the text from a crawler.
+    // index.html paints <body> dark inline so dark-mode visitors get no white
+    // flash, and nothing repaints it until a component mounts — so this markup
+    // always sits on the dark surface, whichever theme is stored. The global
+    // stylesheet's `p { color: black }` and near-black headings would be
+    // invisible against it, hence the explicit colours; the #app prefix beats
+    // those bare element rules.
+    const fallbackStyle = '<style>'
+        + '#app{max-width:46rem;margin:0 auto;padding:1.5rem 1.25rem;'
+        + 'font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;'
+        + 'line-height:1.8;color:#d7dbe0}'
+        + '#app p,#app li{color:#d7dbe0}'
+        + '#app h1,#app h2,#app h3,#app strong{color:#f0f2f4}'
+        + '#app a{color:#ff8a4d}'
+        + '#app h1{font-size:1.75rem;margin:0 0 .75rem}'
+        + '#app h2{font-size:1.35rem;margin:2rem 0 .75rem}'
+        + '#app h3{font-size:1.1rem;margin:1.5rem 0 .5rem}'
+        + '#app li{margin-bottom:.4rem}'
+        + '</style>'
+
+    const fallback = fallbackStyle + [
         '<h1>' + esc(route.heading) + '</h1>',
         route.summary ? '<p>' + esc(route.summary) + '</p>' : '',
         '<p>' + esc(route.description) + '</p>',
+        route.body ?? '',
         route.links.length
             ? '<nav><ul>' + route.links.map(l =>
                 `<li><a href="${esc(l.href)}">${esc(l.text)}</a></li>`).join('') + '</ul></nav>'

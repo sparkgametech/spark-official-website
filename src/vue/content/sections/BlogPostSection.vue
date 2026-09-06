@@ -89,6 +89,7 @@ import ArticleCarousel from "/src/vue/components/articles/ArticleCarousel.vue"
 import Breadcrumbs from "/src/vue/components/widgets/Breadcrumbs.vue"
 import { blogPosts } from "/src/data/blogPosts.js"
 import { categories } from "/src/data/categories.js"
+import { ARTICLE_FILES } from "/src/data/articleFiles.js"
 import { useI18n } from "/src/composables/i18n.js"
 
 const props = defineProps({
@@ -147,25 +148,6 @@ function categoryName(slug) {
     return c ? localizedCategory(c).name : null
 }
 
-const ARTICLE_FILES = {
-    'client-framework-architecture': 'ClientFrameworkArticle.vue',
-    'client-reel-engine': 'ClientReelEngineArticle.vue',
-    'client-network-resource': 'ClientNetworkArticle.vue',
-    'art-challenges-ai-workflow': 'ArtWorkflowArticle.vue',
-    'art-symbol-spine-animation': 'ArtSymbolAnimationArticle.vue',
-    'art-ui-delivery-pipeline': 'ArtUiDeliveryArticle.vue',
-    'audio-bgm-design': 'AudioBgmArticle.vue',
-    'audio-sfx-interactive': 'AudioSfxArticle.vue',
-    'audio-specs-delivery': 'AudioDeliveryArticle.vue',
-    'qa-math-verification': 'QaMathArticle.vue',
-    'qa-functional-playtest': 'QaFunctionalArticle.vue',
-    'qa-automation-compliance': 'QaAutomationArticle.vue',
-    'natural-probability-design': 'NaturalProbabilityArticle.vue',
-    'gamebox-architecture': 'GameBoxArticle.vue',
-    'rng-security': 'RngSecurityArticle.vue',
-    'gas-control-system': 'GasControlArticle.vue',
-    'risk-control-algorithm': 'RiskControlArticle.vue'
-}
 
 // Globs resolve at build time, so a translation that has not been written yet
 // simply is not in the English map — the page falls back to the Chinese body
