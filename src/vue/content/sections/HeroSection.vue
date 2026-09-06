@@ -6,12 +6,22 @@
             </h1>
             <p class="spark-hero-sub">{{ t('heroSubtitle') }}</p>
 
-            <div class="spark-hero-intro">
+            <!-- v-show, not v-if: collapsing must leave the copy in the DOM so
+                 crawlers still read it. -->
+            <div v-show="introOpen" class="spark-hero-intro">
                 <p v-for="(line, i) in t('homeIntro')" :key="i">{{ line }}</p>
                 <p class="spark-hero-offer">{{ t('homeIntroOutsourcing') }}</p>
                 <!-- Kept on one line: the locale string owns any space before the link. -->
                 <p>{{ t('homeIntroCompanyLead') }}<router-link :to="localePath('/about')">{{ t('homeIntroAboutLink') }}</router-link>{{ t('homeIntroEnd') }}</p>
             </div>
+
+            <button type="button"
+                    class="spark-hero-intro-toggle"
+                    :aria-expanded="introOpen"
+                    @click="toggleIntro">
+                <span>{{ introOpen ? t('introCollapse') : t('introExpand') }}</span>
+                <i class="pi" :class="introOpen ? 'pi-chevron-up' : 'pi-chevron-down'"/>
+            </button>
         </div>
 
         <img class="spark-hero-cat"
@@ -22,6 +32,7 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue"
 import { useI18n } from "/src/composables/i18n.js"
 
 const props = defineProps({
@@ -29,6 +40,29 @@ const props = defineProps({
 })
 
 const { t, localePath } = useI18n()
+
+// Expanded by default: a first-time visitor should see what the site is, and
+// leaving it open avoids relying on how search engines weigh collapsed copy.
+// The choice is remembered, so a returning reader keeps their compact hero.
+const STORAGE_KEY = 'spark-intro-open'
+const introOpen = ref(true)
+
+onMounted(() => {
+    try {
+        if (localStorage.getItem(STORAGE_KEY) === 'false') introOpen.value = false
+    } catch (e) {
+        // Blocked site data just means the preference will not persist.
+    }
+})
+
+const toggleIntro = () => {
+    introOpen.value = !introOpen.value
+    try {
+        localStorage.setItem(STORAGE_KEY, String(introOpen.value))
+    } catch (e) {
+        // ignore
+    }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -81,8 +115,14 @@ const { t, localePath } = useI18n()
     font-size: clamp(0.78rem, 1.35vw, 0.88rem);
     line-height: 1.8;
 
+    // A global `p { color: black }` in typography beats the inherited colour,
+    // so the paragraphs have to be coloured directly — inheriting from the
+    // wrapper silently produced black text on the dark hero.
+    // $light-6 only reaches 3.29:1 on the hero's dark ground; this clears the
+    // 4.5:1 minimum while staying dimmer than the subtitle above it.
     p {
         margin: 0;
+        color: #98a1aa;
     }
 
     .spark-hero-offer {
@@ -97,6 +137,31 @@ const { t, localePath } = useI18n()
         &:hover {
             text-decoration: underline;
         }
+    }
+}
+
+.spark-hero-intro-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: transparent;
+    color: #98a1aa;
+    font-family: $font-family-base;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+
+    i {
+        font-size: 0.6rem;
+    }
+
+    &:hover {
+        color: $light-4;
+        border-color: rgba(255, 255, 255, 0.4);
     }
 }
 

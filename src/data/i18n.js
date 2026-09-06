@@ -26,6 +26,8 @@ export const ui = {
         heroSubtitle: 'Slot Game 開發外包 · 獨立團隊',
 
         themeToggleLabel: '切換深色／淺色模式',
+        introCollapse: '收合說明',
+        introExpand: '展開說明',
 
         tabAll: '全部',
         tabHeadingSuffix: '文章',
@@ -107,6 +109,8 @@ export const ui = {
         heroSubtitle: 'Slot game development outsourcing · Independent team',
 
         themeToggleLabel: 'Toggle dark and light mode',
+        introCollapse: 'Hide intro',
+        introExpand: 'Show intro',
 
         tabAll: 'All',
         tabHeadingSuffix: ' articles',
