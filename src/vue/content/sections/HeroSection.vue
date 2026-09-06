@@ -42,15 +42,16 @@ const props = defineProps({
 
 const { t, localePath } = useI18n()
 
-// Collapsed by default to keep the hero compact. The copy stays in the DOM
-// (v-show, not v-if) and the prerendered fallback always contains it, so
-// crawlers read it either way — only the visual default changed.
+// Expanded by default. This block carries the only plain statement of what the
+// team actually sells, and leaving it collapsed put those words in a
+// display:none element while the article list made up most of the visible page.
+// A visitor who collapses it still gets their choice remembered.
 const STORAGE_KEY = 'spark-intro-open'
-const introOpen = ref(false)
+const introOpen = ref(true)
 
 onMounted(() => {
     try {
-        if (localStorage.getItem(STORAGE_KEY) === 'true') introOpen.value = true
+        if (localStorage.getItem(STORAGE_KEY) === 'false') introOpen.value = false
     } catch (e) {
         // Blocked site data just means the preference will not persist.
     }

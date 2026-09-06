@@ -21,7 +21,7 @@ export const ui = {
         homeIntroAboutLink: '關於我們',
         homeIntroEnd: '。',
 
-        heroTitleLead: '老虎機遊戲',
+        heroTitleLead: '老虎機遊戲開發外包',
         heroTitleRest: '從零到上線的開發全紀錄',
         heroSubtitle: 'Slot Game 開發外包 · 獨立團隊',
 
@@ -104,8 +104,8 @@ export const ui = {
         homeIntroAboutLink: 'About us',
         homeIntroEnd: ' for how we work.',
 
-        heroTitleLead: 'Slot Games',
-        heroTitleRest: 'building one from zero to launch',
+        heroTitleLead: 'Slot Game Development Outsourcing',
+        heroTitleRest: 'from zero to launch',
         heroSubtitle: 'Slot game development outsourcing · Independent team',
 
         themeToggleLabel: 'Toggle dark and light mode',
