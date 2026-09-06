@@ -1,13 +1,6 @@
 <template>
     <PageSection variant="default" :id="props.id">
         <PageSectionContent>
-            <div class="grid-intro">
-                <p v-for="(line, i) in t('homeIntro')" :key="i">{{ line }}</p>
-                <p class="grid-intro-offer">{{ t('homeIntroOutsourcing') }}</p>
-                <!-- Kept on one line: the locale string owns any space before the link. -->
-                <p>{{ t('homeIntroCompanyLead') }}<router-link :to="localePath('/about')">{{ t('homeIntroAboutLink') }}</router-link>{{ t('homeIntroEnd') }}</p>
-            </div>
-
             <div class="tab-bar" role="tablist">
                 <a v-for="tab in tabs"
                    :key="tab.slug"
@@ -86,34 +79,6 @@ const visiblePosts = computed(() => active.value === 'all'
 
 <style lang="scss" scoped>
 @import "/src/scss/_theming.scss";
-
-.grid-intro {
-    max-width: 720px;
-    margin: 0 auto 2rem;
-    text-align: center;
-    color: #666;
-    font-size: 0.92rem;
-    line-height: 1.85;
-
-    p {
-        margin: 0 0 0.35rem;
-    }
-
-    // Separates the blog framing above from the outsourcing offer below.
-    .grid-intro-offer {
-        margin-top: 1.1rem;
-    }
-
-    a {
-        color: $primary;
-        font-weight: 600;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
 
 .tab-bar {
     display: flex;

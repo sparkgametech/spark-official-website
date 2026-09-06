@@ -16,6 +16,7 @@
                     </button>
                 </Link>
 
+                <ThemeToggle/>
                 <LanguageSwitcher/>
             </div>
         </div>
@@ -27,6 +28,7 @@ import {onMounted, onUnmounted, ref} from "vue"
 import Link from "/src/vue/components/generic/Link.vue"
 import NavbarBrand from "/src/vue/components/nav/navbar/NavbarBrand.vue"
 import LanguageSwitcher from "/src/vue/components/nav/navbar/LanguageSwitcher.vue"
+import ThemeToggle from "/src/vue/components/nav/navbar/ThemeToggle.vue"
 import {useUtils} from "/src/composables/utils.js"
 
 const utils = useUtils()

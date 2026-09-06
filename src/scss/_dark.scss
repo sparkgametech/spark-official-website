@@ -1,0 +1,233 @@
+/**
+ * Dark theme overrides, applied when <html data-theme="dark"> is set.
+ *
+ * The component styles are Vue-scoped, which compiles to `.foo[data-v-hash]`
+ * and is injected after this file, so a same-specificity override loses on
+ * source order. The attribute is repeated deliberately: it costs nothing at
+ * runtime and lifts every rule here one level above the scoped styles, which
+ * keeps the 34 article components and the shared widgets untouched while the
+ * dark surface lives in one place.
+ */
+
+$d-bg: #14171a;
+$d-surface: #1c2025;
+$d-surface-2: #232830;
+$d-border: #2f353d;
+$d-text: #d7dbe0;
+$d-text-strong: #f0f2f4;
+$d-text-muted: #9aa2ab;
+
+html[data-theme="dark"][data-theme="dark"] {
+    color-scheme: dark;
+    background-color: $d-bg;
+
+    body {
+        background-color: $d-bg;
+    }
+
+    /* ---- page surfaces ---- */
+    .spark-main,
+    .foxy-section-default,
+    .foxy-section {
+        background-color: $d-bg;
+        color: $d-text;
+    }
+
+    .foxy-section-header-title,
+    .foxy-section-header-subtitle {
+        color: $d-text-strong;
+    }
+
+    /* ---- article body ---- */
+    .blog-article {
+        color: $d-text;
+
+        h2,
+        h3 {
+            color: $d-text-strong;
+        }
+
+        h2 {
+            border-bottom-color: rgba($primary, 0.35);
+        }
+
+        strong {
+            color: $d-text-strong;
+        }
+    }
+
+    // Ten of the articles wrap formulas in this block; it is defined inside
+    // each of their scoped stylesheets rather than shared.
+    .formula-block {
+        background: $d-surface-2;
+
+        code {
+            color: $d-text-strong;
+        }
+    }
+
+    .blog-post-meta {
+        border-bottom-color: $d-border;
+    }
+
+    .blog-post-date {
+        color: $d-text-muted;
+    }
+
+    .blog-post-further {
+        background: rgba($primary, 0.1);
+        border-left-color: rgba($primary, 0.55);
+
+        a {
+            color: $d-text;
+        }
+    }
+
+    .blog-post-related {
+        border-top-color: $d-border;
+    }
+
+    .blog-post-related-title {
+        color: $d-text-strong;
+    }
+
+    .blog-post-contact {
+        background: rgba($primary, 0.1);
+
+        p {
+            color: $d-text;
+        }
+    }
+
+    .blog-post-nav {
+        border-top-color: $d-border;
+    }
+
+    /* ---- article cards ---- */
+    .article-card {
+        background: $d-surface;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+
+        &:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    .article-card-title {
+        color: $d-text-strong;
+    }
+
+    .article-card-desc {
+        color: $d-text-muted;
+    }
+
+    .article-card-meta {
+        border-top-color: $d-border;
+    }
+
+    .article-card-date {
+        color: $d-text-muted;
+    }
+
+    /* ---- homepage tabs ---- */
+    .tab {
+        background: $d-surface;
+        border-color: $d-border;
+        color: $d-text;
+
+        &:hover {
+            border-color: $primary;
+            color: $primary;
+        }
+
+        &.tab-active {
+            background: $primary;
+            border-color: $primary;
+            color: white;
+        }
+    }
+
+    .tab-count {
+        background: rgba(255, 255, 255, 0.1);
+        color: $d-text-muted;
+    }
+
+    /* ---- category page ---- */
+    .category-intro {
+        color: $d-text-muted;
+    }
+
+    .category-nav {
+        border-top-color: $d-border;
+    }
+
+    .category-nav-title {
+        color: $d-text-strong;
+    }
+
+    /* ---- about page ---- */
+    .about-intro,
+    .about-contact-lead {
+        color: $d-text;
+    }
+
+    .about-heading {
+        color: $d-text-strong;
+    }
+
+    .about-services {
+        strong {
+            color: $d-text-strong;
+        }
+
+        span {
+            color: $d-text-muted;
+        }
+    }
+
+    /* ---- breadcrumbs ---- */
+    .breadcrumb-link-item {
+        color: $d-text-muted;
+    }
+
+    /* ---- carousel arrows ---- */
+    .swiper-button-prev,
+    .swiper-button-next {
+        background: $d-surface-2;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ---- language menu ---- */
+    .lang-switch-menu {
+        background: $d-surface-2;
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+
+        a {
+            color: $d-text;
+
+            &:hover {
+                background-color: rgba($primary, 0.2);
+            }
+        }
+    }
+
+    /* ---- team quote bubbles ---- */
+    .foxy-quotes .swiper-slide {
+        color: $d-text;
+    }
+
+    .foxy-quote-balloon {
+        background-color: $d-surface-2;
+        color: $d-text;
+    }
+
+    // The pointer is a real element using the same cream as the balloon, and
+    // the avatar ring reuses that colour too — both have to follow the surface.
+    .foxy-quotes .triangle {
+        border-top-color: $d-surface-2;
+    }
+
+    .foxy-quote-avatar {
+        border-color: $d-surface-2;
+    }
+}

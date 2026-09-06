@@ -5,6 +5,13 @@
                 {{ t('heroTitleLead') }} <span>{{ t('heroTitleRest') }}</span>
             </h1>
             <p class="spark-hero-sub">{{ t('heroSubtitle') }}</p>
+
+            <div class="spark-hero-intro">
+                <p v-for="(line, i) in t('homeIntro')" :key="i">{{ line }}</p>
+                <p class="spark-hero-offer">{{ t('homeIntroOutsourcing') }}</p>
+                <!-- Kept on one line: the locale string owns any space before the link. -->
+                <p>{{ t('homeIntroCompanyLead') }}<router-link :to="localePath('/about')">{{ t('homeIntroAboutLink') }}</router-link>{{ t('homeIntroEnd') }}</p>
+            </div>
         </div>
 
         <img class="spark-hero-cat"
@@ -21,7 +28,7 @@ const props = defineProps({
     id: String
 })
 
-const { t } = useI18n()
+const { t, localePath } = useI18n()
 </script>
 
 <style lang="scss" scoped>
@@ -62,6 +69,35 @@ const { t } = useI18n()
     font-family: $font-family-base;
     font-size: clamp(0.85rem, 1.6vw, 1rem);
     margin: 0;
+}
+
+// The positioning copy lives here rather than above the article grid so the
+// light section below is nothing but articles.
+.spark-hero-intro {
+    max-width: 660px;
+    margin: 1.5rem auto 0;
+    color: $light-6;
+    font-family: $font-family-base;
+    font-size: clamp(0.78rem, 1.35vw, 0.88rem);
+    line-height: 1.8;
+
+    p {
+        margin: 0;
+    }
+
+    .spark-hero-offer {
+        margin-top: 0.85rem;
+    }
+
+    a {
+        color: $primary;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 // Sits on the hero's bottom edge, below the text, so the dash across never

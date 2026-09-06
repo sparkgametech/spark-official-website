@@ -14,8 +14,7 @@ export const ui = {
         defaultDescription: 'Spark 星火創盛是承接老虎機與博弈遊戲開發外包的獨立團隊。技術部落格涵蓋客端架構、美術設計、音樂音效、數值設計、QA 測試，記錄 Slot Game 從零到上線的實戰經驗。',
         homeIntro: [
             '這裡記錄一支老虎機遊戲開發團隊的實作經驗，',
-            '從客端框架、美術產線、音效設計，到數值模型與 QA 驗證。',
-            '文章依主題分類，從下方頁籤開始讀。'
+            '從客端框架、美術產線、音效設計，到數值模型與 QA 驗證。'
         ],
         homeIntroOutsourcing: '團隊同時承接老虎機與博弈遊戲開發外包。',
         homeIntroCompanyLead: '正在找老虎機遊戲開發公司？合作方式請見',
@@ -25,6 +24,8 @@ export const ui = {
         heroTitleLead: '老虎機遊戲',
         heroTitleRest: '從零到上線的開發全紀錄',
         heroSubtitle: 'Slot Game 開發外包 · 獨立團隊',
+
+        themeToggleLabel: '切換深色／淺色模式',
 
         tabAll: '全部',
         tabHeadingSuffix: '文章',
@@ -94,8 +95,7 @@ export const ui = {
         defaultDescription: 'Spark is an independent team taking on slot game development outsourcing. The blog covers client architecture, art pipeline, music and sound, math design and QA testing — how a game is actually built, from zero to launch.',
         homeIntro: [
             'This site records the hands-on experience of a slot game development team,',
-            'from client frameworks and art pipelines to sound design, math models and QA verification.',
-            'Articles are grouped by topic — start from the tabs below.'
+            'from client frameworks and art pipelines to sound design, math models and QA verification.'
         ],
         homeIntroOutsourcing: 'The team also takes on slot and casino game development outsourcing.',
         homeIntroCompanyLead: 'Looking for a slot game development company? See ',
@@ -105,6 +105,8 @@ export const ui = {
         heroTitleLead: 'Slot Games',
         heroTitleRest: 'building one from zero to launch',
         heroSubtitle: 'Slot game development outsourcing · Independent team',
+
+        themeToggleLabel: 'Toggle dark and light mode',
 
         tabAll: 'All',
         tabHeadingSuffix: ' articles',
