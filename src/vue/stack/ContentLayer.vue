@@ -1,6 +1,6 @@
 <template>
     <!-- Main Content -->
-    <slot v-if="shouldSlot"/>
+    <slot/>
 
     <!-- Modals -->
     <ProjectModal :project="projectModalTarget"
@@ -8,80 +8,30 @@
 </template>
 
 <script setup>
-import {computed, inject, watch} from "vue"
+import {inject, nextTick} from "vue"
 import {useRouter} from "vue-router"
 import ProjectModal from "/src/vue/components/projects/ProjectModal.vue"
 
 const router = useRouter()
 
-const loaderEnabled = inject("loaderEnabled")
-const loaderActive = inject("loaderActive")
-const loaderPageRefreshCount = inject("loaderPageRefreshCount")
-const loaderSmoothTransitionEnabled = inject("loaderSmoothTransitionEnabled")
 const projectModalTarget = inject("projectModalTarget")
-const LoaderAnimationStatus = inject("LoaderAnimationStatus")
-const loaderAnimationStatus = inject("loaderAnimationStatus")
 
-const shouldSlot = computed(() => {
-    return !loaderEnabled ||
-        loaderAnimationStatus.value === LoaderAnimationStatus.TRACKING_PROGRESS ||
-        loaderAnimationStatus.value === LoaderAnimationStatus.LEAVING
-})
+// The preloader used to gate this: navigation waited on it, and the viewport
+// was moved once it left. With it gone a route change only has to reposition
+// the viewport, on the tick after the new page has rendered.
+router.afterEach((to, from) => {
+    if (from && to && from.path === to.path)
+        return
 
-watch(() => loaderAnimationStatus.value, () => {
-    if(loaderAnimationStatus.value === LoaderAnimationStatus.LEAVING) {
-        const hash = window.location.hash
-        const element = hash ?
-            document.querySelector(hash) :
-            null
-
-        if(!element || !loaderEnabled) {
-            window.scrollTo({top: 0, behavior: "instant"})
+    nextTick(() => {
+        const element = to.hash ? document.querySelector(to.hash) : null
+        if (element) {
+            element.scrollIntoView({behavior: "smooth"})
             return
         }
 
-        element.scrollIntoView({behavior: "smooth"})
-    }
-})
-
-router.beforeEach((to, from, next) => {
-    if(from.name === to.name || !loaderEnabled) {
-        next()
-        return
-    }
-
-    // Redirect routes carry no props, so props.default is undefined for them.
-    const shouldIgnorePreloader = to.matched?.length ?
-        !to.matched[0].props?.default?.['shouldAlwaysPreload'] :
-        false
-
-    if(shouldIgnorePreloader) {
-        next()
         window.scrollTo({top: 0, behavior: "instant"})
-        return
-    }
-
-    loaderActive.value = true
-    const isDifferentRoute = from && to && from.path !== to.path
-    const isDifferentRouteName = from && to && from.name !== to.name
-
-    loaderPageRefreshCount.value = isDifferentRouteName ?
-        loaderPageRefreshCount.value + 1 :
-        loaderPageRefreshCount.value
-
-    loaderSmoothTransitionEnabled.value = isDifferentRoute
-
-    setTimeout(() => {
-        next()
-    }, 850)
-})
-
-router.afterEach((to, from) => {
-    const isDifferentRoute = from && to && from.path !== to.path
-    if(!isDifferentRoute)
-        return
-
-    window.scrollTo({top: 0, behavior: "smooth"})
+    })
 })
 
 const _onProjectModalClosed = () => {

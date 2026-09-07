@@ -9,15 +9,13 @@
 <script setup>
 import Navbar from "/src/vue/components/nav/navbar/Navbar.vue"
 import {useI18n} from "/src/composables/i18n.js"
-import {computed, inject, onMounted} from "vue"
+import {computed, onMounted} from "vue"
 import {useRoute} from "vue-router"
 import {useLayout} from "/src/composables/layout.js"
 
 const route = useRoute()
 const layout = useLayout()
 
-const LoaderAnimationStatus = inject("LoaderAnimationStatus")
-const loaderAnimationStatus = inject("loaderAnimationStatus")
 
 const props = defineProps({
     logo: String,

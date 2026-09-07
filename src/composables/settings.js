@@ -2,12 +2,6 @@
  * Created by Ryan Balieiro on 03.02.2025
  */
 export function useSettings() {
-    /**
-     * @return {boolean}
-     */
-    const getLoaderEnabled = () => {
-        return true
-    }
 
     /**
      * @return {{publicKey: string, serviceId: string, templateId: string}}
@@ -21,7 +15,6 @@ export function useSettings() {
     }
 
     return {
-        getLoaderEnabled,
         getCredentialsForEmailJS
     }
 }
