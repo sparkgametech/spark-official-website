@@ -22,7 +22,28 @@
             為了在持續產出新遊戲的同時，保持程式碼品質與開發效率，
             我們採用了<strong>三層式架構</strong>來組織整個客端系統：
         </p>
-        <MermaidDiagram id="layer-arch" :chart="layerArchChart"/>
+        <DiagramFigure caption="分層的目的是一次開發、多次復用：換一款遊戲時，下面兩層原封不動。">
+            <svg viewBox="0 0 640 334" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>客端的三層架構</title>
+            <desc>由上而下是遊戲應用層、老虎機框架層與通用引擎層，愈下層愈通用、愈能被復用。</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="40" y="16" width="560" height="74" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="40" y="16" width="5" height="74" rx="3" fill="var(--dg-1)"/>
+            <text x="64" y="46" font-size="14" fill="var(--dg-1-ink)" font-weight="700">遊戲應用層</text>
+            <text x="64" y="68" font-size="12" fill="currentColor" opacity="0.85">主題素材 / 特殊玩法 / 自訂動畫</text>
+            <line x1="320" y1="90" x2="320" y2="106" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="40" y="116" width="560" height="74" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="40" y="116" width="5" height="74" rx="3" fill="var(--dg-2)"/>
+            <text x="64" y="146" font-size="14" fill="var(--dg-2-ink)" font-weight="700">老虎機框架層</text>
+            <text x="64" y="168" font-size="12" fill="currentColor" opacity="0.85">滾輪引擎 / 狀態機 / 中獎展示 / 賠付線</text>
+            <line x1="320" y1="190" x2="320" y2="206" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="40" y="216" width="560" height="74" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="40" y="216" width="5" height="74" rx="3" fill="var(--dg-3)"/>
+            <text x="64" y="246" font-size="14" fill="var(--dg-3-ink)" font-weight="700">通用引擎層</text>
+            <text x="64" y="268" font-size="12" fill="currentColor" opacity="0.85">渲染管線 / 資源載入 / 音效 / 通訊 / 事件系統</text>
+            <text x="320" y="320" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">愈往下愈通用，換一款遊戲時只有最上層需要重做</text>
+            </svg>
+        </DiagramFigure>
         <h3>通用引擎層</h3>
         <p>
             最底層是與遊戲類型無關的通用能力，例如渲染管線、資源載入器、音效播放、
@@ -66,7 +87,40 @@
             老虎機的每一局遊戲看似簡單，按下按鈕、滾輪轉動、顯示結果，但背後的狀態管理卻相當複雜。
             我們使用<strong>有限狀態機（Finite State Machine）</strong>來管理一局遊戲的完整生命週期：
         </p>
-        <MermaidDiagram id="spin-lifecycle" :chart="spinLifecycleChart"/>
+        <DiagramFigure caption="生命週期不會總是順利走完：快速停止、斷線與逾時都必須有明確的恢復路徑。">
+            <svg viewBox="0 0 640 182" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>一局 Spin 的生命週期</title>
+            <desc>從開始新局到結算共六個狀態，結算後回到開始，形成封閉循環。</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="24" y="44" width="92" height="54" rx="7" fill="var(--dg-1)" fill-opacity="0.14"/>
+            <rect x="24" y="44" width="92" height="3" rx="2" fill="var(--dg-1)"/>
+            <text x="70" y="76" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">開始新局</text>
+            <line x1="117" y1="71" x2="123" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="124" y="44" width="92" height="54" rx="7" fill="var(--dg-2)" fill-opacity="0.14"/>
+            <rect x="124" y="44" width="92" height="3" rx="2" fill="var(--dg-2)"/>
+            <text x="170" y="76" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">啟動滾輪</text>
+            <line x1="217" y1="71" x2="223" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="224" y="44" width="92" height="54" rx="7" fill="var(--dg-3)" fill-opacity="0.14"/>
+            <rect x="224" y="44" width="92" height="3" rx="2" fill="var(--dg-3)"/>
+            <text x="270" y="76" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">持續滾動</text>
+            <line x1="317" y1="71" x2="323" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="324" y="44" width="92" height="54" rx="7" fill="var(--dg-1)" fill-opacity="0.14"/>
+            <rect x="324" y="44" width="92" height="3" rx="2" fill="var(--dg-1)"/>
+            <text x="370" y="69" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">停輪寫入</text>
+            <text x="370" y="86" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">結果</text>
+            <line x1="417" y1="71" x2="423" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="424" y="44" width="92" height="54" rx="7" fill="var(--dg-2)" fill-opacity="0.14"/>
+            <rect x="424" y="44" width="92" height="3" rx="2" fill="var(--dg-2)"/>
+            <text x="470" y="76" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">中獎展示</text>
+            <line x1="517" y1="71" x2="523" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="524" y="44" width="92" height="54" rx="7" fill="var(--dg-3)" fill-opacity="0.14"/>
+            <rect x="524" y="44" width="92" height="3" rx="2" fill="var(--dg-3)"/>
+            <text x="570" y="76" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">結算</text>
+            <path d="M 570 98 L 570 128 L 70 128 L 70 102" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="144" font-size="12" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">結算後回到開始新局</text>
+            <text x="320" y="168" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">狀態機讓每一步的進入與離開條件都是明確且可測試的</text>
+            </svg>
+        </DiagramFigure>
         <h3>為什麼不用旗標加回呼？</h3>
         <p>
             最直覺的做法是用布林旗標記錄現況：是否正在旋轉、是否已收到結果、是否正在播放中獎動畫。
@@ -116,19 +170,7 @@
 </template>
 
 <script setup>
-import MermaidDiagram from '/src/vue/components/generic/MermaidDiagram.vue'
-
-const layerArchChart = `flowchart TD
-    A[遊戲應用層<br/>主題素材 / 特殊玩法 / 自訂動畫] --> B[老虎機框架層<br/>滾輪引擎 / 狀態機 / 中獎展示 / 賠付線]
-    B --> C[通用引擎層<br/>渲染管線 / 資源載入 / 音效 / 通訊 / 事件系統]`
-
-const spinLifecycleChart = `flowchart TD
-    A[開始新局] --> B[啟動滾輪]
-    B --> C[持續滾動]
-    C --> D[停輪寫入結果]
-    D --> E[中獎展示]
-    E --> F[結算]
-    F --> A`
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
 </script>
 
 <style lang="scss" scoped>

@@ -17,7 +17,38 @@
             我們讓心跳與實際流量互斥。間隔內若已有正常封包往返，這次心跳就跳過。
         </p>
         <h3>一局 Spin 的通訊流程</h3>
-        <MermaidDiagram id="comm-flow" :chart="commFlowChart"/>
+        <DiagramFigure caption="客端演繹的是一個已經確定的結果，動畫本身不會改變任何一個符號的落點。">
+            <svg viewBox="0 0 640 326" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>一次 Spin 的請求與回應</title>
+            <desc>客端送出下注請求，伺服器驗證計算並回傳結果，客端演繹完畢後再送出結算確認。</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="84" y="18" width="132" height="32" rx="7" fill="var(--dg-2)"/>
+            <text x="150" y="39" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">客端</text>
+            <rect x="424" y="18" width="132" height="32" rx="7" fill="var(--dg-3)"/>
+            <text x="490" y="39" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">伺服器</text>
+            <line x1="158" y1="68" x2="482" y2="68" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="59" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">發送下注請求</text>
+            <rect x="75" y="85" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            
+            <rect x="415" y="85" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="490" y="102" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">驗證並計算結果</text>
+            <line x1="482" y1="136" x2="158" y2="136" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="127" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">回傳遊戲結果</text>
+            <rect x="75" y="153" width="150" height="26" rx="6" fill="var(--dg-2)" fill-opacity="0.16"/>
+            <text x="150" y="170" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">演繹滾輪動畫</text>
+            <rect x="75" y="187" width="150" height="26" rx="6" fill="var(--dg-2)" fill-opacity="0.16"/>
+            <text x="150" y="204" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">完成中獎展示</text>
+            <line x1="158" y1="238" x2="482" y2="238" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="229" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">發送結算確認</text>
+            <rect x="75" y="255" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            
+            <rect x="415" y="255" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="490" y="272" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">更新數值</text>
+            <line x1="150" y1="50" x2="150" y2="286" stroke="currentColor" stroke-opacity="0.22" stroke-dasharray="4 4"/>
+            <line x1="490" y1="50" x2="490" y2="286" stroke="currentColor" stroke-opacity="0.22" stroke-dasharray="4 4"/>
+            <text x="320" y="312" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">結果在伺服器端就已經確定，客端負責的只有演繹</text>
+            </svg>
+        </DiagramFigure>
         <p>
             這個流程看似簡單，但細節中隱藏著多種邊界情境：
         </p>
@@ -71,7 +102,32 @@
         <p>
             老虎機的資源需求並非單一集合，而是隨著遊戲流程切換而變動：
         </p>
-        <MermaidDiagram id="multi-flow" :chart="multiFlowChart"/>
+        <DiagramFigure caption="把切換寫成狀態轉換，才能保證任何一條路徑都有對應的返回路徑。">
+            <svg viewBox="0 0 640 286" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>主遊戲與特殊模式的切換</title>
+            <desc>主遊戲可以進入免費遊戲或特殊玩法，結束後都回到主遊戲，免費遊戲還能再次觸發自己。</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="242" y="36" width="156" height="52" rx="8" fill="var(--dg-2)"/>
+            <text x="320" y="67" font-size="13.5" fill="#ffffff" text-anchor="middle" font-weight="700">主遊戲</text>
+            <rect x="66" y="180" width="168" height="52" rx="8" fill="var(--dg-1)" fill-opacity="0.16"/>
+            <rect x="66" y="180" width="4" height="52" rx="2" fill="var(--dg-1)"/>
+            <text x="150" y="211" font-size="13" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">免費遊戲</text>
+            <line x1="290" y1="90" x2="180" y2="176" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <line x1="204" y1="176" x2="314" y2="90" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="201" y="126" font-size="11" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">觸發</text>
+            <text x="275" y="148" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">結束後返回</text>
+            <rect x="406" y="180" width="168" height="52" rx="8" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <rect x="406" y="180" width="4" height="52" rx="2" fill="var(--dg-3)"/>
+            <text x="490" y="211" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">特殊玩法模式</text>
+            <line x1="350" y1="90" x2="460" y2="176" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <line x1="436" y1="176" x2="326" y2="90" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="439" y="126" font-size="11" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">觸發</text>
+            <text x="365" y="148" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">結束後返回</text>
+            <path d="M 64 196 C 18 186, 18 236, 64 222" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="38" y="252" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">再次觸發</text>
+            <text x="320" y="272" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">模式切換必須是明確的狀態轉換，而不是散落在各處的旗標判斷</text>
+            </svg>
+        </DiagramFigure>
         <p>
             每一次流程切換同時也是一次資源切換：進入免費遊戲要載入專屬背景與符號變體，
             退出時則要決定哪些釋放、哪些保留在快取中。判準是觸發頻率：
@@ -180,23 +236,7 @@
 </template>
 
 <script setup>
-import MermaidDiagram from '/src/vue/components/generic/MermaidDiagram.vue'
-
-const commFlowChart = `flowchart TD
-    A[玩家按下 Spin] --> B[客端發送下注請求]
-    B --> C[伺服器驗證並計算結果]
-    C --> D[伺服器回傳遊戲結果]
-    D --> E[客端演繹滾輪動畫]
-    E --> F[客端完成中獎展示]
-    F --> G[客端發送結算確認]
-    G --> H[伺服器更新數值]`
-
-const multiFlowChart = `flowchart TD
-    A[主遊戲] -->|觸發免費遊戲| B[免費遊戲]
-    B -->|免費遊戲結束| A
-    A -->|觸發特殊玩法| C[特殊玩法模式]
-    C -->|特殊玩法結束| A
-    B -->|再次觸發| B`
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
 </script>
 
 <style lang="scss" scoped>

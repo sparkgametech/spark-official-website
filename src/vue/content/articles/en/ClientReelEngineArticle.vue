@@ -6,7 +6,33 @@
             Two games with identical rules can go from feeling "crisp and decisive" to "sluggish and dragging" purely because their stop timing differs by a few dozen milliseconds.
             A good reel engine has to deliver a spin that is <strong>silky smooth and physically convincing</strong>, and that feel has to be tunable and reproducible rather than something stumbled upon by trial and error.
         </p>
-        <MermaidDiagram id="reel-anim" :chart="reelAnimChart"/>
+        <DiagramFigure caption="Of these six stages only the wait for the result is set externally; the engine controls the other five itself.">
+            <svg viewBox="0 0 640 158" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Six stages of the reel animation</title>
+            <desc>Six stages from pre-bounce to settle, of which only the wait for the result is determined externally.</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="20" y="52" width="96" height="50" rx="7" fill="var(--dg-1)"/>
+            <text x="68" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">Pre-bounce</text>
+            <line x1="116.5" y1="77" x2="121.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="122" y="52" width="96" height="50" rx="7" fill="var(--dg-3)"/>
+            <text x="170" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">Accelerate</text>
+            <line x1="218.5" y1="77" x2="223.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="224" y="52" width="96" height="50" rx="7" fill="var(--dg-3)"/>
+            <text x="272" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">Await result</text>
+            <line x1="320.5" y1="77" x2="325.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="326" y="52" width="96" height="50" rx="7" fill="var(--dg-2)"/>
+            <text x="374" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">Decelerate</text>
+            <line x1="422.5" y1="77" x2="427.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="428" y="52" width="96" height="50" rx="7" fill="var(--dg-1)"/>
+            <text x="476" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">Overshoot</text>
+            <line x1="524.5" y1="77" x2="529.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="530" y="52" width="96" height="50" rx="7" fill="var(--dg-2)"/>
+            <text x="578" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">Settle</text>
+            <rect x="219" y="38" width="106" height="76" rx="8" fill="none" stroke="var(--dg-3-ink)" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <text x="272" y="30" font-size="11.5" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">length set externally</text>
+            <text x="320" y="144" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">The engine owns the other five, which is what makes the feel tunable and reproducible</text>
+            </svg>
+        </DiagramFigure>
         <p>
             Of these six stages, only the length of "wait for result" is determined externally; the engine controls the other five itself.
         </p>
@@ -192,14 +218,6 @@
 
 <script setup>
 import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
-import MermaidDiagram from '/src/vue/components/generic/MermaidDiagram.vue'
-
-const reelAnimChart = `flowchart TD
-    A[Pre-Bounce] --> B[Accelerate Spin]
-    B --> C[Wait for Result]
-    C --> D[Decelerate]
-    D --> E[Overshoot Bounce]
-    E --> F[Settle Into Position]`
 </script>
 
 <style lang="scss" scoped>

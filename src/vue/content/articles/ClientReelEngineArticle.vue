@@ -6,7 +6,33 @@
             兩款規則相同的遊戲，可能因為停輪節奏差了幾十毫秒，觀感就從「乾脆俐落」變成「拖泥帶水」。
             好的滾輪引擎要提供<strong>絲滑流暢、物理真實</strong>的旋轉體驗，而且這份手感必須可調校、可重現，不是反覆試錯碰出來的。
         </p>
-        <MermaidDiagram id="reel-anim" :chart="reelAnimChart"/>
+        <DiagramFigure caption="這六個階段中只有「等待結果」的長度由外部決定，其餘五段都由引擎自行控制。">
+            <svg viewBox="0 0 640 158" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>滾輪動畫的六個階段</title>
+            <desc>從預彈跳到定位共六段，其中只有等待結果的長度由外部決定。</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="20" y="52" width="96" height="50" rx="7" fill="var(--dg-1)"/>
+            <text x="68" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">預彈跳</text>
+            <line x1="116.5" y1="77" x2="121.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="122" y="52" width="96" height="50" rx="7" fill="var(--dg-3)"/>
+            <text x="170" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">加速滾動</text>
+            <line x1="218.5" y1="77" x2="223.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="224" y="52" width="96" height="50" rx="7" fill="var(--dg-3)"/>
+            <text x="272" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">等待結果</text>
+            <line x1="320.5" y1="77" x2="325.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="326" y="52" width="96" height="50" rx="7" fill="var(--dg-2)"/>
+            <text x="374" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">減速</text>
+            <line x1="422.5" y1="77" x2="427.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="428" y="52" width="96" height="50" rx="7" fill="var(--dg-1)"/>
+            <text x="476" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">過衝彈跳</text>
+            <line x1="524.5" y1="77" x2="529.5" y2="77" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="530" y="52" width="96" height="50" rx="7" fill="var(--dg-2)"/>
+            <text x="578" y="82" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">定位</text>
+            <rect x="219" y="38" width="106" height="76" rx="8" fill="none" stroke="var(--dg-3-ink)" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <text x="272" y="30" font-size="11.5" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">長度由外部決定</text>
+            <text x="320" y="144" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">其餘五段都由引擎自行控制，因此手感是可調校、可重現的</text>
+            </svg>
+        </DiagramFigure>
         <p>
             這六個階段中只有「等待結果」的長度由外部決定，其餘五段都由引擎自行控制。
         </p>
@@ -193,14 +219,6 @@
 
 <script setup>
 import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
-import MermaidDiagram from '/src/vue/components/generic/MermaidDiagram.vue'
-
-const reelAnimChart = `flowchart TD
-    A[預彈跳] --> B[加速滾動]
-    B --> C[等待結果]
-    C --> D[減速]
-    D --> E[過衝彈跳]
-    E --> F[定位]`
 </script>
 
 <style lang="scss" scoped>

@@ -17,7 +17,38 @@
             We make the heartbeat mutually exclusive with actual traffic. If normal packets have already gone back and forth within the interval, that heartbeat is skipped.
         </p>
         <h3>The Communication Flow of One Spin</h3>
-        <MermaidDiagram id="comm-flow" :chart="commFlowChart"/>
+        <DiagramFigure caption="The client performs an already-determined result; the animation never changes where a symbol lands.">
+            <svg viewBox="0 0 640 326" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Request and response for one spin</title>
+            <desc>The client sends a bet request, the server validates and computes the result, and the client confirms settlement once the presentation finishes.</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="84" y="18" width="132" height="32" rx="7" fill="var(--dg-2)"/>
+            <text x="150" y="39" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">Client</text>
+            <rect x="424" y="18" width="132" height="32" rx="7" fill="var(--dg-3)"/>
+            <text x="490" y="39" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">Server</text>
+            <line x1="158" y1="68" x2="482" y2="68" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="59" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">send bet request</text>
+            <rect x="75" y="85" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            
+            <rect x="415" y="85" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="490" y="102" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">validate and compute</text>
+            <line x1="482" y1="136" x2="158" y2="136" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="127" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">return result</text>
+            <rect x="75" y="153" width="150" height="26" rx="6" fill="var(--dg-2)" fill-opacity="0.16"/>
+            <text x="150" y="170" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">play reel animation</text>
+            <rect x="75" y="187" width="150" height="26" rx="6" fill="var(--dg-2)" fill-opacity="0.16"/>
+            <text x="150" y="204" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">finish win presentation</text>
+            <line x1="158" y1="238" x2="482" y2="238" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="229" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">send settlement ack</text>
+            <rect x="75" y="255" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            
+            <rect x="415" y="255" width="150" height="26" rx="6" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="490" y="272" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.9">update balances</text>
+            <line x1="150" y1="50" x2="150" y2="286" stroke="currentColor" stroke-opacity="0.22" stroke-dasharray="4 4"/>
+            <line x1="490" y1="50" x2="490" y2="286" stroke="currentColor" stroke-opacity="0.22" stroke-dasharray="4 4"/>
+            <text x="320" y="312" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">The result is already fixed on the server; the client only performs it</text>
+            </svg>
+        </DiagramFigure>
         <p>
             The flow looks simple, but several edge cases hide in the details:
         </p>
@@ -70,7 +101,32 @@
         <p>
             A slot's asset requirements are not a single set but change as the game switches between flows:
         </p>
-        <MermaidDiagram id="multi-flow" :chart="multiFlowChart"/>
+        <DiagramFigure caption="Writing switches as state transitions is what guarantees every path has a matching way back.">
+            <svg viewBox="0 0 640 286" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Switching between base game and special modes</title>
+            <desc>The base game can enter free games or a special feature, both of which return to it, and free games can retrigger themselves.</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="242" y="36" width="156" height="52" rx="8" fill="var(--dg-2)"/>
+            <text x="320" y="67" font-size="13.5" fill="#ffffff" text-anchor="middle" font-weight="700">Base game</text>
+            <rect x="66" y="180" width="168" height="52" rx="8" fill="var(--dg-1)" fill-opacity="0.16"/>
+            <rect x="66" y="180" width="4" height="52" rx="2" fill="var(--dg-1)"/>
+            <text x="150" y="211" font-size="13" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Free games</text>
+            <line x1="290" y1="90" x2="180" y2="176" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <line x1="204" y1="176" x2="314" y2="90" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="201" y="126" font-size="11" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">trigger</text>
+            <text x="275" y="148" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">returns when done</text>
+            <rect x="406" y="180" width="168" height="52" rx="8" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <rect x="406" y="180" width="4" height="52" rx="2" fill="var(--dg-3)"/>
+            <text x="490" y="211" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">Special feature</text>
+            <line x1="350" y1="90" x2="460" y2="176" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <line x1="436" y1="176" x2="326" y2="90" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="439" y="126" font-size="11" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">trigger</text>
+            <text x="365" y="148" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">returns when done</text>
+            <path d="M 64 196 C 18 186, 18 236, 64 222" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="38" y="252" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">retrigger</text>
+            <text x="320" y="272" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Mode changes belong in explicit state transitions, not flags scattered through the code</text>
+            </svg>
+        </DiagramFigure>
         <p>
             Every flow switch is simultaneously an asset switch: entering free games means loading dedicated backgrounds and symbol variants,
             and exiting means deciding what to release and what to keep in cache. The criterion is trigger frequency: assets of high-frequency flows stay in memory, while assets of low-frequency special features are released on exit.
@@ -178,23 +234,7 @@
 </template>
 
 <script setup>
-import MermaidDiagram from '/src/vue/components/generic/MermaidDiagram.vue'
-
-const commFlowChart = `flowchart TD
-    A[Player Presses Spin] --> B[Client Sends Bet Request]
-    B --> C[Server Validates and Computes Result]
-    C --> D[Server Returns Game Result]
-    D --> E[Client Performs Reel Animation]
-    E --> F[Client Completes Win Presentation]
-    F --> G[Client Sends Settlement Confirmation]
-    G --> H[Server Updates Values]`
-
-const multiFlowChart = `flowchart TD
-    A[Main Game] -->|Free Games Triggered| B[Free Games]
-    B -->|Free Games End| A
-    A -->|Special Feature Triggered| C[Special Feature Mode]
-    C -->|Special Feature Ends| A
-    B -->|Retriggered| B`
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
 </script>
 
 <style lang="scss" scoped>

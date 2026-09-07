@@ -22,7 +22,28 @@
             To keep code quality and development efficiency high while continuously shipping new games,
             we organize the entire client system with a <strong>three-layer architecture</strong>:
         </p>
-        <MermaidDiagram id="layer-arch" :chart="layerArchChart"/>
+        <DiagramFigure caption="The point of layering is build once, reuse often: a new game leaves the lower two layers untouched.">
+            <svg viewBox="0 0 640 334" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>The three client layers</title>
+            <desc>Game application, slot framework and generic engine from the top down, growing more general and more reusable with each layer.</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="40" y="16" width="560" height="74" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="40" y="16" width="5" height="74" rx="3" fill="var(--dg-1)"/>
+            <text x="64" y="46" font-size="14" fill="var(--dg-1-ink)" font-weight="700">Game application</text>
+            <text x="64" y="68" font-size="12" fill="currentColor" opacity="0.85">theme assets / special features / custom animation</text>
+            <line x1="320" y1="90" x2="320" y2="106" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="40" y="116" width="560" height="74" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="40" y="116" width="5" height="74" rx="3" fill="var(--dg-2)"/>
+            <text x="64" y="146" font-size="14" fill="var(--dg-2-ink)" font-weight="700">Slot framework</text>
+            <text x="64" y="168" font-size="12" fill="currentColor" opacity="0.85">reel engine / state machine / win presentation / paylines</text>
+            <line x1="320" y1="190" x2="320" y2="206" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="40" y="216" width="560" height="74" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="40" y="216" width="5" height="74" rx="3" fill="var(--dg-3)"/>
+            <text x="64" y="246" font-size="14" fill="var(--dg-3-ink)" font-weight="700">Generic engine</text>
+            <text x="64" y="268" font-size="12" fill="currentColor" opacity="0.85">render pipeline / asset loading / audio / networking / events</text>
+            <text x="320" y="320" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">The lower the layer the more general it is: a new game rebuilds only the top one</text>
+            </svg>
+        </DiagramFigure>
         <h3>General Engine Layer</h3>
         <p>
             The bottom layer holds capabilities that have nothing to do with the genre: the render pipeline, the asset loader, audio playback,
@@ -66,7 +87,44 @@
             Each round of a slot game looks simple (press the button, the reels spin, the result appears), but the state management behind it is genuinely complex.
             We use a <strong>finite state machine</strong> to manage the full lifecycle of a round:
         </p>
-        <MermaidDiagram id="spin-lifecycle" :chart="spinLifecycleChart"/>
+        <DiagramFigure caption="The cycle does not always complete cleanly: quick stop, disconnection and timeout each need a defined recovery path.">
+            <svg viewBox="0 0 640 182" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>The life cycle of one spin</title>
+            <desc>Six states from starting a round through to settlement, which returns to the start and closes the loop.</desc>
+            <defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" fill-opacity="0.55"/></marker></defs>
+            <rect x="24" y="44" width="92" height="54" rx="7" fill="var(--dg-1)" fill-opacity="0.14"/>
+            <rect x="24" y="44" width="92" height="3" rx="2" fill="var(--dg-1)"/>
+            <text x="70" y="69" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">Start</text>
+            <text x="70" y="86" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">round</text>
+            <line x1="117" y1="71" x2="123" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="124" y="44" width="92" height="54" rx="7" fill="var(--dg-2)" fill-opacity="0.14"/>
+            <rect x="124" y="44" width="92" height="3" rx="2" fill="var(--dg-2)"/>
+            <text x="170" y="69" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">Start</text>
+            <text x="170" y="86" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">reels</text>
+            <line x1="217" y1="71" x2="223" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="224" y="44" width="92" height="54" rx="7" fill="var(--dg-3)" fill-opacity="0.14"/>
+            <rect x="224" y="44" width="92" height="3" rx="2" fill="var(--dg-3)"/>
+            <text x="270" y="69" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">Keep</text>
+            <text x="270" y="86" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">spinning</text>
+            <line x1="317" y1="71" x2="323" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="324" y="44" width="92" height="54" rx="7" fill="var(--dg-1)" fill-opacity="0.14"/>
+            <rect x="324" y="44" width="92" height="3" rx="2" fill="var(--dg-1)"/>
+            <text x="370" y="69" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">Stop</text>
+            <text x="370" y="86" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">and</text>
+            <line x1="417" y1="71" x2="423" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="424" y="44" width="92" height="54" rx="7" fill="var(--dg-2)" fill-opacity="0.14"/>
+            <rect x="424" y="44" width="92" height="3" rx="2" fill="var(--dg-2)"/>
+            <text x="470" y="69" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">Show</text>
+            <text x="470" y="86" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">win</text>
+            <line x1="517" y1="71" x2="523" y2="71" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <rect x="524" y="44" width="92" height="54" rx="7" fill="var(--dg-3)" fill-opacity="0.14"/>
+            <rect x="524" y="44" width="92" height="3" rx="2" fill="var(--dg-3)"/>
+            <text x="570" y="76" font-size="12.5" fill="currentColor" text-anchor="middle" font-weight="700">Settle</text>
+            <path d="M 570 98 L 570 128 L 70 128 L 70 102" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6" marker-end="url(#dgArrow)"/>
+            <text x="320" y="144" font-size="12" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Settlement returns to the start of a new round</text>
+            <text x="320" y="168" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">A state machine makes the entry and exit condition of every step explicit and testable</text>
+            </svg>
+        </DiagramFigure>
         <h3>Why Not Flags and Callbacks?</h3>
         <p>
             The most intuitive approach is to track the current situation with boolean flags: whether it is spinning, whether the result has arrived, whether the win animation is playing.
@@ -116,19 +174,7 @@
 </template>
 
 <script setup>
-import MermaidDiagram from '/src/vue/components/generic/MermaidDiagram.vue'
-
-const layerArchChart = `flowchart TD
-    A[Game Application Layer<br/>Themed Assets / Special Mechanics / Custom Animation] --> B[Slot Framework Layer<br/>Reel Engine / State Machine / Win Presentation / Paylines]
-    B --> C[General Engine Layer<br/>Render Pipeline / Asset Loading / Audio / Communication / Event System]`
-
-const spinLifecycleChart = `flowchart TD
-    A[Start a New Round] --> B[Start the Reels]
-    B --> C[Keep Spinning]
-    C --> D[Stop the Reels and Write In the Result]
-    D --> E[Win Presentation]
-    E --> F[Settlement]
-    F --> A`
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
 </script>
 
 <style lang="scss" scoped>
