@@ -65,6 +65,43 @@
             才能判斷是哪個詞彙真正影響了輸出。同時建議累積團隊內部的提示詞片語庫，
             這比每次從零開始描述要穩定得多。
         </p>
+        <DiagramFigure caption="AI 生成圖在概念階段的角色是溝通媒介，而非最終素材；這個定位擺錯，後續會付出更高的修改成本。">
+            <svg viewBox="0 0 640 198" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>提示詞的三階段收斂</title>
+            <desc>從寬鬆描述追求多樣性，逐步補上約束收斂到兩三個方向，最後定調產出同系列元素。</desc>
+            <rect x="34" y="44" width="172" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="34" y="44" width="5" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="120" y="72" font-size="14" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">發散</text>
+            <text x="120" y="96" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">寬鬆抽象的描述</text>
+            <text x="120" y="112" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">只追求選項多樣性</text>
+            <text x="218" y="88" font-size="17" fill="currentColor" text-anchor="middle" opacity="0.75">→</text>
+            <rect x="54.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="69.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="84.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="99.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="114.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="129.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="144.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="159.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="174.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="230" y="44" width="172" height="76" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="230" y="44" width="5" height="76" rx="3" fill="var(--dg-2)"/>
+            <text x="316" y="72" font-size="14" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">收斂</text>
+            <text x="316" y="96" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">挑出兩到三個方向</text>
+            <text x="316" y="112" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">補上構圖光源材質約束</text>
+            <text x="414" y="88" font-size="17" fill="currentColor" text-anchor="middle" opacity="0.75">→</text>
+            <rect x="295.5" y="144" width="11" height="11" rx="2" fill="var(--dg-2)"/>
+            <rect x="310.5" y="144" width="11" height="11" rx="2" fill="var(--dg-2)"/>
+            <rect x="325.5" y="144" width="11" height="11" rx="2" fill="var(--dg-2)"/>
+            <rect x="426" y="44" width="172" height="76" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="426" y="44" width="5" height="76" rx="3" fill="var(--dg-3)"/>
+            <text x="512" y="72" font-size="14" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">定調</text>
+            <text x="512" y="96" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">以選定圖像為參照</text>
+            <text x="512" y="112" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">產出同系列其他元素</text>
+            <rect x="506.5" y="144" width="11" height="11" rx="2" fill="var(--dg-3)"/>
+            <text x="320" y="184" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">一次只修改提示詞中的一個維度，才能判斷是哪個詞彙真正影響了輸出</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>從 AI 產出接回傳統繪製流程</h3>
         <p>
@@ -141,6 +178,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

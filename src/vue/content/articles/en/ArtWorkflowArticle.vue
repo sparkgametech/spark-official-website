@@ -79,6 +79,43 @@
             It is also worth building up an internal library of prompt fragments for the team, which is far more
             stable than describing everything from scratch every time.
         </p>
+        <DiagramFigure caption="At the concept stage a generated image is a communication device, not a deliverable; getting that wrong costs more to undo later.">
+            <svg viewBox="0 0 640 198" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Three stages of prompt convergence</title>
+            <desc>Start loose for variety, add constraints to narrow to two or three directions, then lock the style and produce the rest of the family.</desc>
+            <rect x="34" y="44" width="172" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="34" y="44" width="5" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="120" y="72" font-size="14" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Diverge</text>
+            <text x="120" y="96" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">Loose, abstract wording</text>
+            <text x="120" y="112" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">variety is the only goal</text>
+            <text x="218" y="88" font-size="17" fill="currentColor" text-anchor="middle" opacity="0.75">→</text>
+            <rect x="54.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="69.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="84.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="99.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="114.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="129.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="144.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="159.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="174.5" y="144" width="11" height="11" rx="2" fill="var(--dg-1)"/>
+            <rect x="230" y="44" width="172" height="76" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="230" y="44" width="5" height="76" rx="3" fill="var(--dg-2)"/>
+            <text x="316" y="72" font-size="14" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">Converge</text>
+            <text x="316" y="96" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">Pick two or three directions</text>
+            <text x="316" y="112" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">add composition, light, material</text>
+            <text x="414" y="88" font-size="17" fill="currentColor" text-anchor="middle" opacity="0.75">→</text>
+            <rect x="295.5" y="144" width="11" height="11" rx="2" fill="var(--dg-2)"/>
+            <rect x="310.5" y="144" width="11" height="11" rx="2" fill="var(--dg-2)"/>
+            <rect x="325.5" y="144" width="11" height="11" rx="2" fill="var(--dg-2)"/>
+            <rect x="426" y="44" width="172" height="76" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="426" y="44" width="5" height="76" rx="3" fill="var(--dg-3)"/>
+            <text x="512" y="72" font-size="14" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">Lock</text>
+            <text x="512" y="96" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">Use the chosen image as reference</text>
+            <text x="512" y="112" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.85">produce the rest of the set</text>
+            <rect x="506.5" y="144" width="11" height="11" rx="2" fill="var(--dg-3)"/>
+            <text x="320" y="184" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Change one dimension of the prompt at a time, or you cannot tell which word moved the output</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>Bringing AI Output Back into the Traditional Pipeline</h3>
         <p>
@@ -163,6 +200,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

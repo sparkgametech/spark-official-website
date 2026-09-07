@@ -223,6 +223,15 @@ html[data-theme="dark"][data-theme="dark"] {
         }
     }
 
+    // Diagram labels that sit on the page rather than on a filled shape need
+    // a lighter hue here; the shape fills themselves are unchanged, since
+    // white on them already clears AA in both themes.
+    .diagram-figure {
+        --dg-1-ink: #ff8f52;
+        --dg-2-ink: #93a7ff;
+        --dg-3-ink: #4ecfa5;
+    }
+
     /* ---- breadcrumbs ---- */
     .breadcrumb-link-item {
         color: $d-text-muted;

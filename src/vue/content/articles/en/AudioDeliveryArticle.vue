@@ -89,6 +89,34 @@
             This architecture also greatly simplifies dynamic mixing:
             ducking only needs a gain adjustment on a single bus, rather than handling the playback state of individual sounds one at a time.
         </p>
+        <DiagramFigure caption="Players control each category separately; some prefer music off with the effects left on.">
+            <svg viewBox="0 0 640 252" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Audio bus architecture</title>
+            <desc>Music, sound effects and voice each run on their own bus before meeting at a single master output.</desc>
+            <rect x="32" y="44" width="156" height="66" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="32" y="44" width="5" height="66" rx="3" fill="var(--dg-1)"/>
+            <text x="110" y="71" font-size="13" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Music bus</text>
+            <text x="110" y="91" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">background music only</text>
+            <line x1="110" y1="110" x2="110" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="110" y1="146" x2="320" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <rect x="224" y="44" width="156" height="66" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="224" y="44" width="5" height="66" rx="3" fill="var(--dg-2)"/>
+            <text x="302" y="71" font-size="13" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">SFX bus</text>
+            <text x="302" y="91" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">reels, wins and buttons</text>
+            <line x1="302" y1="110" x2="302" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="302" y1="146" x2="320" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <rect x="416" y="44" width="156" height="66" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="416" y="44" width="5" height="66" rx="3" fill="var(--dg-3)"/>
+            <text x="494" y="71" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">Voice bus</text>
+            <text x="494" y="91" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">announcements or character voice</text>
+            <line x1="494" y1="110" x2="494" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="494" y1="146" x2="320" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="320" y1="146" x2="320" y2="166" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <rect x="226" y="166" width="188" height="46" rx="8" fill="var(--dg-2)"/>
+            <text x="320" y="194" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">Master output (overall volume)</text>
+            <text x="320" y="238" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Ducking adjusts the gain of one bus instead of tracking the playback state of every individual sound</text>
+            </svg>
+        </DiagramFigure>
 
         <h2><i class="fa-solid fa-truck-fast" aria-hidden="true"></i>From Requirements Spec to Delivery</h2>
 
@@ -156,6 +184,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

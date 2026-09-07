@@ -29,6 +29,46 @@
             <li><strong>Second tier</strong>: the win display and autoplay controls, surfacing only when needed</li>
             <li><strong>Third tier</strong>: the paytable, rules and sound settings, tucked into a menu to be opened on demand</li>
         </ul>
+        <DiagramFigure caption="A win amount only appears at particular moments, but when it does it must be seen at once, so it seizes focus and then withdraws.">
+            <svg viewBox="0 0 640 278" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Three tiers of interface information</title>
+            <desc>Always-on controls sit along the bottom, the win display appears only when needed, and everything else is tucked into a menu.</desc>
+            <rect x="176" y="26" width="288" height="208" rx="12" fill="none" stroke="currentColor" stroke-opacity="0.3"/>
+            <rect x="192" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="244" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="296" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="348" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="400" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="192" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="244" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="296" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="348" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="400" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="192" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="244" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="296" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="348" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="400" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="192" y="190" width="256" height="32" rx="6" fill="var(--dg-3)"/>
+            <text x="234.667" y="211" font-size="11" fill="#ffffff" text-anchor="middle">Credits</text>
+            <text x="320" y="211" font-size="11" fill="#ffffff" text-anchor="middle">Bet</text>
+            <text x="405.333" y="211" font-size="11" fill="#ffffff" text-anchor="middle">Spin</text>
+            <rect x="246" y="38" width="148" height="26" rx="6" fill="var(--dg-1)"/>
+            <text x="320" y="56" font-size="11" fill="#ffffff" text-anchor="middle">Win display</text>
+            <rect x="420" y="36" width="30" height="30" rx="6" fill="var(--dg-2)"/>
+            <text x="435" y="56" font-size="15" fill="#ffffff" text-anchor="middle">≡</text>
+            <rect x="18" y="60" width="12" height="12" rx="3" fill="var(--dg-3)"/>
+            <text x="38" y="71" font-size="12" fill="var(--dg-3-ink)" font-weight="700">First tier</text>
+            <text x="38" y="89" font-size="11.5" fill="currentColor" opacity="0.8">always present</text>
+            <rect x="18" y="114" width="12" height="12" rx="3" fill="var(--dg-1)"/>
+            <text x="38" y="125" font-size="12" fill="var(--dg-1-ink)" font-weight="700">Second tier</text>
+            <text x="38" y="143" font-size="11.5" fill="currentColor" opacity="0.8">surfaces when needed</text>
+            <rect x="18" y="168" width="12" height="12" rx="3" fill="var(--dg-2)"/>
+            <text x="38" y="179" font-size="12" fill="var(--dg-2-ink)" font-weight="700">Third tier</text>
+            <text x="38" y="197" font-size="11.5" fill="currentColor" opacity="0.8">opened from a menu</text>
+            <text x="320" y="264" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Tiering follows frequency of use multiplied by urgency, not the importance of the feature</text>
+            </svg>
+        </DiagramFigure>
         <p>
             The criterion for tiering is <strong>frequency of use multiplied by urgency</strong>, not the importance
             of the feature.
@@ -188,6 +228,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

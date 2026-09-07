@@ -49,6 +49,32 @@
             最下層決定的則是具體畫面。這種切分讓 RTP 調整不需要碰到任何單局資料，
             只要換一組索引即可，也讓同一批底層記錄能被多個不同 RTP 版本共用。
         </p>
+        <DiagramFigure caption="把「選哪一組」與「選哪一筆」拆開之後，調整 RTP 只需要換索引，不必重新產生任何單局資料。">
+            <svg viewBox="0 0 640 352" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>結果集的四層抽取結構</title>
+            <desc>由上而下依序決定用哪一組記錄池、哪一個結果集、哪一個賠率分組，最底層才均勻抽出單筆記錄。</desc>
+            <rect x="30" y="14" width="580" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="30" y="14" width="6" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="52" y="40" font-size="15" fill="currentColor" font-weight="700">記錄池管理層</text>
+            <text x="52" y="61" font-size="12" fill="currentColor" opacity="0.9">以識別碼為索引，管理多個結果集實例</text>
+            <text x="52" y="79" font-size="12" fill="currentColor" opacity="0.75">決定：要用哪一組數學特性</text>
+            <rect x="30" y="98" width="580" height="76" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="30" y="98" width="6" height="76" rx="3" fill="var(--dg-2)"/>
+            <text x="52" y="124" font-size="15" fill="currentColor" font-weight="700">結果集</text>
+            <text x="52" y="145" font-size="12" fill="currentColor" opacity="0.9">一個結果集對應一個目標 RTP 區間</text>
+            <text x="52" y="163" font-size="12" fill="currentColor" opacity="0.75">決定：這一局的期望值落在哪裡</text>
+            <rect x="30" y="182" width="580" height="76" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="30" y="182" width="6" height="76" rx="3" fill="var(--dg-3)"/>
+            <text x="52" y="208" font-size="15" fill="currentColor" font-weight="700">加權賠率分組</text>
+            <text x="52" y="229" font-size="12" fill="currentColor" opacity="0.9">依賠率區間切分，通常拆成兩組</text>
+            <text x="52" y="247" font-size="12" fill="currentColor" opacity="0.75">決定：調整組間權重即可微調 RTP</text>
+            <rect x="30" y="266" width="580" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="30" y="266" width="6" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="52" y="292" font-size="15" fill="currentColor" font-weight="700">記錄</text>
+            <text x="52" y="313" font-size="12" fill="currentColor" opacity="0.9">在選定的分組內均勻抽取</text>
+            <text x="52" y="331" font-size="12" fill="currentColor" opacity="0.75">決定：這一局實際呈現的盤面</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>結果集：單一結果集</h3>
         <p>
@@ -97,6 +123,34 @@
             <li><strong>遊戲特化寬度表</strong>：每款遊戲定義自己的欄寬對照表，將段落型別映射到位元組寬度，最大化壓縮效率</li>
             <li><strong>泛型編解碼</strong>：透過統一的編解碼介面，每款遊戲各自實作萃取、編碼與解碼三個環節</li>
         </ul>
+        <DiagramFigure caption="把賠率放在固定偏移量的開頭，是這個格式最關鍵的決定。">
+            <svg viewBox="0 0 640 172" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>TLV 記錄的位元組佈局</title>
+            <desc>賠率的分子與分母放在記錄開頭的固定偏移量，篩選階段不必解碼整筆記錄。</desc>
+            <rect x="30" y="74" width="92" height="52" rx="5" fill="var(--dg-1)"/>
+            <text x="76" y="98" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">分子</text>
+            <text x="76" y="115" font-size="11" fill="#ffffff" text-anchor="middle">u32 · 4 位元組</text>
+            <rect x="126" y="74" width="92" height="52" rx="5" fill="var(--dg-1)"/>
+            <text x="172" y="98" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">分母</text>
+            <text x="172" y="115" font-size="11" fill="#ffffff" text-anchor="middle">u32 · 4 位元組</text>
+            <rect x="222" y="74" width="58" height="52" rx="5" fill="var(--dg-2)" fill-opacity="0.16"/>
+            <text x="251" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">段數</text>
+            <text x="251" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">u8</text>
+            <rect x="284" y="74" width="104" height="52" rx="5" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="336" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">型別表</text>
+            <text x="336" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">u8 × N</text>
+            <rect x="392" y="74" width="104" height="52" rx="5" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="444" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">長度表</text>
+            <text x="444" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">u32 × N</text>
+            <rect x="500" y="74" width="106" height="52" rx="5" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="553" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">資料段</text>
+            <text x="553" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">...</text>
+            <line x1="30" y1="60" x2="218" y2="60" stroke="var(--dg-1)" stroke-width="2"/>
+            <text x="124" y="50" font-size="12" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">賠率前置 8 位元組</text>
+            <text x="124" y="30" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">固定偏移量</text>
+            <text x="320" y="154" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">篩選只需讀開頭的賠率，退化成一次指標運算；用分子分母而非浮點數，比較與加總沒有精度誤差</text>
+            </svg>
+        </DiagramFigure>
         <h3>空間與速度的取捨</h3>
         <p>
             為什麼不直接用通用序列化格式？主要是因為結果記錄的數量級。
@@ -275,6 +329,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

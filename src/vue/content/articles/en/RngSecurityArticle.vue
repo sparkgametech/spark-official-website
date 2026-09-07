@@ -94,9 +94,54 @@
         </p>
         <p>
             An extreme miniature example makes this easiest to see: if the raw random number has only ten possible values, <code>0~9</code>, and is mapped onto three outcomes,
-            then 0, 1 and 2 each take a share, with the first two taking the larger one: outcomes 0 and 1 each have probability 4/10, while outcome 2 has only 2/10.
+            then ten divided by three leaves a remainder of one, and that extra value falls to outcome 0. It therefore covers four raw values (0, 3, 6 and 9) for a probability of 4/10,
+            while outcomes 1 and 2 cover three values each, at 3/10 apiece.
             This bias does not vanish as the number of samples grows; on the contrary, a large sample lets statistical tests pinpoint it precisely.
         </p>
+        <DiagramFigure caption="Mapping ten equally likely values onto three outcomes leaves a remainder of one. That extra value falls to outcome 0, making it a third more likely than the others.">
+            <svg viewBox="0 0 640 318" role="img" xmlns="http://www.w3.org/2000/svg">
+                <title>Modulo bias</title>
+                <desc>Ten equally likely raw values taken modulo three: outcome 0 collects four values while outcomes 1 and 2 collect three each.</desc>
+                <text x="320" y="22" text-anchor="middle" font-size="15" fill="currentColor">Raw random values 0 - 9, each equally likely</text>
+                <rect x="68" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="90" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">0</text>
+                <rect x="119" y="36" width="44" height="44" rx="6" fill="var(--dg-2)"/>
+                <text x="141" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">1</text>
+                <rect x="170" y="36" width="44" height="44" rx="6" fill="var(--dg-3)"/>
+                <text x="192" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">2</text>
+                <rect x="221" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="243" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">3</text>
+                <rect x="272" y="36" width="44" height="44" rx="6" fill="var(--dg-2)"/>
+                <text x="294" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">4</text>
+                <rect x="323" y="36" width="44" height="44" rx="6" fill="var(--dg-3)"/>
+                <text x="345" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">5</text>
+                <rect x="374" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="396" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">6</text>
+                <rect x="425" y="36" width="44" height="44" rx="6" fill="var(--dg-2)"/>
+                <text x="447" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">7</text>
+                <rect x="476" y="36" width="44" height="44" rx="6" fill="var(--dg-3)"/>
+                <text x="498" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">8</text>
+                <rect x="527" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="549" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">9</text>
+                <text x="320" y="108" text-anchor="middle" font-size="15" fill="currentColor">↓  take value % 3</text>
+                <text x="40" y="154" font-size="15" fill="currentColor">Outcome 0</text>
+                <rect x="130" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <rect x="222" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <rect x="314" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <rect x="406" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <text x="496" y="155" font-size="17" font-weight="700" fill="currentColor">4/10</text>
+                <text x="40" y="210" font-size="15" fill="currentColor">Outcome 1</text>
+                <rect x="130" y="184" width="88" height="40" rx="5" fill="var(--dg-2)"/>
+                <rect x="222" y="184" width="88" height="40" rx="5" fill="var(--dg-2)"/>
+                <rect x="314" y="184" width="88" height="40" rx="5" fill="var(--dg-2)"/>
+                <text x="496" y="211" font-size="17" font-weight="700" fill="currentColor">3/10</text>
+                <text x="40" y="266" font-size="15" fill="currentColor">Outcome 2</text>
+                <rect x="130" y="240" width="88" height="40" rx="5" fill="var(--dg-3)"/>
+                <rect x="222" y="240" width="88" height="40" rx="5" fill="var(--dg-3)"/>
+                <rect x="314" y="240" width="88" height="40" rx="5" fill="var(--dg-3)"/>
+                <text x="496" y="267" font-size="17" font-weight="700" fill="currentColor">3/10</text>
+            </svg>
+        </DiagramFigure>
         <p>
             Although the bias is minuscule when max is far smaller than the range of the random number, in gaming any statistical non-uniformity can become an audit risk.
             More importantly, this bias is <strong>structural rather than random</strong>: it has a definite direction, it accumulates, and it can be reverse-engineered and exploited.
@@ -255,6 +300,27 @@ result = value % max</code>
             <li><strong>Middle layer (system security)</strong>: seed management, instance isolation and audit trails, preventing vulnerabilities at the system level</li>
             <li><strong>Upper layer (protocol security)</strong>: client isolation, parameter validation and state protection, preventing external manipulation</li>
         </ul>
+        <DiagramFigure caption="Each layer meets a different kind of threat and shares no assumption with the others, so any one of them failing leaves the other two standing.">
+            <svg viewBox="0 0 640 268" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Layered RNG defence</title>
+            <desc>Three layers guarding external manipulation, state contamination and mathematical predictability respectively, with no shared assumption between them.</desc>
+            <rect x="30" y="14" width="580" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="30" y="14" width="6" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="52" y="40" font-size="15" fill="currentColor" font-weight="700">Upper - protocol</text>
+            <text x="52" y="61" font-size="12" fill="currentColor" opacity="0.9">Client isolation / parameter validation / state protection</text>
+            <text x="52" y="79" font-size="12" fill="currentColor" opacity="0.75">Guards against: active manipulation from outside</text>
+            <rect x="30" y="98" width="580" height="76" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="30" y="98" width="6" height="76" rx="3" fill="var(--dg-2)"/>
+            <text x="52" y="124" font-size="15" fill="currentColor" font-weight="700">Middle - system</text>
+            <text x="52" y="145" font-size="12" fill="currentColor" opacity="0.9">Seed management / instance isolation / audit trail</text>
+            <text x="52" y="163" font-size="12" fill="currentColor" opacity="0.75">Guards against: state contamination in implementation and concurrency</text>
+            <rect x="30" y="182" width="580" height="76" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="30" y="182" width="6" height="76" rx="3" fill="var(--dg-3)"/>
+            <text x="52" y="208" font-size="15" fill="currentColor" font-weight="700">Lower - cryptographic</text>
+            <text x="52" y="229" font-size="12" fill="currentColor" opacity="0.9">CSPRNG / rejection sampling</text>
+            <text x="52" y="247" font-size="12" fill="currentColor" opacity="0.75">Guards against: mathematical predictability and distribution bias</text>
+            </svg>
+        </DiagramFigure>
         <p>
             This multi-layer defensive design ensures that even if one layer fails, the others still provide protection,
             establishing a solid and reliable framework for guaranteeing fairness.
@@ -276,6 +342,10 @@ result = value % max</code>
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

@@ -28,6 +28,37 @@
             此外還須主動嘗試<strong>不該發生的轉換</strong>，
             確認系統明確拒絕而非進入未定義狀態。
         </p>
+        <DiagramFigure caption="明確畫出狀態機的價值，在於它讓覆蓋率變成可量化的指標。">
+            <svg viewBox="0 0 640 308" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>狀態機覆蓋率的四個層級</title>
+            <desc>從每個狀態被進入過，到每條轉換邊被走過，再到連續轉換組合與非法轉換的拒絕。</desc>
+            <rect x="40" y="34" width="560" height="50" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="40" y="34" width="5" height="50" rx="3" fill="var(--dg-1)"/>
+            <rect x="60" y="49" width="20" height="20" rx="4" fill="var(--dg-1)"/>
+            <text x="70" y="64" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">1</text>
+            <text x="94" y="56" font-size="13" fill="var(--dg-1-ink)" font-weight="700">狀態覆蓋</text>
+            <text x="94" y="74" font-size="11.5" fill="currentColor" opacity="0.8">每個狀態都被進入過，這只是最低標準</text>
+            <rect x="40" y="96" width="560" height="50" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="40" y="96" width="5" height="50" rx="3" fill="var(--dg-2)"/>
+            <rect x="60" y="111" width="20" height="20" rx="4" fill="var(--dg-2)"/>
+            <text x="70" y="126" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">2</text>
+            <text x="94" y="118" font-size="13" fill="var(--dg-2-ink)" font-weight="700">轉換邊覆蓋</text>
+            <text x="94" y="136" font-size="11.5" fill="currentColor" opacity="0.8">每一條合法轉換邊都被走過，才是基本門檻</text>
+            <rect x="40" y="158" width="560" height="50" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="40" y="158" width="5" height="50" rx="3" fill="var(--dg-3)"/>
+            <rect x="60" y="173" width="20" height="20" rx="4" fill="var(--dg-3)"/>
+            <text x="70" y="188" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">3</text>
+            <text x="94" y="180" font-size="13" fill="var(--dg-3-ink)" font-weight="700">連續轉換組合</text>
+            <text x="94" y="198" font-size="11.5" fill="currentColor" opacity="0.8">最容易藏 Bug 之處：單獨測試都對，接連觸發卻因狀態殘留出錯</text>
+            <rect x="40" y="220" width="560" height="50" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="40" y="220" width="5" height="50" rx="3" fill="var(--dg-1)"/>
+            <rect x="60" y="235" width="20" height="20" rx="4" fill="var(--dg-1)"/>
+            <text x="70" y="250" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">4</text>
+            <text x="94" y="242" font-size="13" fill="var(--dg-1-ink)" font-weight="700">非法轉換</text>
+            <text x="94" y="260" font-size="11.5" fill="currentColor" opacity="0.8">主動嘗試不該發生的轉換，確認系統明確拒絕而非進入未定義狀態</text>
+            <text x="320" y="294" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">層級愈高愈能抓到真正的問題，而不只是把流程跑過一遍</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>邊界條件測試</h3>
         <p>
@@ -156,6 +187,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

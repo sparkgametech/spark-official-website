@@ -108,6 +108,24 @@
             The duck's attack should be short (around 100 to 200 milliseconds) and its release long (around 500 milliseconds or more),
             so the act of stepping aside goes unnoticed. Ducking at the bus level greatly simplifies the logic of dynamic mixing.
         </p>
+        <DiagramFigure caption="Ducking at the bus level rather than per sound greatly simplifies the dynamic mixing logic.">
+            <svg viewBox="0 0 640 270" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Volume ducking over time</title>
+            <desc>Background music drops quickly when a celebration effect fires, then recovers slowly once it ends.</desc>
+            <line x1="74" y1="190" x2="596" y2="190" stroke="currentColor" stroke-opacity="0.3" stroke-width="1"/>
+            <line x1="74" y1="52" x2="596" y2="52" stroke="currentColor" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="4 4"/>
+            <polyline points="74,52 190,52 218,148 372,148 470,52 596,52" fill="none" stroke="var(--dg-2-ink)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="190" y="44" width="182" height="146" rx="0" fill="var(--dg-1)" fill-opacity="0.10"/>
+            <polyline points="190,190 224,78 352,82 382,190" fill="none" stroke="var(--dg-1-ink)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <text x="66" y="56" font-size="11.5" fill="currentColor" text-anchor="end" opacity="0.75">Full level</text>
+            <text x="66" y="152" font-size="11.5" fill="currentColor" text-anchor="end" opacity="0.75">Ducked</text>
+            <text x="204" y="210" font-size="11.5" fill="var(--dg-2-ink)" text-anchor="middle">Fall 100 - 200 ms</text>
+            <text x="421" y="210" font-size="11.5" fill="var(--dg-2-ink)" text-anchor="middle">Recover 500 ms or more</text>
+            <text x="295" y="66" font-size="12" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Celebration effect</text>
+            <text x="74" y="234" font-size="12" fill="var(--dg-2-ink)" font-weight="700">Background music</text>
+            <text x="320" y="256" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Fall fast, recover slowly, so the act of making room goes unnoticed</text>
+            </svg>
+        </DiagramFigure>
         <p>
             In environments that support stereo output, good use of <strong>panning</strong> can strengthen the sense of space.
             The classic application is spreading the reel stop sounds left to right: the first reel toward the left, the last toward the right,
@@ -133,6 +151,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

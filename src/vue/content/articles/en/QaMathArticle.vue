@@ -99,6 +99,35 @@
             confirming there is no statistically significant difference between the observed and theoretical distributions.
             A model with a correct total RTP may still contain two internal errors that cancel each other out.
         </p>
+        <DiagramFigure caption="A model with the right total RTP can still carry two errors that cancel each other out.">
+            <svg viewBox="0 0 640 250" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>A correct total RTP can still hide errors</title>
+            <desc>Two combinations deviate in opposite directions by matching amounts, so the overall return looks perfectly normal.</desc>
+            <rect x="92" y="132" width="26" height="58" rx="3" fill="var(--dg-2)" fill-opacity="0.45"/>
+            <rect x="122" y="132" width="26" height="58" rx="3" fill="var(--dg-2)"/>
+            <text x="120" y="208" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">Combo 1</text>
+            <rect x="178" y="116" width="26" height="74" rx="3" fill="var(--dg-2)" fill-opacity="0.45"/>
+            <rect x="208" y="82" width="26" height="108" rx="3" fill="var(--dg-1)"/>
+            <text x="206" y="208" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">Combo 2</text>
+            <text x="206" y="74" font-size="11" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">high</text>
+            <rect x="264" y="128" width="26" height="62" rx="3" fill="var(--dg-2)" fill-opacity="0.45"/>
+            <rect x="294" y="128" width="26" height="62" rx="3" fill="var(--dg-2)"/>
+            <text x="292" y="208" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">Combo 3</text>
+            <rect x="350" y="102" width="26" height="88" rx="3" fill="var(--dg-2)" fill-opacity="0.45"/>
+            <rect x="380" y="136" width="26" height="54" rx="3" fill="var(--dg-1)"/>
+            <text x="378" y="208" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">Combo 4</text>
+            <text x="378" y="94" font-size="11" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">low</text>
+            <rect x="436" y="120" width="26" height="70" rx="3" fill="var(--dg-2)" fill-opacity="0.45"/>
+            <rect x="466" y="120" width="26" height="70" rx="3" fill="var(--dg-2)"/>
+            <text x="464" y="208" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">Combo 5</text>
+            <line x1="78" y1="190" x2="600" y2="190" stroke="currentColor" stroke-opacity="0.3" stroke-width="1"/>
+            <rect x="92" y="30" width="12" height="12" rx="2" fill="var(--dg-2)" fill-opacity="0.45"/>
+            <text x="112" y="40" font-size="11.5" fill="currentColor" opacity="0.8">Theoretical</text>
+            <rect x="202" y="30" width="12" height="12" rx="2" fill="var(--dg-2)"/>
+            <text x="222" y="40" font-size="11.5" fill="currentColor" opacity="0.8">Simulated</text>
+            <text x="320" y="236" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">This is exactly why every combination needs its own chi-square test</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>Volatility Verification</h3>
         <p>
@@ -154,6 +183,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

@@ -88,6 +88,30 @@
         <p>
             All three should be run before final refinement.
         </p>
+        <DiagramFigure caption="If the values bunch together once colour is removed, the colour contrast was fake all along.">
+            <svg viewBox="0 0 640 246" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Three checks on symbol legibility</title>
+            <desc>Thumbnail, silhouette and greyscale checks, all cheap, confirming symbols stay distinguishable at their real size.</desc>
+            <rect x="60" y="40" width="152" height="118" rx="8" fill="var(--dg-1)" fill-opacity="0.10"/>
+            <polygon points="136,58 143.03,74.3242 160.727,75.9656 147.375,87.6958 151.282,105.034 136,95.96 120.718,105.034 124.625,87.6958 111.273,75.9656 128.97,74.3242" fill="var(--dg-1)"/>
+            <polygon points="104,115 107.515,123.162 116.364,123.983 109.687,129.848 111.641,138.517 104,133.98 96.3588,138.517 98.3127,129.848 91.6363,123.983 100.485,123.162" fill="var(--dg-1)"/>
+            <polygon points="136,115 139.515,123.162 148.364,123.983 141.687,129.848 143.641,138.517 136,133.98 128.359,138.517 130.313,129.848 123.636,123.983 132.485,123.162" fill="var(--dg-2)"/>
+            <polygon points="168,115 171.515,123.162 180.364,123.983 173.687,129.848 175.641,138.517 168,133.98 160.359,138.517 162.313,129.848 155.636,123.983 164.485,123.162" fill="var(--dg-3)"/>
+            <text x="136" y="182" font-size="13" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Thumbnail</text>
+            <text x="136" y="202" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">compared side by side at real cell size</text>
+            <rect x="240" y="40" width="152" height="118" rx="8" fill="var(--dg-2)" fill-opacity="0.10"/>
+            <polygon points="284,78 289.948,91.8127 304.923,93.2016 293.625,103.127 296.931,117.798 284,110.12 271.069,117.798 274.375,103.127 263.077,93.2016 278.052,91.8127" fill="currentColor"/>
+            <polygon points="348,78 353.948,91.8127 368.923,93.2016 357.625,103.127 360.931,117.798 348,110.12 335.069,117.798 338.375,103.127 327.077,93.2016 342.052,91.8127" fill="currentColor"/>
+            <text x="316" y="182" font-size="13" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">Silhouette</text>
+            <text x="316" y="202" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">are the outlines alone distinguishable</text>
+            <rect x="420" y="40" width="152" height="118" rx="8" fill="var(--dg-3)" fill-opacity="0.10"/>
+            <polygon points="464,78 469.948,91.8127 484.923,93.2016 473.625,103.127 476.931,117.798 464,110.12 451.069,117.798 454.375,103.127 443.077,93.2016 458.052,91.8127" fill="currentColor" fill-opacity="0.42"/>
+            <polygon points="528,78 533.948,91.8127 548.923,93.2016 537.625,103.127 540.931,117.798 528,110.12 515.069,117.798 518.375,103.127 507.077,93.2016 522.052,91.8127" fill="currentColor" fill-opacity="0.5"/>
+            <text x="496" y="182" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">Greyscale</text>
+            <text x="496" y="202" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">do the values separate without colour</text>
+            <text x="320" y="232" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">All three belong before final refinement: nearly free, and they head off the most expensive rework</text>
+            </svg>
+        </DiagramFigure>
 
         <h2><i class="fa-solid fa-bone" aria-hidden="true"></i>Spine Skeletal Animation Production</h2>
         <p>
@@ -107,6 +131,34 @@
             Another advantage is <strong>modifiability</strong>: shortening the duration or exaggerating the motion
             only requires adjusting the keyframes.
         </p>
+        <DiagramFigure caption="The other advantage is editability: shortening a clip or widening a motion only means moving keyframes.">
+            <svg viewBox="0 0 640 246" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Data footprint of frame-by-frame versus skeletal animation</title>
+            <desc>Frame animation stores every frame as an image, while skeletal animation stores a few parts and interpolates the frames between them.</desc>
+            <text x="30" y="50" font-size="13.5" fill="var(--dg-1-ink)" font-weight="700">Frame-by-frame</text>
+            <rect x="198" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="232" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="266" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="300" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="334" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="368" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="402" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="436" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="470" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="504" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="538" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="572" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <text x="198" y="90" font-size="11.5" fill="currentColor" opacity="0.8">A two second clip can be dozens of consecutive images</text>
+            <text x="30" y="154" font-size="13.5" fill="var(--dg-3-ink)" font-weight="700">Skeletal</text>
+            <rect x="198" y="134" width="44" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="250" y="134" width="30" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="302" y="134" width="30" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="354" y="134" width="22" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="406" y="134" width="22" height="40" rx="3" fill="var(--dg-3)"/>
+            <text x="198" y="194" font-size="11.5" fill="currentColor" opacity="0.8">Split into parts that rotate and scale, with frames interpolated</text>
+            <text x="320" y="232" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">For a slot playing several animations at once, that gap lands directly on memory and load time</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>Types of Animation a Slot Needs</h3>
         <ul>
@@ -183,6 +235,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

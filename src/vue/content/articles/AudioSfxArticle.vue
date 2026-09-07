@@ -108,6 +108,24 @@
             閃避的下降時間宜短（約 100 至 200 毫秒），恢復時間宜長（約 500 毫秒以上），
             讓路的動作才不會被察覺。以匯流排為單位進行閃避，能大幅簡化動態混音的邏輯。
         </p>
+        <DiagramFigure caption="以匯流排為單位進行閃避，能大幅簡化動態混音的邏輯。">
+            <svg viewBox="0 0 640 270" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>音量閃避（Ducking）的時間曲線</title>
+            <desc>慶祝音效觸發時背景音樂快速降低音量，結束後緩慢恢復。</desc>
+            <line x1="74" y1="190" x2="596" y2="190" stroke="currentColor" stroke-opacity="0.3" stroke-width="1"/>
+            <line x1="74" y1="52" x2="596" y2="52" stroke="currentColor" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="4 4"/>
+            <polyline points="74,52 190,52 218,148 372,148 470,52 596,52" fill="none" stroke="var(--dg-2-ink)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="190" y="44" width="182" height="146" rx="0" fill="var(--dg-1)" fill-opacity="0.10"/>
+            <polyline points="190,190 224,78 352,82 382,190" fill="none" stroke="var(--dg-1-ink)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <text x="66" y="56" font-size="11.5" fill="currentColor" text-anchor="end" opacity="0.75">原音量</text>
+            <text x="66" y="152" font-size="11.5" fill="currentColor" text-anchor="end" opacity="0.75">降低後</text>
+            <text x="204" y="210" font-size="11.5" fill="var(--dg-2-ink)" text-anchor="middle">下降 100 ~ 200 毫秒</text>
+            <text x="421" y="210" font-size="11.5" fill="var(--dg-2-ink)" text-anchor="middle">恢復 500 毫秒以上</text>
+            <text x="295" y="66" font-size="12" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">慶祝音效</text>
+            <text x="74" y="234" font-size="12" fill="var(--dg-2-ink)" font-weight="700">背景音樂</text>
+            <text x="320" y="256" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">下降要快、恢復要慢，讓路的動作才不會被察覺</text>
+            </svg>
+        </DiagramFigure>
         <p>
             在支援立體聲輸出的環境中，善用<strong>聲像定位（Panning）</strong>可以增強空間感。
             最典型的應用是轉輪停止音的左右分佈：第一個轉輪偏左、最後一個偏右，
@@ -133,6 +151,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

@@ -49,6 +49,32 @@
             while the bottom level decides the concrete board. This split means RTP adjustment never has to touch any single-round data
             (swapping one index is enough), and it also lets the same batch of underlying records be shared by several different RTP versions.
         </p>
+        <DiagramFigure caption="Separating which group from which record means tuning RTP only swaps an index, with no per-round data regenerated.">
+            <svg viewBox="0 0 640 352" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Four-layer selection in the result set</title>
+            <desc>Each layer from the top picks the pool, the result set and the payout group in turn; only the bottom layer draws a single record uniformly.</desc>
+            <rect x="30" y="14" width="580" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="30" y="14" width="6" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="52" y="40" font-size="15" fill="currentColor" font-weight="700">Pool management</text>
+            <text x="52" y="61" font-size="12" fill="currentColor" opacity="0.9">Indexed by identifier, holding several result sets</text>
+            <text x="52" y="79" font-size="12" fill="currentColor" opacity="0.75">Decides: which set of mathematical characteristics</text>
+            <rect x="30" y="98" width="580" height="76" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="30" y="98" width="6" height="76" rx="3" fill="var(--dg-2)"/>
+            <text x="52" y="124" font-size="15" fill="currentColor" font-weight="700">Result set</text>
+            <text x="52" y="145" font-size="12" fill="currentColor" opacity="0.9">One result set per target RTP band</text>
+            <text x="52" y="163" font-size="12" fill="currentColor" opacity="0.75">Decides: where this round expected value sits</text>
+            <rect x="30" y="182" width="580" height="76" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="30" y="182" width="6" height="76" rx="3" fill="var(--dg-3)"/>
+            <text x="52" y="208" font-size="15" fill="currentColor" font-weight="700">Weighted payout groups</text>
+            <text x="52" y="229" font-size="12" fill="currentColor" opacity="0.9">Split by payout band, usually into two groups</text>
+            <text x="52" y="247" font-size="12" fill="currentColor" opacity="0.75">Decides: RTP is tuned by shifting weight between groups</text>
+            <rect x="30" y="266" width="580" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="30" y="266" width="6" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="52" y="292" font-size="15" fill="currentColor" font-weight="700">Record</text>
+            <text x="52" y="313" font-size="12" fill="currentColor" opacity="0.9">Drawn uniformly inside the chosen group</text>
+            <text x="52" y="331" font-size="12" fill="currentColor" opacity="0.75">Decides: the board this round actually shows</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>Result Set: A Single Result Set</h3>
         <p>
@@ -98,6 +124,34 @@
             <li><strong>Game-specific field-width table</strong>: each game defines its own field-width mapping that maps segment types to byte widths, maximizing compression efficiency</li>
             <li><strong>Generic codec</strong>: through a unified encode/decode interface, each game implements its own extraction, encoding and decoding steps</li>
         </ul>
+        <DiagramFigure caption="Putting the payout at a fixed offset at the front is the most consequential decision in this format.">
+            <svg viewBox="0 0 640 172" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Byte layout of a TLV record</title>
+            <desc>The numerator and denominator of the payout sit at a fixed offset at the start of the record, so filtering never has to decode the whole thing.</desc>
+            <rect x="30" y="74" width="92" height="52" rx="5" fill="var(--dg-1)"/>
+            <text x="76" y="98" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">Numerator</text>
+            <text x="76" y="115" font-size="11" fill="#ffffff" text-anchor="middle">u32 - 4 bytes</text>
+            <rect x="126" y="74" width="92" height="52" rx="5" fill="var(--dg-1)"/>
+            <text x="172" y="98" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">Denominator</text>
+            <text x="172" y="115" font-size="11" fill="#ffffff" text-anchor="middle">u32 - 4 bytes</text>
+            <rect x="222" y="74" width="58" height="52" rx="5" fill="var(--dg-2)" fill-opacity="0.16"/>
+            <text x="251" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">Segments</text>
+            <text x="251" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">u8</text>
+            <rect x="284" y="74" width="104" height="52" rx="5" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="336" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">Type table</text>
+            <text x="336" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">u8 x N</text>
+            <rect x="392" y="74" width="104" height="52" rx="5" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="444" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">Length table</text>
+            <text x="444" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">u32 x N</text>
+            <rect x="500" y="74" width="106" height="52" rx="5" fill="var(--dg-3)" fill-opacity="0.16"/>
+            <text x="553" y="98" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">Data</text>
+            <text x="553" y="115" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.85">...</text>
+            <line x1="30" y1="60" x2="218" y2="60" stroke="var(--dg-1)" stroke-width="2"/>
+            <text x="124" y="50" font-size="12" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Payout in the first 8 bytes</text>
+            <text x="124" y="30" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">fixed offset</text>
+            <text x="320" y="154" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Filtering reads only the leading payout, collapsing to one pointer operation; a fraction rather than a float keeps comparison and summation exact</text>
+            </svg>
+        </DiagramFigure>
         <h3>The Space-Versus-Speed Trade-off</h3>
         <p>
             Why not simply use a general-purpose serialization format? Mainly because of the order of magnitude of the result records.
@@ -276,6 +330,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

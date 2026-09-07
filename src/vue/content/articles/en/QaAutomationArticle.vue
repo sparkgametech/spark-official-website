@@ -42,6 +42,25 @@
             intermittent failures destroy the team's trust in the entire suite,
             and such cases should be handled as defects, tracking down and eliminating the residual sources of non-determinism.
         </p>
+        <DiagramFigure caption="Intermittent failures destroy the team trust in the whole suite, so they should be treated as defects.">
+            <svg viewBox="0 0 640 272" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Tests layered by cost</title>
+            <desc>The fast tier runs on every commit, the medium tier daily, and the heaviest maths verification at milestones.</desc>
+            <rect x="220" y="40" width="200" height="50" rx="8" fill="var(--dg-3)"/>
+            <text x="320" y="62" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">Fast tier</text>
+            <text x="320" y="80" font-size="11.5" fill="#ffffff" text-anchor="middle">finishes in minutes</text>
+            <text x="206" y="70" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">every commit</text>
+            <rect x="155" y="102" width="330" height="50" rx="8" fill="var(--dg-2)"/>
+            <text x="320" y="124" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">Medium tier</text>
+            <text x="320" y="142" font-size="11.5" fill="#ffffff" text-anchor="middle">full functional cases</text>
+            <text x="141" y="132" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">daily</text>
+            <rect x="90" y="164" width="460" height="50" rx="8" fill="var(--dg-1)"/>
+            <text x="320" y="186" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">Maths verification</text>
+            <text x="320" y="204" font-size="11.5" fill="#ffffff" text-anchor="middle">tens of millions of rounds</text>
+            <text x="76" y="194" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">milestone or submission</text>
+            <text x="320" y="258" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Lower tiers use larger samples and take longer, so they run less often</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>Visual Regression Testing</h3>
         <p>
@@ -154,6 +173,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

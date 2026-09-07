@@ -94,9 +94,54 @@
         </p>
         <p>
             用一個極端的小例子最容易看清楚：若原始隨機數只有 <code>0~9</code> 十種可能，要映射到三個結果，
-            則 0、1、2 各對應四個原始值中的一個較多者：結果 0 與 1 的機率是 4/10，結果 2 卻只有 2/10。
+            10 除以 3 商 3 餘 1，於是多出來的那一個值落給結果 0：它對應到 0、3、6、9 四個原始值，
+            機率是 4/10，而結果 1 與結果 2 各只對應三個值，機率都是 3/10。
             這種偏差不會隨著取樣次數增加而消失，反而會在大樣本下被統計檢定精準地捕捉出來。
         </p>
+        <DiagramFigure caption="十個等機率的值映射到三個結果時，10 除以 3 餘 1，多出來的那一個值落給結果 0，於是它的機率比另外兩個高出三分之一。">
+            <svg viewBox="0 0 640 318" role="img" xmlns="http://www.w3.org/2000/svg">
+                <title>模數偏差示意圖</title>
+                <desc>十個等機率的原始隨機數取模三之後，結果 0 拿到四個值，結果 1 與結果 2 各拿到三個值。</desc>
+                <text x="320" y="22" text-anchor="middle" font-size="15" fill="currentColor">原始隨機數 0 ~ 9，每個值機率相同</text>
+                <rect x="68" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="90" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">0</text>
+                <rect x="119" y="36" width="44" height="44" rx="6" fill="var(--dg-2)"/>
+                <text x="141" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">1</text>
+                <rect x="170" y="36" width="44" height="44" rx="6" fill="var(--dg-3)"/>
+                <text x="192" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">2</text>
+                <rect x="221" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="243" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">3</text>
+                <rect x="272" y="36" width="44" height="44" rx="6" fill="var(--dg-2)"/>
+                <text x="294" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">4</text>
+                <rect x="323" y="36" width="44" height="44" rx="6" fill="var(--dg-3)"/>
+                <text x="345" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">5</text>
+                <rect x="374" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="396" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">6</text>
+                <rect x="425" y="36" width="44" height="44" rx="6" fill="var(--dg-2)"/>
+                <text x="447" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">7</text>
+                <rect x="476" y="36" width="44" height="44" rx="6" fill="var(--dg-3)"/>
+                <text x="498" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">8</text>
+                <rect x="527" y="36" width="44" height="44" rx="6" fill="var(--dg-1)"/>
+                <text x="549" y="64" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">9</text>
+                <text x="320" y="108" text-anchor="middle" font-size="15" fill="currentColor">↓  取 value % 3</text>
+                <text x="40" y="154" font-size="15" fill="currentColor">結果 0</text>
+                <rect x="130" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <rect x="222" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <rect x="314" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <rect x="406" y="128" width="88" height="40" rx="5" fill="var(--dg-1)"/>
+                <text x="496" y="155" font-size="17" font-weight="700" fill="currentColor">4/10</text>
+                <text x="40" y="210" font-size="15" fill="currentColor">結果 1</text>
+                <rect x="130" y="184" width="88" height="40" rx="5" fill="var(--dg-2)"/>
+                <rect x="222" y="184" width="88" height="40" rx="5" fill="var(--dg-2)"/>
+                <rect x="314" y="184" width="88" height="40" rx="5" fill="var(--dg-2)"/>
+                <text x="496" y="211" font-size="17" font-weight="700" fill="currentColor">3/10</text>
+                <text x="40" y="266" font-size="15" fill="currentColor">結果 2</text>
+                <rect x="130" y="240" width="88" height="40" rx="5" fill="var(--dg-3)"/>
+                <rect x="222" y="240" width="88" height="40" rx="5" fill="var(--dg-3)"/>
+                <rect x="314" y="240" width="88" height="40" rx="5" fill="var(--dg-3)"/>
+                <text x="496" y="267" font-size="17" font-weight="700" fill="currentColor">3/10</text>
+            </svg>
+        </DiagramFigure>
         <p>
             雖然在 max 遠小於隨機數範圍時偏差極小，但在博弈遊戲中，任何統計上的不均勻都可能成為審計風險。
             更重要的是，這種偏差是<strong>結構性而非隨機性</strong>的：它有明確方向、可被累積、也可被逆向推導利用。
@@ -255,6 +300,27 @@ result = value % max</code>
             <li><strong>中層（系統安全）</strong>：種子管理、實例隔離、審計追蹤，防止系統層面的漏洞</li>
             <li><strong>上層（協議安全）</strong>：客戶端隔離、參數驗證、狀態保護，防止外部操控</li>
         </ul>
+        <DiagramFigure caption="三層各自針對不同性質的威脅，假設前提不重疊，因此任何一層失效時其餘兩層仍然成立。">
+            <svg viewBox="0 0 640 268" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>RNG 分層防禦架構</title>
+            <desc>三層防護由上而下分別針對外部操控、狀態污染與數學可預測性，各層假設前提不重疊。</desc>
+            <rect x="30" y="14" width="580" height="76" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="30" y="14" width="6" height="76" rx="3" fill="var(--dg-1)"/>
+            <text x="52" y="40" font-size="15" fill="currentColor" font-weight="700">上層 · 協議安全</text>
+            <text x="52" y="61" font-size="12" fill="currentColor" opacity="0.9">客戶端隔離 / 參數驗證 / 狀態保護</text>
+            <text x="52" y="79" font-size="12" fill="currentColor" opacity="0.75">防的是：來自外部的主動操控嘗試</text>
+            <rect x="30" y="98" width="580" height="76" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="30" y="98" width="6" height="76" rx="3" fill="var(--dg-2)"/>
+            <text x="52" y="124" font-size="15" fill="currentColor" font-weight="700">中層 · 系統安全</text>
+            <text x="52" y="145" font-size="12" fill="currentColor" opacity="0.9">種子管理 / 實例隔離 / 審計追蹤</text>
+            <text x="52" y="163" font-size="12" fill="currentColor" opacity="0.75">防的是：實作與併發層面的狀態污染</text>
+            <rect x="30" y="182" width="580" height="76" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="30" y="182" width="6" height="76" rx="3" fill="var(--dg-3)"/>
+            <text x="52" y="208" font-size="15" fill="currentColor" font-weight="700">底層 · 密碼學安全</text>
+            <text x="52" y="229" font-size="12" fill="currentColor" opacity="0.9">CSPRNG / Rejection Sampling</text>
+            <text x="52" y="247" font-size="12" fill="currentColor" opacity="0.75">防的是：數學上的可預測性與分佈偏差</text>
+            </svg>
+        </DiagramFigure>
         <p>
             這種多層防禦的設計確保了即使某一層出現問題，其他層仍能提供保護，
             從而建立起一個穩固可靠的公平性保障體系。
@@ -276,6 +342,10 @@ result = value % max</code>
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

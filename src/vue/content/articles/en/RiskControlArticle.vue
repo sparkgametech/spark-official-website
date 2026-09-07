@@ -104,6 +104,24 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             The division of labor between the Z-test and the binomial test is that the win rate test looks at <strong>frequency</strong>,
             while the RTP test looks at <strong>monetary scale</strong>. The two can disagree, and the disagreement itself is valuable diagnostic information:
         </p>
+        <DiagramFigure caption="The significance level sets where the critical values sit: pushing them outward cuts false alarms but delays the detection of smaller real problems.">
+            <svg viewBox="0 0 640 256" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Acceptance and rejection regions of the Z-test</title>
+            <desc>A Z value beyond either critical value counts as a significant deviation; inside them it is treated as normal variation.</desc>
+            <polygon points="60,195.95 63.315,195.938 66.63,195.925 69.945,195.908 73.26,195.889 76.575,195.865 79.89,195.837 83.205,195.803 86.52,195.763 89.835,195.716 93.15,195.66 96.465,195.595 99.78,195.517 103.095,195.427 106.41,195.322 109.725,195.199 113.04,195.057 116.355,194.892 119.67,194.701 122.985,194.482 126.3,194.231 129.615,193.943 132.93,193.615 136.245,193.242 139.56,192.818 142.875,192.339 146.19,191.798 149.505,191.191 152.82,190.509 156.135,189.748 159.45,188.899 162.765,187.957 166.08,186.912 169.395,185.759 172.71,184.49 176.025,183.096 179.34,181.572 182.655,179.909 185.97,178.102 189.285,176.143 192.6,174.027 192.6,196 60,196" fill="var(--dg-1)"/>
+            <polygon points="447.4,174.027 450.715,176.143 454.03,178.102 457.345,179.909 460.66,181.572 463.975,183.096 467.29,184.49 470.605,185.759 473.92,186.912 477.235,187.957 480.55,188.899 483.865,189.748 487.18,190.509 490.495,191.191 493.81,191.798 497.125,192.339 500.44,192.818 503.755,193.242 507.07,193.615 510.385,193.943 513.7,194.231 517.015,194.482 520.33,194.701 523.645,194.892 526.96,195.057 530.275,195.199 533.59,195.322 536.905,195.427 540.22,195.517 543.535,195.595 546.85,195.66 550.165,195.716 553.48,195.763 556.795,195.803 560.11,195.837 563.425,195.865 566.74,195.889 570.055,195.908 573.37,195.925 576.685,195.938 580,195.95 580,196 447.4,196" fill="var(--dg-1)"/>
+            <polygon points="192.6,174.027 198.97,169.501 205.34,164.348 211.71,158.556 218.08,152.126 224.45,145.084 230.82,137.476 237.19,129.374 243.56,120.875 249.93,112.103 256.3,103.201 262.67,94.336 269.04,85.6886 275.41,77.4497 281.78,69.8132 288.15,62.9686 294.52,57.0932 300.89,52.3446 307.26,48.8537 313.63,46.7186 320,46 326.37,46.7186 332.74,48.8537 339.11,52.3446 345.48,57.0932 351.85,62.9686 358.22,69.8132 364.59,77.4497 370.96,85.6886 377.33,94.336 383.7,103.201 390.07,112.103 396.44,120.875 402.81,129.374 409.18,137.476 415.55,145.084 421.92,152.126 428.29,158.556 434.66,164.348 441.03,169.501 447.4,174.027 447.4,196 192.6,196" fill="var(--dg-2)"/>
+            <line x1="54" y1="196" x2="586" y2="196" stroke="currentColor" stroke-opacity="0.3"/>
+            <line x1="192.6" y1="174.027" x2="192.6" y2="196" stroke="currentColor" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+            <text x="192.6" y="216" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.8">-Za/2</text>
+            <line x1="447.4" y1="174.027" x2="447.4" y2="196" stroke="currentColor" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+            <text x="447.4" y="216" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.8">+Za/2</text>
+            <text x="320" y="138" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">Accept</text>
+            <text x="141.25" y="162" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">Reject</text>
+            <text x="498.75" y="162" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700">Reject</text>
+            <text x="320" y="242" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Horizontal: the Z value. The curve is the distribution under the null hypothesis</text>
+            </svg>
+        </DiagramFigure>
         <ul>
             <li><strong>Win rate normal, RTP high</strong>: wins occur as often as expected, but the multiplier on each payout is too large.
                 This usually points to a value setting issue in the pay table, or an error in the multiplier calculation step</li>
@@ -111,6 +129,33 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
                 Volatility is below design expectation, and the player experience will have a different rhythm than the mathematical model intended</li>
             <li><strong>Both deviating at once</strong>: more likely a global problem such as the wrong probability table being selected or a version mismatch</li>
         </ul>
+        <DiagramFigure caption="Reading the two tests separately is what gives them diagnostic value: the direction of the divergence says whether the problem is on the frequency side or the amount side.">
+            <svg viewBox="0 0 640 256" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Diagnosing a divergence between win rate and RTP</title>
+            <desc>The win rate test looks at frequency and the RTP test at magnitude; each combination of results points at a different source of the problem.</desc>
+            <text x="364" y="26" font-size="12" fill="currentColor" text-anchor="middle" font-weight="700" opacity="0.7">RTP test</text>
+            <text x="248" y="48" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.7">Normal</text>
+            <text x="480" y="48" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.7">Deviating</text>
+            <text x="122" y="106" font-size="12" fill="currentColor" text-anchor="end" opacity="0.7">Win rate  normal</text>
+            <text x="122" y="198" font-size="12" fill="currentColor" text-anchor="end" opacity="0.7">Win rate  deviating</text>
+            <rect x="136" y="60" width="224" height="84" rx="7" fill="var(--dg-2)" fill-opacity="0.14"/>
+            <text x="248" y="90" font-size="13" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">Normal</text>
+            <text x="248" y="112" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">Both within the expected range</text>
+            <text x="248" y="129" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8"></text>
+            <rect x="368" y="60" width="224" height="84" rx="7" fill="var(--dg-3)" fill-opacity="0.14"/>
+            <text x="480" y="90" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">Payout multiple</text>
+            <text x="480" y="112" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">Expected hit count, oversized payouts</text>
+            <text x="480" y="129" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">Points at the paytable or multiplier maths</text>
+            <rect x="136" y="152" width="224" height="84" rx="7" fill="var(--dg-3)" fill-opacity="0.14"/>
+            <text x="248" y="182" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">Volatility too low</text>
+            <text x="248" y="204" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">More frequent wins, smaller each</text>
+            <text x="248" y="221" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">Pacing differs from the model</text>
+            <rect x="368" y="152" width="224" height="84" rx="7" fill="var(--dg-1)" fill-opacity="0.14"/>
+            <text x="480" y="182" font-size="13" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">Global problem</text>
+            <text x="480" y="204" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">Both deviating at once</text>
+            <text x="480" y="221" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.8">Usually a wrong table or version mismatch</text>
+            </svg>
+        </DiagramFigure>
         <p>
             The most common mistake when reading a Z value is overlooking that <strong>the standard error shrinks as the sample size grows</strong>.
             This means that with a very large sample, a practically negligible deviation (say, an RTP off by 0.05 percentage points)
@@ -261,6 +306,10 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
         </ul>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

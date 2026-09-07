@@ -172,6 +172,35 @@
             <li><strong>中波動率</strong>：平衡型，兼顧中獎頻率與獎金大小</li>
             <li><strong>高波動率</strong>：稀少大獎，適合追求刺激的玩家，資金波動劇烈</li>
         </ul>
+        <DiagramFigure caption="兩者的 RTP 可以完全相同，玩家感受到的節奏卻天差地遠：差別在賠付如何分佈，而不是總量。">
+            <svg viewBox="0 0 640 272" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>中波動與高波動的賠付分佈</title>
+            <desc>中波動機台的賠付集中在小獎與中獎，高波動機台則以未中獎為主、僅有稀少的大獎。</desc>
+            <text x="165" y="24" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">中波動</text>
+            <text x="165" y="44" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">標準差約 5 ~ 8</text>
+            <rect x="52" y="131.2" width="46" height="82.8" rx="4" fill="var(--dg-3)"/>
+            <text x="75" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">未中獎</text>
+            <rect x="112" y="111.88" width="46" height="102.12" rx="4" fill="var(--dg-3)"/>
+            <text x="135" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">小獎</text>
+            <rect x="172" y="167.08" width="46" height="46.92" rx="4" fill="var(--dg-3)"/>
+            <text x="195" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">中獎</text>
+            <rect x="232" y="207.1" width="46" height="6.9" rx="4" fill="var(--dg-3)"/>
+            <text x="255" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">大獎</text>
+            <line x1="40" y1="214" x2="290" y2="214" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="475" y="24" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">高波動</text>
+            <text x="475" y="44" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">標準差 15 以上</text>
+            <rect x="362" y="82.9" width="46" height="131.1" rx="4" fill="var(--dg-1)"/>
+            <text x="385" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">未中獎</text>
+            <rect x="422" y="178.12" width="46" height="35.88" rx="4" fill="var(--dg-1)"/>
+            <text x="445" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">小獎</text>
+            <rect x="482" y="197.44" width="46" height="16.56" rx="4" fill="var(--dg-1)"/>
+            <text x="505" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">中獎</text>
+            <rect x="542" y="204.34" width="46" height="9.66" rx="4" fill="var(--dg-1)"/>
+            <text x="565" y="232" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">大獎</text>
+            <line x1="350" y1="214" x2="600" y2="214" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="320" y="258" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">橫軸為單次 Spin 的賠付級距，縱軸為出現頻率</text>
+            </svg>
+        </DiagramFigure>
         <p>
             波動率可透過調整符號權重表中高賠符號與低賠符號的比例來控制。增加高賠符號的權重會降低波動率，
             減少高賠符號的權重則會提高波動率。
@@ -195,6 +224,23 @@
             因此可以推得：波動率越高，要讓玩家「感受到」理論 RTP 所需的局數就越多。
             這個推論直接解釋了高波動機台的一個特性：短期體感與理論值可以差距極大，而這正是設計意圖的一部分。
         </p>
+        <DiagramFigure caption="波動率越高，實際 RTP 貼近理論值所需的局數越多，這也是短期體感與長期數學經常對不上的原因。">
+            <svg viewBox="0 0 640 280" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>實際 RTP 隨局數收斂</title>
+            <desc>局數越多，實際 RTP 越貼近理論值；波動率越高，收斂所需的局數越多。</desc>
+            <polygon points="78,24 90.95,60.175 103.9,72.8755 116.85,79.8779 129.8,84.4688 142.75,87.7754 155.7,90.303 168.65,92.316 181.6,93.9683 194.55,95.3562 207.5,96.5435 220.45,97.5741 233.4,98.4799 246.35,99.2841 259.3,100.004 272.25,100.654 285.2,101.245 298.15,101.784 311.1,102.28 324.05,102.737 337,103.16 349.95,103.554 362.9,103.922 375.85,104.265 388.8,104.588 401.75,104.892 414.7,105.178 427.65,105.449 440.6,105.705 453.55,105.948 466.5,106.18 479.45,106.4 492.4,106.61 505.35,106.81 518.3,107.002 531.25,107.186 544.2,107.362 557.15,107.531 570.1,107.693 583.05,107.85 596,108 596,132 583.05,132.15 570.1,132.307 557.15,132.469 544.2,132.638 531.25,132.814 518.3,132.998 505.35,133.19 492.4,133.39 479.45,133.6 466.5,133.82 453.55,134.052 440.6,134.295 427.65,134.551 414.7,134.822 401.75,135.108 388.8,135.412 375.85,135.735 362.9,136.078 349.95,136.446 337,136.84 324.05,137.263 311.1,137.72 298.15,138.216 285.2,138.755 272.25,139.346 259.3,139.996 246.35,140.716 233.4,141.52 220.45,142.426 207.5,143.457 194.55,144.644 181.6,146.032 168.65,147.684 155.7,149.697 142.75,152.225 129.8,155.531 116.85,160.122 103.9,167.125 90.95,179.825 78,216" fill="var(--dg-1)" fill-opacity="0.20"/>
+            <polygon points="78,80 90.95,95.0729 103.9,100.365 116.85,103.282 129.8,105.195 142.75,106.573 155.7,107.626 168.65,108.465 181.6,109.153 194.55,109.732 207.5,110.226 220.45,110.656 233.4,111.033 246.35,111.368 259.3,111.668 272.25,111.939 285.2,112.185 298.15,112.41 311.1,112.617 324.05,112.807 337,112.984 349.95,113.148 362.9,113.301 375.85,113.444 388.8,113.578 401.75,113.705 414.7,113.824 427.65,113.937 440.6,114.044 453.55,114.145 466.5,114.241 479.45,114.333 492.4,114.421 505.35,114.504 518.3,114.584 531.25,114.661 544.2,114.734 557.15,114.805 570.1,114.872 583.05,114.937 596,115 596,125 583.05,125.063 570.1,125.128 557.15,125.195 544.2,125.266 531.25,125.339 518.3,125.416 505.35,125.496 492.4,125.579 479.45,125.667 466.5,125.759 453.55,125.855 440.6,125.956 427.65,126.063 414.7,126.176 401.75,126.295 388.8,126.422 375.85,126.556 362.9,126.699 349.95,126.852 337,127.016 324.05,127.193 311.1,127.383 298.15,127.59 285.2,127.815 272.25,128.061 259.3,128.332 246.35,128.632 233.4,128.967 220.45,129.344 207.5,129.774 194.55,130.268 181.6,130.847 168.65,131.535 155.7,132.374 142.75,133.427 129.8,134.805 116.85,136.718 103.9,139.635 90.95,144.927 78,160" fill="var(--dg-3)" fill-opacity="0.30"/>
+            <line x1="78" y1="120" x2="596" y2="120" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4" stroke-opacity="0.75"/>
+            <text x="596" y="110" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">理論 RTP</text>
+            <text x="78" y="246" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">1 千局</text>
+            <text x="250.667" y="246" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">1 萬局</text>
+            <text x="423.333" y="246" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">10 萬局</text>
+            <text x="596" y="246" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">100 萬局</text>
+            <text x="78" y="30" font-size="12" fill="var(--dg-1-ink)" font-weight="700">高波動</text>
+            <text x="78" y="48" font-size="12" fill="var(--dg-3-ink)" font-weight="700">中波動</text>
+            <text x="320" y="266" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">陰影為實際 RTP 的可能範圍，寬度正比於標準差除以局數的平方根</text>
+            </svg>
+        </DiagramFigure>
 
         <h2><i class="fa-solid fa-bullseye" aria-hidden="true"></i>Hit Rate 與中獎頻率</h2>
         <p>
@@ -279,6 +325,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

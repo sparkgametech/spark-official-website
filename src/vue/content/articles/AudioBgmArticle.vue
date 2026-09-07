@@ -62,6 +62,27 @@
             把超出循環長度的殘響尾巴裁切下來、疊加回循環開頭。
             如此一來，前一輪的殘響會自然延續到新一輪的起始，反覆播放數十次也聽不出接縫。
         </p>
+        <DiagramFigure caption="單純在小節線切斷，會讓最後一個和弦的殘響被硬生生截掉，聽感上像是音樂突然被關掉。">
+            <svg viewBox="0 0 640 234" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>尾音殘響的疊回處理</title>
+            <desc>混音時多演奏一到兩個小節，把超出循環長度的殘響裁下來疊回循環開頭。</desc>
+            <text x="84" y="78" font-size="12" fill="currentColor" text-anchor="end" opacity="0.85">錄製時</text>
+            <rect x="96" y="52" width="340" height="44" rx="5" fill="var(--dg-2)"/>
+            <text x="266" y="79" font-size="12" fill="#ffffff" text-anchor="middle">循環主體</text>
+            <rect x="436" y="52" width="96" height="44" rx="5" fill="var(--dg-3)"/>
+            <text x="484" y="79" font-size="11.5" fill="#ffffff" text-anchor="middle">殘響尾巴</text>
+            <line x1="436" y1="42" x2="436" y2="106" stroke="currentColor" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="436" y="36" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">循環結束點</text>
+            <text x="84" y="174" font-size="12" fill="currentColor" text-anchor="end" opacity="0.85">成品</text>
+            <rect x="96" y="148" width="340" height="44" rx="5" fill="var(--dg-2)"/>
+            <text x="266" y="175" font-size="12" fill="#ffffff" text-anchor="middle">循環主體</text>
+            <rect x="96" y="148" width="96" height="44" rx="5" fill="var(--dg-1)"/>
+            <text x="144" y="175" font-size="11.5" fill="#ffffff" text-anchor="middle">殘響尾巴</text>
+            <path d="M 484 104 C 484 132, 144 132, 144 144" fill="none" stroke="var(--dg-1-ink)" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="320" y="132" font-size="11.5" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">裁下來疊回開頭</text>
+            <text x="320" y="220" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">前一輪的殘響自然延續到新一輪的起始，反覆播放也聽不出接縫</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>用環境層稀釋循環感</h3>
         <p>
@@ -137,6 +158,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

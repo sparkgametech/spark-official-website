@@ -42,6 +42,25 @@
             間歇性失敗會摧毀團隊對整套測試的信任，
             這類案例應視為缺陷處理，找出殘留的非確定性因素並消除。
         </p>
+        <DiagramFigure caption="間歇性失敗會摧毀團隊對整套測試的信任，這類案例應視為缺陷處理。">
+            <svg viewBox="0 0 640 272" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>測試依成本分層</title>
+            <desc>快速層每次提交都跑，中量層每日執行，最重的數學驗證安排在里程碑。</desc>
+            <rect x="220" y="40" width="200" height="50" rx="8" fill="var(--dg-3)"/>
+            <text x="320" y="62" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">快速層</text>
+            <text x="320" y="80" font-size="11.5" fill="#ffffff" text-anchor="middle">數分鐘內完成</text>
+            <text x="206" y="70" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">每次提交</text>
+            <rect x="155" y="102" width="330" height="50" rx="8" fill="var(--dg-2)"/>
+            <text x="320" y="124" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">中量層</text>
+            <text x="320" y="142" font-size="11.5" fill="#ffffff" text-anchor="middle">完整功能案例</text>
+            <text x="141" y="132" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">每日執行</text>
+            <rect x="90" y="164" width="460" height="50" rx="8" fill="var(--dg-1)"/>
+            <text x="320" y="186" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">數學驗證</text>
+            <text x="320" y="204" font-size="11.5" fill="#ffffff" text-anchor="middle">數千萬局以上</text>
+            <text x="76" y="194" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">里程碑或送審前</text>
+            <text x="320" y="258" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">愈往下樣本量愈大、耗時愈長，因此執行頻率愈低</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>視覺回歸測試</h3>
         <p>
@@ -154,6 +173,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

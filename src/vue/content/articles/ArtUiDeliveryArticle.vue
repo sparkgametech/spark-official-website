@@ -29,6 +29,46 @@
             <li><strong>第二層級</strong>：贏分顯示與自動旋轉控制，需要時才顯現</li>
             <li><strong>第三層級</strong>：賠付表、規則、聲音設定，收在選單中再展開</li>
         </ul>
+        <DiagramFigure caption="中獎金額只在特定時刻出現，出現時卻必須立刻被看見，因此需動態搶佔焦點、結束後再退場。">
+            <svg viewBox="0 0 640 278" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>介面的三個資訊層級</title>
+            <desc>常駐控制項固定在下方，贏分顯示只在需要時出現，其餘設定收在選單裡。</desc>
+            <rect x="176" y="26" width="288" height="208" rx="12" fill="none" stroke="currentColor" stroke-opacity="0.3"/>
+            <rect x="192" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="244" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="296" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="348" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="400" y="72" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="192" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="244" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="296" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="348" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="400" y="112" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="192" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="244" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="296" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="348" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="400" y="152" width="46" height="34" rx="4" fill="currentColor" fill-opacity="0.10"/>
+            <rect x="192" y="190" width="256" height="32" rx="6" fill="var(--dg-3)"/>
+            <text x="234.667" y="211" font-size="11" fill="#ffffff" text-anchor="middle">點數</text>
+            <text x="320" y="211" font-size="11" fill="#ffffff" text-anchor="middle">投注額</text>
+            <text x="405.333" y="211" font-size="11" fill="#ffffff" text-anchor="middle">旋轉</text>
+            <rect x="246" y="38" width="148" height="26" rx="6" fill="var(--dg-1)"/>
+            <text x="320" y="56" font-size="11" fill="#ffffff" text-anchor="middle">贏分顯示</text>
+            <rect x="420" y="36" width="30" height="30" rx="6" fill="var(--dg-2)"/>
+            <text x="435" y="56" font-size="15" fill="#ffffff" text-anchor="middle">≡</text>
+            <rect x="18" y="60" width="12" height="12" rx="3" fill="var(--dg-3)"/>
+            <text x="38" y="71" font-size="12" fill="var(--dg-3-ink)" font-weight="700">第一層級</text>
+            <text x="38" y="89" font-size="11.5" fill="currentColor" opacity="0.8">永遠常駐</text>
+            <rect x="18" y="114" width="12" height="12" rx="3" fill="var(--dg-1)"/>
+            <text x="38" y="125" font-size="12" fill="var(--dg-1-ink)" font-weight="700">第二層級</text>
+            <text x="38" y="143" font-size="11.5" fill="currentColor" opacity="0.8">需要時才顯現</text>
+            <rect x="18" y="168" width="12" height="12" rx="3" fill="var(--dg-2)"/>
+            <text x="38" y="179" font-size="12" fill="var(--dg-2-ink)" font-weight="700">第三層級</text>
+            <text x="38" y="197" font-size="11.5" fill="currentColor" opacity="0.8">收在選單中再展開</text>
+            <text x="320" y="264" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">層級劃分的判準是使用頻率乘以急迫性，而非功能的重要性</text>
+            </svg>
+        </DiagramFigure>
         <p>
             層級劃分的判準是<strong>使用頻率乘以急迫性</strong>，而非功能的重要性。
             中獎金額只在特定時刻出現，出現時卻必須立刻被看見，因此需動態搶佔焦點、結束後再退場。
@@ -175,6 +215,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

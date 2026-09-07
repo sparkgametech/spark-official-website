@@ -89,6 +89,34 @@
             這種架構也大幅簡化動態混音：
             音量閃避只需對單一匯流排調整增益，不必逐一處理個別音效的播放狀態。
         </p>
+        <DiagramFigure caption="玩家可以分別控制各類音頻的音量，部分玩家偏好關閉音樂只保留音效。">
+            <svg viewBox="0 0 640 252" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>音軌匯流排架構</title>
+            <desc>音樂、音效與語音各走獨立匯流排，最後匯入單一主輸出。</desc>
+            <rect x="32" y="44" width="156" height="66" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="32" y="44" width="5" height="66" rx="3" fill="var(--dg-1)"/>
+            <text x="110" y="71" font-size="13" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">音樂匯流排</text>
+            <text x="110" y="91" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">背景音樂專用</text>
+            <line x1="110" y1="110" x2="110" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="110" y1="146" x2="320" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <rect x="224" y="44" width="156" height="66" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="224" y="44" width="5" height="66" rx="3" fill="var(--dg-2)"/>
+            <text x="302" y="71" font-size="13" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">音效匯流排</text>
+            <text x="302" y="91" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">轉輪、中獎與按鈕</text>
+            <line x1="302" y1="110" x2="302" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="302" y1="146" x2="320" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <rect x="416" y="44" width="156" height="66" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="416" y="44" width="5" height="66" rx="3" fill="var(--dg-3)"/>
+            <text x="494" y="71" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">語音匯流排</text>
+            <text x="494" y="91" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">語音播報或角色語音</text>
+            <line x1="494" y1="110" x2="494" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="494" y1="146" x2="320" y2="146" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <line x1="320" y1="146" x2="320" y2="166" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+            <rect x="226" y="166" width="188" height="46" rx="8" fill="var(--dg-2)"/>
+            <text x="320" y="194" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">主輸出（總音量）</text>
+            <text x="320" y="238" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">音量閃避只需對單一匯流排調整增益，不必逐一處理個別音效的播放狀態</text>
+            </svg>
+        </DiagramFigure>
 
         <h2><i class="fa-solid fa-truck-fast" aria-hidden="true"></i>從需求規格到交付</h2>
 
@@ -156,6 +184,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

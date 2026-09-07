@@ -289,6 +289,24 @@ function buildRoutes(locale) {
 // inline and it is dropped.
 const DROPPED_COMPONENTS = ['MermaidDiagram']
 
+/**
+ * DiagramFigure wraps a hand-drawn SVG. Its content is exactly what should
+ * reach a crawler — the drawing's own <title>/<desc>/<text> plus the caption —
+ * so it is rewritten into the markup the component would have rendered rather
+ * than dropped.
+ */
+function unwrapFigures(markup) {
+    return markup.replace(
+        /<DiagramFigure\b([^>]*)>([\s\S]*?)<\/DiagramFigure>/g,
+        (_, attrs, inner) => {
+            const caption = attrs.match(/\bcaption\s*=\s*"([^"]*)"/)
+            return '<figure class="diagram-figure">'
+                + `<div class="diagram-figure-canvas">${inner.trim()}</div>`
+                + (caption ? `<figcaption>${caption[1]}</figcaption>` : '')
+                + '</figure>'
+        })
+}
+
 function articleBody(slug, locale) {
     const file = ARTICLE_FILES[slug]
     if (!file) return ''
@@ -307,6 +325,8 @@ function articleBody(slug, locale) {
     if (open === -1 || close === -1) throw new Error(`${rel} 沒有 <template>`)
 
     let markup = source.slice(open + '<template>'.length, close)
+
+    markup = unwrapFigures(markup)
 
     for (const name of DROPPED_COMPONENTS) {
         markup = markup.replace(new RegExp(`<${name}\\b[^>]*/>`, 'g'), '')

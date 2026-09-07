@@ -28,6 +28,37 @@
             Beyond that, you must actively attempt <strong>transitions that should not happen</strong>,
             confirming that the system explicitly rejects them rather than entering an undefined state.
         </p>
+        <DiagramFigure caption="Drawing the state machine explicitly is what turns coverage into something measurable.">
+            <svg viewBox="0 0 640 308" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Four levels of state machine coverage</title>
+            <desc>From every state being entered, to every legal edge being taken, to consecutive transitions and the rejection of illegal ones.</desc>
+            <rect x="40" y="34" width="560" height="50" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="40" y="34" width="5" height="50" rx="3" fill="var(--dg-1)"/>
+            <rect x="60" y="49" width="20" height="20" rx="4" fill="var(--dg-1)"/>
+            <text x="70" y="64" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">1</text>
+            <text x="94" y="56" font-size="13" fill="var(--dg-1-ink)" font-weight="700">State coverage</text>
+            <text x="94" y="74" font-size="11.5" fill="currentColor" opacity="0.8">every state has been entered, which is only the floor</text>
+            <rect x="40" y="96" width="560" height="50" rx="8" fill="var(--dg-2)" fill-opacity="0.12"/>
+            <rect x="40" y="96" width="5" height="50" rx="3" fill="var(--dg-2)"/>
+            <rect x="60" y="111" width="20" height="20" rx="4" fill="var(--dg-2)"/>
+            <text x="70" y="126" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">2</text>
+            <text x="94" y="118" font-size="13" fill="var(--dg-2-ink)" font-weight="700">Edge coverage</text>
+            <text x="94" y="136" font-size="11.5" fill="currentColor" opacity="0.8">every legal transition has been taken, the real baseline</text>
+            <rect x="40" y="158" width="560" height="50" rx="8" fill="var(--dg-3)" fill-opacity="0.12"/>
+            <rect x="40" y="158" width="5" height="50" rx="3" fill="var(--dg-3)"/>
+            <rect x="60" y="173" width="20" height="20" rx="4" fill="var(--dg-3)"/>
+            <text x="70" y="188" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">3</text>
+            <text x="94" y="180" font-size="13" fill="var(--dg-3-ink)" font-weight="700">Consecutive transitions</text>
+            <text x="94" y="198" font-size="11.5" fill="currentColor" opacity="0.8">where bugs hide: each is fine alone, but together leftover state breaks them</text>
+            <rect x="40" y="220" width="560" height="50" rx="8" fill="var(--dg-1)" fill-opacity="0.12"/>
+            <rect x="40" y="220" width="5" height="50" rx="3" fill="var(--dg-1)"/>
+            <rect x="60" y="235" width="20" height="20" rx="4" fill="var(--dg-1)"/>
+            <text x="70" y="250" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">4</text>
+            <text x="94" y="242" font-size="13" fill="var(--dg-1-ink)" font-weight="700">Illegal transitions</text>
+            <text x="94" y="260" font-size="11.5" fill="currentColor" opacity="0.8">attempt what should not happen and confirm it is refused, not left undefined</text>
+            <text x="320" y="294" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">Higher levels catch real problems rather than merely walking the flow once</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>Boundary Condition Testing</h3>
         <p>
@@ -156,6 +187,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

@@ -65,6 +65,23 @@
             <li><strong>過衝階段</strong>：滾輪超過目標位置一小段距離，幅度通常在半個符號高度以內。超過這個幅度，玩家會開始懷疑結果變了</li>
             <li><strong>回彈階段</strong>：採用阻尼彈簧曲線回到精確的目標位置，可能伴隨一到兩次微小振盪</li>
         </ul>
+        <DiagramFigure caption="過衝幅度通常控制在半個符號高度以內，超過這個幅度玩家會開始懷疑結果變了。">
+            <svg viewBox="0 0 640 276" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>停輪的三個區間</title>
+            <desc>滾輪先減速逼近目標，越過目標一小段後再由阻尼彈簧拉回定位。</desc>
+            <rect x="64" y="40" width="94.9618" height="174" rx="0" fill="var(--dg-3)" fill-opacity="0.10"/>
+            <rect x="158.962" y="40" width="189.924" height="174" rx="0" fill="var(--dg-1)" fill-opacity="0.10"/>
+            <rect x="348.885" y="40" width="247.115" height="174" rx="0" fill="var(--dg-2)" fill-opacity="0.10"/>
+            <line x1="64" y1="96" x2="596" y2="96" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <text x="596" y="87" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">目標位置</text>
+            <line x1="64" y1="214" x2="596" y2="214" stroke="currentColor" stroke-opacity="0.3" stroke-width="1"/>
+            <polyline points="64,214 68.4333,208.618 72.8667,203.077 77.3,197.436 81.7333,191.751 86.1667,186.072 90.6,180.443 95.0333,174.904 99.4667,169.489 103.9,164.229 108.333,159.15 112.767,154.272 117.2,149.614 121.633,145.19 126.067,141.01 130.5,137.083 134.933,133.413 139.367,130.003 143.8,126.853 148.233,123.96 152.667,121.322 157.1,118.931 161.533,116.783 165.967,114.868 170.4,113.177 174.833,111.7 179.267,110.428 183.7,109.348 188.133,108.45 192.567,107.721 197,107.15 201.433,106.724 205.867,106.433 210.3,106.264 214.733,106.206 219.167,106.247 223.6,106.378 228.033,106.588 232.467,106.866 236.9,107.204 241.333,107.593 245.767,108.024 250.2,108.489 254.633,108.981 259.067,109.494 263.5,110.022 267.933,110.557 272.367,111.096 276.8,111.634 281.233,112.166 285.667,112.69 290.1,113.201 294.533,113.697 298.967,114.175 303.4,114.634 307.833,115.072 312.267,115.488 316.7,115.88 321.133,116.249 325.567,116.593 330,116.912 334.433,117.206 338.867,117.477 343.3,117.723 347.733,117.946 352.167,118.146 356.6,118.324 361.033,118.481 365.467,118.618 369.9,118.735 374.333,118.835 378.767,118.917 383.2,118.984 387.633,119.036 392.067,119.074 396.5,119.1 400.933,119.114 405.367,119.118 409.8,119.112 414.233,119.099 418.667,119.078 423.1,119.051 427.533,119.018 431.967,118.98 436.4,118.939 440.833,118.894 445.267,118.847 449.7,118.798 454.133,118.748 458.567,118.697 463,118.646 467.433,118.595 471.867,118.545 476.3,118.495 480.733,118.447 485.167,118.4 489.6,118.355 494.033,118.312 498.467,118.271 502.9,118.232 507.333,118.195 511.767,118.161 516.2,118.128 520.633,118.099 525.067,118.071 529.5,118.046 533.933,118.023 538.367,118.002 542.8,117.983 547.233,117.967 551.667,117.952 556.1,117.94 560.533,117.929 564.967,117.92 569.4,117.912 573.833,117.906 578.267,117.901 582.7,117.898 587.133,117.895 591.567,117.894 596,117.894" fill="none" stroke="var(--dg-1-ink)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <text x="111.481" y="236" font-size="12.5" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">減速</text>
+            <text x="253.924" y="236" font-size="12.5" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">過衝</text>
+            <text x="472.443" y="236" font-size="12.5" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">回彈</text>
+            <text x="320" y="262" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">橫軸為時間，縱軸為滾輪位移；三段可獨立調整</text>
+            </svg>
+        </DiagramFigure>
         <p>
             節奏明快的遊戲用較小的過衝與快速回彈，經典風格則用較誇張的彈跳營造機械感。
         </p>
@@ -83,6 +100,32 @@
             <li><strong>最短旋轉時間</strong>：即使結果瞬間就回來，滾輪也必須轉滿這段時間，否則整局會顯得草率</li>
             <li><strong>最長等待時間</strong>：等待超時後切換到可無限延續的旋轉表現，避免玩家察覺遊戲卡住</li>
         </ul>
+        <DiagramFigure caption="這四個數值必須被視為一組來調整，因此我們把它們封裝成可整體切換的節奏設定。">
+            <svg viewBox="0 0 640 314" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>多欄的啟動與停輪時序</title>
+            <desc>各欄依序啟動，間隔較小；依序停止時間隔明顯放大，節奏感由此而來。</desc>
+            <text x="84" y="63" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">第 1 欄</text>
+            <rect x="96" y="44" width="150" height="30" rx="5" fill="var(--dg-2)"/>
+            <text x="106" y="63" font-size="11" fill="#ffffff">旋轉中</text>
+            <text x="84" y="105" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">第 2 欄</text>
+            <rect x="109" y="86" width="199" height="30" rx="5" fill="var(--dg-2)"/>
+            <text x="119" y="105" font-size="11" fill="#ffffff">旋轉中</text>
+            <text x="84" y="147" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">第 3 欄</text>
+            <rect x="122" y="128" width="248" height="30" rx="5" fill="var(--dg-2)"/>
+            <text x="132" y="147" font-size="11" fill="#ffffff">旋轉中</text>
+            <text x="84" y="189" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">第 4 欄</text>
+            <rect x="135" y="170" width="297" height="30" rx="5" fill="var(--dg-2)"/>
+            <text x="145" y="189" font-size="11" fill="#ffffff">旋轉中</text>
+            <text x="84" y="231" font-size="12" fill="currentColor" text-anchor="end" opacity="0.8">第 5 欄</text>
+            <rect x="148" y="212" width="346" height="30" rx="5" fill="var(--dg-2)"/>
+            <text x="158" y="231" font-size="11" fill="#ffffff">旋轉中</text>
+            <line x1="96" y1="34" x2="96" y2="256" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="148" y1="34" x2="148" y2="256" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="122" y="28" font-size="12" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">啟動間隔（較小）</text>
+            <text x="370" y="276" font-size="12" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">停輪間隔（明顯較大）</text>
+            <text x="320" y="300" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">啟動間隔製造整體感，停輪間隔則是玩家判斷「還剩幾欄」的線索</text>
+            </svg>
+        </DiagramFigure>
         <p>
             這四個數值必須被視為一組來調整，因此我們把它們封裝成可整體切換的節奏設定。
         </p>
@@ -149,6 +192,7 @@
 </template>
 
 <script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
 import MermaidDiagram from '/src/vue/components/generic/MermaidDiagram.vue'
 
 const reelAnimChart = `flowchart TD

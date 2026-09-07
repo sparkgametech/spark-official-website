@@ -62,6 +62,27 @@
             then trim the reverb tail that extends past the loop length and overlay it onto the head of the loop.
             The tail from the previous pass then carries naturally into the start of the next, and dozens of repetitions reveal no seam.
         </p>
+        <DiagramFigure caption="Cutting flat at the bar line chops off the last chord reverb, and the music sounds as though it was simply switched off.">
+            <svg viewBox="0 0 640 234" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Folding the reverb tail back into the loop</title>
+            <desc>An extra bar or two is played at mix time, and the reverb running past the loop point is cut and layered back over the start.</desc>
+            <text x="84" y="78" font-size="12" fill="currentColor" text-anchor="end" opacity="0.85">As recorded</text>
+            <rect x="96" y="52" width="340" height="44" rx="5" fill="var(--dg-2)"/>
+            <text x="266" y="79" font-size="12" fill="#ffffff" text-anchor="middle">Loop body</text>
+            <rect x="436" y="52" width="96" height="44" rx="5" fill="var(--dg-3)"/>
+            <text x="484" y="79" font-size="11.5" fill="#ffffff" text-anchor="middle">Reverb tail</text>
+            <line x1="436" y1="42" x2="436" y2="106" stroke="currentColor" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="436" y="36" font-size="11" fill="currentColor" text-anchor="middle" opacity="0.75">Loop point</text>
+            <text x="84" y="174" font-size="12" fill="currentColor" text-anchor="end" opacity="0.85">Final</text>
+            <rect x="96" y="148" width="340" height="44" rx="5" fill="var(--dg-2)"/>
+            <text x="266" y="175" font-size="12" fill="#ffffff" text-anchor="middle">Loop body</text>
+            <rect x="96" y="148" width="96" height="44" rx="5" fill="var(--dg-1)"/>
+            <text x="144" y="175" font-size="11.5" fill="#ffffff" text-anchor="middle">Reverb tail</text>
+            <path d="M 484 104 C 484 132, 144 132, 144 144" fill="none" stroke="var(--dg-1-ink)" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="320" y="132" font-size="11.5" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">cut and folded back</text>
+            <text x="320" y="220" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">The previous pass reverb carries into the start of the next, so the seam never shows</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>Diluting the Loop Feel with an Ambience Layer</h3>
         <p>
@@ -137,6 +158,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {

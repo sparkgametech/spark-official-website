@@ -77,6 +77,30 @@
         <p>
             三項都應在精修之前進行。
         </p>
+        <DiagramFigure caption="去掉顏色後若明度全擠在一起，代表色彩對比其實是假的。">
+            <svg viewBox="0 0 640 246" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>符號辨識度的三種檢測法</title>
+            <desc>縮圖、剪影與灰階三種低成本檢查，用來確認符號在實際尺寸下仍然分得出來。</desc>
+            <rect x="60" y="40" width="152" height="118" rx="8" fill="var(--dg-1)" fill-opacity="0.10"/>
+            <polygon points="136,58 143.03,74.3242 160.727,75.9656 147.375,87.6958 151.282,105.034 136,95.96 120.718,105.034 124.625,87.6958 111.273,75.9656 128.97,74.3242" fill="var(--dg-1)"/>
+            <polygon points="104,115 107.515,123.162 116.364,123.983 109.687,129.848 111.641,138.517 104,133.98 96.3588,138.517 98.3127,129.848 91.6363,123.983 100.485,123.162" fill="var(--dg-1)"/>
+            <polygon points="136,115 139.515,123.162 148.364,123.983 141.687,129.848 143.641,138.517 136,133.98 128.359,138.517 130.313,129.848 123.636,123.983 132.485,123.162" fill="var(--dg-2)"/>
+            <polygon points="168,115 171.515,123.162 180.364,123.983 173.687,129.848 175.641,138.517 168,133.98 160.359,138.517 162.313,129.848 155.636,123.983 164.485,123.162" fill="var(--dg-3)"/>
+            <text x="136" y="182" font-size="13" fill="var(--dg-1-ink)" text-anchor="middle" font-weight="700">縮圖測試</text>
+            <text x="136" y="202" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">縮到實際格子尺寸並排比對</text>
+            <rect x="240" y="40" width="152" height="118" rx="8" fill="var(--dg-2)" fill-opacity="0.10"/>
+            <polygon points="284,78 289.948,91.8127 304.923,93.2016 293.625,103.127 296.931,117.798 284,110.12 271.069,117.798 274.375,103.127 263.077,93.2016 278.052,91.8127" fill="currentColor"/>
+            <polygon points="348,78 353.948,91.8127 368.923,93.2016 357.625,103.127 360.931,117.798 348,110.12 335.069,117.798 338.375,103.127 327.077,93.2016 342.052,91.8127" fill="currentColor"/>
+            <text x="316" y="182" font-size="13" fill="var(--dg-2-ink)" text-anchor="middle" font-weight="700">剪影測試</text>
+            <text x="316" y="202" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">只看外輪廓能否區分</text>
+            <rect x="420" y="40" width="152" height="118" rx="8" fill="var(--dg-3)" fill-opacity="0.10"/>
+            <polygon points="464,78 469.948,91.8127 484.923,93.2016 473.625,103.127 476.931,117.798 464,110.12 451.069,117.798 454.375,103.127 443.077,93.2016 458.052,91.8127" fill="currentColor" fill-opacity="0.42"/>
+            <polygon points="528,78 533.948,91.8127 548.923,93.2016 537.625,103.127 540.931,117.798 528,110.12 515.069,117.798 518.375,103.127 507.077,93.2016 522.052,91.8127" fill="currentColor" fill-opacity="0.5"/>
+            <text x="496" y="182" font-size="13" fill="var(--dg-3-ink)" text-anchor="middle" font-weight="700">灰階測試</text>
+            <text x="496" y="202" font-size="11.5" fill="currentColor" text-anchor="middle" opacity="0.8">去掉顏色後明度是否分得開</text>
+            <text x="320" y="232" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">三項都應在精修之前進行，成本極低卻能擋掉最貴的返工</text>
+            </svg>
+        </DiagramFigure>
 
         <h2><i class="fa-solid fa-bone" aria-hidden="true"></i>Spine 骨骼動畫製作</h2>
         <p>
@@ -93,6 +117,34 @@
             對於需要同時播放多個動畫的老虎機，效能優勢尤為關鍵。
             另一項優勢是<strong>可修改性</strong>：要縮短時長或加大動作幅度時只需調整關鍵影格。
         </p>
+        <DiagramFigure caption="另一項優勢是可修改性：要縮短時長或加大動作幅度時只需調整關鍵影格。">
+            <svg viewBox="0 0 640 246" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>逐幀動畫與骨骼動畫的資料量</title>
+            <desc>逐幀動畫每一幀都是一張圖，骨骼動畫只存少數部件並以數學插值算出中間幀。</desc>
+            <text x="30" y="50" font-size="13.5" fill="var(--dg-1-ink)" font-weight="700">逐幀動畫</text>
+            <rect x="198" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="232" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="266" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="300" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="334" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="368" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="402" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="436" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="470" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="504" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="538" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <rect x="572" y="30" width="28" height="40" rx="3" fill="var(--dg-1)" fill-opacity="0.85"/>
+            <text x="198" y="90" font-size="11.5" fill="currentColor" opacity="0.8">一段兩秒的動畫可能就是數十張連續圖片</text>
+            <text x="30" y="154" font-size="13.5" fill="var(--dg-3-ink)" font-weight="700">骨骼動畫</text>
+            <rect x="198" y="134" width="44" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="250" y="134" width="30" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="302" y="134" width="30" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="354" y="134" width="22" height="40" rx="3" fill="var(--dg-3)"/>
+            <rect x="406" y="134" width="22" height="40" rx="3" fill="var(--dg-3)"/>
+            <text x="198" y="194" font-size="11.5" fill="currentColor" opacity="0.8">拆成可獨立旋轉縮放的部件，中間幀用插值算出</text>
+            <text x="320" y="232" font-size="12" fill="currentColor" text-anchor="middle" opacity="0.75">對需要同時播放多個動畫的老虎機，這個差距直接反映在記憶體與載入時間上</text>
+            </svg>
+        </DiagramFigure>
 
         <h3>老虎機的動畫需求類型</h3>
         <ul>
@@ -158,6 +210,10 @@
         </p>
     </div>
 </template>
+
+<script setup>
+import DiagramFigure from '/src/vue/components/generic/DiagramFigure.vue'
+</script>
 
 <style lang="scss" scoped>
 .blog-article {
