@@ -167,10 +167,16 @@ function buildRoutes(locale) {
                 },
                 crumbs([{ name: homeName, path: home }, { name: c.name, path: url }])
             ],
-            links: posts.map(p => ({
-                href: localePath(locale, `/blog/${p.slug}`),
-                text: localizedPost(locale, p).title
-            }))
+            // Without the descriptions a category page is a bare list of
+            // links, which tells a crawler almost nothing about its topic.
+            links: posts.map(p => {
+                const v = localizedPost(locale, p)
+                return {
+                    href: localePath(locale, `/blog/${p.slug}`),
+                    text: v.title,
+                    desc: v.description
+                }
+            })
         })
     }
 
@@ -247,6 +253,14 @@ function buildRoutes(locale) {
                 { name: homeName, path: home },
                 { name: locale === 'zh' ? '關於我們' : 'About us', path: localePath(locale, '/about') }
             ])
+        ],
+        // The services list and the contact lead are the only place on the
+        // site that plainly states what the team sells, and they come from the
+        // same i18n module used at runtime — so there is one source, not two.
+        sections: [
+            { heading: t.aboutServicesTitle,
+              items: t.aboutServices.map(x => `${x.name}：${x.detail}`) },
+            { heading: t.aboutContactTitle, paragraphs: t.aboutContactLead }
         ],
         links: categories.map(c => ({
             href: localePath(locale, `/category/${c.slug}`),
@@ -385,14 +399,27 @@ function render(template, route) {
         + '#app li{margin-bottom:.4rem}'
         + '</style>'
 
+    // Sections carry copy a page owns but that lives in data rather than in
+    // article markup, so it would otherwise never reach the static HTML.
+    const sections = (route.sections ?? []).map(sec => [
+        sec.heading ? '<h2>' + esc(sec.heading) + '</h2>' : '',
+        ...(sec.paragraphs ?? []).map(line => '<p>' + esc(line) + '</p>'),
+        sec.items?.length
+            ? '<ul>' + sec.items.map(i => '<li>' + esc(i) + '</li>').join('') + '</ul>'
+            : ''
+    ].join('')).join('')
+
     const fallback = fallbackStyle + [
         '<h1>' + esc(route.heading) + '</h1>',
         route.summary ? '<p>' + esc(route.summary) + '</p>' : '',
         '<p>' + esc(route.description) + '</p>',
         route.body ?? '',
+        sections,
         route.links.length
-            ? '<nav><ul>' + route.links.map(l =>
-                `<li><a href="${esc(l.href)}">${esc(l.text)}</a></li>`).join('') + '</ul></nav>'
+            ? '<nav><ul>' + route.links.map(l => '<li><a href="' + esc(l.href) + '">'
+                + esc(l.text) + '</a>'
+                + (l.desc ? '<p>' + esc(l.desc) + '</p>' : '')
+                + '</li>').join('') + '</ul></nav>'
             : ''
     ].join('')
 
