@@ -3,7 +3,7 @@
         <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>What Is Natural Probability?</h2>
         <p>
             In slot games, <strong>Natural Probability</strong> refers to the winning probability derived purely from
-            the mathematical model, unaffected by any external adjustment factor. The outcome of every Spin is
+            the mathematical model, unaffected by any external <a href="/en/blog/gas-control-system">adjustment</a> factor. The outcome of every Spin is
             determined by a pre-designed <strong>symbol weight table (Reel Strip)</strong>, which guarantees fairness
             and a predictable long-term return rate.
         </p>
@@ -46,7 +46,7 @@
             <li><strong>Scatter / Bonus symbol</strong>: 1-2 per reel, triggers special features</li>
         </ul>
         <p>
-            The total weight of each reel is the sum of all its symbol weights. When the RNG produces a random number,
+            The total weight of each reel is the sum of all its symbol weights. When the <a href="/en/blog/rng-security">RNG</a> produces a random number,
             it is mapped onto this total weight range to determine which symbol the reel stops on.
         </p>
         <h3>Physical Reels and Virtual Reels</h3>

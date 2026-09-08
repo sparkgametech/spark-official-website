@@ -3,7 +3,7 @@
         <h2><i class="fa-solid fa-circle-question" aria-hidden="true"></i>什麼是自然機率？</h2>
         <p>
             在老虎機遊戲中，<strong>自然機率（Natural Probability）</strong>是指完全基於數學模型計算出的中獎機率，
-            不受任何外部調控因素影響。每一次 Spin 的結果都由預先設計的<strong>符號權重表（Reel Strip）</strong>決定，
+            不受任何外部<a href="/blog/gas-control-system">調控</a>因素影響。每一次 Spin 的結果都由預先設計的<strong>符號權重表（Reel Strip）</strong>決定，
             確保遊戲的公平性與可預測的長期回報率。
         </p>
         <p>
@@ -40,7 +40,7 @@
             <li><strong>Scatter / Bonus 符號</strong>：每條 Reel 配置 1-2 個，觸發特殊功能</li>
         </ul>
         <p>
-            每條 Reel 的總權重（Total Weight）即為所有符號權重的加總。當 RNG 產生一個隨機數時，
+            每條 Reel 的總權重（Total Weight）即為所有符號權重的加總。當 <a href="/blog/rng-security">RNG</a> 產生一個隨機數時，
             會根據這個總權重範圍進行映射，決定停在哪個符號上。
         </p>
         <h3>實體轉輪與虛擬轉輪</h3>

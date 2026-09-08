@@ -208,8 +208,8 @@
         </p>
 
         <p>
-            The reel engine is about feel, but it does not operate in isolation: it relies on the reuse foundation provided by the layered architecture and on the start/stop commands issued by the state machine,
-            while when assets get loaded and how the stop sound lines up with the visuals belong to the domain of the supporting systems.
+            The reel engine is about feel, but it does not operate in isolation: it relies on the reuse foundation provided by the <a href="/en/blog/client-framework-architecture">layered architecture</a> and on the start/stop commands issued by the state machine,
+            while when assets get loaded and how the stop sound lines up with the visuals belong to the domain of the <a href="/en/blog/client-network-resource">supporting systems</a>.
             We discuss those two topics in the other two articles of this series.
         </p>
 

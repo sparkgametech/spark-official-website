@@ -67,6 +67,17 @@ html[data-theme="dark"][data-theme="dark"] {
         }
     }
 
+    // The light-page link ink is far too dark on this surface.
+    .blog-article p a,
+    .blog-article li a {
+        color: #ff8a4d;
+        text-decoration-color: rgba(#ff8a4d, 0.5);
+
+        &:hover {
+            text-decoration-color: #ff8a4d;
+        }
+    }
+
     // Ten of the articles wrap formulas in this block; it is defined inside
     // each of their scoped stylesheets rather than shared.
     .formula-block {

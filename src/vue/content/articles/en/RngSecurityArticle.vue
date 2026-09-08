@@ -28,7 +28,7 @@
         </p>
         <p>
             The key point is this: <strong>passing statistical tests is not the same as being unpredictable</strong>.
-            A sequence can perform flawlessly on the chi-square test and the runs test and still be entirely predictable.
+            A sequence can perform flawlessly on the <a href="/en/blog/risk-control-algorithm">chi-square test</a> and the runs test and still be entirely predictable.
             Statistical uniformity measures whether the output "looks random"; cryptographic security measures whether the future can be derived from past outputs.
             These are two independent properties. Gaming needs both, and neither can be omitted.
         </p>

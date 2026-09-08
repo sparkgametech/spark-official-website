@@ -1,3 +1,6 @@
+// 5.09:1 on the light page; the dark counterpart lives in _dark.scss.
+$link-ink: #c44200;
+
 /**
  * Shared article body rules.
  *
@@ -18,4 +21,26 @@
     // right between sections.
     width: 1.15em;
     text-align: center;
+}
+
+/**
+ * Contextual links inside article prose.
+ *
+ * Underlined on purpose. No single colour clears both 4.5:1 against the page
+ * and 3:1 against the surrounding body text, and WCAG only demands the latter
+ * when colour is the *only* thing marking the link — an underline settles it,
+ * and it is what readers already expect inside running text.
+ */
+.blog-article p a,
+.blog-article li a {
+    color: $link-ink;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba($primary, 0.45);
+    transition: text-decoration-color 0.15s ease;
+
+    &:hover {
+        text-decoration-color: $link-ink;
+    }
 }
