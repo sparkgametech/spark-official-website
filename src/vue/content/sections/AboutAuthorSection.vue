@@ -20,12 +20,15 @@
                 </ul>
 
                 <h2 class="about-heading">{{ t('aboutEngagementTitle') }}</h2>
-                <dl class="about-engagement">
-                    <template v-for="item in t('aboutEngagement')" :key="item.name">
-                        <dt>{{ item.name }}</dt>
-                        <dd>{{ item.detail }}</dd>
-                    </template>
-                </dl>
+                <div class="about-engagement">
+                    <div v-for="part in t('aboutEngagement')" :key="part.name" class="about-engagement-part">
+                        <h3>{{ part.name }}</h3>
+                        <ul>
+                            <li v-for="line in part.items" :key="line">{{ line }}</li>
+                        </ul>
+                        <p v-if="part.note">{{ part.note }}</p>
+                    </div>
+                </div>
 
                 <h2 class="about-heading">{{ t('aboutContactTitle') }}</h2>
                 <p v-for="(line, i) in t('aboutContactLead')" :key="i" class="about-contact-lead">{{ line }}</p>
@@ -100,19 +103,38 @@ watch(locale, updateMeta)
 // with four answers, and the term/definition pairing says that directly.
 .about-engagement {
     margin: 0 0 1.5rem;
+}
 
-    dt {
-        font-weight: 700;
-        margin-top: 0.9rem;
+.about-engagement-part {
+    margin-top: 1.25rem;
 
-        &:first-of-type {
-            margin-top: 0;
-        }
+    &:first-child {
+        margin-top: 0;
     }
 
-    dd {
-        margin: 0.15rem 0 0;
-        color: $text-muted;
+    h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #333;
+        margin: 0 0 0.4rem;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+    li {
+        // $text-muted lands at 4.48:1 on white, just under the minimum.
+        color: #6f6f6f;
+        font-size: 0.88rem;
+        line-height: 1.75;
+    }
+
+    p {
+        margin: 0.4rem 0 0;
+        color: #6f6f6f;
+        font-size: 0.88rem;
         line-height: 1.75;
     }
 }
@@ -159,7 +181,8 @@ watch(locale, updateMeta)
     span {
         display: block;
         font-size: 0.82rem;
-        color: #777;
+        // #777 is 4.48:1 on white, marginally under the 4.5 minimum.
+        color: #6f6f6f;
         line-height: 1.6;
     }
 }
@@ -187,7 +210,9 @@ watch(locale, updateMeta)
         padding: 0.6rem 1.1rem;
         border-radius: 26px;
         background: rgba($primary, 0.08);
-        color: $primary;
+        // The brand orange on its own tint is 2.87:1; this darker shade keeps
+        // the same hue at 5.5:1. The filled primary button below is unaffected.
+        color: #b03b00;
         font-size: 0.88rem;
         font-weight: 600;
         text-decoration: none;

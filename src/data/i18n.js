@@ -79,10 +79,30 @@ export const ui = {
         ],
         aboutEngagementTitle: '合作方式',
         aboutEngagement: [
-            { name: '承接範圍', detail: '客端開發、數值與開獎設計、美術設計、音樂音效。可以整包承接，也可以只補其中一項。' },
-            { name: '時程', detail: '視遊戲難易度，一款完整遊戲約 1.5 到 3 個月。可同時進行的產線數量依當下人力而定，洽談時一併確認。' },
-            { name: '計價', detail: '按專案報價。我們會先評估難易度，再回覆時程與費用。' },
-            { name: '交付內容', detail: '包含原始碼與素材檔。送驗的部分僅包含 RNG 送驗。' }
+            {
+                name: '承接範圍',
+                items: ['客端開發', '數值與開獎設計', '美術設計', '音樂音效'],
+                note: '可以整包承接，也可以只補其中一項。'
+            },
+            {
+                name: '時程',
+                items: [
+                    '一款完整遊戲約 1.5 到 3 個月，視遊戲難易度而定',
+                    '可同時進行的產線數量依當下人力而定，洽談時一併確認'
+                ]
+            },
+            {
+                name: '計價',
+                items: ['按專案報價', '先評估難易度，再回覆時程與費用']
+            },
+            {
+                name: '交付內容',
+                items: ['原始碼', '素材檔']
+            },
+            {
+                name: '送驗',
+                items: ['僅包含 RNG 送驗']
+            }
         ],
         aboutContactTitle: '聯絡我們',
         aboutContactLead: [
@@ -169,10 +189,30 @@ export const ui = {
         ],
         aboutEngagementTitle: 'How we work',
         aboutEngagement: [
-            { name: 'Scope', detail: 'Client development, math and outcome design, art, and music and sound. We can take on a whole production or fill in a single part of one.' },
-            { name: 'Timeline', detail: 'Depending on how complex the game is, a complete title takes roughly 1.5 to 3 months. How many productions we can run at once depends on current capacity, which we confirm when we talk.' },
-            { name: 'Pricing', detail: 'Quoted per project. We assess the complexity first, then come back with a timeline and a cost.' },
-            { name: 'Deliverables', detail: 'Source code and art assets. Certification support covers the RNG submission only.' }
+            {
+                name: 'Scope',
+                items: ['Client development', 'Math and outcome design', 'Art', 'Music and sound'],
+                note: 'We can take on a whole production, or fill in a single part of one.'
+            },
+            {
+                name: 'Timeline',
+                items: [
+                    'Roughly 1.5 to 3 months for a complete game, depending on how complex it is',
+                    'How many productions can run at once depends on current capacity, which we confirm when we talk'
+                ]
+            },
+            {
+                name: 'Pricing',
+                items: ['Quoted per project', 'We assess the complexity first, then come back with a timeline and a cost']
+            },
+            {
+                name: 'Deliverables',
+                items: ['Source code', 'Art assets']
+            },
+            {
+                name: 'Certification',
+                items: ['Covers the RNG submission only']
+            }
         ],
         aboutContactTitle: 'Get in touch',
         aboutContactLead: [

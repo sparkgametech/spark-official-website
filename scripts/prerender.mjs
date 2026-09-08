@@ -260,8 +260,7 @@ function buildRoutes(locale) {
         sections: [
             { heading: t.aboutServicesTitle,
               items: t.aboutServices.map(x => `${x.name}：${x.detail}`) },
-            { heading: t.aboutEngagementTitle,
-              items: t.aboutEngagement.map(x => `${x.name}：${x.detail}`) },
+            { heading: t.aboutEngagementTitle, groups: t.aboutEngagement },
             { heading: t.aboutContactTitle, paragraphs: t.aboutContactLead }
         ],
         links: categories.map(c => ({
@@ -408,7 +407,11 @@ function render(template, route) {
         ...(sec.paragraphs ?? []).map(line => '<p>' + esc(line) + '</p>'),
         sec.items?.length
             ? '<ul>' + sec.items.map(i => '<li>' + esc(i) + '</li>').join('') + '</ul>'
-            : ''
+            : '',
+        // Groups are named sub-parts, each with its own bullets.
+        ...(sec.groups ?? []).map(g => '<h3>' + esc(g.name) + '</h3>'
+            + '<ul>' + g.items.map(i => '<li>' + esc(i) + '</li>').join('') + '</ul>'
+            + (g.note ? '<p>' + esc(g.note) + '</p>' : ''))
     ].join('')).join('')
 
     const fallback = fallbackStyle + [

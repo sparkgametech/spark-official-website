@@ -207,15 +207,23 @@ html[data-theme="dark"][data-theme="dark"] {
         }
     }
 
-    // $text-muted only reaches 3.9:1 on the dark surface.
-    .about-engagement {
-        dt {
+    // The light-theme greys drop to about 3.6:1 on the dark surface.
+    .about-engagement-part {
+        h3 {
             color: $d-text-strong;
         }
 
-        dd {
+        li,
+        p {
             color: $d-text-muted;
         }
+    }
+
+    // The secondary contact buttons use a darkened orange so they clear 4.5:1
+    // on the light page; on the dark surface that shade is far too dark, so the
+    // hue has to go the other way here.
+    .about-contact a:not(.is-primary) {
+        color: #ff8a4d;
     }
 
     // Privacy policy and any other page built from ArticleParagraph: the
