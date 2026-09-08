@@ -3,7 +3,8 @@
     <PageSection variant="primary"
                  :id="props.id">
         <!-- Title -->
-        <PageSectionHeader :title="t('teamTitle')"
+        <PageSectionHeader :level="2"
+                           :title="t('teamTitle')"
                            :subtitle="t('teamSubtitle')"/>
 
         <!-- Content -->

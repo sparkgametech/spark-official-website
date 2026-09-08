@@ -1,6 +1,8 @@
 <template>
     <div class="foxy-section-header">
-        <h1 class="foxy-section-header-title" v-html="parsedTitle"/>
+        <component :is="`h${props.level}`"
+                   class="foxy-section-header-title"
+                   v-html="parsedTitle"/>
         <h5 class="foxy-section-header-subtitle pt-1" v-html="parsedSubtitle"/>
     </div>
 </template>
@@ -14,7 +16,14 @@ const utils = useUtils()
 const props = defineProps({
     title: String,
     subtitle: String,
-    contrast: Boolean
+    contrast: Boolean,
+    // A page may stack several sections, but only the first one is the page's
+    // own subject; the rest are parts of it. Leaving them all as <h1> would say
+    // the page is about several unrelated things at once.
+    level: {
+        type: Number,
+        default: 1
+    }
 })
 
 const parsedTitle = computed(() => {
@@ -41,7 +50,7 @@ div.foxy-section-header {
     text-align: center;
 }
 
-h1 {
+.foxy-section-header-title {
     text-transform: uppercase;
     color: inherit;
 }
