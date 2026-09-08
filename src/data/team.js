@@ -200,19 +200,35 @@ export const team = [
 /**
  * The avatar settings, shared by the generator script so the committed files
  * and the roster can never describe different pictures.
+ *
+ * Skin and hair are pinned rather than left to the library's full default
+ * range, which spans every ethnicity and would draw a team that does not look
+ * like this one. The palette's literal "yellow" swatch is deliberately not
+ * used: it is a cartoon yellow, not a skin tone.
  */
+const SKIN = ['edb98a', 'ffdbb4']
+const HAIR = ['2c1b18', '4a312c']
+
+// Hair is what actually reads as gender here; facial hair alone never did.
+const HAIR_MALE = ['shortFlat', 'shortRound', 'shortWaved', 'shortCurly',
+    'theCaesar', 'theCaesarAndSidePart', 'sides']
+const HAIR_FEMALE = ['bob', 'bun', 'longButNotTooLong', 'straight01',
+    'straight02', 'straightAndStrand']
+
 export const avatarOptions = (member) => ({
     seed: member.avatarSeed,
     eyes: ['happy'],
     eyebrows: ['default'],
     mouth: ['smile'],
-    backgroundColor: ['b6e3f4', 'c0aede', 'd1d4f9', 'ffd5dc', 'ffdfbf'],
-    ...(member.femaleAvatar ? { facialHairProbability: 0 } : {})
+    skinColor: SKIN,
+    hairColor: HAIR,
+    top: member.femaleAvatar ? HAIR_FEMALE : HAIR_MALE,
+    // Hats and headwear would say something about these people that we are not
+    // in a position to say.
+    topProbability: 100,
+    facialHairProbability: 0,
+    accessoriesProbability: 0,
+    backgroundColor: ['b6e3f4', 'c0aede', 'd1d4f9', 'ffd5dc', 'ffdfbf']
 })
 
-/**
- * Avatars are generated into public/images/team by scripts/make-avatars.mjs and
- * served from our own origin, so the team section does not break when a
- * third-party image service does.
- */
 export const teamAvatarUrl = (member) => `/images/team/${member.avatarSeed}.svg`
