@@ -19,6 +19,14 @@
                     </li>
                 </ul>
 
+                <h2 class="about-heading">{{ t('aboutEngagementTitle') }}</h2>
+                <dl class="about-engagement">
+                    <template v-for="item in t('aboutEngagement')" :key="item.name">
+                        <dt>{{ item.name }}</dt>
+                        <dd>{{ item.detail }}</dd>
+                    </template>
+                </dl>
+
                 <h2 class="about-heading">{{ t('aboutContactTitle') }}</h2>
                 <p v-for="(line, i) in t('aboutContactLead')" :key="i" class="about-contact-lead">{{ line }}</p>
                 <div class="about-contact">
@@ -86,6 +94,27 @@ watch(locale, updateMeta)
     margin: 2.5rem 0 1.1rem;
     padding-bottom: 0.6rem;
     border-bottom: 2px solid rgba($primary, 0.15);
+}
+
+// A description list rather than another icon grid: these are four questions
+// with four answers, and the term/definition pairing says that directly.
+.about-engagement {
+    margin: 0 0 1.5rem;
+
+    dt {
+        font-weight: 700;
+        margin-top: 0.9rem;
+
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+
+    dd {
+        margin: 0.15rem 0 0;
+        color: $text-muted;
+        line-height: 1.75;
+    }
 }
 
 .about-services {

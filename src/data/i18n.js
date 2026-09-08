@@ -77,6 +77,13 @@ export const ui = {
             { icon: 'fa-solid fa-cubes', name: '系統架構', detail: '遊戲伺服器、結果集架構與調控風控設計' },
             { icon: 'fa-solid fa-vial', name: 'QA 測試', detail: '數學驗證、功能測試、體感測試與合規送測' }
         ],
+        aboutEngagementTitle: '合作方式',
+        aboutEngagement: [
+            { name: '承接範圍', detail: '客端開發、數值與開獎設計、美術設計、音樂音效。可以整包承接，也可以只補其中一項。' },
+            { name: '時程', detail: '視遊戲難易度，一款完整遊戲約 1.5 到 3 個月。可同時進行的產線數量依當下人力而定，洽談時一併確認。' },
+            { name: '計價', detail: '按專案報價。我們會先評估難易度，再回覆時程與費用。' },
+            { name: '交付內容', detail: '包含原始碼與素材檔。送驗的部分僅包含 RNG 送驗。' }
+        ],
         aboutContactTitle: '聯絡我們',
         aboutContactLead: [
             '我們承接老虎機遊戲的開發外包，可以整包做，也可以只補你缺的那一塊。',
@@ -159,6 +166,13 @@ export const ui = {
             { icon: 'fa-solid fa-dice', name: 'Math design', detail: 'Probability models, RTP tuning, volatility and play-feel balance' },
             { icon: 'fa-solid fa-cubes', name: 'System architecture', detail: 'Game server, result-set architecture, regulation and risk control design' },
             { icon: 'fa-solid fa-vial', name: 'QA testing', detail: 'Math verification, functional and play-feel testing, certification submission' }
+        ],
+        aboutEngagementTitle: 'How we work',
+        aboutEngagement: [
+            { name: 'Scope', detail: 'Client development, math and outcome design, art, and music and sound. We can take on a whole production or fill in a single part of one.' },
+            { name: 'Timeline', detail: 'Depending on how complex the game is, a complete title takes roughly 1.5 to 3 months. How many productions we can run at once depends on current capacity, which we confirm when we talk.' },
+            { name: 'Pricing', detail: 'Quoted per project. We assess the complexity first, then come back with a timeline and a cost.' },
+            { name: 'Deliverables', detail: 'Source code and art assets. Certification support covers the RNG submission only.' }
         ],
         aboutContactTitle: 'Get in touch',
         aboutContactLead: [

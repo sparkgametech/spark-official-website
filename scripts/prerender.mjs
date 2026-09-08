@@ -260,6 +260,8 @@ function buildRoutes(locale) {
         sections: [
             { heading: t.aboutServicesTitle,
               items: t.aboutServices.map(x => `${x.name}：${x.detail}`) },
+            { heading: t.aboutEngagementTitle,
+              items: t.aboutEngagement.map(x => `${x.name}：${x.detail}`) },
             { heading: t.aboutContactTitle, paragraphs: t.aboutContactLead }
         ],
         links: categories.map(c => ({

@@ -207,6 +207,17 @@ html[data-theme="dark"][data-theme="dark"] {
         }
     }
 
+    // $text-muted only reaches 3.9:1 on the dark surface.
+    .about-engagement {
+        dt {
+            color: $d-text-strong;
+        }
+
+        dd {
+            color: $d-text-muted;
+        }
+    }
+
     // Privacy policy and any other page built from ArticleParagraph: the
     // headings use the global heading colour and the body is a plain <p>,
     // so both stay on their light-theme values without this.
