@@ -6,8 +6,8 @@
             From a technical standpoint, a mature slot client has to solve at least the following core challenges:
         </p>
         <ul>
-            <li><strong>Smooth reel animation</strong>: the reels are the most immediate part of the player's experience, and they must hold a stable, natural spin at 60fps, covering acceleration, deceleration, bounce and other dynamic transitions</li>
-            <li><strong>Real-time server communication</strong>: every bet requires an immediate data exchange with the server, and from sending the request to receiving the result to handling disconnect-and-reconnect, the communication layer has to be stable and fault-tolerant</li>
+            <li><strong>Smooth <a href="/en/blog/client-reel-engine">reel animation</a></strong>: the reels are the most immediate part of the player's experience, and they must hold a stable, natural spin at 60fps, covering acceleration, deceleration, bounce and other dynamic transitions</li>
+            <li><strong>Real-time server communication</strong>: every bet requires an immediate data exchange with the server, and from sending the request to receiving the result to handling <a href="/en/blog/client-network-resource">disconnect-and-reconnect</a>, the communication layer has to be stable and fault-tolerant</li>
             <li><strong>Large-scale asset management</strong>: a single game may contain hundreds of images and dozens of animations and sound effects, so how they are loaded in stages, cached and released from memory directly affects load time and runtime performance</li>
             <li><strong>Localization and multiple languages</strong>: a game aimed at the global market needs to support dozens of languages, which is not only text translation but also layout direction, font substitution and asset swapping per locale</li>
             <li><strong>A high degree of reusability</strong>: the market demands a steady stream of new games, and if every title were built from scratch the cost would be impossible to control. The architecture has to support "build the core once, reuse it many times"</li>

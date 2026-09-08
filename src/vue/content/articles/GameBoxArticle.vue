@@ -4,10 +4,10 @@
         <p>
             在老虎機遊戲開發中，<strong>結果集</strong> 是一種<strong>預生成種子記錄池（Pre-generated Seed Record Pool）</strong>架構。
             它的核心理念是將遊戲的隨機結果預先計算並打包成可重播的記錄，用於特定場景下的結果分發，
-            同時保持與自然機率完全一致的數學期望值。
+            同時保持與<a href="/blog/natural-probability-design">自然機率</a>完全一致的數學期望值。
         </p>
         <p>
-            結果集 並非取代即時 RNG，而是在需要<strong>精確控制 RTP 分佈</strong>的場景下，
+            結果集 並非取代即時 <a href="/blog/rng-security">RNG</a>，而是在需要<strong>精確控制 RTP 分佈</strong>的場景下，
             提供一個經過數學驗證的結果集合，確保每組結果的長期回報率嚴格收斂於目標值。
         </p>
 

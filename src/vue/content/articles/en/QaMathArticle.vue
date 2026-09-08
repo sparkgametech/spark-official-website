@@ -23,7 +23,7 @@
         <h3>Why Functional Testing Alone Cannot Define Quality</h3>
         <p>
             Acceptance criteria for ordinary software are usually <strong>deterministic</strong>: given an input, the output must equal the expected value.
-            Slots are not like that. A game whose mathematical model is entirely wrong can still sail through every functional test:
+            Slots are not like that. A game whose mathematical model is entirely wrong can still sail through every <a href="/en/blog/qa-functional-playtest">functional test</a>:
             buttons respond, animations play, settlement does not crash, and nothing on screen looks out of place.
             The defect exists only as a deviation of the long-run average from the designed value,
             and at an observation scale of tens of thousands of rounds that deviation can be completely masked by random fluctuation.
@@ -95,7 +95,7 @@
         <p>
             Beyond the overall RTP, the <strong>hit frequency of each symbol combination</strong> also needs to be verified independently.
             The probability table (PAR sheet) defines the theoretical probability of every winning combination, and the simulation results must match it.
-            Testing applies a <strong>chi-squared test</strong> to the occurrence count of each combination,
+            Testing applies a <strong><a href="/en/blog/risk-control-algorithm">chi-square</a>d test</strong> to the occurrence count of each combination,
             confirming there is no statistically significant difference between the observed and theoretical distributions.
             A model with a correct total RTP may still contain two internal errors that cancel each other out.
         </p>

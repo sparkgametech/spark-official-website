@@ -122,7 +122,7 @@
         </p>
         <ul>
             <li><strong>Dimension specifications</strong>: the design size, safe area and stretchable region defined for each asset category</li>
-            <li><strong>File formats</strong>: agreed formats for assets that need an alpha channel, for background images, and for skeletal animation export bundles</li>
+            <li><strong>File formats</strong>: agreed formats for assets that need an alpha channel, for background images, and for <a href="/en/blog/art-symbol-spine-animation">skeletal animation</a> export bundles</li>
             <li>
                 <strong>Naming conventions</strong>: use predictable multi-segment names that indicate, in order, the
                 asset category, its semantic name and its state.

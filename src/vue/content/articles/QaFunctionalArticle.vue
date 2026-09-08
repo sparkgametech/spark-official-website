@@ -8,7 +8,7 @@
 
         <h3>遊戲狀態機覆蓋</h3>
         <p>
-            老虎機的遊戲流程可以建模為一個<strong>有限狀態機（Finite State Machine）</strong>，
+            老虎機的遊戲流程可以建模為一個<strong><a href="/blog/client-framework-architecture">有限狀態機</a>（Finite State Machine）</strong>，
             包含基礎遊戲、免費遊戲、Bonus 回合、大獎慶祝等多種狀態。
             功能測試必須覆蓋<strong>每一個可能的狀態轉換路徑</strong>，包括：
         </p>
@@ -146,7 +146,7 @@
 
         <h3>中獎分佈體感</h3>
         <p>
-            這是體感測試中最微妙的部分。同樣是 96.5% 的 RTP，
+            這是體感測試中最微妙的部分。同樣是 96.5% 的 <a href="/blog/natural-probability-design">RTP</a>，
             不同的獎金分佈模式會帶來截然不同的主觀感受：
             若把大部分 RTP 集中在少數大獎上，數學上完全正確，
             普通玩家卻可能因長時間不中獎而感到挫敗。

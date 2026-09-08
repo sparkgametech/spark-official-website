@@ -170,7 +170,7 @@
         </p>
         <h3>Syncing Audio With Game State</h3>
         <p>
-            The audio system is deeply integrated with the game state machine, ensuring precise synchronization between sound and picture:
+            The audio system is deeply integrated with the game <a href="/en/blog/client-framework-architecture">state machine</a>, ensuring precise synchronization between sound and picture:
         </p>
         <ul>
             <li><strong>Reel sounds</strong>: the sustained low-frequency sound during the spin, the impact sound as each column stops, the suspense sound during anticipation, all triggered by the state machine's stage transition events</li>
@@ -178,7 +178,7 @@
             <li><strong>Scene transition score</strong>: when going from the main game into free games, the background music needs to transition naturally rather than cut abruptly</li>
         </ul>
         <p>
-            There is a practical detail in aligning the reel stop sound: the sound should align with <strong>the instant the reel makes contact with the target position</strong>,
+            There is a practical detail in aligning the <a href="/en/blog/client-reel-engine">reel stop sound</a>: the sound should align with <strong>the instant the reel makes contact with the target position</strong>,
             not with the end of the whole animation. The overshoot and rebound happen after contact, so playing it late puts it half a beat behind.
         </p>
         <h3>Crossfading and Preventing Stacking</h3>

@@ -37,7 +37,7 @@
         <p>
             In practice tests are <strong>tiered by cost</strong>: the fast tier on every commit must finish within a few minutes,
             the daily mid-weight tier covers the full set of functional cases,
-            and mathematical verification of tens of millions of rounds or more is scheduled at release milestones or before submission for certification.
+            and <a href="/en/blog/qa-math-verification">mathematical verification</a> of tens of millions of rounds or more is scheduled at release milestones or before submission for certification.
             Another frequently underrated point is <strong>the stability of the tests themselves</strong>:
             intermittent failures destroy the team's trust in the entire suite,
             and such cases should be handled as defects, tracking down and eliminating the residual sources of non-determinism.
@@ -102,7 +102,7 @@
             and their testing covers the following key areas:
         </p>
         <ul>
-            <li>Passing the statistical test suites for the RNG (random number generator)</li>
+            <li>Passing the statistical test suites for the <a href="/en/blog/rng-security">RNG</a> (random number generator)</li>
             <li>Consistency between the measured RTP and the declared RTP</li>
             <li>Correct implementation of the game rules and complete disclosure of player information</li>
             <li>Safety of error handling and interruption recovery</li>

@@ -7,7 +7,7 @@
             如果 RNG 存在偏差、可預測性或被操控的可能，整個遊戲的公平性就無法保證。
         </p>
         <p>
-            在合規市場中，RNG 必須通過第三方認證機構（如 <strong>GLI</strong> 或 <strong>BMM</strong>）的嚴格審計，
+            在合規市場中，RNG 必須通過<a href="/blog/qa-automation-compliance">第三方認證機構</a>（如 <strong>GLI</strong> 或 <strong>BMM</strong>）的嚴格審計，
             確保其符合統計學上的隨機性標準。這不僅是技術要求，更是遊戲合規上線的法規門檻。
         </p>
         <p>

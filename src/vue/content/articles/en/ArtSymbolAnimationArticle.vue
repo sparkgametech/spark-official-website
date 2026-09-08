@@ -178,7 +178,7 @@
         </ul>
         <p>
             Animation timing is what separates quality tiers. Win animations almost always follow a three-part
-            structure of <strong>"anticipation, burst, follow-through"</strong>. Easing curves often matter more
+            structure of <strong>"anticipation, burst, follow-through"</strong>. <a href="/en/blog/client-reel-engine">Easing curves</a> often matter more
             than the motion design itself; linear interpolation makes movement look mechanical and cheap, and only
             proper acceleration and deceleration produce a sense of weight.
         </p>
@@ -230,7 +230,7 @@
         <p>
             Symbols and animation are the core of the slot visual experience, but they only truly hold up once they
             are placed reliably into the interface and delivered correctly; as for how this visual style first
-            converged out of concept exploration, this series has a separate article on the up-front workflow and
+            converged out of <a href="/en/blog/art-challenges-ai-workflow">concept exploration</a>, this series has a separate article on the up-front workflow and
             where AI tools fit into it.
         </p>
     </div>

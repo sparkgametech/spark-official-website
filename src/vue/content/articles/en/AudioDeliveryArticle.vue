@@ -21,7 +21,7 @@
         </p>
         <p>
             The correct approach is to normalize everything against <strong>integrated loudness (LUFS)</strong> before delivery,
-            rather than relying on peak level. Background music is recommended to land around -16 LUFS,
+            rather than relying on peak level. <a href="/en/blog/audio-bgm-design">Background music</a> is recommended to land around -16 LUFS,
             while sound effects are tiered by category: interface sounds lowest, celebration sounds highest, with a fixed loudness gap held between tiers;
             at the same time, leave roughly 1 dB of <strong>true peak headroom</strong>
             to prevent digital clipping from amplitude summing when several sounds play at once.
@@ -87,7 +87,7 @@
         <p>
             All buses ultimately feed a single master output, and the player's global volume control acts there.
             This architecture also greatly simplifies dynamic mixing:
-            ducking only needs a gain adjustment on a single bus, rather than handling the playback state of individual sounds one at a time.
+            <a href="/en/blog/audio-sfx-interactive">ducking</a> only needs a gain adjustment on a single bus, rather than handling the playback state of individual sounds one at a time.
         </p>
         <DiagramFigure caption="Players control each category separately; some prefer music off with the effects left on.">
             <svg viewBox="0 0 640 252" role="img" xmlns="http://www.w3.org/2000/svg">

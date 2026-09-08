@@ -2,13 +2,13 @@
     <div class="blog-article">
         <h2><i class="fa-solid fa-sliders" aria-hidden="true"></i>調控系統概述</h2>
         <p>
-            老虎機的<strong>調控系統</strong>是在自然機率模型之上的動態控制層，
+            老虎機的<strong>調控系統</strong>是在<a href="/blog/natural-probability-design">自然機率</a>模型之上的動態控制層，
             用於在保持遊戲數學正確性的前提下，實現靈活的 RTP 管理與玩家體驗優化。
             調控系統不會篡改遊戲的核心機率模型，而是透過<strong>合規的機制</strong>來調整結果的選取策略。
         </p>
         <p>
             這裡的區別非常關鍵。所謂調控，並不是在玩家按下 Spin 之後去「修改」已經算出來的結果，
-            而是在抽樣之前，決定<strong>要從哪一個已經過完整數學驗證的分佈中抽樣</strong>。
+            而是在抽樣之前，決定<strong>要從哪一個已經過完整<a href="/blog/qa-math-verification">數學驗證</a>的分佈中抽樣</strong>。
             每一組候選分佈的 RTP、波動率、Hit Rate 都是事先算好並封存的；
             調控層做的事情只是在這些分佈之間做加權選擇。
             這個設計界線一旦守住，整套系統的數學性質就永遠是可推導、可稽核的。
@@ -213,7 +213,7 @@
             權重選取產生表現索引後：
         </p>
         <ol>
-            <li>從預計算的模板資料庫查詢對應的<strong>完整盤面結果</strong>（Board Result）</li>
+            <li>從<a href="/blog/gamebox-architecture">預計算的模板資料庫</a>查詢對應的<strong>完整盤面結果</strong>（Board Result）</li>
             <li>將模板中的金額按 <code>實際下注 / 模板下注</code> 比例<strong>等比縮放</strong></li>
             <li>生成最終回傳給客端的遊戲結果</li>
         </ol>

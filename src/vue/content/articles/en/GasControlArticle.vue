@@ -2,13 +2,13 @@
     <div class="blog-article">
         <h2><i class="fa-solid fa-sliders" aria-hidden="true"></i>Overview of the Regulation System</h2>
         <p>
-            A slot's <strong>regulation system</strong> is a dynamic control layer sitting on top of the natural probability model,
+            A slot's <strong>regulation system</strong> is a dynamic control layer sitting on top of the <a href="/en/blog/natural-probability-design">natural probability</a> model,
             used to achieve flexible RTP management and player experience optimization while preserving the game's mathematical correctness.
             The regulation system never tampers with the game's core probability model; instead it adjusts the result selection strategy through <strong>compliant mechanisms</strong>.
         </p>
         <p>
             The distinction here is crucial. Regulation does not mean "modifying" an already computed result after the player presses Spin;
-            it means deciding, before sampling, <strong>which fully mathematically verified distribution to sample from</strong>.
+            it means deciding, before sampling, <strong>which <a href="/en/blog/qa-math-verification">fully mathematically verified</a> distribution to sample from</strong>.
             The RTP, volatility and Hit Rate of every candidate distribution are computed and sealed in advance;
             all the regulation layer does is make a weighted choice among these distributions.
             Once this design boundary is held, the mathematical properties of the whole system remain forever derivable and auditable.
@@ -213,7 +213,7 @@
             After weighted selection produces a presentation index:
         </p>
         <ol>
-            <li>Look up the corresponding <strong>complete board result</strong> from the pre-computed template database</li>
+            <li>Look up the corresponding <strong>complete board result</strong> from the <a href="/en/blog/gamebox-architecture">pre-computed template database</a></li>
             <li><strong>Scale the amounts in the template proportionally</strong> by the ratio <code>actual bet / template bet</code></li>
             <li>Generate the final game result returned to the client</li>
         </ol>

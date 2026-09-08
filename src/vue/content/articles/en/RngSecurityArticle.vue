@@ -7,7 +7,7 @@
             If the RNG is biased, predictable, or open to manipulation, the fairness of the entire game cannot be guaranteed.
         </p>
         <p>
-            In regulated markets, the RNG must pass a rigorous audit by a third-party certification body (such as <strong>GLI</strong> or <strong>BMM</strong>)
+            In regulated markets, the RNG must pass a rigorous audit by a <a href="/en/blog/qa-automation-compliance">third-party certification body</a> (such as <strong>GLI</strong> or <strong>BMM</strong>)
             to confirm that it meets statistical standards of randomness. This is not merely a technical requirement; it is a regulatory threshold for launching a compliant game.
         </p>
         <p>

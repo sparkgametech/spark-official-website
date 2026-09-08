@@ -151,7 +151,7 @@
             the payoff is that music can add or shed density in real time as the game state changes, which is exactly the foundation of dynamic audio.
         </p>
         <p>
-            Background music lays down the emotional base coat; what really carries the feedback of every interaction is the sound effects layer.
+            Background music lays down the emotional base coat; what really carries the feedback of every interaction is the <a href="/en/blog/audio-sfx-interactive">sound effects layer</a>.
             For how win sounds are tiered and how payline scoring notes ascend, read the article in this series on sound tiers and
             interactive audio systems; for the specifications these assets should be produced and delivered to,
             the article on technical specifications and the delivery pipeline covers it in full.

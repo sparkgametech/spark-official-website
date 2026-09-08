@@ -8,7 +8,7 @@
 
         <h3>Game State Machine Coverage</h3>
         <p>
-            The flow of a slot game can be modeled as a <strong>finite state machine</strong>,
+            The flow of a slot game can be modeled as a <strong><a href="/en/blog/client-framework-architecture">finite state machine</a></strong>,
             covering states such as the base game, free games, bonus rounds and big-win celebrations.
             Functional testing must cover <strong>every possible state transition path</strong>, including:
         </p>
@@ -146,7 +146,7 @@
 
         <h3>The Feel of the Win Distribution</h3>
         <p>
-            This is the most subtle part of player-feel testing. At the same 96.5% RTP,
+            This is the most subtle part of player-feel testing. At the same 96.5% <a href="/en/blog/natural-probability-design">RTP</a>,
             different prize distribution patterns produce completely different subjective impressions:
             concentrating most of the RTP in a handful of large prizes is mathematically perfectly correct,
             yet an average player may feel frustrated by long stretches without a win.

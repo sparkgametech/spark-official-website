@@ -97,7 +97,7 @@ if p-value < α (0.0001), flag as anomalous</code>
 if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
         </div>
         <p>
-            When the tuning configuration provides enough information (an explicit locked theoretical RTP value exists), we use the exact theoretical value as the baseline;
+            When the <a href="/en/blog/gas-control-system">tuning</a> configuration provides enough information (an explicit locked theoretical RTP value exists), we use the exact theoretical value as the baseline;
             when the configuration is insufficient, we use the <strong>theoretical maximum RTP</strong> as a conservative baseline to avoid false negatives.
         </p>
         <p>
@@ -284,7 +284,7 @@ if |Z| > Z<sub>α/2</sub>, RTP deviates significantly</code>
             The cost of a false negative, by contrast, is partly absorbed by other mechanisms:
             the multi-window design means a small deviation will eventually accumulate in the long window until it is detectable;
             a complete audit trail keeps retrospective investigation always feasible;
-            and pre-launch mathematical validation together with deterministic testing intercepts most misconfigurations at the source.
+            and pre-launch <a href="/en/blog/qa-math-verification">mathematical validation</a> together with deterministic testing intercepts most misconfigurations at the source.
         </p>
         <p>
             In other words, <strong>statistical detection is not the only line of defense, so it does not have to carry all of the false negative risk alone</strong>.

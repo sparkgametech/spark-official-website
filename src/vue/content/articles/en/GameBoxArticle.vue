@@ -4,10 +4,10 @@
         <p>
             In slot game development, the <strong>result set</strong> is a <strong>pre-generated seed record pool</strong> architecture.
             Its core idea is to pre-compute the game's random outcomes and package them into replayable records, used to distribute results in specific scenarios
-            while keeping the mathematical expected value exactly consistent with natural probability.
+            while keeping the mathematical expected value exactly consistent with <a href="/en/blog/natural-probability-design">natural probability</a>.
         </p>
         <p>
-            The result set does not replace real-time RNG. Rather, in scenarios that require <strong>precise control of the RTP distribution</strong>,
+            The result set does not replace real-time <a href="/en/blog/rng-security">RNG</a>. Rather, in scenarios that require <strong>precise control of the RTP distribution</strong>,
             it provides a mathematically verified collection of outcomes, ensuring that each group's long-term return rate converges strictly to the target value.
         </p>
 

@@ -56,7 +56,7 @@
             it contains no semitones, so any two notes stacked together are inoffensive, and even when scoring notes overlap because settlement runs too fast, they still sound consonant.
             The ascending steps also need a ceiling: typically the pitch stops rising or wraps back to the start after eight to twelve steps,
             avoiding a climb into a shrill frequency band on high payline counts.
-            All of this pitched material should share the key of the background music.
+            All of this pitched material should share the key of the <a href="/en/blog/audio-bgm-design">background music</a>.
         </p>
 
         <h2><i class="fa-solid fa-star" aria-hidden="true"></i>Special Symbols and Anticipation</h2>
@@ -103,7 +103,7 @@
         <h3>Ducking and Spatial Positioning</h3>
         <p>
             <strong>Ducking</strong> is the key technique for keeping the auditory layers distinct.
-            When a big win celebration fires, the bus carrying the background music should automatically drop 60% to 80% in level,
+            When a big win celebration fires, the <a href="/en/blog/audio-specs-delivery">bus</a> carrying the background music should automatically drop 60% to 80% in level,
             letting the celebration sound take the lead, then recover slowly once it ends.
             The duck's attack should be short (around 100 to 200 milliseconds) and its release long (around 500 milliseconds or more),
             so the act of stepping aside goes unnoticed. Ducking at the bus level greatly simplifies the logic of dynamic mixing.

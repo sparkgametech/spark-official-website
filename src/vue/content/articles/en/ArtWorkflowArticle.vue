@@ -8,7 +8,7 @@
             maximising visual impact under extreme constraints.
         </p>
         <p>
-            The core challenge is <strong>symbol legibility</strong>. Unlike a character in a regular game that
+            The core challenge is <strong><a href="/en/blog/art-symbol-spine-animation">symbol legibility</a></strong>. Unlike a character in a regular game that
             can fill the whole screen, a slot symbol usually occupies only a small cell, and players have to
             recognise a winning combination instantly while the reels are spinning at high speed.
             This means every symbol must have a clear silhouette, strong colour contrast, and visual
@@ -31,7 +31,7 @@
         <p>
             Finally there is the pressure of <strong>development speed</strong>. Competition is fierce, and the
             production cycle of a slot is often very tight. Art has to finish theme design, a full symbol set,
-            animation, interface layout and multi-resolution output within a limited window. That requires not
+            animation, <a href="/en/blog/art-ui-delivery-pipeline">interface layout</a> and multi-resolution output within a limited window. That requires not
             only solid drawing fundamentals but also a highly efficient workflow.
         </p>
 
