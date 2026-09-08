@@ -22,7 +22,7 @@
                 <h2 class="about-heading">{{ t('aboutEngagementTitle') }}</h2>
                 <div class="about-engagement">
                     <div v-for="part in t('aboutEngagement')" :key="part.name" class="about-engagement-part">
-                        <h3>{{ part.name }}</h3>
+                        <h3><i :class="part.icon"></i>{{ part.name }}</h3>
                         <ul>
                             <li v-for="line in part.items" :key="line">{{ line }}</li>
                         </ul>
@@ -113,10 +113,28 @@ watch(locale, updateMeta)
     }
 
     h3 {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
         font-size: 0.95rem;
         font-weight: 700;
         color: #333;
-        margin: 0 0 0.4rem;
+        margin: 0 0 0.5rem;
+
+        // Matches the badge on the services list above so the two blocks read
+        // as one section rather than two unrelated styles.
+        i {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            background: rgba($primary, 0.1);
+            color: $primary;
+            font-size: 0.72rem;
+        }
     }
 
     ul {
@@ -200,8 +218,11 @@ watch(locale, updateMeta)
 
 .about-contact {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    // Stacked, not in a row: each is a separate way to reach us, and a column
+    // reads as a list of options rather than one wide bar of buttons.
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
 
     a {
         display: inline-flex;

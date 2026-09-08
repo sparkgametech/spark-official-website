@@ -80,11 +80,13 @@ export const ui = {
         aboutEngagementTitle: '合作方式',
         aboutEngagement: [
             {
+                icon: 'fa-solid fa-list-check',
                 name: '承接範圍',
                 items: ['客端開發', '數值與開獎設計', '美術設計', '音樂音效'],
                 note: '可以整包承接，也可以只補其中一項。'
             },
             {
+                icon: 'fa-solid fa-calendar-days',
                 name: '時程',
                 items: [
                     '一款完整遊戲約 1.5 到 3 個月，視遊戲難易度而定',
@@ -92,14 +94,17 @@ export const ui = {
                 ]
             },
             {
+                icon: 'fa-solid fa-file-invoice',
                 name: '計價',
                 items: ['按專案報價', '先評估難易度，再回覆時程與費用']
             },
             {
+                icon: 'fa-solid fa-box-open',
                 name: '交付內容',
                 items: ['原始碼', '素材檔']
             },
             {
+                icon: 'fa-solid fa-certificate',
                 name: '送驗',
                 items: ['僅包含 RNG 送驗']
             }
@@ -190,11 +195,13 @@ export const ui = {
         aboutEngagementTitle: 'How we work',
         aboutEngagement: [
             {
+                icon: 'fa-solid fa-list-check',
                 name: 'Scope',
                 items: ['Client development', 'Math and outcome design', 'Art', 'Music and sound'],
                 note: 'We can take on a whole production, or fill in a single part of one.'
             },
             {
+                icon: 'fa-solid fa-calendar-days',
                 name: 'Timeline',
                 items: [
                     'Roughly 1.5 to 3 months for a complete game, depending on how complex it is',
@@ -202,14 +209,17 @@ export const ui = {
                 ]
             },
             {
+                icon: 'fa-solid fa-file-invoice',
                 name: 'Pricing',
                 items: ['Quoted per project', 'We assess the complexity first, then come back with a timeline and a cost']
             },
             {
+                icon: 'fa-solid fa-box-open',
                 name: 'Deliverables',
                 items: ['Source code', 'Art assets']
             },
             {
+                icon: 'fa-solid fa-certificate',
                 name: 'Certification',
                 items: ['Covers the RNG submission only']
             }
