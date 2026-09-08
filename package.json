@@ -23,6 +23,8 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@dicebear/collection": "^7.2.0",
+    "@dicebear/core": "^7.2.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "sass": "^1.62.1",
     "vite": "^6.2.5"

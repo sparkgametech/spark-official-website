@@ -1,8 +1,8 @@
 /**
  * Team roster, kept as data so the section can render in either language.
  *
- * `avatarSeed` feeds the dicebear avatar URL; `femaleAvatar` adds the
- * facial-hair opt-out that the original hand-written URLs carried.
+ * `avatarSeed` names the generated avatar file; `femaleAvatar` carries the
+ * facial-hair opt-out.
  */
 export const team = [
     {
@@ -197,10 +197,22 @@ export const team = [
     }
 ]
 
-/** Rebuilds the original dicebear avatar URL from a member entry. */
-export const teamAvatarUrl = (member) => {
-    const noFacialHair = member.femaleAvatar ? '&facialHairProbability=0' : ''
-    return `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.avatarSeed}${noFacialHair}` +
-        `&eyes=happy&eyebrows=default&mouth=smile` +
-        `&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`
-}
+/**
+ * The avatar settings, shared by the generator script so the committed files
+ * and the roster can never describe different pictures.
+ */
+export const avatarOptions = (member) => ({
+    seed: member.avatarSeed,
+    eyes: ['happy'],
+    eyebrows: ['default'],
+    mouth: ['smile'],
+    backgroundColor: ['b6e3f4', 'c0aede', 'd1d4f9', 'ffd5dc', 'ffdfbf'],
+    ...(member.femaleAvatar ? { facialHairProbability: 0 } : {})
+})
+
+/**
+ * Avatars are generated into public/images/team by scripts/make-avatars.mjs and
+ * served from our own origin, so the team section does not break when a
+ * third-party image service does.
+ */
+export const teamAvatarUrl = (member) => `/images/team/${member.avatarSeed}.svg`
